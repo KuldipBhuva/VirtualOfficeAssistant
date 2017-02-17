@@ -1,0 +1,73 @@
+﻿  @{ 
+   ViewBag.Title = "Other Details";
+}
+  
+@using EMSDomain.ViewModel.Employee
+
+@model EmpOtherItem
+
+
+@using (@Html.BeginForm("Create", "OtherDetail", FormMethod.Post))
+{
+    <div class="container">
+        <div class="panel panel-info">
+            <div class="panel-heading">Other Details</div>
+            <div class="panel-body">
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.AwardName, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.AwardName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.AwardName)
+                    </div>
+
+                    @Html.LabelFor(m => m.AwardDate, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.AwardDate, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.AwardDate)
+
+                    </div>
+
+                    @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                    </div>
+
+
+                    @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")In-Active
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table table-bordered table-hover">
+        <table border="1" class="table table-bordered table-striped">
+            <tr>
+                <td>Name</td>
+                <td>Award Name</td>
+                <td>Award-Date</td>
+                <td>Remarks</td>
+            </tr>
+            @foreach (var item in Model.ListOther)
+            {
+                <tr>
+                    <td>@item.EmpDetails.Empname</td>
+                    <td>@item.AwardName</td>
+                    <td>@item.AwardDate</td>
+                    <td>@item.Remarks</td>
+
+                    <td>@Html.ActionLink("Edit", "Edit", new { @id = @item.OtherId })</td>
+                </tr>
+            }
+        </table>
+    </div>
+}

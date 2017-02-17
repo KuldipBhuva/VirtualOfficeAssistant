@@ -1,0 +1,101 @@
+﻿@using EMSDomain.ViewModel
+
+@model clsMasterData
+
+@using (@Html.BeginForm("Index", "MasterData", FormMethod.Get, new { @id = "frmCreatedata"}))
+{
+    <section class="content-header">
+        <h1>Master Data
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+
+    </section>
+    @Html.HiddenFor(m => m.Id)
+     <div>@Html.ActionLink("Back To Create Masters", "Create")</div>
+    <input id="hdnMasterId" name="hdnMasterId" type="hidden" />
+    <div class="panel panel-info">
+        <div class="panel-heading">Master Data</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.MasterId, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.MasterId, new SelectList(Model.maserlist, "MId", "MasterType"), "Select Masters", new { @class = "form-control" })
+                </div>
+                <br />
+               
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-2" style="width: 177px;"></div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>     
+    <div class="panel panel-info">
+        <div class="panel-heading">Master Data Details</div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.MasterDataList)
+                    {            
+                        <tr>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new { @id = @item.Id })*@
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    
+}
+
+@*<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        $("#MasterId").change(function () {
+            debugger;
+            var CompIds = $('#MasterId').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillGrid", "MasterData")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (data) {
+
+                    $("#tableUPStatus tr").html("");  // clear before appending new list 
+                    $("#tableUPStatus").append("<tr><td>Name</td><td>");
+                    $.each(data, function (Name) {
+                        if (data.d.length > 0) {
+                            for (var iCount = 0; iCount < data.d.length; iCount++) {
+                                debugger;
+                                $("#tableUPStatus").append("<tr><td>" + data.d[iCount].Name + "</td><td>");
+                            }
+                        }
+                        else {
+                            $("#tableUPStatus").append("<tr><td colspan='5'>No records found</td></tr>");
+                        }
+                    });
+                }
+
+            });
+        });
+    });
+</script>*@
+
+

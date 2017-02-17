@@ -1,0 +1,78 @@
+﻿@using EMSDomain.ViewModel.Vehicle
+@model List<VehicleItem>
+@{
+Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "This is my page title.";
+}
+@*<script>
+    $(document).ready(function () {
+        debugger;
+        $('#myModal').modal('show');
+
+    });
+</script>
+<link href="~/assets/css/bootstrap.css" rel="stylesheet" />
+<script src="~/assets/js/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+    
+<script src="~/assets/js/jquery-1.10.2.js"></script>
+<a data-toggle="modal" data-target="#myModal">Open</a>
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Employee Details</h4>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive" >*@
+@*<a href="/VehicleMaster/Create"+"?Menuid=3">Back</a>*@
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>VehicleNo</th>
+                            <th>Model</th>
+                            <th>Company</th>
+                            <th>Branch</th>
+                            <th>Emp. Name</th>
+                            <th>Purchase Value</th>
+                            <th>Depritiation</th>
+                            <th>Current Value</th>
+                            <th>Market Value</th>
+                            <th>Purchased Date</th>
+                            <td>Reg. Date</td>
+                            <td>Reg. Exp. Date</td>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    { 
+                    <tbody>                    
+                                
+                        <tr>
+                            <td>
+                                @item.VehicleName
+                            </td>
+                            <td>
+                               @item.VehicleNo
+                            </td>
+                            <td>@item.ModelName</td>
+                            <td>@item.CompDetails.CompName</td>
+                            <td>@item.BranchDetails.BranchName</td>
+                            <td>@item.EmpDetails.Empname</td>
+                            <td>@item.Purchase_Value</td>
+                            <td>@item.Depriciation</td>
+                            <td>@item.CurrentValue</td>
+                            <td>@item.Market_Value</td>
+                        </tr>                    
+                        </tbody>
+                    }
+                </table>
+            @*</div>
+        </div>*@
+        @*<div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>*@
+      @*</div>
+    </div>
+  </div>*@

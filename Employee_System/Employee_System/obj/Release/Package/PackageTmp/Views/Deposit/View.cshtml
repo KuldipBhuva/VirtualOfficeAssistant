@@ -1,0 +1,77 @@
+﻿@{ 
+   ViewBag.Title = "Deposite";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model EmpDepositeItem
+
+@using (@Html.BeginForm("View", "Deposit", FormMethod.Post, new { @id = "formDeposite" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.DId, new { @Value = @ViewBag.DeptId })
+    <section class="content-header">
+        <h1>Deposite <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    
+    @Html.HiddenFor(M => M.DepId)
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Deposite Details</div>
+        <div class="panel-body">
+            <div class="form-group"  id="dvView">
+                @Html.LabelFor(m => m.DepAmount, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.DepAmount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.DepAmount)
+                    @*        @Html.DropDownListFor(m => m.Country, new SelectList(Model.CountryList, "Id", "CountryName"), "--Select Country", new { @class = "form-control select2" })*@
+                </div>
+
+                @Html.LabelFor(m => m.InvestDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.InvestDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.InvestDate)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.MaturityDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.MaturityDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MaturityDate)
+                </div>
+
+
+                @Html.LabelFor(m => m.DepDescription, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.DepDescription, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.DepRemarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.DepRemarks, new { @class = "form-control" })
+                </div>
+
+
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")In-Active                   
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                     @Html.ActionLink(" Back", "Create", new {@id=Model.EmpId,@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+                </div>
+            </div>
+        </div>
+    </div>
+  
+}

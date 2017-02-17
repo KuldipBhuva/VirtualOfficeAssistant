@@ -1,0 +1,321 @@
+﻿@{ 
+   ViewBag.Title = "Health/Labour/EID/DL";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model EmpHealthItem
+
+@{
+    int Empid = ViewBag.Empid;
+}
+<style>
+fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+    legend.scheduler-border {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width:auto;
+        padding:0 10px;
+        border-bottom:none;
+    }
+</style>
+@using (@Html.BeginForm("Create", "Health", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Health/Labour/EID/DL <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Health/Labour/EID/DL Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Type, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Type, new List<SelectListItem>() { new SelectListItem() { Text = "Health", Value = "Health" }, new SelectListItem() { Text = "Labour", Value = "Labour" }, new SelectListItem() { Text = "Emirates ID", Value = "Emirates ID" }, new SelectListItem() { Text = "Driving License", Value = "Driving License" } }, "--Select--", new { @class = "form-control select2" ,@id="ddl"})
+                    @Html.ValidationMessageFor(m => m.Type)
+
+                </div>
+
+                @Html.LabelFor(m => m.CardNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.CardNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CardNo)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.IssueDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IssueDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.IssueDate)
+
+                </div>
+
+                @Html.LabelFor(m => m.ExpiryDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ExpiryDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.ExpiryDate)
+
+                </div>
+                @*<div class="col-sm-12" style="height: 5px;"></div>
+                
+                 @Html.LabelFor(m => m.EmiratesID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    
+                    @Html.TextBoxFor(m => m.EmiratesID, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmiratesID)
+                </div>
+                @Html.LabelFor(m => m.EmiratesExpDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmiratesExpDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.EmiratesExpDate)
+                </div>*@
+                @*<div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")InActive
+                </div>*@
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div id="divLabour">
+                 @Html.LabelFor(m => m.PersonalNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PersonalNo, new { @class = "form-control" })
+                    
+
+                </div>
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Health/Labour/EID/DL Details List <span class="label label-primary">@Model.ListHealth.Count</span><input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>CardNo</th>
+                            <th>IssueDate</th>
+                            <th>ExpiryDate</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListHealth)
+                        {
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.Type</td>
+                                <td>@item.CardNo</td>
+                                @if(@item.IssueDate!=null)
+                                {
+                                <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                }else{<td></td>}
+                                @if(@item.ExpiryDate!=null)
+                                {
+                                <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                }else{<td></td>}
+
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = Empid, @HCId = @item.HId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new {@id = Empid,@HCId = @item.HId, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.EmpId, @HId = @item.HId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the " + @item.Type + " details of " + @item.EmpDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>  
+    <div class="panel panel-info">
+        <div class="panel-heading">Documents of Health/Labour/EID/DL</div>
+        <div class="panel-body">
+            <div class="table-responsive">
+               
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Health Card <span class="label label-primary">@Model.ListHealthDoc.Count</span></legend>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Document</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListHealthDoc)
+                        {
+                            <tr>
+                                <td>
+                                    @{ string fileurl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.DocDetails.FileUrl);
+                                    }
+
+                                    <a href="@Url.Content(@item.DocDetails.FileUrl)" target="_blank">@item.DocDetails.FileName</a>
+                                </td>
+                                <td>
+                                    @Html.ActionLink(" ", "DeleteDoc", new { @id = @item.DocDetails.EmpId, @DID = @item.DocDetails.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the document " + @item.DocDetails.FileName + "?')", @class = "fa fa-trash fa-lg" })
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tr>
+                    </tr>
+
+
+                </table>
+                    </fieldset>
+                
+
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Labour Card <span class="label label-primary">@Model.ListLabourDoc.Count</span></legend>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Document</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListLabourDoc)
+                        {
+                            <tr>
+                                <td>
+                                    @{ string fileurl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.DocDetails.FileUrl);
+                                    }
+
+
+                                    <a href="@Url.Content(@item.DocDetails.FileUrl)" target="_blank">@item.DocDetails.FileName</a>
+                                </td>
+                                <td>
+                                    @Html.ActionLink(" ", "DeleteDoc", new { @id = @item.DocDetails.EmpId, @DID = @item.DocDetails.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the document " + @item.DocDetails.FileName + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tr>
+                    </tr>
+
+
+                </table>
+                    </fieldset>
+                
+      
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Emirates ID Card <span class="label label-primary">@Model.ListEIDDoc.Count</span></legend>
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Document</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListEIDDoc)
+                        {
+                            <tr>
+                                <td>
+                                    @{ string fileurl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.DocDetails.FileUrl);
+                                    }
+
+
+                                    <a href="@Url.Content(@item.DocDetails.FileUrl)" target="_blank">@item.DocDetails.FileName</a>
+                                </td>
+                                <td>
+                                    @Html.ActionLink(" ", "DeleteDoc", new { @id = @item.DocDetails.EmpId, @DID = @item.DocDetails.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the document " + @item.DocDetails.FileName + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tr>
+                    </tr>
+
+
+                </table>
+                    </fieldset>
+                 <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Driving License <span class="label label-primary">@Model.ListLicenceDoc.Count</span></legend>
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Document</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListLicenceDoc)
+                        {
+                            <tr>
+                                <td>
+                                    @{ string fileurl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.DocDetails.FileUrl);
+                                    }
+
+
+                                    <a href="@Url.Content(@item.DocDetails.FileUrl)" target="_blank">@item.DocDetails.FileName</a>
+                                </td>
+                                <td>
+                                    @Html.ActionLink(" ", "DeleteDoc", new { @id = @item.DocDetails.EmpId, @DID = @item.DocDetails.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the document " + @item.DocDetails.FileName + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tr>
+                    </tr>
+
+
+                </table>
+                    </fieldset>
+
+            </div>
+        </div>
+    </div>   
+}
+<script>
+    $(document).ready(function () {
+        debugger;
+        $("#divLabour").hide();        
+        $("#ddl").change(function () {            
+            var $this = $(this);
+            if ($this.val() == "Labour") {
+                $("#divLabour").show();
+
+                $('#divLabour').css('form-control', '');
+            }
+            else {
+                $("#divLabour").hide();
+            }
+        });
+    })
+
+</script>
+

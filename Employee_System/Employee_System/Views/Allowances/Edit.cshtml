@@ -1,0 +1,70 @@
+﻿@{ 
+   ViewBag.Title = "Allowances";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model EmpAllowncesItem
+
+
+@using (@Html.BeginForm("Edit", "Allowances", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.AlwId, new { @Value = @ViewBag.AlwId })
+    @Html.HiddenFor(m => m.CreatedBy)
+    @Html.HiddenFor(m => m.CreatedDate)
+    <section class="content-header">
+        <h1>Allowances <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    @Html.HiddenFor(m => m.AId)
+    <div class="panel panel-info">
+        <div class="panel-heading">Allowances Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.AllownaceID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.AllownaceID, new SelectList(Model.ListMasterTable, "Id", "Name"), "--Select--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.AllownaceID)
+                </div>
+
+                @Html.LabelFor(m => m.Amount, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Amount)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+
+
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")InActive
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Update" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    
+}
+

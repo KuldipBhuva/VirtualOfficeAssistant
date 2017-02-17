@@ -1,0 +1,189 @@
+﻿@{ 
+    ViewBag.Title = "Challan";
+}
+
+@using EMSDomain.ViewModel
+
+@model ChallanModel
+
+@using (@Html.BeginForm("AddGR", "Challan", FormMethod.Post, new { @id = "frmCreateEmployee", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.CompID)
+    @Html.HiddenFor(m => m.CID)
+    @Html.HiddenFor(m => m.ChallanNo)
+    <section class="content-header">
+        <h1>Challan <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Challan Details
+            @*<input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" />*@
+            <a href="/Challan/Index?menuId=3" id="btnBack" class="btnAdd btn btn-primary">Back</a>
+            @*<a id="btnBack" href="/Consignment/Index" class="btnAdd btn btn-primary">Back</a>*@
+        </div>
+        <div class="panel-body">
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">Challan Details</legend>
+                <div class="form-group">
+
+                    @Html.Label("* Vehicle", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @*@Html.DropDownListFor(m => m.VID, new SelectList(Model.ListVehicle, "VID", "VehicleName"+'('+"VehicleNo"+')')), "--Select Vehicle--", new { @class = "form-control" })*@
+                        @Html.DropDownListFor(m => m.VID, new SelectList(Model.ListVehicle, "VID", "VehicleName"), "--Select Vehicle--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.VID)
+                    </div>
+
+                    @Html.Label("* Driver", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.EmpID, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Driver--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EmpID)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("* Start", new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.StartDate, new { @class = "form-control datetimepicker" })
+                        @Html.ValidationMessageFor(m => m.StartDate)
+                    </div>
+
+                    @Html.Label("* End", new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.EndDate, new { @class = "form-control datetimepicker" })
+                        @Html.ValidationMessageFor(m => m.EndDate)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("* Source", new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Source, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Source)
+                    </div>
+
+                    @Html.Label("* Destination", new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Destination, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Destination)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("Status", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.RadioButtonFor(m => m.Status, true)Active
+                        @Html.RadioButtonFor(m => m.Status, false)In-Active                   
+                    </div>
+                </div>
+                <div class="col-sm-12" style="height: 10px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 171px;"></div>
+                    <input type="Submit" value="Update" name="cmd" class="btn btn-primary" />
+                </div>
+            </fieldset>
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">GR Details</legend>
+
+
+                @Html.Label("* GR#", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.GRID, new SelectList(Model.ListGrNo, "GrNo", "GrNo"), "--Select GR No.--", new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(m => m.GRID)*@
+                </div>
+                <div class="col-sm-12" style="height: 10px;"></div>
+                <div id="dvGRView">
+                </div>
+                <div class="col-sm-12" style="height: 10px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 171px;"></div>
+                    <input type="Submit" value="Add" name="cmd" class="btn btn-primary" />
+                </div>
+            </fieldset>
+
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            GR List <span class="label label-primary">@Model.ListChallan.Count</span>
+            @*<input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" />*@
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>GR No.</th>
+                            <th>LR/GP No.</th>
+                            <th>Booking Date</th>
+                            <th>Invoice Amount</th>
+                            <th>Source</th>
+                            <th>PickUp</th>
+                            <th>Destination</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListChallan)
+                        {
+                            <tr>
+                                <td>@item.GRID</td>
+                                <td>@item.ConsignDetails.LR</td>
+                                @if (@item.ConsignDetails.BookingDate != null)
+                                {
+                                    <td>@item.ConsignDetails.BookingDate.Value.ToString("dd/MM/yyyy")</td>
+                                }
+                                else
+                                {
+                                    <td></td>   
+                                }
+
+                                <td>@item.ConsignDetails.InvoiceAmount</td>
+
+                                <td>@item.ConsignDetails.Source</td>
+                                <td>@item.ConsignDetails.PickUp</td>
+                                <td>@item.ConsignDetails.Destination</td>
+
+
+
+                                <td>@Html.ActionLink(" ", "Edit", "Consignment", new { @id = @item.ConsignDetails.GrNo, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                &nbsp;@Html.ActionLink(" ", "View", "Consignment", new { @id = @item.ConsignDetails.GrNo, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-eye" })
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>         
+}
+
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+
+        $("#GRID").change(function () {
+            $("#divLoading").show();
+            debugger;
+            var id = $('#GRID').val();
+            $.ajax(
+            {
+                url: '@Url.Action("getGRDetail", "Challan")',
+                type: "GET",
+                datatype: "JSON",
+                data: { GRID: id },
+
+                success: function (gr) {
+                    debugger;
+                    $("#dvGRView").html("");  // clear before appending new list 
+                    $("#dvGRView").append(gr);
+                    $("#divLoading").hide();
+                }
+            });
+
+        });
+        $("#divLoading").hide();
+    });
+</script>

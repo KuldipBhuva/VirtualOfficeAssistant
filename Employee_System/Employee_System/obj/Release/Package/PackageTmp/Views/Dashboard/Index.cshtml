@@ -1,0 +1,1095 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using EMSDomain.ViewModel.Employee
+@model EmpAllItem
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+<script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+  @*<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@
+<link href="~/Content/MyCustom.css" rel="stylesheet" />
+<section class="content-header">
+    <h1>Dashboard
+           
+                    <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+
+</section>
+<div class="panel panel-info">
+    <div class="panel-heading"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Upcoming Events</div>
+    <div class="panel-body">
+        <div id='calendar'></div>
+    </div>
+</div>
+
+<fieldset class="scheduler-border"><legend class="scheduler-border">Employee Documents</legend>
+<div class="panel-group" id="accordion">
+
+    @*<div class="animate fadeInLeft animated">*@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <i class="fa fa-key" aria-hidden="true"></i>&nbsp;Driving Licence&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" data-toggle="tooltip" data-placement="bottom" title="Expired Licences!"><span class="label label-danger">@Model.EmpLicenceItem.Count Expired</span></a>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse11" data-toggle="tooltip" data-placement="bottom" title="Expiring Licences Within 30 Days!"><span class="label label-primary">@Model.EmpLicenceItem30.Count Expiring Within 30 Days</span></a>
+               @*  <script>
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+                    });
+                </script>*@
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Licence No.</th>
+                            @*<th>IssueCountry</th>*@
+                            <th>Issue Date</th>
+                            <th>Expiry Date</th>
+                            @*<th>DRemarks</th>
+                            <th>DStatus</th>*@
+                        </tr>
+
+                        @foreach (var item in Model.EmpLicenceItem)
+                        {
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.CardNo</td>
+                                @*<td>@item.IssueCountry</td>*@
+                                <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                @*<td>@item.DRemarks</td>
+                                <td>@item.DStatus</td>*@
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="collapse11" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Licence No.</th>
+                            @*<th>IssueCountry</th>*@
+                            <th>Issue Date</th>
+                            <th>Expiry Date</th>
+                            @*<th>DRemarks</th>
+                            <th>DStatus</th>*@
+                        </tr>
+
+                        @foreach (var item in Model.EmpLicenceItem30)
+                        {
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.CardNo</td>
+                                @*<td>@item.IssueCountry</td>*@
+                                <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                @*<td>@item.DRemarks</td>
+                                <td>@item.DStatus</td>*@
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Passport&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse2" data-toggle="tooltip" data-placement="bottom" title="Expired Passports!"><span class="label label-danger">@Model.EmppassItem.Count Expired!</span></a>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse22"><span class="label label-primary">@Model.EmppassItem30.Count Expiring Within 30 Days!</span></a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Working At</th>
+                                <th>Passport No</th>
+                                <th>Place Of Issue</th>
+                                <th>Country</th>
+                                <th>Expiry Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmppassItem)
+                            {
+                                <tr>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.EmpComp.CompName,@item.CompBranch.BranchName</td>
+                                    <td>@item.PassportNo</td>
+                                    <td>@item.PlaceIssue</td>
+                                    <td>@item.CountryDetails.Name</td>
+                                    <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="collapse22" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Working At</th>
+                                <th>Passport No</th>
+                                <th>Place Of Issue</th>
+                                <th>Country</th>
+                                <th>Expiry Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmppassItem30)
+                            {
+                                <tr>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.EmpComp.CompName,@item.CompBranch.BranchName</td>
+                                    <td>@item.PassportNo</td>
+                                    <td>@item.PlaceIssue</td>
+                                    <td>@item.CountryDetails.Name</td>
+                                    <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <i class="fa fa-medkit" aria-hidden="true"></i>&nbsp;Health Card&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Expired Health Cards!"><a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><span class="label label-danger">@Model.EmpHealthItem.Count Expired!</span></a></a>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse33"><span class="label label-primary">@Model.EmpHealthItem30.Count Expiring Within 30 Days!</span></a>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Card No.</th>
+                                <th>Issue Date</th>
+                                <th>Expiry Date</th>
+                                <th>Visa From</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmpHealthItem)
+                            {
+                                <tr>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.CardNo</td>
+                                    <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div id="collapse33" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Card No.</th>
+                                <th>Issue Date</th>
+                                <th>Expiry Date</th>
+                                <th>Visa From</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmpHealthItem30)
+                            {
+                                <tr>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.CardNo</td>
+                                    <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;Work Permit&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Expired Work Permits!"><a data-toggle="collapse" data-parent="#accordion" href="#collapse4"><span class="label label-danger">@Model.EmpLabourItem.Count Expired!</span></a></a>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse44"><span class="label label-primary">@Model.EmpLabourItem30.Count Expiring Within 30 Days!</span></a>
+            </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Card No.</th>
+                                <th>Issue Date</th>
+                                <th>Expiry Date</th>
+                                <th>Visa From</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmpLabourItem)
+                            {
+                                <tr>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.CardNo</td>
+                                    <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div id="collapse44" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Card No.</th>
+                                <th>Issue Date</th>
+                                <th>Expiry Date</th>
+                                <th>Visa From</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmpLabourItem30)
+                            {
+                                <tr>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.CardNo</td>
+                                    <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @*<div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <i class="fa fa-university" aria-hidden="true"></i>&nbsp;Insurance&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse5"><span class="label label-danger">@Model.EmpInsuItem.Count Expired!</span></a>&nbsp;
+            </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Policy Type</th>
+                                <th>Policy Name</th>
+                                <th>Insurance Company</th>
+                                <th>Policy No.</th>
+                                <th>Expiry Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmpInsuItem)
+                            {
+                                <tr>
+                                    <td>@item.CompDetails.CompName</td>
+                                    <td>@item.MasterDetailsType.Name</td>
+                                    <td>@item.Pname</td>
+                                    <td>@item.MasterDetails.Name</td>
+                                    <td>@item.Pno</td>
+                                    <td>@item.PExpDate.Value.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div id="collapse55" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Policy Type</th>
+                                <th>Policy Name</th>
+                                <th>Insurance Company</th>
+                                <th>Policy No.</th>
+                                <th>Expiry Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmpInsuItem30)
+                            {
+                                <tr>
+                                    <td>@item.CompDetails.CompName</td>
+                                    <td>@item.MasterDetailsType.Name</td>
+                                    <td>@item.Pname</td>
+                                    <td>@item.MasterDetails.Name</td>
+                                    <td>@item.Pno</td>
+                                    <td>@item.PExpDate.Value.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>*@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                @*<i class="fa fa-car" aria-hidden="true"></i>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Vehicle Registration</a> <span class="label label-danger">@Model.ListVehicle.Count</span>*@
+                <i class="fa fa-car" aria-hidden="true"></i>&nbsp;Vehicle Registration&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Expired Vehicle Registration!"><a data-toggle="collapse" data-parent="#accordion" href="#collapse6"><span class="label label-danger">@Model.ListVehicle.Count Expired!</span></a></a>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse66"><span class="label label-primary">@Model.ListVehicle30.Count Expiring Within 30 Days!</span></a>
+            </h4>
+        </div>
+        <div id="collapse6" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Vehicle</th>
+                                <th>Vehicle No.</th>
+                                <th>Reg.Exp.Date</th>
+                                <th>Used By</th>
+                                <th>Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListVehicle)
+                            {
+                                <tr>
+                                    <td>@item.VehicleName</td>
+                                    <td>@item.VehicleNo</td>
+                                    <td>@item.Reg_Exp_Date.Value.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div id="collapse66" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Vehicle</th>
+                                <th>Vehicle No.</th>
+                                <th>Reg.Exp.Date</th>
+                                <th>Used By</th>
+                                <th>Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListVehicle30)
+                            {
+                                <tr>
+                                    <td>@item.VehicleName</td>
+                                    <td>@item.VehicleNo</td>
+                                    <td>@item.Reg_Exp_Date.Value.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @*<div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Increments</a> <span class="label label-danger">@Model.ListIncrement.Count</span>
+            </h4>
+        </div>
+        <div id="collapse7" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Working At</th>
+                                <th>Join Date</th>
+                                <th>Leave Date</th>
+                                <th>Rejoin Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListIncrement)
+                            {
+                                <tr>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                    @if (@item.EmpDetails.DOJ != null)
+                                    {
+                                        <td>@item.EmpDetails.DOJ.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                    @if (@item.EmpDetails.DOL != null)
+                                    {
+                                        <td>@item.EmpDetails.DOL.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                    @if (@item.EmpDetails.RejoinDate != null)
+                                    {
+                                        <td>@item.EmpDetails.RejoinDate.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>*@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                @*<i class="fa fa-certificate" aria-hidden="true"></i>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse8">Visa</a> <span class="label label-danger">@Model.ListVisa.Count</span>*@
+                <i class="fa fa-certificate" aria-hidden="true"></i>&nbsp;Visa&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Expired Visa!"><a data-toggle="collapse" data-parent="#accordion" href="#collapse8"><span class="label label-danger">@Model.ListVisa.Count Expired!</span></a></a>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse88"><span class="label label-primary">@Model.ListVisa30.Count Expiring Within 30 Days!</span></a>
+            </h4>
+        </div>
+        <div id="collapse8" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                @*<th>Company</th>*@
+                                <th>Employee</th>
+                                <th>Issue Date</th>
+                                <th>Expiry Date</th>
+                                <th>Issue Country</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListVisa)
+                            {
+                                <tr>
+                                    @*<td>@item.CompDetails.CompName</td>*@
+                                    <td>@item.EmpDetails.Empname</td>
+
+                                    @if (@item.IssueDate != null)
+                                    {
+                                        <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                    @if (@item.ExpiryDate != null)
+                                    {
+                                        <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                    <td>@item.ConDetails.Name</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div id="collapse88" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                @*<th>Company</th>*@
+                                <th>Employee</th>
+                                <th>Issue Date</th>
+                                <th>Expiry Date</th>
+                                <th>Issue Country</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListVisa30)
+                            {
+                                <tr>
+                                    @*<td>@item.CompDetails.CompName</td>*@
+                                    <td>@item.EmpDetails.Empname</td>
+
+                                    @if (@item.IssueDate != null)
+                                    {
+                                        <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                    @if (@item.ExpiryDate != null)
+                                    {
+                                        <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                    <td>@item.ConDetails.Name</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                @*<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse9">Emirates</a> <span class="label label-danger">@Model.ListEmirates.Count</span>*@
+                <i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Emirates ID&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Expired Emirates ID!"><a data-toggle="collapse" data-parent="#accordion" href="#collapse9"><span class="label label-danger">@Model.ListEmirates.Count Expired!</span></a></a>&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse99"><span class="label label-primary">@Model.ListEmirates30.Count Expiring Within 30 Days!</span></a>
+            </h4>
+        </div>
+        <div id="collapse9" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                @*<th>Company</th>*@
+                                <th>Employee</th>
+                                <th>Emirates ID</th>
+                                <th>Issue Date</th>
+                                <th>Expiry Date</th>
+                                @*<th>Issue Country</th>
+                                <th>Emirates Exp. Date</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListEmirates)
+                            {
+                                <tr>
+                                    @*<td>@item.CompDetails.CompName</td>*@
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.CardNo</td>
+                                    @if (@item.IssueDate != null)
+                                    {
+                                        <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                    @if (@item.ExpiryDate != null)
+                                    {
+                                        <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                   @* <td>@item.IssueCountry</td>
+                                    <td>@item.EmiratesDate.Value.ToString("dd/MM/yyyy")</td>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div id="collapse99" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                @*<th>Company</th>*@
+                                <th>Employee</th>
+                                <th>Emirates ID</th>
+                                <th>Issue Date</th>
+                                <th>Expiry Date</th>
+                                @*<th>Issue Country</th>
+                                <th>Emirates Exp. Date</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListEmirates30)
+                            {
+                                <tr>
+                                    @*<td>@item.CompDetails.CompName</td>*@
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.CardNo</td>
+                                    @if (@item.IssueDate != null)
+                                    {
+                                        <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                    @if (@item.ExpiryDate != null)
+                                    {
+                                        <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                    }
+                                   @* <td>@item.IssueCountry</td>
+                                    <td>@item.EmiratesDate.Value.ToString("dd/MM/yyyy")</td>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+    </fieldset>
+<fieldset class="scheduler-border"><legend class="scheduler-border">Company Documents</legend>
+    <div class="panel-group" id="accordionComp">
+
+    @*<div class="animate fadeInLeft animated">*@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <i class="fa fa-building" aria-hidden="true"></i>&nbsp;Company Documents&nbsp;<a data-toggle="collapse" data-parent="#accordionComp" href="#collapseComp1" data-toggle="tooltip" data-placement="bottom" title="Expired Licences!"><span class="label label-danger">@Model.ListCompDoc.Count Expired</span></a>&nbsp;<a data-toggle="collapse" data-parent="#accordionComp" href="#collapseComp11" data-toggle="tooltip" data-placement="bottom" title="Expiring Licences Within 30 Days!"><span class="label label-primary">@Model.ListCompDoc30.Count Expiring Within 30 Days</span></a>
+               @*  <script>
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+                    });
+                </script>*@
+            </h4>
+        </div>
+        <div id="collapseComp1" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            
+                            <th>Licence No.</th>
+                            <th>Code</th>
+                            <th>Type</th>                            
+                            <th>Issue Date</th>
+                            <th>Expiry Date</th>
+                          
+                        </tr>
+
+                        @foreach (var item in Model.ListCompDoc)
+                        {
+                            <tr>
+                                <td>@item.Lno</td>
+                                <td>@item.Code</td>
+                                <td>@item.LicTypeDetails.Name</td>
+                                <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                @*<td>@item.DRemarks</td>
+                                <td>@item.DStatus</td>*@
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="collapseComp11" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                           <th>Licence No.</th>
+                            <th>Code</th>
+                            <th>Type</th>                            
+                            <th>Issue Date</th>
+                            <th>Expiry Date</th>
+                        </tr>
+
+                        @foreach (var item in Model.ListCompDoc30)
+                        {
+                            <tr>
+                               <td>@item.Lno</td>
+                                <td>@item.Code</td>
+                                <td>@item.LicTypeDetails.Name</td>
+                                <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;Tenancy Documents&nbsp;<a data-toggle="collapse" data-parent="#accordionComp" href="#collapseComp2" data-toggle="tooltip" data-placement="bottom" title="Expired Tenancy License!"><span class="label label-danger">@Model.ListTenancy.Count Expired</span></a>&nbsp;<a data-toggle="collapse" data-parent="#accordionComp" href="#collapseComp22" data-toggle="tooltip" data-placement="bottom" title="Expiring Licences Within 30 Days!"><span class="label label-primary">@Model.ListTenancy30.Count Expiring Within 30 Days</span></a>
+               @*  <script>
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+                    });
+                </script>*@
+            </h4>
+        </div>
+        <div id="collapseComp2" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            
+                            <th>Tenancy No.</th>                            
+                            <th>Type</th> 
+                            <th>Period</th>                           
+                            <th>Rent</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
+                          
+                        </tr>
+
+                        @foreach (var item in Model.ListTenancy)
+                        {
+                            <tr>
+                                <td>@item.TnNo</td>
+                                <td>@item.TTDetails.Name</td>
+                                <td>@item.Period</td>
+                                <td>@item.Rent</td>
+                                <td>@item.FromDate.Value.ToString("dd/MM/yyyy")</td>
+                                <td>@item.ToDate.Value.ToString("dd/MM/yyyy")</td>
+                                @*<td>@item.DRemarks</td>
+                                <td>@item.DStatus</td>*@
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="collapseComp22" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                         <th>Tenancy No.</th>                            
+                            <th>Type</th> 
+                            <th>Period</th>                           
+                            <th>Rent</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
+                        </tr>
+
+                        @foreach (var item in Model.ListTenancy30)
+                        {
+                            <tr>
+                             <td>@item.TnNo</td>
+                                <td>@item.TTDetails.Name</td>
+                                <td>@item.Period</td>
+                                <td>@item.Rent</td>
+                                <td>@item.FromDate.Value.ToString("dd/MM/yyyy")</td>
+                                <td>@item.ToDate.Value.ToString("dd/MM/yyyy")</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </fieldset>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="panel-title"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Missing Info Details</div>
+    </div>
+    <div class="panel-body">
+        <div class="panel-group" id="accordion1">
+
+            @*<div class="animate fadeInLeft animated">*@
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;Date of Birth Details&nbsp;<a data-toggle="collapse" data-parent="#accordion1" href="#collapse10" data-toggle="tooltip" data-placement="bottom" title="Expired Licences!"><span class="label label-primary">@Model.ListEmpDOB.Count</span></a>
+
+                    </h4>
+                </div>
+                <div id="collapse10" class="panel-collapse collapse">
+                    <div class="panel-body">
+                         <div class="table-responsive">
+                    <table class="table" id="tbl">
+                        <thead>
+                            <tr>
+                               <th>Name</th>
+                                <th>Emp.No.</th>
+                                <th>Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListEmpDOB)
+                            {
+                                <tr>
+                                    <td>@item.Empname</td>
+                                    <td>@item.Empno</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <i class="fa fa-money" aria-hidden="true"></i>&nbsp;Basic Salary Details&nbsp;<a data-toggle="collapse" data-parent="#accordion1" href="#collapse12"><span class="label label-primary">@Model.ListEmpBS.Count</span></a>
+
+                    </h4>
+                </div>
+                <div id="collapse12" class="panel-collapse collapse">
+                    <div class="panel-body">
+                         <div class="table-responsive">
+                    <table class="table" id="tbl1">
+                        <thead>
+                            <tr>
+                               <th>Name</th>
+                                <th>Emp.No.</th>
+                                <th>Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListEmpBS)
+                            {
+                                <tr>
+                                    <td>@item.Empname</td>
+                                    <td>@item.Empno</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>
+            </div>
+             <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Passport Details&nbsp;<a data-toggle="collapse" data-parent="#accordion1" href="#collapse13"><span class="label label-primary">@Model.ListPass.Count</span></a>
+
+                    </h4>
+                </div>
+                <div id="collapse13" class="panel-collapse collapse">
+                    <div class="panel-body">
+                         <div class="table-responsive">
+                    <table class="table" id="tbl2">
+                        <thead>
+                            <tr>
+                               <th>Name</th>
+                                <th>Emp.No.</th>
+                                
+                                <th>Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListPass)
+                            {
+                                <tr>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.EmpDetails.Empno</td>
+                                    
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;Labour Card Details&nbsp;<a data-toggle="collapse" data-parent="#accordion1" href="#collapse14"><span class="label label-primary">@Model.ListEmpLabour.Count</span></a>
+
+                    </h4>
+                </div>
+                <div id="collapse14" class="panel-collapse collapse">
+                    <div class="panel-body">
+                         <div class="table-responsive">
+                    <table class="table" id="tbl3">
+                        <thead>
+                            <tr>
+                               <th>Name</th>
+                                <th>Emp.No.</th>                       
+                                <th>Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListEmpLabour)
+                            {
+                                <tr>
+                                    <td>@item.Empname</td>
+                                    <td>@item.Empno</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>
+            </div>
+             <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <i class="fa fa-certificate" aria-hidden="true"></i>&nbsp;Visa Details&nbsp;<a data-toggle="collapse" data-parent="#accordion1" href="#collapse15"><span class="label label-primary">@Model.ListEmpVisa.Count</span></a>
+
+                    </h4>
+                </div>
+                <div id="collapse15" class="panel-collapse collapse">
+                    <div class="panel-body">
+                         <div class="table-responsive">
+                    <table class="table" id="tbl4">
+                        <thead>
+                            <tr>
+                               <th>Name</th>
+                                <th>Emp.No.</th>                       
+                                <th>Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListEmpVisa)
+                            {
+                                <tr>
+                                    <td>@item.EmpDetails.Empname</td>
+                                    <td>@item.EmpDetails.Empno</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Emiraters ID Details&nbsp;<a data-toggle="collapse" data-parent="#accordion1" href="#collapse16"><span class="label label-primary">@Model.ListEmpEID.Count</span></a>
+
+                    </h4>
+                </div>
+                <div id="collapse16" class="panel-collapse collapse">
+                    <div class="panel-body">
+                         <div class="table-responsive">
+                    <table class="table" id="tbl5">
+                        <thead>
+                            <tr>
+                               <th>Name</th>
+                                <th>Emp.No.</th>                       
+                                <th>Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListEmpEID)
+                            {
+                                <tr>
+                                    <td>@item.Empname</td>
+                                    <td>@item.Empno</td>
+                                    <td>@item.CompDetails.CompName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+@*</div>*@
+@*<script src="~/Scripts/FullCalendar/jquery.min.js"></script>
+<script src="~/Scripts/FullCalendar/moment.min.js"></script>
+<script src="~/Scripts/FullCalendar/fullcalendar.min.js"></script>
+
+  <link href="~/Content/fullcalendar.print.css" rel="stylesheet" />
+<link href="~/Content/fullcalendar.css" rel="stylesheet" />*@
+@*<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+<script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>*@
+<link href="~/FullCalendar/fullcalendar.css" rel="stylesheet" />
+<link href="~/FullCalendar/fullcalendar.print.css" rel="stylesheet" media="print" />
+<script src="../../FullCalendar/lib/moment.min.js"></script>
+<script src="../../FullCalendar/lib/jquery.min.js"></script>
+<script src="../../FullCalendar/lib/jquery-ui.custom.min.js"></script>
+<script src="../../FullCalendar/fullcalendar.min.js"></script>
+
+<script>
+
+
+    $(document).ready(function () {
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        var startDate = new Date(y, m, d);
+        $('#calendar').fullCalendar({
+            header: { left: 'prev,next today', center: 'title', right: 'month,agendaWeek,agendaDay' },
+            defaultDate: startDate,
+            timezone: 'local',
+            aspectRatio: 3,
+            editable: false,
+            timeFormat: 'h:mm',
+            eventLimit: true, // allow "more" link when too many events
+            events: {
+                url: '@Url.Action("GetCalendarData", "Dashboard")',
+                type: 'POST',
+                data: {
+
+                },
+                error: function () {
+                    alert('there was an error while fetching events!');
+                },
+
+                success: function () {
+
+                }
+            }
+        });
+
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+        var table = $('#tbl1,#tbl2,#tbl3,#tbl4,#tbl5').DataTable();
+    });
+</script>
+

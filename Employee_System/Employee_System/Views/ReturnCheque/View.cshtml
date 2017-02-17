@@ -1,0 +1,126 @@
+﻿@{ 
+    ViewBag.Title = "Return Cheque Details";
+}
+
+@using EMSDomain.ViewModel
+
+@model ChequeReturnModel
+<style type="text/css">.thumb-image{float:left;width:100px;height:110px;border: 1px solid #5bc0de;position:relative;padding:5px;}</style>
+@using (@Html.BeginForm("Edit", "ReturnCheque", FormMethod.Post, new { @id = "frmCreateEmployee", enctype = "multipart/form-data" }))
+{
+      @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m=>m.CRID)
+    @Html.HiddenFor(m=>m.Status)
+    @Html.HiddenFor(m=>m.Attachment)
+    
+    <section class="content-header">
+        <h1>Return Cheque <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+        <div class="panel panel-info">
+            <div class="panel-heading">Cheque Details @*<input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" />*@</div>
+            <div class="panel-body">
+                <div class="form-group" id="dvView">
+
+                    @Html.Label("* Client Name", new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ClientName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ClientName)
+                    </div>
+
+                    @Html.Label("* Contact Person", new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control" })
+                        
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("Contact#", new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Phone)
+                    </div>
+
+                    @Html.Label("Email", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("* Bank Name", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.BankName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.BankName)
+                    </div>
+
+                    @Html.Label("* Branch", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.BankBranch)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("* Cheque No", new { @class = "col-sm-2 control-label" })
+
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ChequeNo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ChequeNo)
+                    </div>
+
+                    @Html.Label("* Cheque Date", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ChequeDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(m => m.ChequeDate)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("Amount", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+                        
+                    </div>
+                       @Html.Label("Deposited Date", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.DepositedDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                        
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                         @Html.Label("Remarks", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(m => m.Remarks, new { @class = "form-control" })
+                        
+                    </div>
+                    @Html.Label("Action Taken", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(m => m.Action, new { @class = "form-control" })
+                        
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("Attachment", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*<img src="#" id="imgThumbnail" alt="preview" class="img-rounded" width="100" height="100" />*@
+                    <a href="~/PhotoUpload/Attachment/@Model.Attachment" target="_blank"><img id="img" src="@Url.Content("~/PhotoUpload/Attachment/" + Model.Attachment)" alt="preview" class="img-rounded thumb-image" width="100" height="100" /></a>
+                    
+                </div>
+                                     
+                    <div class="col-sm-12" style="height: 5px;"></div>                                     
+               <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    @Html.ActionLink(" Back", "Index", new { @id = Model.CRID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })           
+                </div>
+                </div>
+            </div>
+        </div>
+
+    
+    
+}

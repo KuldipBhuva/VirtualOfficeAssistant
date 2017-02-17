@@ -1,0 +1,58 @@
+﻿  @{ 
+   ViewBag.Title = "Master Data";
+}
+  
+@using EMSDomain.ViewModel
+
+@model clsMasterData
+
+@using (@Html.BeginForm("Edit", "MasterData", FormMethod.Post, new { @id = "frmCreatedata" }))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Master Data
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">Master Data</div>
+        <div class="panel-body">
+            <div class="form-group">
+                <input type="hidden" name="hdnMasterId" id="hdnMasterId" />
+                @Html.Label("Master :", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.MasterId, new SelectList(Model.maserlist, "MId", "MasterType"), "Select Masters", new { @class = "form-control" })
+                </div>
+                <br />
+                <br />
+                @Html.Label("Name :", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+
+                      @*  @Html.RadioButtonFor(m => m.EmployeeItem.Status, "OnService", new { @id = "Status", @class = "flat-red" }) OnService*@
+                        @Html.RadioButtonFor(m => m.Status, "Active", new { @id = "Status1", @class = "flat-red" })Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive", new { @id = "Status2", @class = "flat-red" })InActive
+
+                    </div>
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 177px;"></div>
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    
+}

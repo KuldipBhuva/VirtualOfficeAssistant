@@ -1,0 +1,208 @@
+﻿@using EMSDomain.ViewModel.Expenses
+
+@model TExpenseItem
+@{
+    ViewBag.Title = "Travel Expense";
+}
+
+@using (@Html.BeginForm("View", "TravelExpense", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+   
+    <section class="content-header">
+        <h1>Travel Expense <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+    <div class="panel panel-info">
+        <div class="panel-heading">Travel Expense Details</div>
+        <div class="panel-body">
+            <div class="form-group" id="dvView">
+
+                @Html.LabelFor(m => m.Companyid, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Companyid, new SelectList(Model.ListComp, "id", "CompName"), "--Select Company--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.Companyid)
+
+                </div>
+
+                @Html.LabelFor(m => m.EmpId, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpId, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.EmpId)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.TDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.TDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TDate)
+                </div>
+                @Html.LabelFor(m => m.Country, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Country, new SelectList(Model.ListCon, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Country)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.TFromDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.TFromDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TFromDate)
+                </div>
+                @Html.LabelFor(m => m.TToDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.TToDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TToDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Fare, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Fare, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Fare)
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.FromDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.FromDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FromDate)
+                </div>
+                @Html.LabelFor(m => m.ToDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ToDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ToDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.City, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.City)
+                </div>
+                @Html.LabelFor(m => m.AccomodationExp, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.AccomodationExp, new { @class = "form-control", @id = "AccExp" })<span id="errmsg"></span>
+                    @Html.ValidationMessageFor(m => m.AccomodationExp)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Conv_Exp, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Conv_Exp, new { @class = "form-control" })<span id="errmsg1"></span>
+                    @Html.ValidationMessageFor(m => m.Conv_Exp)
+                </div>
+                @Html.LabelFor(m => m.FoodExp, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.FoodExp, new { @class = "form-control" })<span id="errmsg2"></span>
+                    @Html.ValidationMessageFor(m => m.FoodExp)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.OtherExp, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.OtherExp, new { @class = "form-control" })<span id="errmsg3"></span>
+                    @Html.ValidationMessageFor(m => m.OtherExp)
+                </div>
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 conrol-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active", new { @class = "flat-red" }) Active
+                                        @Html.RadioButtonFor(m => m.Status, "InActive", new { @class = "flat-red" }) In-Active
+                    @Html.ValidationMessageFor(m => m.Status)
+                </div>
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                @Html.ActionLink(" Back", "Create", new {@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+            </div>
+        </div>
+    </div>
+
+}
+
+<script>
+    $(document).ready(function () {
+        //called when key is pressed in textbox
+        $("#AccExp").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 46) {
+                //display error message
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+    });
+    $(document).ready(function () {
+        //called when key is pressed in textbox
+        $("#ConExp").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 46) {
+                //display error message
+                $("#errmsg1").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+    });
+    $(document).ready(function () {
+        //called when key is pressed in textbox
+        $("#FoodExp").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 46) {
+                //display error message
+                $("#errmsg2").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+    });
+    $(document).ready(function () {
+        //called when key is pressed in textbox
+        $("#OtherExp").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 46) {
+                //display error message
+                $("#errmsg3").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+    });
+    </script>
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#Companyid").change(function () {
+
+            debugger;
+            var CompIds = $('#Companyid').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillEmp", "TravelExpense")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Employee_master) {
+
+                    $("#EmpId").html("");  // clear before appending new list 
+                    $("#EmpId").append("<option value='0'>--Select Employee--</option>");
+                    $.each(Employee_master, function (i, EmpId) {
+
+                        $("#EmpId").append(
+
+                            $('<option></option>').val(EmpId.id).html(EmpId.Empname));
+
+                    });
+                }
+            });
+        });
+
+    });
+</script>

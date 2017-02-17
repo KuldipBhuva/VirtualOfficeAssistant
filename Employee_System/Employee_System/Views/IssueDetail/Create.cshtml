@@ -1,0 +1,164 @@
+﻿  @{ 
+   ViewBag.Title = "Assets Issue Details";
+}
+  
+@using EMSDomain.ViewModel.Assests
+
+@model  IssueItem
+@{
+    
+}
+@using (@Html.BeginForm("Create", "IssueDetail", FormMethod.Post))
+{
+  
+    <section class="content-header">
+        <h1>Issue Item <small>master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    @Html.HiddenFor(m => m.IssueId)
+      
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Issue Item
+            <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" />
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Cat_id, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Cat_id, new SelectList(Model.lstCategory, "Cat_id", "CatName"), "--Select Category--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Cat_id)
+                </div>
+
+                @Html.LabelFor(m => m.Item_id, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Item_id, new SelectList(Model.lstAllItem, "ItemId", "ItemName"), "--Select Items--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Item_id)
+                </div>
+
+                @Html.LabelFor(m => m.IssueQuantity, new { @class = "col-sm-2 control-label" })
+
+                @*  @Html.EditorFor(model => model.CompName, new { htmlAttributes = new { @class = "form-control" } })  *@
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IssueQuantity, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IssueQuantity)
+
+                </div>
+                 @Html.LabelFor(m => m.Available, new { @class = "col-sm-2 control-label", @id = "AvailQnty", style = "color:#ff0000" })
+             
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.IssueDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IssueDate, new { @class = "form-control datepicker" })
+                </div>
+
+                @Html.LabelFor(m => m.VendorName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.VendorName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.VendorName)
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Issued Items List <span class="label label-primary">@Model.lstIssueItem.Count</span>
+            <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" />
+        </div>
+        <div class="panel-body">
+            <div id="dvData" class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Item</th>
+                            <th>Issue Quantity</th>
+                            <th>Vendor Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @*Convert.ToInt32(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)*@
+
+                        @foreach (var item in Model.lstIssueItem)
+                        {
+                            
+                            <tr>
+                                <td>@item.CatName</td>
+                                <td>@item.ItemName</td>
+                                <td>@item.IssueQuantity</td>
+                                <td>@item.VendorName</td>
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", new { @Id = @item.IssueId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+  
+    <script lang="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $('#AvailQnty').hide();
+            $("#Cat_id").change(function () {
+                var CatIds = $('#Cat_id').val();
+
+                $.ajax(
+                {
+                    url: '@Url.Action("BindAllItem", "IssueDetail")',
+                    type: "GET",
+                    datatype: "JSON",
+                    data: { Cat_id: CatIds },
+                    success: function (Category_Master) {
+
+                        $("#Item_id").html("");  // clear before appending new list 
+                        $("#Item_id").append("<option value='0'>--Select Items--</option>");
+                        $.each(Category_Master, function (i, Cat_id) {
+
+                            $("#Item_id").append(
+                                $('<option></option>').val(Cat_id.ItemId).html(Cat_id.ItemName));
+                        });
+                    }
+                });
+            });
+
+            $("#Item_id").change(function () {
+               
+                var Qntys = $('#Item_id').val();
+                $.ajax(
+              {
+                  url: '@Url.Action("AvailQuantity", "IssueDetail")',
+                   type: "GET",
+                   datatype: "JSON",
+                   data: { AvailQt: Qntys },
+                   success: function (data) {
+                       // alert(data);
+                       $('#AvailQnty').show();
+                       $('#AvailQnty').html("Available Qnty." + data);
+
+                   }
+               });
+            });
+            
+        });
+    </script>
+}
+
+

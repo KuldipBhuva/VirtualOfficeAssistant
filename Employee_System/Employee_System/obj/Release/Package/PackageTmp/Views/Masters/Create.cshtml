@@ -1,0 +1,116 @@
+﻿  @{ 
+   ViewBag.Title = "Masters";
+}
+  
+@using EMSDomain.ViewModel
+
+@model ClsMasterP
+
+<script src="~/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="~/assets/js/dataTables/dataTables.bootstrap.js"></script>
+@using (@Html.BeginForm("Create", "Masters", FormMethod.Post, new { @id = "frmCreate" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Master Details <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    @Html.HiddenFor(m => m.MId)
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Master Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.MasterType, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.MasterType, new { @class = "form-control" })
+                </div>
+
+
+
+
+                <div class="col-sm-2 control-label">
+                    @Html.LabelFor(m => m.MasterDesc)
+                </div>
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.MasterDesc, new { @class = "form-control" })
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-sm-2 control-label">
+                    @Html.LabelFor(m => m.MasterCode)
+                </div>
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.MasterCode, new { @class = "form-control" })
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    
+    
+        
+
+            <div class="panel panel-info" id="dvGrid">
+                <div class="panel-heading">
+                    Master List <span class="label label-primary">@Model.MasterList.Count </span> <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" />
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table" id="tbl">
+                            <thead>
+                                <tr>
+                                    <th>MasterType
+                                    </th>
+                                    <th>Desc
+                                    </th>
+                                    <th>Code
+                                    </th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.MasterList)
+                                {
+                       
+                                    <tr>
+                                        <td>
+                                            @item.MasterType
+                                        </td>
+                                        <td>
+                                            @item.MasterDesc
+                                        </td>
+                                        <td>
+                                            @item.MasterCode
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink(" ", "Edit", new { @id = @item.MId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    @*&nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.MId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the travel expense details of " + @item.EmpDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.MId , @menuId = Convert.ToInt32(Request.QueryString["menuid"]) })*@
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <!--End Advanced Tables -->
+        
+}

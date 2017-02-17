@@ -1,0 +1,218 @@
+﻿@using EMSDomain.ViewModel.Vehicle
+
+@model VehicleRepairingItem
+@{
+    ViewBag.Title = "Vehicle Expense";
+}
+
+@using (@Html.BeginForm("Create", "VehicleReparing", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker({ dateFormat: "mm/dd/yy",changeYear:"true" }).val(); //Initialise any date pickers
+        });
+    </script>
+    <section class="content-header">
+        <h1>Vehicle Repairing
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+
+    </section>
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Vehicle Repairing Master <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.CompID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListComp, "id", "CompName"), "--Select Company--", new { @class = "form-control",@id="ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                </div>
+                @Html.LabelFor(m => m.VID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                   
+                    @Html.DropDownListFor(m => m.VID, new SelectList(Model.ListVehicle, "VID", "VehicleName"), "--Select Vehicle--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.VID)
+                                   
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("Expense Type", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.ExpType, 1)Repairing
+                    @Html.RadioButtonFor(m => m.ExpType, 2)Fine
+                    @Html.RadioButtonFor(m => m.ExpType, 3)Salik Recharge
+                    
+                    <br />
+                    @Html.ValidationMessageFor(m => m.ExpType)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Repairing_TypeID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Repairing_TypeID, new SelectList(Model.ListMaster, "Id", "Name"), "--Select Repairing Type--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Repairing_TypeID, "")
+                </div>
+                @Html.Label("Expense/Recharge Date", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Rep_Date,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.Rep_Date)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Amount_Paid, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Amount_Paid, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Amount_Paid)
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })                    
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Vehicle Data <span class="label label-primary">@Model.VehicleList.Count </span> <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Vehicle</th>
+                            <th>Expense Type</th>
+                            <th>Company</th>
+                            <th>RepairDate</th>
+                            <th>Amount</th>
+                            <th>Remarks</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.VehicleList)
+                    {
+                        
+                            <tr>
+                                <td>@item.VehicleDetails.VehicleName</td>
+                                @if (@item.ExpType == 1)
+                                {
+                                    <td>Repairing</td>
+                                }
+                                else if (@item.ExpType == 2)
+                                {
+                                    <td>Fine</td>
+                                }
+                                else if (@item.ExpType == 3)
+                                {
+                                    <td>Salik Recharge</td>
+                                }
+                                else
+                                {<td></td>}
+                                
+                                @*<td>@item.MasterDetails.Name</td>*@
+                                <td>@item.CompanyDetails.CompName</td>
+                                @if(@item.Rep_Date!=null)
+                                {
+                                <td>@item.Rep_Date.Value.ToString("dd/MM/yyyy")</td>}
+                                else{<td></td>}
+                                <td>@item.Amount_Paid</td>
+                                <td>@item.Remarks</td>
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })                                    
+                                    &nbsp;@Html.ActionLink(" ", "View", new { @id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new {  @id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the repairing details of " + @item.VehicleDetails.VehicleName + "?')", @class = "fa fa-trash fa-lg" })
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"])})*@
+                                </td>
+                            </tr>                         
+                    }
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+        var cid = '@Request.RequestContext.HttpContext.Session["CompID"]';
+        var CompIds = cid;
+        $.ajax(
+        {
+            url: '@Url.Action("FillVehicle", "VehicleReparing")',
+            type: "GET",
+            datatype: "JSON",
+            data: { Compid: CompIds },
+            success: function (VehicleMasters) {
+
+                $("#VID").html("");  // clear before appending new list 
+                $("#VID").append("<option value='0'>--Select Vehicle--</option>");
+                $.each(VehicleMasters, function (i, VID) {
+
+                    $("#VID").append(
+
+                        $('<option></option>').val(VID.id).html(VID.VehicleName));
+
+                });
+            }
+        });
+
+        $("#ddlComp").change(function () {
+            debugger;
+            $("#divLoading").show();
+            var CompIds = $('#ddlComp').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillVehicle", "VehicleReparing")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (VehicleMasters) {
+
+                    $("#VID").html("");  // clear before appending new list 
+                    $("#VID").append("<option value='0'>--Select Vehicle--</option>");
+                    $.each(VehicleMasters, function (i, VID) {
+
+                        $("#VID").append(
+
+                            $('<option></option>').val(VID.VID).html(VID.VehicleName));
+
+                    });
+                    $("#divLoading").hide();
+                }
+            });
+        });
+        $("#divLoading").hide();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var table = $('#tbl').DataTable();
+    });
+</script> 
+<script>
+    $(document).ready(function () {
+        debugger;
+        $("#dvGrid").show();
+        $("#dvAdd").hide();
+        $("#btnAdd").click(function () {
+            debugger;
+            $("#dvGrid").hide();
+            $("#dvAdd").show(1000);
+
+        });
+        $("#btnBack").click(function () {
+            $("#dvGrid").show();
+            $("#dvAdd").hide(1000);
+        });
+    });
+</script>

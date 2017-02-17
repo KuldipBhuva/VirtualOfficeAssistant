@@ -1,0 +1,175 @@
+﻿@{
+    Layout = null;
+}
+@using EMSDomain.ViewModel
+@using EMSDomain.Model
+@using EMSMethods
+@model ChallanModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Challan Details</title>
+    <link rel="shortcut icon" type="image/png" href="~/assets/img/favicon.png" />
+    <link href="/assets/css/print.css" rel="stylesheet" media="print" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" media="screen" />
+    @*<link href="/assets/css/font-awesome.min.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+    @{EmployeeEntities dbcontext = new EmployeeEntities();
+      int cid=0;
+      if(Session["CompID"]!=null)
+      {
+       cid=Convert.ToInt32(Session["CompID"].ToString());   
+          
+      }
+      else{
+          Response.Redirect("/Login/Index");   
+      }
+      var CompDetails = dbcontext.Company_master.Where(m => m.id == cid).SingleOrDefault();
+      }
+    <div style="font-family: monospace;">
+        <center><table id="tblMain" width="60%">
+            <tr style="height:30px;"></tr>
+         <tr style="height: 15px;width: 100%;margin: 20px 0;background: #222;text-align: center;color: white;font: bold 15px Helvetica, Sans-Serif;text-decoration: uppercase;letter-spacing: 15px;padding: 8px 0px;">
+                <td colspan="3"><center><span><b>CHALLAN DETAILS</b></span></center></td></tr>  
+            <tr>
+                <td id="tdHead" colspan="3" style="text-transform:uppercase;border-bottom: 1px solid;border-left: 1px solid;border-right: 1px solid;">
+                    <span><img style="width:130px;" src="/PhotoUpload/Logo/@CompDetails.Logo"/></span><h4 id="compHead" style="display: inline-flex;"><b>@CompDetails.CompName</b></h4>
+                </td>
+            </tr> 
+            
+            <tr>
+               @* <td style="text-transform:uppercase;"><b>@CompDetails.CompName</b></td>*@
+                <td colspan="2"><br /><b style="text-transform:uppercase;">@CompDetails.CompName</b><br />
+                    @CompDetails.Address,<br />
+                    @CompDetails.Phone,<br />
+                    @CompDetails.City.</td>
+                <td style="text-align: right;padding-top:5px;"><b>Challan No. : </b>@Model.ChallanNo@Model.CID<br />                    
+                    <b>Date : </b>@System.DateTime.Now.ToString("dd/MM/yyyy")
+                                               </td>
+            </tr>
+           
+            <tr><td><br />
+                <b><u><i class="fa fa-truck fa-lg" aria-hidden="true"></i>&nbsp;Trip Details&nbsp;(@Model.Source To @Model.Destination)</u></b><br />
+             <b>Vehicle : </b>
+                   <span>@Model.VehicleDetails.VehicleName**(@Model.VehicleDetails.VehicleNo)**</span><br />
+           
+                <b>Driver : </b>
+                   <span>@Model.EmpDetails.Empname</span><br />                
+                
+                <b>Start Date :</b>
+             <span>@Model.StartDate.Value.ToString("dd/MM/yyyy hh:mm tt")</span>     <br />
+                <b>End Date :</b>
+             <span>@Model.EndDate.Value.ToString("dd/MM/yyyy hh:mm tt")</span>     <br />    
+                    <b>Total GR :</b>
+             <span>@Model.ListChallanTran.Count()</span>                                                                                                  
+                </td> 
+             
+                
+                <td></td>         
+                
+            </tr>
+            <tr style="height:30px;"></tr>
+            <tr><td colspan="3">
+                @{int sr = 0;}
+                @foreach(var i in Model.ListChallanTran)
+                {
+                    sr++;
+                    AmtToWords obj = new AmtToWords();
+                    string amt = obj.ConvertNumbertoWords(Convert.ToInt32(@i.ConsignDetails.InvoiceAmount));
+                <table class="table table-bordered">
+                    <tr><td style="width:15px;font-size:27px;font-weight:900;"><center>#@sr</center></td></tr>
+                    <tr>
+                        <td><b>GR No. </b></td><td>@i.ConsignDetails.InvoiceNo@i.ConsignDetails.GrNo</td>
+                    </tr>
+                    <tr>
+                        <td><b>Consigner(Source)</b></td><td>@i.ConsignorDetails.PartyName (@Model.Source)</td>
+                    </tr>
+                    <tr><td><b>Consignee(Destination)</b></td><td>@i.ConsigneeDetails.PartyName (@Model.Destination)</td></tr>
+                    <tr><td><b>PickUp</b></td><td>@i.ConsignDetails.PickUp</td></tr>
+                    <tr><td><b>Packages</b></td><td>@i.ConsignDetails.Packages</td></tr>
+                    <tr><td><b>Packing Method</b></td><td>@i.ConsignDetails.PackingMethod</td></tr>
+                    <tr><td><b>Charged Weight(KG)</b></td><td>@i.ConsignDetails.ChargedWeight</td></tr>
+                    <tr><td><b>Rate(Per KG)</b></td><td><i class="fa fa-inr">&nbsp;@i.ConsignDetails.Rate</i></td></tr>
+                    <tr><td><b>Amount</b></td><td><i class="fa fa-inr">&nbsp;@i.ConsignDetails.InvoiceAmount</i>&nbsp;&nbsp;(Inclusive All Charges and Excluding Discount)</td></tr>
+                    <tr><td><b>Amount In Words</b></td><td>@amt RUPEES ONLY</td></tr>
+                </table>
+                }
+
+                @*<table class="table table-bordered">
+                    <thead>
+                    <tr><th>Booking Date</th><th>Delivery At</th><th>C.Weight(KG)</th><th>Rate(Per KG)</th><th>Total</th></tr>
+                        </thead>
+                    <tbody>
+                        
+                            @{decimal total = Convert.ToDecimal(@Model.ChargedWeight) * Convert.ToDecimal(@Model.Rate);}
+                            <tr><td>@Model.BookingDate.Value.ToString("dd/MM/yyyy")</td>
+                                <td>@Model.Destination</td>
+                                <td>@Model.ChargedWeight</td>
+                                <td><i class="fa fa-inr">&nbsp;@Model.Rate</i></td>
+                                <td><i class="fa fa-inr">&nbsp;@total.ToString("0.00")</i></td>
+                            </tr>
+                        
+                    </tbody>
+                    <tfoot>
+                        
+                        <tr><td colspan="4" style="text-align:right;"><b>Freight Charge : </b></td>
+                            <td><i class="fa fa-inr">&nbsp;@Model.FreightCharge</i></td>
+                        </tr>
+                                <tr><td colspan="4" style="text-align:right;"><b>Labour Charge : </b></td>
+                                    @if (@Model.LabourCharge != null && @Model.LabourCharge != 0)
+                                    {
+                            <td><i class="fa fa-inr">&nbsp;@Model.LabourCharge</i></td>
+                                    }
+                                    else
+                                    {
+                            <td><i class="fa fa-inr">&nbsp;0.0</i></td>            
+                                    }
+                        </tr>
+                               <tr><td colspan="4" style="text-align:right;"><b>Other Charge : </b></td>
+                                          @if (@Model.OtherCharge != null && @Model.OtherCharge != 0)
+                                          {
+                            <td><i class="fa fa-inr">&nbsp;@Model.OtherCharge</i></td>
+                                          }
+                                          else
+                                          {
+                            <td><i class="fa fa-inr">&nbsp;0.0</i></td>                              
+                                          }
+                        </tr>   
+                           <tr><td colspan="4" style="text-align:right;"><b>Discount : </b></td>
+                                    @if (@Model.Discount != null && @Model.Discount != 0)
+                                    {
+                            <td><i class="fa fa-inr">&nbsp;@Model.Discount</i></td>
+                                    }
+                                    else
+                                    {
+                               <td><i class="fa fa-inr">&nbsp;0.0</i></td>            
+                                    }
+                        </tr>   
+                         <tr><td colspan="4" style="text-align:right;"><b>Grand Total : </b></td>
+                            <td><i class="fa fa-inr">&nbsp;<b>@Model.InvoiceAmount</b></i></td>
+                        </tr>   
+                    </tfoot>
+                </table>*@
+                </td></tr>
+           <tr><td colspan="4"><span><b><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;Notes :</b></span></td></tr>
+            <tr><td colspan="4"><span><b>1.</b> Sample note 1.</span></td></tr>
+            <tr><td colspan="4"><span><b>2.</b> Sample note 2.</span></td></tr>
+            <tr><td colspan="4"><span><b>3.</b> Sample note 3.</span></td></tr>                        
+        </table></center>
+        <br /><br />
+      
+        <div style="float:right;">For,<b>@CompDetails.CompName</b></div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br /><br />
+        <div style="float:right;right:30px;"><b>Authorised Signatory</b></div>
+        
+    </div>
+</body>
+</html>

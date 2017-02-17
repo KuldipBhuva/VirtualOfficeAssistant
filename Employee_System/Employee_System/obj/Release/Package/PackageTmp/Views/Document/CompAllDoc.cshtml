@@ -1,0 +1,238 @@
+﻿@{ 
+   ViewBag.Title = "Documents Report";
+}
+
+@using EMSDomain.ViewModel
+
+@model DocumentItem
+<style>
+    fieldset.scheduler-border
+    {
+        border: 1px groove #ddd !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+    }
+
+    legend.scheduler-border
+    {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width: auto;
+        padding: 0 10px;
+        border-bottom: none;
+    }
+</style>
+
+@using (Html.BeginForm("CompAllDoc", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Company Documents <small>Report</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">Company Documents Filter</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.compID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListMasterTable, "Id", "Name"), "--Select--", new { @class = "form-control select2" })*@
+                    @Html.DropDownListFor(m => m.compID, new SelectList(Model.ListCompany, "id", "CompName"), "--Select--", new { @class = "form-control Select2",@id="ddlComp" })
+
+                </div>
+            </div>
+        </div>
+    </div>@*
+    <div class="panel panel-info">
+        <div class="panel-heading">Company Documents Details</div>
+        <div class="panel-body">*@
+    <div class="col-md-12" style="text-align:right;"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;@Html.ActionLink("Download All Trade Documents","DownloadTradeDoc", new { @menuId = Convert.ToInt32(Request.QueryString["menuid"]) })</div>
+    
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Trade License Documents </legend>
+        <div id="Grid" class="table-responsive">
+
+
+            @if (Model != null)
+            {              
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Document <span class="label label-primary">@Model.ListTradeDoc.Count</span></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.ListTradeDoc)
+                        {
+                            
+                            <tr>
+                                <td>@item.CompDetails.CompName</td>
+                                @if (@item.FileName != null || @item.FileUrl != null)
+                                {
+                                    <td>@{ string FileUrl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.FileUrl);
+                                    }
+                                        <a href="@Url.Content(@item.FileUrl)" target="_blank">@item.FileName</a></td>                
+                                }
+                                else
+                                {<td></td>}
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            }
+
+        </div>
+
+    </fieldset>
+    <div class="col-md-12" style="text-align:right;"><div class="col-md-12" style="text-align:right;"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;@Html.ActionLink("Download All Tenancy Documents","DownloadTenancyDoc", new { @menuId = Convert.ToInt32(Request.QueryString["menuid"]) })</div></div>    
+     <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Tenancy License Documents </legend>
+        <div id="Grid1" class="table-responsive">
+
+
+            @if (Model != null)
+            {              
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Document <span class="label label-primary">@Model.ListTenancyDoc.Count</span></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.ListTenancyDoc)
+                        {
+                            
+                            <tr>
+                                <td>@item.CompDetails.CompName</td>
+                                @if (@item.FileName != null || @item.FileUrl != null)
+                                {
+                                    <td>@{ string FileUrl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.FileUrl);
+                                    }
+                                        <a href="@Url.Content(@item.FileUrl)" target="_blank">@item.FileName</a></td>                
+                                }
+                                else
+                                {<td></td>}
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            }
+
+        </div>
+
+    </fieldset>
+    <div class="col-md-12" style="text-align:right;"><div class="col-md-12" style="text-align:right;"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;@Html.ActionLink("Download All Vehicle Documents","DownloadVehicleDoc", new { @menuId = Convert.ToInt32(Request.QueryString["menuid"]) })</div></div>    
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Vehicle Documents </legend>
+        <div id="Grid2" class="table-responsive">
+
+
+            @if (Model != null)
+            {              
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Document <span class="label label-primary">@Model.ListVehicleDoc.Count</span></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.ListVehicleDoc)
+                        {
+                            
+                            <tr>
+                                <td>@item.CompDetails.CompName</td>
+                                @if (@item.FileName != null || @item.FileUrl != null)
+                                {
+                                    <td>@{ string FileUrl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.FileUrl);
+                                    }
+                                        <a href="@Url.Content(@item.FileUrl)" target="_blank">@item.FileName</a></td>                
+                                }
+                                else
+                                {<td></td>}
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            }
+
+        </div>
+
+    </fieldset>
+    
+@*</div>
+    </div>*@
+    
+}
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        $("#compID").change(function () {
+            debugger;
+            var CompIds = $('#compID').val();
+            $.ajax(
+            {
+                url: '@Url.Action("getTradeDoc", "Document")',
+                type: "POST",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (data) {
+                    debugger;
+                    $("#Grid").html(data);           
+                }
+
+            });
+        });
+        $("#compID").change(function () {
+            debugger;
+            var CompIds = $('#compID').val();
+            $.ajax(
+            {
+                url: '@Url.Action("getTenancyDoc", "Document")',
+                type: "POST",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (data) {
+                    debugger;
+                    $("#Grid1").html(data);
+                }
+
+            });
+        });
+        $("#compID").change(function () {
+            debugger;
+            var CompIds = $('#compID').val();
+            $.ajax(
+            {
+                url: '@Url.Action("getVehicleDoc", "Document")',
+                type: "POST",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (data) {
+                    debugger;
+                    $("#Grid2").html(data);
+                }
+
+            });
+        });
+    });
+</script>
+

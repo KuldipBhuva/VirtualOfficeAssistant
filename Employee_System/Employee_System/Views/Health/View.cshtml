@@ -1,0 +1,120 @@
+﻿@{ 
+   ViewBag.Title = "Health/Labour/EID/DL";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model EmpHealthItem
+
+@using (@Html.BeginForm("View", "Health", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.HCId, new { @ViewBag.HCID })
+    <section class="content-header">
+        <h1>Health/Labour/EID/DL <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    @Html.HiddenFor(m => m.HId)
+    <div class="panel panel-info">
+        <div class="panel-heading">Health/Labour/EID/DL Details</div>
+        <div class="panel-body">
+            <div class="form-group" id="dvView">
+
+                @Html.LabelFor(m => m.Type, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Type, new List<SelectListItem>() { new SelectListItem() { Text = "Health", Value = "Health" }, new SelectListItem() { Text = "Labour", Value = "Labour" }, new SelectListItem() { Text = "Emirates ID", Value = "Emirates ID" }, new SelectListItem() { Text = "Driving License", Value = "Driving License"} }, "--Select--", new { @class = "form-control select2" ,@id="ddl"})
+                    @Html.ValidationMessageFor(m => m.Type)
+
+                </div>
+
+                @Html.LabelFor(m => m.CardNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.CardNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CardNo)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.IssueDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IssueDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.IssueDate)
+
+                </div>
+
+                @Html.LabelFor(m => m.ExpiryDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ExpiryDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.ExpiryDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div id="divLabour">
+                 @Html.LabelFor(m => m.PersonalNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PersonalNo, new { @class = "form-control" })
+                    
+
+                </div>
+                </div>
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")InActive
+                </div>
+                @* <div class="col-sm-12" style="height: 5px;"></div>
+                
+                 @Html.LabelFor(m => m.EmiratesID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    
+                    @Html.TextBoxFor(m => m.EmiratesID, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmiratesID)
+                </div>
+                @Html.LabelFor(m => m.EmiratesExpDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmiratesExpDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.EmiratesExpDate)
+                </div>*@                                               
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                     @Html.ActionLink(" Back", "Create", new {@id=Model.EmpId,@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        debugger;
+        $("#divLabour").hide();        
+        $("#ddl").change(function () {            
+            var $this = $(this);
+            if ($this.val() == "Labour") {
+                $("#divLabour").show();
+
+                $('#divLabour').css('form-control', '');
+            }
+            else {
+                $("#divLabour").hide();
+            }
+        });
+    })
+    $(document).ready(function () {
+        debugger;
+        var ddl = document.getElementById("ddl");
+        var div = document.getElementById("divLabour");
+        if (ddl.value == "Labour") {
+            $("#divLabour").show();
+        }
+        else {
+            $("#divLabour").hide();
+        }
+    })
+</script>

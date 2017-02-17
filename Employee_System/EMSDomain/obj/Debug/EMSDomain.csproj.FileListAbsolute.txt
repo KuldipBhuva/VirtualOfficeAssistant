@@ -1,0 +1,105 @@
+D:\bhumidemo\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+D:\bhumidemo\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+D:\bhumidemo\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+D:\bhumidemo\Project\Employee_System\EMSDomain\bin\Debug\EntityFramework.dll
+D:\bhumidemo\Project\Employee_System\EMSDomain\bin\Debug\EntityFramework.xml
+D:\bhumidemo\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+D:\bhumidemo\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+D:\bhumidemo\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.csprojResolveAssemblyReference.cache
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Employee_System\EMSDomain\bin\Debug\EntityFramework.dll
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Employee_System\EMSDomain\bin\Debug\EntityFramework.xml
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.csprojResolveAssemblyReference.cache
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Kuldip_Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Kuldip_Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Kuldip_Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Kuldip_Employee_System\EMSDomain\bin\Debug\EntityFramework.dll
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Kuldip_Employee_System\EMSDomain\bin\Debug\EntityFramework.xml
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Kuldip_Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+E:\Kuldip\Emp system Bhumi 28-03-2016\Project\Kuldip_Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+E:\Kuldip\KULDIP EMS 28-03-2016\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+E:\Kuldip\KULDIP EMS 28-03-2016\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+E:\Kuldip\KULDIP EMS 28-03-2016\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+E:\Kuldip\KULDIP EMS 28-03-2016\Project\Employee_System\EMSDomain\bin\Debug\EntityFramework.dll
+E:\Kuldip\KULDIP EMS 28-03-2016\Project\Employee_System\EMSDomain\bin\Debug\EntityFramework.xml
+E:\Kuldip\KULDIP EMS 28-03-2016\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.csprojResolveAssemblyReference.cache
+E:\Kuldip\KULDIP EMS 28-03-2016\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+E:\Kuldip\KULDIP EMS 28-03-2016\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+D:\Kuldip\14_4_Employee_klp\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+D:\Kuldip\14_4_Employee_klp\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+D:\Kuldip\14_4_Employee_klp\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+D:\Kuldip\14_4_Employee_klp\Project\Employee_System\EMSDomain\bin\Debug\EntityFramework.dll
+D:\Kuldip\14_4_Employee_klp\Project\Employee_System\EMSDomain\bin\Debug\EntityFramework.xml
+D:\Kuldip\14_4_Employee_klp\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+D:\Kuldip\14_4_Employee_klp\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+D:\Kuldip\14_4_Employee_klp\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.csprojResolveAssemblyReference.cache
+E:\Kuldip\14_4_Employee_klp_merge\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+E:\Kuldip\14_4_Employee_klp_merge\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+E:\Kuldip\14_4_Employee_klp_merge\Project\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+E:\Kuldip\14_4_Employee_klp_merge\Project\Employee_System\EMSDomain\bin\Debug\EntityFramework.dll
+E:\Kuldip\14_4_Employee_klp_merge\Project\Employee_System\EMSDomain\bin\Debug\EntityFramework.xml
+E:\Kuldip\14_4_Employee_klp_merge\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+E:\Kuldip\14_4_Employee_klp_merge\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+E:\Kuldip\14_4_Employee_klp_merge\Project\Employee_System\EMSDomain\obj\Debug\EMSDomain.csprojResolveAssemblyReference.cache
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\bin\Debug\EntityFramework.dll
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\bin\Debug\Ionic.Zip.dll
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\bin\Debug\EntityFramework.xml
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\bin\Debug\Ionic.Zip.xml
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\obj\Debug\EMSDomain.csprojResolveAssemblyReference.cache
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+E:\Kuldip\Backup_All_Final\DMS\04-06-2016\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\bin\Debug\EntityFramework.dll
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\bin\Debug\Ionic.Zip.dll
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\bin\Debug\EntityFramework.xml
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\bin\Debug\Ionic.Zip.xml
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+E:\Kuldip\Backup_All_Final\DMS\GNP Dubai Offline\Employee_System\EMSDomain\obj\Debug\EMSDomain.csprojResolveAssemblyReference.cache
+D:\Kuldip\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+D:\Kuldip\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+D:\Kuldip\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+D:\Kuldip\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\EntityFramework.dll
+D:\Kuldip\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Kuldip\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\Ionic.Zip.dll
+D:\Kuldip\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\EntityFramework.xml
+D:\Kuldip\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\Ionic.Zip.xml
+D:\Kuldip\DMS_Customized_20-09-16\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+D:\Kuldip\DMS_Customized_20-09-16\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+E:\Kuldip\Backup_All_Final\DMS\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+E:\Kuldip\Backup_All_Final\DMS\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+E:\Kuldip\Backup_All_Final\DMS\DMS_Customized_20-09-16\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+E:\Kuldip\Backup_All_Final\DMS\DMS_Customized_20-09-16\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+E:\Kuldip\Backup_All_Final\DMS\DMS_Customized_20-09-16\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+E:\Kuldip\Backup_All_Final\DMS\DMS_Customized_20-09-16\Employee_System\EMSDomain\obj\Debug\EMSDomain.csprojResolveAssemblyReference.cache
+D:\NewtechSVNProjects\DMS\Development\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+D:\NewtechSVNProjects\DMS\Development\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+D:\NewtechSVNProjects\DMS\Development\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+D:\NewtechSVNProjects\DMS\Development\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+D:\NewtechSVNProjects\DMS\Development\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+D:\SVNNewtechProjects\DMS\Development\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+D:\SVNNewtechProjects\DMS\Development\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+D:\SVNNewtechProjects\DMS\Development\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+D:\SVNNewtechProjects\DMS\Development\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+D:\SVNNewtechProjects\DMS\Development\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+D:\NewtechSVNProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+D:\NewtechSVNProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+D:\NewtechSVNProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+D:\NewtechSVNProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+D:\NewtechSVNProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+D:\SVNNewtechProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll.config
+D:\SVNNewtechProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.dll
+D:\SVNNewtechProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
+D:\SVNNewtechProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
+D:\SVNNewtechProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb

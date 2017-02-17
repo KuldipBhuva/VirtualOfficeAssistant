@@ -1,0 +1,50 @@
+﻿@{ 
+   ViewBag.Title = "Increment";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model  EmpIncrementItem
+
+@using (@Html.BeginForm("View", "Increment", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.AntiForgeryToken()          // this is for prevent CSRF attack
+    @Html.ValidationSummary(true)
+     @Html.HiddenFor(m => m.IncId)
+    @Html.HiddenFor(m => m.VIncId, new { @ViewBag.IncId })
+    <section class="content-header">
+        <h1>Increment <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+        <div class="panel panel-info">
+            <div class="panel-heading">Increment Details</div>
+            <div class="panel-body">
+                <div class="form-group" id="dvView">
+                    @Html.LabelFor(m => m.IncAmount, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.IncAmount, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.IncAmount)
+                    </div>
+
+                    @Html.LabelFor(m => m.IncDate, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.IncDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.IncDate)
+                    </div>
+
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    @Html.ActionLink(" Back", "Create", new {@id=Model.EmpId,@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+                </div>
+
+                </div>
+            </div>
+        </div>
+}

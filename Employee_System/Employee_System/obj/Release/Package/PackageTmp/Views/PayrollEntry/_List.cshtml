@@ -1,0 +1,233 @@
+﻿@using EMSDomain.ViewModel.Payroll
+@model PayrollItem
+
+@{
+    if (ViewBag.MonthList != null)
+    {
+        int Month = ViewBag.MonthList;
+        int Year = ViewBag.YearList;
+    }
+    
+}
+
+
+
+<div class="panel panel-info">
+
+    <div class="panel-heading">Payroll Entry Details </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table" id="tbl">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Days</th>
+                        <th>OT</th>
+                        <th>Driver Allowances</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @if (Model.lstEmployee.Count == 0 && Model.lstPayroll != null)
+                    {
+
+                        for (int i = 0; i < Model.lstPayroll.Count; i++)
+                        {
+                            // @Html.HiddenFor(m => m.lstPayroll[0].Message, new { @value = "Payroll" });
+                            Model.lstEmployee = null;
+                        <tr>
+                            <td>
+                                @Model.lstPayroll[i].EmpName
+                            </td>
+                            <td>
+                                @{
+                            string days = "Days_" + i;
+                            string val1 = @Model.lstPayroll[i].Days.ToString();
+                            string empId1 = @Model.lstPayroll[i].Id.ToString();
+                                }
+                                <input type="hidden" id="@empId1" value="@val1" />
+                                @Html.Hidden("[" + i + "].id", @Model.lstPayroll[i].Id)
+                                @Html.TextBox("[" + i + "].Days", @Model.lstPayroll[i].Days, new { @id = "Days", @class = "foo" })
+
+                                @*     @Html.LabelFor(m => m.Days, @Html.TextBox("[" + i + "].Days", @Model.lstEmployee[i].Days));*@
+                            </td>
+                            <td>
+                                @Html.TextBox("[" + i + "].OT", @Model.lstPayroll[i].OT, new { @id = "OT", @class = "OTs", @onblur = "DriverAllowanceChange('[" + i + "].OT','[" + i + "].DA');" })
+                            </td>
+                            <td>
+                                @Html.TextBox("[" + i + "].DA", @Model.lstPayroll[i].DA, new { @id = "DA", @class = "DAs", @onblur = "DriverAllowanceChange('[" + i + "].OT','[" + i + "].DA');" })
+                            </td>
+                        </tr>
+                        }
+                    }
+                    else if (Model.lstEmployee != null)
+                    //{
+                    // @if (Model.lstEmployee != null)
+                    {
+
+                        Model.lstPayroll = null;
+                        for (int i = 0; i < Model.lstEmployee.Count; i++)
+                        {
+                        <tr>
+                            <td>
+                                @Model.lstEmployee[i].Empname
+                            </td>
+                            <td>
+                                @{
+                            string days = "Days_" + i;
+                            string val = @Model.lstEmployee[i].Days.ToString();
+                            string empId = @Model.lstEmployee[i].id.ToString();
+                                }
+                                <input type="hidden" id="@empId" value="@val" />
+                                @Html.Hidden("[" + i + "].id", @Model.lstEmployee[i].id)
+                                @Html.TextBox("[" + i + "].Days", @Model.lstEmployee[i].Days, new { @id = "Days", @class = "foo" })
+
+                                @*     @Html.LabelFor(m => m.Days, @Html.TextBox("[" + i + "].Days", @Model.lstEmployee[i].Days));*@
+                            </td>
+                            <td>
+                                @Html.TextBox("[" + i + "].OT", @Model.lstEmployee[i].OT, new { @id = "OT", @class = "OTs", @onblur = "DriverAllowanceChange('[" + i + "].OT','[" + i + "].DA');" })
+                            </td>
+                            <td>
+                                @Html.TextBox("[" + i + "].DA", @Model.lstEmployee[i].DA, new { @id = "DA", @class = "DAs", @onblur = "DriverAllowanceChange('[" + i + "].OT','[" + i + "].DA');" })
+                            </td>
+                        </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    function DriverAllowanceChange(otId,driverallowId)
+    {
+        debugger;
+        var ot =  $("[name='"+ otId +"']").val()
+        var da = $("[name='"+ driverallowId +"']").val()
+        if (ot == undefined)
+        {
+            ot == ""
+        }
+        if (da == undefined)
+        {
+            da == ""
+        }
+        if (ot != "" && da != "")
+        {
+            alert('only one value allowed');
+            return;
+        }
+    }
+
+    $(document).ready(function () {
+
+        
+        //$('.DAs').on('change', function () {
+        //    var DA = ($(this).val());
+
+        //    var Days=($('#OTs').val());
+        //    if(Days!="" && DA!="")
+        //    {
+        //        alert('only one value allowed');
+        //        debugger;
+        //        var DA = ($(this).val('')); 
+        //        DA.focus();
+        //        DA='';
+        //    }
+        //});
+
+
+        $('.foo').on('change', function () {
+            var Days = ($(this).val());
+            debugger;
+            var Month = @ViewBag.MonthList;
+            var YearList = @ViewBag.YearList;
+            if (Month == 2)
+            {
+                if ((YearList % 4 == 0 && YearList % 100 != 0) || (YearList % 400 == 0))
+                {
+                    if(Days>29)
+                    {
+                        alert('Enter Date Less than or equal to 29 only.');
+                        var DAysvalue1 = ($(this).val('')); 
+                        DAysvalue1.focus();
+                        DAysvalue1='';
+                        return false;
+                    }
+                }
+                else
+                {
+                    if(Days>28)
+                    {
+                        alert('Enter Date Less than or equal to 28 only.');
+                        var DAysvalue1 = ($(this).val('')); 
+                        DAysvalue1.focus();
+                        DAysvalue1='';
+                        return false;
+                    }
+                }
+            }
+            if (Month == 1 || Month == 3 || Month == 5 || Month == 7 || Month == 8 || Month == 10 || Month == 12)
+            {
+                if(Days>31)
+                {
+                    //$("#dvlabel").show();
+                    alert('Enter Date Less than or equal to 31 only.');
+                    var DAysvalue1 = ($(this).val('')); 
+                    DAysvalue1.focus();
+                    DAysvalue1='';
+                    return false;
+                }
+                else
+                {
+                    return true;
+                    //$("#dvlabel").css("display", "none");
+                }
+            }
+            else if (Month == 4 || Month == 6 || Month == 9 || Month == 11)
+            {
+                if(Days>30)
+                {
+                    //$("#dvlabel").show();
+                    alert('Enter Date Less than or equal to 30 only.');
+                    var DAysvalue = ($(this).val('')); 
+                    DAysvalue.focus();
+                    DAysvalue='';
+                    return false;
+                }
+                else
+                {
+                    return true;
+                    //$("#dvlabel").css("display", "none");
+                }
+                //a = "Please Give Propwer Date..";
+            }
+        });
+
+
+
+
+
+
+    });
+</script>
+@*<table>
+    <tr>
+        <th></th>
+        <th>Contact Person</th>
+        <th>Contact No</th>
+        <th>Email ID</th>
+    </tr>
+    @for (int i = 0; i < Model.lstEmployee.Count; i++)
+    {
+        <tr>
+            <td>@Html.HiddenFor(model => model.lstEmployee[i].Empname)</td>
+            <td>@Html.EditorFor(model => model.lstEmployee[i].Empname)</td>
+            <td>@Html.EditorFor(model => model.Days)</td>
+        </tr>
+    }
+</table>*@

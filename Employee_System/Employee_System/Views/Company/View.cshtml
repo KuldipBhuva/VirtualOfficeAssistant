@@ -1,0 +1,95 @@
+﻿@{ 
+   ViewBag.Title = "Company";
+}
+
+@using EMSDomain.ViewModel.Company
+
+@model CompanyItem
+
+@using (@Html.BeginForm("View", "Company", FormMethod.Post))
+{
+      @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.id)
+    <section class="content-header">
+        <h1>Company <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+        <div class="panel panel-info">
+            <div class="panel-heading">Company Details</div>
+            <div class="panel-body">
+                <div class="form-group" id="dvView">
+
+                    @Html.LabelFor(m => m.Compcode, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Compcode, new { @class = "form-control"})
+                    </div>
+
+                    @Html.LabelFor(m => m.CompName, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.CompName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m=>m.CompName)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.Phone, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    </div>
+
+                    @Html.LabelFor(m => m.ContactPerson, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.Email, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+
+                    @Html.LabelFor(m => m.Address, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m=>m.Address)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.City, new { @class = "col-sm-2 control-label" })
+
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m=>m.City)
+                    </div>
+
+                    @Html.LabelFor(m => m.State, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m=>m.State)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.Country, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.Country, new SelectList(Model.ConList, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m=>m.Country)
+                    </div>
+                     <div class="col-sm-12" style="height: 5px;"></div>
+                    <div class="col-sm-2"><img id="img" src="@Url.Content("~/PhotoUpload/Logo/" + Model.Logo)" alt="preview" class="img-rounded thumb-image" width="100" height="100" /></div>
+                    <div id="image-holder" class="col-sm-4 img-rounded"></div>
+                    <div class="col-sm-2"><img id="img1" src="@Url.Content("~/PhotoUpload/Sign/" + Model.Sign)" alt="preview" class="img-rounded thumb-image" width="100" height="100" /></div>
+                    <div id="image-holder1" class="col-sm-4 img-rounded"></div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    @Html.ActionLink(" Back", "Create", new { @id = Model.id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })           
+                </div>
+                </div>
+            </div>
+        </div>
+}

@@ -1,0 +1,219 @@
+﻿@using EMSMethods
+@using EMSDomain.Model
+@using EMSDomain.ViewModel.Payroll
+
+@model RePaymentItem
+@{
+    ViewBag.Title = "Ledger";
+}
+
+<style>
+    table
+    {
+        background: #f5f5f5;
+        border-collapse: separate;
+        box-shadow: inset 0 1px 0 #fff;
+        font-size: 12px;
+        line-height: 10px;
+        margin: 30px auto;
+        text-align: left;
+        width: 98%;
+    }
+
+    th
+    {
+        background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#3C8DBC, #3C8DBC);
+        border-left: 1px solid #555;
+        border-right: 1px solid #777;
+        border-top: 1px solid #555;
+        border-bottom: 1px solid #333;
+        box-shadow: inset 0 1px 0 #999;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 15px;
+        position: relative;
+        text-shadow: 0 1px 0 #000;
+    }
+
+        th:after
+        {
+            background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+            content: '';
+            display: block;
+            height: 25%;
+            left: 0;
+            margin: 1px 0 0 0;
+            position: absolute;
+            top: 25%;
+            width: 100%;
+        }
+
+        th:first-child
+        {
+            border-left: 1px solid #777;
+            box-shadow: inset 1px 1px 0 #999;
+        }
+
+        th:last-child
+        {
+            box-shadow: inset -1px 1px 0 #999;
+        }
+
+    td
+    {
+        border-right: 1px solid #fff;
+        border-left: 1px solid #e8e8e8;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #e8e8e8;
+        padding: 10px 15px;
+        position: relative;
+        transition: all 300ms;
+    }
+
+        td:first-child
+        {
+            box-shadow: inset 1px 0 0 #fff;
+        }
+
+        td:last-child
+        {
+            border-right: 1px solid #e8e8e8;
+            box-shadow: inset -1px 0 0 #fff;
+        }
+
+    tr
+    {
+        background: url(http://jackrugile.com/images/misc/noise-diagonal.png);
+    }
+
+        tr:nth-child(odd) td
+        {
+            background: #f1f1f1 url(http://jackrugile.com/images/misc/noise-diagonal.png);
+        }
+
+        tr:last-of-type td
+        {
+            box-shadow: inset 0 -1px 0 #fff;
+        }
+
+            tr:last-of-type td:first-child
+            {
+                box-shadow: inset 1px -1px 0 #fff;
+            }
+
+            tr:last-of-type td:last-child
+            {
+                box-shadow: inset -1px -1px 0 #fff;
+            }
+</style>
+
+@using (Html.BeginForm("LedgerReport", "Report", FormMethod.Post))
+{
+    <section class="content-header">
+        <h1>Ledger <small>Report</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Ledger Report
+        </div>
+
+        @Html.LabelFor(m => m.CompId, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-4">
+            @Html.DropDownListFor(m => m.CompId, new SelectList(Model.ListComp, "id", "CompName"), "--Select Company--", new { @class = "form-control Select2",@id="ddlComp" })
+        </div>
+
+        @Html.LabelFor(m => m.EmpId, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-4">
+            @Html.DropDownListFor(m => m.EmpId, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control Select2" })
+            @Html.ValidationMessageFor(m => m.EmpId)
+        </div>
+
+        <br />
+        <br />
+        @*  <div class="col-sm-2" style="width: 177px;"></div>*@
+        <center><input type="submit" value="Go" class="btn btn-primary" /></center>
+
+        <div id="dvData" class="table table-responsive">
+            @if (Model.ListRePayment != null)
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            @* <th>Emp no</th>*@
+
+                            <th>Advance Payment</th>
+                            <th>RePayment</th>
+                            <th>Month</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @if (Model.ListRePayment != null)
+                        {
+
+                            var totalAdvance = Model.ListRePayment.Sum(a => a.AdPay);
+                            var totalRePayment = Model.ListRePayment.Sum(a => a.Payment);
+                            var totalDue = Model.ListRePayment.Sum(a => a.AdPay) - Model.ListRePayment.Sum(a => a.Payment);
+
+                            foreach (var item in Model.ListRePayment)
+                            {
+                            <tr>
+                                @*     <td>@item.EmployeeItem.Empno</td>*@
+                                <td>@item.AdPay</td>
+                                <td>@item.Payment</td>
+                                <td>@item.MonthName</td>
+                                <td>@item.Year</td>
+
+                            </tr>
+                            }
+                            <tr>
+                                <td></td>
+                            </tr>
+                            
+                            <tr >
+                                <td>@totalAdvance</td>
+                                <td>@totalRePayment</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Total Due:-  @totalDue </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+
+        </div>
+    </div>
+}
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#ddlComp").change(function () {
+            var CompIds = $('#ddlComp').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillEmp", "TravelExpense")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Employee_master) {
+
+                    $("#EmpId").html("");  // clear before appending new list 
+                    $("#EmpId").append("<option value='0'>--Select Employee--</option>");
+                    $.each(Employee_master, function (i, EmpId) {
+
+                        $("#EmpId").append(
+                            $('<option></option>').val(EmpId.id).html(EmpId.Empname));
+                    });
+                }
+            });
+        });
+
+    });
+</script>

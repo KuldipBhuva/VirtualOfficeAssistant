@@ -1,0 +1,316 @@
+﻿@{
+    ViewBag.Title = "Employee";
+    }
+@model EMSDomain.ViewModel.Employee.EmpAllItem
+
+
+@using (@Html.BeginForm("Index", "Employee", FormMethod.Get, new { @id = "frmCreateEmployee" }))
+{
+@* @Html.HiddenFor(m => m.EmployeeItem.id)*@
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Advanced Tables -->
+            <div class="panel panel-info">
+                <div class="panel-heading" style="height: 54px;">
+                    <table align="left">
+                        <tr>
+                            <td>@*@Html.DropDownListFor(m => m.EmployeeItem.Compid, new SelectList(Model.EmployeeItem.CompanyList, "id", "CompName"), "--All Company--", new { @class = "form-control" })*@
+
+                                <div class="col-sm-12">
+                                    @Html.RadioButtonFor(m => m.filter, "96", new { @checked = "true" })ON SERVICE                                                       
+                    @Html.RadioButtonFor(m => m.filter, "94")DISCONTINUED                   
+                                    @Html.RadioButtonFor(m => m.filter, "0")All
+                                </div>
+
+                            </td>
+                            @*<td>&nbsp;<input type="submit" value="submit" class="btn btn-info" />                                
+                            </td>*@
+
+                        </tr>
+                    </table>
+                    <table align="right">
+                        <tr>
+                            <td>
+                                <i class="fa fa-plus-square" id="btnAdd" aria-hidden="true">&nbsp;@Html.ActionLink("Add New Employee", "Create")</i>
+                            </td>
+                        </tr>
+                    </table>
+                    @*<div style="width:600px;">
+                    
+                        
+                          </div>*@
+
+                    @*<div style="text-align: right">
+                        
+                    </div>*@
+
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive" id="Grid">
+                        <table class="table" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Employee No.</th>
+                                    <th>Employee Name
+                                        <th>Company
+                                        </th>
+                                    </th>
+                                    <th>Branch
+                                    </th>
+                                    <th>Mobile
+                                    </th>
+
+
+                                    <th>Action</th>
+                                    <th>Action</th>
+
+                                    @*  <td>Relative Name
+                </td>
+                <td>Passport No</td>
+                <td>Company Name</td>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.EmployeeALLDetails)
+                                {
+                                    <tr>
+                                        <td>@item.EmployeeItem.Empno</td>
+                                        @*<td hidden="hidden"><a id="id" data-id="@item.EmployeeItem.id">@item.EmployeeItem.id</a></td>   *@
+                                        <td>
+                                            @*<a data-toggle="modal" id="link" class="link" data-target="#myModal" style="color:black;">@item.EmployeeItem.Empname</a>*@
+                                            @*<a id="link" class="link" data-toggle="modal" data-empid="@item.EmployeeItem.id" data-target="#myModal" style="color:black;">@item.EmployeeItem.Empname</a>*@
+                                            @item.EmployeeItem.Empname
+                                        </td>
+                                        <td>
+                                            @item.CompanyItem.CompName
+                                        </td>
+                                        <td>
+                                            @item.BranchItem.BranchName
+                                        </td>
+                                        <td>
+                                            @item.EmployeeItem.Mobile
+                                        </td>
+
+                                        <td>@Html.ActionLink(" ", "View", new { @id = @item.EmployeeItem.id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-eye" })</td>
+                                        <td>@Html.ActionLink(" ", "Edit", new { @id = @item.EmployeeItem.id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                            &nbsp;@Html.ActionLink(" ", "View", new { @id = @item.EmployeeItem.id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-eye" })
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <!--End Advanced Tables -->
+        </div>
+    </div>                               
+}
+
+@*<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        $("#link").click(function () {
+            debugger;
+            var CompIds = $('#link').data('empid');
+
+            $.ajax(
+            {
+                url: '@Url.Action("getData", "Employee")',
+                type: "POST",
+                datatype: "JSON",
+                data: { id: CompIds },
+                success: function (data) {
+                    debugger;
+                    //$("#Grid tr").html("");  // clear before appending new list 
+                    // $("#Grid").append("<tr><td>Name</td><td>");
+                    $("#Grid").html(data);
+                    //$.each(data, function (Name) {
+                    //    if (data.d.length > 0) {
+                    //        for (var iCount = 0; iCount < data.d.length; iCount++) {
+                    //            debugger;
+                    //            $("#tableUPStatus").append("<tr><td>" + data.d[iCount].Name + "</td><td>");
+                    //        }
+                    //    }
+                    //    else {
+                    //        $("#tableUPStatus").append("<tr><td colspan='5'>No records found</td></tr>");
+                    //    }
+                    //});
+                }
+
+            });
+        });
+    });
+</script>*@
+
+<script>
+    $(document).ready(function () {
+        var session = '@Request.RequestContext.HttpContext.Session["RoleID"]';
+        if (session != 1 && session != 111) {
+            var table = $('#dataTables-example').DataTable({
+                "columnDefs": [
+                    {
+                        "targets": [6],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    //{
+                    //    "targets": [3],
+                    //    "visible": false
+                    //}
+                { 'bSortable': false, 'aTargets': [5] }
+                ]
+            });
+        }
+        else {
+            var table = $('#dataTables-example').DataTable({
+                "columnDefs": [
+                    {
+                        "targets": [5],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    //{
+                    //    "targets": [3],
+                    //    "visible": false
+                    //}
+
+            { 'bSortable': false, 'aTargets': [6] }
+
+                ]
+
+
+            });
+        }
+    });
+</script>
+@*<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="//code.jquery.com/jquery-1.12.3.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.flash.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+<script>
+    $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+</script>*@
+
+<script>
+    $(document).ready(function () {
+
+        debugger;
+        var val = "";
+        var selected = $("input[type='radio'][name='filter']:checked");
+        $("#divLoading").show();
+        if (selected.length > 0) {
+            val = selected.val();
+        }
+
+        //Probation
+        if (val == "33") {
+
+        }
+            //Discontinued
+        else if (val == "94") {
+
+        }
+            //OnLeave
+        else if (val == "95") {
+
+        }
+            //OnService
+        else if (val == "96") {
+            if (val != "") {
+                $(document).ready(function () {
+                    debugger;
+                    //$("#filter").change(function () {
+                    //    debugger;
+                    //var FID = $('#filter').val();
+                    var id = val;
+                    $.ajax(
+                    {
+                        url: '@Url.Action("FillDisCon", "Employee")',
+                        type: "POST",
+                        datatype: "JSON",
+                        data: { FID: id },
+                        success: function (data) {
+                            debugger;
+                            $("#Grid").html(data);
+                            $("#divLoading").hide();
+                        }
+
+                    });
+                });
+                //});
+            }
+
+        }
+        else {
+
+        }
+
+
+        $('#frmCreateEmployee input').on('change', function () {
+            debugger;
+            $("#divLoading").show();
+            var val = "";
+            var selected = $("input[type='radio'][name='filter']:checked");
+            if (selected.length > 0) {
+                val = selected.val();
+            }
+            //var val = ($('input[name="filter"]:checked', '#frmCreateEmployee').val());
+            //var $this = $(this);
+            //On Service
+            //if (val == "96") {
+
+            //}
+            //Discontinued
+            if (val != "") {
+                $(document).ready(function () {
+                    debugger;
+                    //$("#filter").change(function () {
+                    //    debugger;
+                    //var FID = $('#filter').val();
+                    var id = val;
+                    $.ajax(
+                    {
+                        url: '@Url.Action("FillDisCon", "Employee")',
+                        type: "POST",
+                        datatype: "JSON",
+                        data: { FID: id },
+                        success: function (data) {
+                            debugger;
+                            $("#Grid").html(data);
+                            $("#divLoading").hide();
+                        }
+
+                    });
+                });
+                //});
+            }
+                //OnLeave
+                //else if (val == "0") {
+
+                //}         
+            else {
+                $("#divLoading").hide();
+            }
+        });
+
+    });
+</script>
+

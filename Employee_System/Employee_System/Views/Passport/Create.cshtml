@@ -1,0 +1,251 @@
+﻿  @{ 
+   ViewBag.Title = "Passport";
+}
+  
+@using EMSDomain.ViewModel.Employee
+
+@model EmpPassportItem
+@{
+    int Empid = ViewBag.Empid;
+}
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker({ dateFormat: "mm/dd/yy", changeYear: "true" }); //Initialise any date pickers
+    });
+</script>
+@using (@Html.BeginForm("Create", "Passport", FormMethod.Post, new { id = "frmPassCreate", name = "PassCreate" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Passport <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Passport Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.Label("Passport No", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PassportNo, new { @class = "form-control",@placeholder="Current Passport No." })
+                    @Html.ValidationMessageFor(m => m.PassportNo)
+
+                </div>
+
+
+                @Html.LabelFor(m => m.PlaceIssue, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PlaceIssue, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PlaceIssue)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.IssueCountry, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.IssueCountry, new SelectList(Model.ListCountry, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IssueCountry)
+                </div>
+
+
+                @Html.LabelFor(m => m.IssueDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IssueDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.IssueDate)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.ExpiryDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ExpiryDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.ExpiryDate)
+                </div>
+
+                @Html.LabelFor(m => m.RenewDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RenewDate, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Nationality, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Nationality, new SelectList(Model.ListNationality, "Id", "Name"), "--Select Nationality--", new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+                @*@Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active")Active
+                            @Html.RadioButtonFor(m => m.Status, "InActive")InActive
+
+                </div>*@
+                <div class="col-sm-12" style="height: 5px;"></div>
+                 <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Old Passport Details (If Any)</legend>
+                     @Html.Label("Passport No", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.OPassportNo, new { @class = "form-control",@placeholder="Old Passport No." })
+                    @Html.ValidationMessageFor(m => m.OPassportNo)
+
+                </div>
+
+
+                @Html.LabelFor(m => m.PlaceIssue, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.OPlaceIssue, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.OPlaceIssue)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.IssueCountry, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.OIssueCountry, new SelectList(Model.ListCountry, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.OIssueCountry)
+                </div>
+
+
+                @Html.LabelFor(m => m.IssueDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.OIssueDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.OIssueDate)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.ExpiryDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.OExpiryDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.OExpiryDate)
+                </div>
+
+                @Html.LabelFor(m => m.RenewDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ORenewDate, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Nationality, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.ONationality, new SelectList(Model.ListNationality, "Id", "Name"), "--Select Nationality--", new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ORemarks, new { @class = "form-control" })
+                </div>
+                     </fieldset>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Passport Details List <span class="label label-primary">@Model.ListPassport.Count</span><input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>No</th>
+                            <th>Issue Country</th>
+                            <th>Isue-Date</th>
+                            <th>Expiry-Date</th>
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.ListPassport)
+                        {
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.PassportNo</td>
+                                <td>@item.CountryDetails.Name</td>
+                                @if (@item.IssueDate != null)
+                                {
+                                    <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                @if (@item.ExpiryDate != null)
+                                {
+                                    <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                }
+                                else
+                                {<td></td>}
+
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = Empid, @PasId = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new {@id = Empid, @PasId = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.EmpId, @PId = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the passport details of " + @item.EmpDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Document List <span class="label label-primary">@Model.ListPassportDoc.Count</span>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>FileName
+                            </th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListPassportDoc)
+                        {
+                            <tr>
+                                <td>
+                                    @{ string fileurl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.DocDetails.FileUrl);
+                                    }
+                                    @*<a class="filename" href="#">@item.DocDetails.FileName </a>*@
+                                    <a href="@Url.Content(@item.DocDetails.FileUrl)" target="_blank">@item.DocDetails.FileName</a>
+                                </td>
+                                <td>
+                                    @Html.ActionLink(" ", "DeleteDoc", new { @id = @item.DocDetails.EmpId, @DID = @item.DocDetails.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the document " + @item.DocDetails.FileName + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+
+                                <td>
+                                    @*@Html.ActionLink("Edit", "Edit", new { @id = @item.Id })*@
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = empId, cid = @item.Id }, null)*@
+                                    @*@Html.ActionLink("Edit", actionName:"Edit", controllerName: "Contact", routeValues: new { id = empId, cid = @item.Id }, htmlAttributes:null)*@
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+}

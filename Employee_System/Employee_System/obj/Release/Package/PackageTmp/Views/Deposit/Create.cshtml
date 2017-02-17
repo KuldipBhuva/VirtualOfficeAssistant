@@ -1,0 +1,134 @@
+﻿@{ 
+   ViewBag.Title = "Deposite";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model EmpDepositeItem
+@{
+    int EmpId = ViewBag.Empid;
+}
+@using (@Html.BeginForm("Create", "Deposit", FormMethod.Post, new { @id = "formDeposite" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Deposite <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Deposite Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.DepAmount, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.DepAmount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.DepAmount)
+
+                    @*        @Html.DropDownListFor(m => m.Country, new SelectList(Model.CountryList, "Id", "CountryName"), "--Select Country", new { @class = "form-control select2" })*@
+                </div>
+
+                @Html.LabelFor(m => m.InvestDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.InvestDate, new { @class = "form-control datepicker", @id = "datefield" })
+                        @Html.ValidationMessageFor(m => m.InvestDate)
+
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.MaturityDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.MaturityDate, new { @class = "form-control datepicker", @id = "datefield1" })
+                    @Html.ValidationMessageFor(m => m.MaturityDate)
+                </div>
+
+
+                @Html.LabelFor(m => m.DepDescription, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.DepDescription, new { @class = "form-control" })
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.DepRemarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.DepRemarks, new { @class = "form-control" })
+                </div>
+
+
+
+                @*@Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")In-Active                   
+                </div>*@
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+@*</div>*@
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">
+            Deposit Details List <span class="label label-primary">@Model.ListDeposit.Count</span> <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" />
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Invest Date</th>
+                            <th>Maturity Date</th>
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListDeposit)
+                        {
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.DepAmount</td>
+                                @if (@item.InvestDate != null)
+                                {
+                                    <td>@item.InvestDate.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                @if (@item.MaturityDate != null)
+                                {
+                                    <td>@item.MaturityDate.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = EmpId, @DepId = @item.DepId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new {@id = EmpId, @DepId = @item.DepId, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.EmpId, @DId = @item.DepId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the deposite details of " + @item.EmpDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker({ dateFormat: "mm/dd/yy", changeYear: "true" }); //Initialise any date pickers
+        });
+    </script>
+}
+
+
+

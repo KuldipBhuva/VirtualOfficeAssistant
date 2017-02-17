@@ -1,0 +1,47 @@
+﻿
+@using EMSDomain.ViewModel
+
+@model clsBloodGroup
+
+
+@using (@Html.BeginForm("Create", "BloodGroup", FormMethod.Post))
+{
+     @Html.HiddenFor(m => m.id)   
+    <table>
+        <tr>
+            <td>
+                @Html.TextBoxFor(m => m.BName)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.BDescription)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+    <table>
+        @foreach (var item in Model.bloodList)
+        {
+            <tr>
+                <td>
+                    @item.id
+                </td>
+                <td>
+                    @item.BName
+                </td>
+                <td>
+                    @item.BDescription
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = @item.id })
+
+                </td>
+            </tr>
+        }
+    </table>
+
+  
+}

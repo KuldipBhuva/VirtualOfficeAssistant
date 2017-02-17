@@ -1,0 +1,90 @@
+﻿  @{ 
+   ViewBag.Title = "Relatives";
+}
+  
+@using EMSDomain.ViewModel.Employee
+
+@model EmpRelativeItem
+
+
+@using (@Html.BeginForm("View", "Relative", FormMethod.Post))
+{@Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.RId, new { @Value = @ViewBag.RId })
+    <section class="content-header">
+        <h1>Relative <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">Relative Details</div>
+        <div class="panel-body">
+            <div class="form-group" id="dvView">
+
+                @Html.LabelFor(m => m.RName, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RName)
+
+                </div>
+
+                @Html.LabelFor(m => m.RAddress, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RAddress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RAddress)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.RCity, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RCity, new { @class = "form-control" })
+                     @Html.ValidationMessageFor(m => m.RCity)
+                </div>
+
+                @Html.LabelFor(m => m.RMobile, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RMobile, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RMobile)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.RPhone, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RPhone, new { @class = "form-control" })
+                      @Html.ValidationMessageFor(m => m.RPhone)
+                </div>
+
+                @Html.LabelFor(m => m.REmail, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.REmail, new { @class = "form-control" })
+                     @Html.ValidationMessageFor(m => m.REmail)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Relation, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Relation, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Relation)
+                </div>
+
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                   @Html.ActionLink(" Back", "Create", new {@id=Model.EmpId,@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })           
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+}

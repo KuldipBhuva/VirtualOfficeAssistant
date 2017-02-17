@@ -1,0 +1,132 @@
+﻿@using EMSDomain.ViewModel.Vehicle
+
+@model  VehicleHistoryItem
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker({ dateFormat: "mm/dd/yy", changeYear: "true" }); //Initialise any date pickers
+    });
+</script>
+
+@{
+    ViewBag.Title = "Vehicle History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (@Html.BeginForm("Create", "VehicleHistory", FormMethod.Post, new { @id = "frmvehicle" }))
+{         
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Vehicle History <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Vehicle History Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.VID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.VID, new SelectList(Model.ListVehicle, "VID", "VehicleName"), "--Select Vehicle--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.VID)
+                </div>
+                @Html.LabelFor(m => m.EmpID, new { @class = "col-sm-2 conntrol-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpID, new SelectList(Model.ListEmp, "id", "EmpName"), "--Select Employee--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmpID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.From_Date, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.From_Date, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.From_Date)
+                </div>
+                @Html.LabelFor(m => m.To_Date, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.To_Date, "{dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.To_Date)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Vehicle History Data <span class="label label-primary">@Model.ListVH.Count</span> <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Vehicle</th>
+                            <th>Employee</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
+                            <th>Remarks</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListVH)
+                        {
+                       
+                            <tr>
+                                <td>@item.VehicleDetails.VehicleName</td>
+                                <td>@item.EmpDetails.Empname</td>
+                                @if (@item.From_Date != null)
+                                {
+                                    <td>@item.From_Date.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                @if (@item.To_Date != null)
+                                {
+                                    <td>@item.To_Date.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                <td>@item.Remarks</td>
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })                                    
+                                    &nbsp;@Html.ActionLink(" ", "View", new { @id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new {  @id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the history details of " + @item.VehicleDetails.VehicleName + "?')", @class = "fa fa-trash fa-lg" })
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) })*@
+                                </td>
+                            </tr>
+                        
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        var table = $('#tbl').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        debugger;
+        $("#dvGrid").show();
+        $("#dvAdd").hide();
+        $("#btnAdd").click(function () {
+            debugger;
+            $("#dvGrid").hide();
+            $("#dvAdd").show(1000);
+
+        });
+        $("#btnBack").click(function () {
+            $("#dvGrid").show();
+            $("#dvAdd").hide(1000);
+        });
+    });
+</script>

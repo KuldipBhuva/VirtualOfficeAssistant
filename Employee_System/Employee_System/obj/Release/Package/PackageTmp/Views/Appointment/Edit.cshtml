@@ -1,0 +1,150 @@
+﻿@{ 
+   ViewBag.Title = "Appointment";
+}
+
+
+@using EMSDomain.ViewModel
+
+@model AppointmentsItem
+
+
+@using (@Html.BeginForm("Edit", "Appointment", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+
+    <section class="content-header">
+        <h1>Appointment
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">Appointment Master</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.Label("Company ", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListCompany, "id", "CompName"), "--Select Company--", new { @class = "form-control select2", @id = "ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                    @Html.HiddenFor(m=>m.CompID)
+                </div>
+                @*    @Html.LabelFor(m => m.Branch_ID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Branch_ID, new SelectList(Model.ListBranch, "id", "BranchName"), "--Select Branch--", new { @class = "form-control", @id = "Branch_ID" })
+                @Html.HiddenFor(m => m.Branch_ID, new { @id="hdnBr"})
+                </div>*@
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Subject, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Subject)
+                </div>
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Status, new List<SelectListItem>
+                    {
+                        new SelectListItem{Text="--Select Status--",Value="0"},
+                    new SelectListItem{Text="Completed",Value="Completed"},
+                    new SelectListItem{Text="Pending",Value="Pending"},
+                    }, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.StDt, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    <div class='input-group date' id='datetimepicker1'>
+                        @Html.TextBoxFor(m => m.StDt,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker", @placeholder = "Date" })
+                        @Html.ValidationMessageFor(m => m.StDt)
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+
+                        @Html.TextBoxFor(m => m.StTime, new { @class = "form-control timepicker", @placeholder = "HH:MM" })
+                        @Html.ValidationMessageFor(m => m.StTime)
+
+                    </div>
+                </div>
+                @Html.LabelFor(m => m.EndDt, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    <div class='input-group date' id='datetimepicker'>
+                        @Html.TextBoxFor(m => m.EndDt, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker", @placeholder = "Date" })
+                        @Html.ValidationMessageFor(m => m.EndDt)
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control timepicker", @placeholder = "HH:MM" })
+                        @Html.ValidationMessageFor(m => m.EndTime)
+                    </div>
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Priority, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Priority, new List<SelectListItem>
+                    {
+                        new SelectListItem{Text="--Select Priority--",Value="0"},
+                    new SelectListItem{Text="High",Value="High"},
+                    new SelectListItem{Text="Medium",Value="Medium"},
+                    new SelectListItem{Text="Low",Value="Low"},
+                    }, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Reminder, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Reminder, new List<SelectListItem>
+                    {
+                        new SelectListItem{Text="--Select Reminder--",Value="0"},
+                    new SelectListItem{Text="Yes",Value="Yes"},
+                    new SelectListItem{Text="No",Value="No"},
+                   
+                    }, new { @class = "form-control" })
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @*@Html.LabelFor(m => m.ReDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    <div class='input-group date' id='datetimepicker2'>
+                        @Html.TextBoxFor(m => m.ReDate, new { @class = "form-control datepicker", @placeholder = "Date" })
+                        @Html.ValidationMessageFor(m => m.ReDate)
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        @Html.TextBoxFor(m => m.ReTime, new { @class = "form-control", @placeholder = "Time" })
+                        @Html.ValidationMessageFor(m => m.ReTime)
+                    </div>
+
+                </div>*@
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Remarks)
+                </div>
+                <div class="col-sm-12" style="height: 5px;">
+                </div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div> 
+}
+<script>
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker({ dateFormat: "mm/dd/yy", changeYear: "true" }); //Initialise any date pickers
+    });
+
+</script>
+@*<link rel="stylesheet" href="~/MyScripts/CSS/jquery-ui-timepicker-addon.css" />
+
+<script src="~/MyScripts/JS/jquery.datetimepicker.js"></script>
+<script src="~/MyScripts/JS/jquery-ui-timepicker-addon.js"></script>
+<script>
+    $(function () { // will trigger when the document is ready
+        $('.timepicker').timepicker(); //Initialise any date pickers
+    });
+</script>*@

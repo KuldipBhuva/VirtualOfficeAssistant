@@ -1,0 +1,454 @@
+﻿@using EMSDomain.ViewModel.Vehicle
+
+@model  VehicleItem
+@{
+    ViewBag.Title = "Vehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+@using (@Html.BeginForm("Edit", "VehicleMaster", FormMethod.Post, new { @id = "frmvehicle", enctype = "multipart/form-data" }))
+{    
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.VID)
+    @Html.HiddenFor(m => m.PCardItem.ID)
+    @Html.HiddenFor(m => m.CreatedBy)
+    @Html.HiddenFor(m => m.CreatedOn)
+    <section class="content-header">
+        <h1>Vehicle <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+    <div class="panel panel-info">
+        <div class="panel-heading">Vehicle Master Details</div>
+        <div class="panel-body">
+            <div class="form-group" style="min-height: 410px; height: inherit;">
+                @Html.LabelFor(m => m.CompID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListMasterTable, "Id", "Name"), "--Select--", new { @class = "form-control select2" })*@
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListCompany, "id", "CompName"), "--Select--", new { @class = "form-control Select2", @id = "ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                    @Html.HiddenFor(m => m.CompID)
+                </div>
+                @Html.LabelFor(m => m.VehicleName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.VehicleName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.VehicleName)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.VehicleNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.VehicleNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.VehicleNo)
+                </div>
+
+                @Html.LabelFor(m => m.ModelName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ModelName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ModelName)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmpID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpID, new SelectList(Model.ListEmp, "Id", "Empname"), "--Select Employee--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.EmpID)
+                </div>
+
+                @Html.LabelFor(m => m.Branch_ID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Branch_ID, new SelectList(Model.ListBranch, "id", "BranchName"), "--Select Branch--", new { @class = "form-control", @id = "Branch_ID" })
+                    @Html.HiddenFor(m => m.Branch_ID, new { @id="hdnBr"})
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Purchase_Value, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Purchase_Value, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Depriciation, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+
+                    @Html.TextBoxFor(m => m.Depriciation, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Market_Value, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Market_Value, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.Purchased_Date, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Purchased_Date, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Reg_Date, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Reg_Date, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.Reg_Date)
+                </div>
+
+                @Html.LabelFor(m => m.Reg_Exp_Date, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Reg_Exp_Date, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker", @id = "Reg_Exp_Date" })
+                    @Html.ValidationMessageFor(m => m.Reg_Exp_Date)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.CurrentValue, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.CurrentValue, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 conrol-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active", new { @class = "flat-red" }) Active
+                                        @Html.RadioButtonFor(m => m.Status, "InActive", new { @class = "flat-red" }) In-Active
+                    
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.UsedFor, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.UsedFor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UsedFor)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.SalikNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.SalikNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.SalikNo)
+                </div>
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Petrol Card Details</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @*@Html.LabelFor(m => m.PCardItem.VID, new { @class = "col-sm-2 control-label" })
+
+                        <div class="col-sm-4">
+                            @Html.DropDownListFor(m => m.PCardItem.VID, new SelectList(Model.ListVehicle, "vid", "VehicleName"), "--Select Vehicle--", new { @class="form-control"})
+                        </div>*@
+                        @Html.LabelFor(m => m.PCardItem.PetrolCardNameID, new { @class = "col-sm-2 control-label" })
+
+                        <div class="col-sm-4">
+                            @Html.DropDownListFor(m => m.PCardItem.PetrolCardNameID, new SelectList(Model.ListMasterTableCard, "id", "Name"), "--Select Petrol Card--", new { @class = "form-control" })
+                        </div>
+                        @Html.LabelFor(m => m.PCardItem.PetroCardNo, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.PCardItem.PetroCardNo, new { @class = "form-control" })
+
+                        </div>
+                        <div class="col-sm-12" style="height: 5px;"></div>
+
+                        @Html.LabelFor(m => m.PCardItem.IssueDate, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.PCardItem.IssueDate, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker", @id = "issuedate" })
+
+                        </div>
+                        @Html.LabelFor(m => m.PCardItem.PaymentModeID, new { @class = "col-sm-2 control-label" })
+
+                        <div class="col-sm-4">
+                            @Html.DropDownListFor(m => m.PCardItem.PaymentModeID, new SelectList(Model.ListMasterTablePayment, "id", "Name"), "--Select Payment Mode--", new { @class = "form-control" })
+                        </div>
+                        <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                        @Html.LabelFor(m => m.PCardItem.ExpireDate, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.PCardItem.ExpireDate, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker", @id = "PexpDate" })
+
+                        </div>
+                        @Html.LabelFor(m => m.PCardItem.Remarks, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.PCardItem.Remarks, new { @class = "form-control" })
+
+                        </div>
+                        <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                        @Html.LabelFor(m => m.PCardItem.Status, new { @class = "col-sm-2 conrol-label" })
+                        <div class="col-sm-4">
+                            @Html.RadioButtonFor(m => m.PCardItem.Status, "Active", new { @class = "flat-red" }) Active
+                                        @Html.RadioButtonFor(m => m.PCardItem.Status, "InActive", new { @class = "flat-red" }) In-Active
+                    @Html.ValidationMessageFor(m => m.PCardItem.Status)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Vehical Other Details</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @*@Html.LabelFor(m => m.PCardItem.VID, new { @class = "col-sm-2 control-label" })
+
+                        <div class="col-sm-4">
+                            @Html.DropDownListFor(m => m.PCardItem.VID, new SelectList(Model.ListVehicle, "vid", "VehicleName"), "--Select Vehicle--", new { @class="form-control"})
+                        </div>*@
+                        @Html.LabelFor(m => m.WeightBearCapacity, new { @class = "col-sm-2 control-label" })
+
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.WeightBearCapacity, new { @class = "form-control" })
+
+                        </div>
+                        @Html.LabelFor(m => m.Length, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.Length, new { @class = "form-control" })
+
+                        </div>
+                        <div class="col-sm-12" style="height: 5px;"></div>
+
+                        @Html.LabelFor(m => m.LengthToUse, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.LengthToUse, new { @class = "form-control " })
+
+                        </div>
+                        @Html.LabelFor(m => m.Width, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.Width, new { @class = "form-control" })
+
+                        </div>
+                        <div class="col-sm-12" style="height: 5px;"></div>
+
+
+
+                        @Html.LabelFor(m => m.WidthToUse, new { @class = "col-sm-2 control-label" })
+
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.WidthToUse, new { @class = "form-control" })
+                        </div>
+                        @Html.LabelFor(m => m.Height, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.Height, new { @class = "form-control" })
+
+                        </div>
+                        <div class="col-sm-12" style="height: 5px;"></div>
+                        @Html.LabelFor(m => m.HeightToUse, new { @class = "col-sm-2 control-label" })
+
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.HeightToUse, new { @class = "form-control" })
+                        </div>
+                        @Html.LabelFor(m => m.PermitType, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.DropDownListFor(m => m.Status, new List<SelectListItem>
+                            {
+                                new SelectListItem{Text="--Select Permit Type--",Value="0"},
+                            new SelectListItem{Text="Container",Value="1"},
+                            new SelectListItem{Text="Tanker",Value="2"},
+                               new SelectListItem{Text="Car carrier",Value="3"},
+                                  new SelectListItem{Text="Toing van",Value="4"},
+                            }, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.PermitNo, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.PermitNo, new { @class = "form-control" })
+                    </div>
+                    @Html.LabelFor(m => m.PermitExpiryDate, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.PermitExpiryDate, new { @class = "form-control datepicker", @id = "permitexp" })
+
+                    </div>
+
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.TVStatus, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                      @Html.DropDownListFor(m => m.Status, new List<SelectListItem>
+                            {
+                                new SelectListItem{Text="--Select Vehical Type--",Value="0"},
+                            new SelectListItem{Text="Self Owned",Value="1"},
+                            new SelectListItem{Text="Lease",Value="2"}
+                           
+                            }, new { @class = "form-control" })
+                    </div>
+                    @Html.LabelFor(m => m.VehicleOwnerName, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.VehicleOwnerName, new { @class = "form-control" })
+
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.OwnerAddress, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.OwnerAddress, new { @class = "form-control" })
+                    </div>
+                    @Html.LabelFor(m => m.FromDate, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control datepicker", @id = "permitfrm" })
+
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.ToDate, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control datepicker", @id = "permitto" })
+                    </div>
+
+
+
+                    @*@Html.LabelFor(m => m.PCardItem.Status, new { @class = "col-sm-2 conrol-label" })
+                        <div class="col-sm-4">
+                            @Html.RadioButtonFor(m => m.PCardItem.Status, "Active", new { @class = "flat-red" }) Active
+                                        @Html.RadioButtonFor(m => m.PCardItem.Status, "InActive", new { @class = "flat-red" }) In-Active
+                    @Html.ValidationMessageFor(m => m.PCardItem.Status)
+                        </div>*@
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Documents Details</div>
+                <div class="panel-body">
+                    <div class="col-xs-6">
+                        @*<input type="file" name="files" value="" multiple="multiple" class="btn btn-primary" />*@
+                        <input type="file" id="files" multiple="multiple" name="files" class="btn btn-info" />
+                        @*<input type='file' multiple id='fileUpload' name="files[]" data-url="@Url.Action("Upload","VehicleMaster")" />*@
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    <div class="col-xs-6">
+                        Max 5 Files Allowed.
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                <input type="Submit" value="Update" class="btn btn-primary" />
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">Vehicle Documents <span class="label label-primary">@Model.ListVehicleDocument.Count</span></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>File Name</th>
+                        <th>Remove</th>
+
+                    </tr>
+
+                    @foreach (var item in Model.ListVehicleDocument)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Content(@item.FileUrl)" target="_blank">@item.FileName</a>
+                            </td>
+                            <td>@Html.ActionLink(" ", "Delete", new { @id = @item.VId, @DID = @item.VDocId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the document " + @item.FileName + "?')", @class = "fa fa-trash fa-lg" })</td>
+
+
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+@*<div class="panel panel-info">
+        <div class="panel-heading">Vehicle Data</div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Vehicle</th>
+                            <th>VehicleNo</th>
+                            <th>ModelName</th>
+                            <th>Company</th>
+                            <th>RegDate</th>
+                            <th>RegExpDate</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListVehicle)
+                        {
+                            <tr>
+                                <td>@item.VehicleName</td>
+                                <td>@item.VehicleNo</td>
+                                <td>@item.ModelName</td>
+                                <td>@item.CompDetails.CompName</td>
+                                <td>@item.Reg_Date</td>
+                                <td>@item.Reg_Exp_Date</td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = @item.VID })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>*@
+}
+@*<script>
+    $(document).ready(function () {
+        $("#Reg_Exp_Date,#PexpDate,#issuedate,#Purchased_Date,#Reg_Date").datepicker({changeYear:"true",dateFormat:"mm/dd/yy"});
+    });
+</script>*@
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+
+        $("#ddlComp").change(function () {
+
+            debugger;
+            var CompIds = $('#ddlComp').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillBranch", "VehicleMaster")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Branch_master) {
+
+                    $("#Branch_ID").html("");  // clear before appending new list 
+                    $("#Branch_ID").append("<option value='0'>--Select Branch--</option>");
+                    $.each(Branch_master, function (i, Branch_ID) {
+
+                        $("#Branch_ID").append(
+
+                            $('<option></option>').val(Branch_ID.id).html(Branch_ID.BranchName));
+
+                    });
+                }
+            });
+        });
+
+        $("#ddlComp").change(function () {
+
+            debugger;
+            var CompIds = $('#ddlComp').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillEmp", "VehicleMaster")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Employee_master) {
+
+                    $("#EmpID").html("");  // clear before appending new list 
+                    $("#EmpID").append("<option value='0'>--Select Employee--</option>");
+                    $.each(Employee_master, function (i, EmpID) {
+
+                        $("#EmpID").append(
+
+                            $('<option></option>').val(EmpID.id).html(EmpID.Empname));
+
+                    });
+                }
+            });
+        });
+
+    });
+</script>

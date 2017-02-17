@@ -1,0 +1,133 @@
+﻿@{ 
+   ViewBag.Title = "Documents";
+}
+
+@using EMSDomain.ViewModel
+
+@model DocumentItem
+
+@{
+    ViewBag.Title = "Documents Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<style type="text/css">.thumb-image{float:left;width:100px;height:110px;border: 1px solid #5bc0de;position:relative;padding:5px;}</style>
+@using (Html.BeginForm("Index", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m=>m.EmpId)
+    <section class="content-header">
+        <h1>Documents <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <input id="hdDocText" type="hidden" name="hdDocText" />
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Documents Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="col-xs-6">
+                    @Html.DropDownListFor(m => m.DocCategoryId, new SelectList(Model.ListDocumentMaster, "Id", "Name"), "--Select Document Type--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.DocCategoryId)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-12">
+                    <input type="file" id="file" name="files" value="" multiple="multiple" class="btn btn-primary" />
+                </div>
+                 <div id="image-holder" class="img-rounded"></div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-6">
+                   <input type="submit" value="Upload" class="btn btn-info" title="Upload" /> Maximum 15 MB File(s) Allowed.
+                </div>
+                <div style="color: Red; font-size: 14px">
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+     <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">
+            Documents <span class="label label-primary">@Model.ListDoc.Count</span>
+            <div style="padding-right: 83px;display: inline;float: right;"><i class="fa fa-download"></i>&nbsp;@Html.ActionLink("Download All","Download", new { @id = Model.EmpId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }) <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>FileName</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListDoc)
+                        {
+                            <tr>
+                                <td>
+                                    @{ string FileUrl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.FileUrl);
+                                    }
+                                    <a href="@Url.Content(@item.FileUrl)" target="_blank">@item.FileName</a>
+                                </td>
+
+                                <td>                                                                                                                                                                           
+                                    @Html.ActionLink(" ", "Delete", new { @id = @item.EmpId, @DID = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the document " + @item.FileName + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $(function () {
+        $("#DocCategoryId").change(function () {
+            $("#hdDocText").val($("#DocCategoryId option:selected").text());
+        });
+    });
+</script>
+<script>
+    $("#file").on('change', function () {
+
+        //Get count of selected files
+        var countFiles = $(this)[0].files.length;
+
+        var imgPath = $(this)[0].value;
+        var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+        var image_holder = $("#image-holder");
+        image_holder.empty();
+
+        if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg" || extn == "pdf" || extn == "xlsx" || extn == "zip" || extn == "doc" || extn == "xls" || extn == "txt") {
+            if (typeof (FileReader) != "undefined") {
+
+                //loop for each file selected for uploaded.
+                for (var i = 0; i < countFiles; i++) {
+
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("<img />", {
+                            "src": e.target.result,
+                            "class": "img-rounded thumb-image",
+                            "alt":"Document"
+                        }).appendTo(image_holder);
+                    }
+
+                    image_holder.show();
+                    reader.readAsDataURL($(this)[0].files[i]);
+                }
+
+            } else {
+                alert("This browser does not support FileReader.");
+            }
+        } else {
+            alert("Please select valid document type");
+        }
+    });
+        </script>

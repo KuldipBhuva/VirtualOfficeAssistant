@@ -1,0 +1,208 @@
+﻿@{ 
+   ViewBag.Title = "Experience";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model  EmpExperienceItem
+@{
+    int Empid = ViewBag.Empid;
+}
+@using (@Html.BeginForm("Create", "Experience", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Experience <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    @Html.HiddenFor(m => m.ExpId)
+        @Html.HiddenFor(m => m.modeEdit, new { @value="Edit"})
+    @Html.HiddenFor(m => m.modeView, new { @value="View"})
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Experience Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.CompName, new { @class = "col-sm-2 control-label" })
+
+                @*  @Html.EditorFor(model => model.CompName, new { htmlAttributes = new { @class = "form-control" } })  *@
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.CompName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CompName)
+
+                </div>
+
+                @Html.LabelFor(m => m.Designation, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Designation, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Designation)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Department, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Department, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Department)
+
+                </div>
+
+                @Html.LabelFor(m => m.ContactPerson, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ContactPerson)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Address, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Address)
+                </div>
+
+
+                @Html.LabelFor(m => m.City, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.State, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.Country, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Country, new SelectList(Model.ListCountry, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Phone, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.Roles, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Roles, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Roles)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.FromDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.FromDate)
+                </div>
+
+                @Html.LabelFor(m => m.ToDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.ToDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Salary, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Salary, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Salary)
+
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Experience Details List <span class="label label-primary">@Model.ListExperience.Count</span><input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Company Name</th>
+                            <th>Role</th>
+                            <th>From-Date</th>
+                            <th>To-Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListExperience)
+                        {
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.CompName</td>
+                                <td>@item.Roles</td>
+                                @if(@item.FromDate!=null)
+                                {
+                                <td>@item.FromDate.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {
+                                 <td></td>   
+                                }
+                                @if(@item.ToDate!=null)
+                                {
+                                <td>@item.ToDate.Value.ToString("dd/MM/yyyy")</td>}
+                                else{<td></td>}
+
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = Empid, @ExpId = @item.ExpId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new {@id = Empid, @ExpId = @item.ExpId, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye",@id="link"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.EmpId, @ExpId = @item.ExpId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the experience details of " + @item.EmpDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Documents <span class="label label-primary">@Model.ListExperienceDoc.Count</span>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>FileName</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListExperienceDoc)
+                        {
+                            <tr>
+                                <td>
+                                    @{ string FileUrl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.DocDetails.FileUrl);
+                                    }
+                                    <a href="@Url.Content(@item.DocDetails.FileUrl)" target="_blank">@item.DocDetails.FileName</a>
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink(" ", "DeleteDoc", new { @id = @item.DocDetails.EmpId, @DID = @item.DocDetails.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the document " + @item.DocDetails.FileName + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+

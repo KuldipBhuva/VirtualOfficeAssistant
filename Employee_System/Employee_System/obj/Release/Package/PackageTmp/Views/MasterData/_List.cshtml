@@ -1,0 +1,44 @@
+﻿@using EMSDomain.ViewModel
+@model List<clsMasterData>
+    
+<div class="panel panel-info">
+        <div class="panel-heading">Master Data Details </div>
+        <div class="panel-body" >
+            <div class="table-responsive" >
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {            
+                        <tr>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>@item.Status</td>
+                            <td>@Html.ActionLink(" ", "Edit", new { @id = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                @*@Html.ActionLink("Edit", "Edit", new { @id = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"])  })*@
+                            </td>
+                        </tr>
+                    }
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<script src="~/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="~/assets/js/dataTables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" href="~/assets/js/dataTables/dataTables.bootstrap.css" />
+<!--end-->
+<script>
+    $(document).ready(function () {
+        var table = $('#tbl').DataTable();
+    });
+</script>

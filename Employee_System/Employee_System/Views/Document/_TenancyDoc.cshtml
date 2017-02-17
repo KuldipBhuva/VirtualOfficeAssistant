@@ -1,0 +1,42 @@
+﻿@using EMSDomain.ViewModel
+@model List<DocumentItem>
+
+
+
+            
+            @if (Model != null)
+            {                         
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Document <span class="label label-primary">@Model.Count</span></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                @if(@item.CompDetails!=null)
+                                {
+                                <td>@item.CompDetails.CompName</td>
+                                }
+                                else{<td></td>}
+                                @if (@item.FileName != null || @item.FileUrl!=null)
+                                {
+                                    <td>@{ string FileUrl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.FileUrl);
+                                    }
+                                        <a href="@Url.Content(@item.FileUrl)" target="_blank">@item.FileName</a></td>   
+                                }
+                                else
+                                {<td></td>}
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+                
+            }
+

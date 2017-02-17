@@ -1,0 +1,147 @@
+﻿  @{ 
+   ViewBag.Title = "Other Expenses";
+}
+  
+@using EMSDomain.ViewModel.Expenses
+
+@model OtherExpItem
+
+@using (@Html.BeginForm("Edit", "OtherExpense", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m=>m.OEID)
+    @Html.HiddenFor(m=>m.CreatedBy)
+    @Html.HiddenFor(m=>m.CreatedDate)
+    <script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker({ dateFormat: "mm/dd/yy", changeYear: true }); //Initialise any date pickers
+        });
+    </script>
+    <section class="content-header">
+        <h1>Other Expense <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+    <div class="panel panel-info">
+        <div class="panel-heading">Other Expense Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.CompID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListComp, "id", "CompName"), "--Select Company--", new { @class = "form-control Select2",@id="ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                    @Html.HiddenFor(m=>m.CompID)
+                </div>
+
+                @Html.LabelFor(m => m.BranchID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.BranchID, new SelectList(Model.ListBranch, "id", "BranchName"), "--Select Branch--", new { @class = "form-control Select2",@id="Branch_ID" })
+                    @Html.ValidationMessageFor(m => m.BranchID)
+                    @Html.HiddenFor(m => m.BranchID, new { @id="hdnBr"})
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Date, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Date,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })                                        
+                    @Html.ValidationMessageFor(m => m.Date)
+
+                </div>
+
+                @Html.LabelFor(m => m.EmpID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpID, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.EmpID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.ExpID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">                                    
+                    @Html.DropDownListFor(m => m.ExpID, new SelectList(Model.ListMaster, "Id", "Name"), "--Select Expense--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.ExpID)
+
+                </div>
+
+                @Html.LabelFor(m => m.Amount, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Amount)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                    
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+            </div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+
+        $("#ddlComp").change(function () {
+
+            debugger;
+            var CompIds = $('#ddlComp').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillBranch", "OtherExpense")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Branch_master) {
+
+                    $("#Branch_ID").html("");  // clear before appending new list 
+                    $("#Branch_ID").append("<option value='0'>--Select Branch--</option>");
+                    $.each(Branch_master, function (i, BranchID) {
+
+                        $("#Branch_ID").append(
+
+                            $('<option></option>').val(BranchID.id).html(BranchID.BranchName));
+
+                    });
+                }
+            });
+        });
+
+        $("#ddlComp").change(function () {
+
+            debugger;
+            var CompIds = $('#ddlComp').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillEmp", "OtherExpense")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Employee_master) {
+
+                    $("#EmpID").html("");  // clear before appending new list 
+                    $("#EmpID").append("<option value='0'>--Select Employee--</option>");
+                    $.each(Employee_master, function (i, EmpID) {
+
+                        $("#EmpID").append(
+
+                            $('<option></option>').val(EmpID.id).html(EmpID.Empname));
+
+                    });
+                }
+            });
+        });
+
+    });
+</script>

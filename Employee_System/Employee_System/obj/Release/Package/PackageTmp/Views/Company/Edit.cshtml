@@ -1,0 +1,188 @@
+﻿@{ 
+   ViewBag.Title = "Company";
+}
+
+@using EMSDomain.ViewModel.Company
+
+@model CompanyItem
+<style type="text/css">.thumb-image{float:left;width:100px;height:110px;border: 1px solid #5bc0de;position:relative;padding:5px;}</style>
+@using (@Html.BeginForm("Edit", "Company", FormMethod.Post, new { @id = "frmCreateEmployee", enctype = "multipart/form-data" }))
+{
+      @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.id)
+    @Html.HiddenFor(m=>m.Logo)
+    @Html.HiddenFor(m=>m.Sign)
+    <section class="content-header">
+        <h1>Company <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+        <div class="panel panel-info">
+            <div class="panel-heading">Company Details</div>
+            <div class="panel-body">
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.Compcode, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Compcode, new { @class = "form-control" })
+                    </div>
+
+                    @Html.LabelFor(m => m.CompName, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.CompName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CompName)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.Phone, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    </div>
+
+                    @Html.LabelFor(m => m.ContactPerson, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.Email, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+
+                    @Html.LabelFor(m => m.Address, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Address)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.City, new { @class = "col-sm-2 control-label" })
+
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.City)
+                    </div>
+
+                    @Html.LabelFor(m => m.State, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.State)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.Country, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.Country, new SelectList(Model.ConList, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Country)
+                    </div>
+                      <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.Logo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*<img src="#" id="imgThumbnail" alt="preview" class="img-rounded" width="100" height="100" />*@
+                    
+                    <input type="file" name="file" onchange="ChangeImage()" id="file" class="form-control btn btn-info" />
+                </div>
+                    
+                    @Html.LabelFor(m => m.Sign, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*<img src="#" id="imgThumbnail" alt="preview" class="img-rounded" width="100" height="100" />*@
+                    
+                    <input type="file" name="SignFile" onchange="ChangeImage()" id="SignFile" class="form-control btn btn-info" />
+                </div>
+                     <div class="col-sm-12" style="height: 5px;"></div>
+                    <div class="col-sm-2"><img id="img" src="@Url.Content("~/PhotoUpload/Logo/" + Model.Logo)" alt="preview" class="img-rounded thumb-image" width="100" height="100" /></div>
+                    <div id="image-holder" class="col-sm-4 img-rounded"></div>
+                    <div class="col-sm-2"><img id="img1" src="@Url.Content("~/PhotoUpload/Sign/" + Model.Sign)" alt="preview" class="img-rounded thumb-image" width="100" height="100" /></div>
+                    <div id="image-holder1" class="col-sm-4 img-rounded"></div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Update" class="btn btn-primary" />
+                </div>
+                </div>
+            </div>
+        </div>
+}
+
+<script>
+    $("#SignFile").on('change', function () {
+
+        //Get count of selected files
+        var countFiles = $(this)[0].files.length;
+
+        var imgPath = $(this)[0].value;
+        var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+        var image_holder = $("#image-holder1");
+        image_holder.empty();
+
+        if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg" || extn == "gif") {
+            if (typeof (FileReader) != "undefined") {
+
+                //loop for each file selected for uploaded.
+                for (var i = 0; i < countFiles; i++) {
+
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("<img />", {
+                            "src": e.target.result,
+                            "class": "img-rounded thumb-image"
+                        }).appendTo(image_holder);
+                    }
+
+                    image_holder.show();
+                    reader.readAsDataURL($(this)[0].files[i]);
+                }
+
+            } else {
+                alert("This browser does not support FileReader.");
+            }
+        } else {
+            alert("Pls select only images");
+        }
+    });
+
+
+
+
+    $("#file").on('change', function () {
+
+        //Get count of selected files
+        var countFiles = $(this)[0].files.length;
+
+        var imgPath = $(this)[0].value;
+        var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+        var image_holder = $("#image-holder");
+        image_holder.empty();
+
+        if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg" || extn == "gif") {
+            if (typeof (FileReader) != "undefined") {
+
+                //loop for each file selected for uploaded.
+                for (var i = 0; i < countFiles; i++) {
+
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("<img />", {
+                            "src": e.target.result,
+                            "class": "img-rounded thumb-image"
+                        }).appendTo(image_holder);
+                    }
+
+                    image_holder.show();
+                    reader.readAsDataURL($(this)[0].files[i]);
+                }
+
+            } else {
+                alert("This browser does not support FileReader.");
+            }
+        } else {
+            alert("Pls select only images");
+        }
+    });
+        </script>

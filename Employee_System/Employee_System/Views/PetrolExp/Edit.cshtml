@@ -1,0 +1,99 @@
+﻿  @{ 
+   ViewBag.Title = "Petrol Expenses";
+}
+  
+@using EMSDomain.ViewModel.Vehicle
+
+@model PetrolExpItem
+
+@using (@Html.BeginForm("Edit", "PetrolExp", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+  <script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker({ dateFormat: "mm/dd/yy", changeYear: "true" }); //Initialise any date pickers
+        });
+    </script> 
+    <section class="content-header">
+        <h1>Petrol Expense<small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    
+    <div class="panel panel-info">
+        <div class="panel-heading">Petrol Expense Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.VID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.VID, new SelectList(Model.ListVehicle, "VID", "VehicleName"), "--Select Vehicle--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmpID)
+                </div>
+                @Html.LabelFor(m => m.EmpID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpID, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmpID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>                
+
+                @Html.LabelFor(m => m.KM_From, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.KM_From, new { @class = "form-control", @id = "from" })
+                    @Html.ValidationMessageFor(m => m.KM_From)
+                </div>
+                @Html.LabelFor(m => m.KM_To, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.KM_To, new { @class = "form-control",@id="to" })
+                    @Html.ValidationMessageFor(m => m.KM_To)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Qty, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Qty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Qty)
+                </div>
+                @Html.LabelFor(m => m.Amount, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Amount)
+                </div>
+                
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Bill_Date, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Bill_Date,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.Bill_Date)                    
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    jQuery("#to").blur(function () {
+        var txtfrom = $('#from').val();
+        var txtto = $('#to').val();
+        debugger;
+        if (txtfrom === "" || txtto === "") return false;
+
+        if (parseInt(txtfrom) >= parseInt(txtto)) {
+            alert("Enter KM To Greater Then From KM!!");
+            $('#to').focus();
+        }
+    });
+</script>

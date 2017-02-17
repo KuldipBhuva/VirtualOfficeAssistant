@@ -1,0 +1,131 @@
+﻿  @{ 
+   ViewBag.Title = "Relatives";
+}
+  
+@using EMSDomain.ViewModel.Employee
+
+@model EmpRelativeItem
+
+@{
+    int Empid = ViewBag.Empid;
+}
+
+@using (@Html.BeginForm("Create", "Relative", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Relative <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+    
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Relative Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.RName, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RName)
+
+                </div>
+
+                @Html.LabelFor(m => m.RAddress, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RAddress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RAddress)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.RCity, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RCity, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RCity)
+                </div>
+
+                @Html.LabelFor(m => m.RMobile, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RMobile, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RMobile)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.RPhone, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RPhone, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.REmail, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.REmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.REmail)
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Relation, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Relation, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Relation)
+
+                </div>
+
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+
+
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>   
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Relative Details List <span class="label label-primary">@Model.ListRelative.Count</span> <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Employee Name </th>
+                            <th>Relative </th>
+                            <th>Mobile</th>
+                            <th>Relation</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListRelative)
+                        {
+                            <tr>
+                                <td>@item.EmployeeDetails.Empname</td>
+                                <td>@item.RName</td>
+                                <td>@item.RMobile</td>
+                                <td>@item.Relation</td>
+                                <td>@Html.ActionLink(" ", "Edit", new {@id = Empid, @RId = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })                                    
+                                    &nbsp;@Html.ActionLink(" ", "View", new {@id = Empid, @RId = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.EmpId, @cid = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the relative details of " + @item.EmployeeDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    
+}

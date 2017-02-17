@@ -1,0 +1,26 @@
+﻿
+@model System.Web.Mvc.HandleErrorInfo
+<h1 class="text-danger">@ViewBag.ErrorMsg</h1>
+  
+ 
+@*@Html.ActionLink("Back", ViewBag.Action, ViewBag.Controller)*@
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body>
+    <h2>
+        Sorry, an error occurred while processing your request.
+        <br />
+        <a href="~/Login/Index">Please Login again!!</a>
+    </h2>
+</body>
+</html>

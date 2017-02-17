@@ -1,0 +1,211 @@
+﻿ @using EMSDomain.ViewModel.TradeLicense
+
+@model TradeLicenseItem
+@{
+    ViewBag.Title = "Company License";
+}
+
+@using (@Html.BeginForm("Create", "TradeLicense", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Company License <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>  
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Company License Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                
+                @Html.LabelFor(m => m.LicenseTypeID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.LicenseTypeID, new SelectList(Model.ListLicType, "Id", "Name"), "--Select Type--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.LicenseTypeID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Code, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Code)
+
+                </div>
+
+                @Html.LabelFor(m => m.Lno, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Lno, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Lno)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.CompID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.lstCompany, "id", "CompName"), "--Select Company--", new { @class = "form-control Select2",@id="ddlComp" })
+                    @*@Html.DropDownListFor(m => m.VID, new SelectList(Model.list, "VID", "VehicleName"), "--Select Company--", new { @class = "form-control Select2" })*@
+                    @Html.ValidationMessageFor(m => m.CompID)
+
+                </div>
+
+                @Html.LabelFor(m => m.EmiratesID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmiratesID, new SelectList(Model.lstEmirates, "Id", "Name"), "--Select Emirates--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.EmiratesID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.SponsorID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.SponsorID, new SelectList(Model.ListSponsor, "SID", "Name"), "--Select Sponsor--", new { @class = "form-control Select2" })
+                    @*@Html.DropDownListFor(m => m.VID, new SelectList(Model.list, "VID", "VehicleName"), "--Select Company--", new { @class = "form-control Select2" })*@
+                    @Html.ValidationMessageFor(m => m.SponsorID)
+
+                </div>
+
+                @Html.LabelFor(m => m.PartnerID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.PartnerID, new SelectList(Model.lstParter, "Id", "Name"), "--Select Partner--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.PartnerID)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.PartnerID2, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.PartnerID2, new SelectList(Model.lstParter, "Id", "Name"), "--Select Partner--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.PartnerID2)
+                </div>
+
+                @Html.LabelFor(m => m.PartnerID3, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.PartnerID3, new SelectList(Model.lstParter, "Id", "Name"), "--Select Partner--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.PartnerID3)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.PartnerID4, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.PartnerID4, new SelectList(Model.lstParter, "Id", "Name"), "--Select Partner--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.PartnerID4)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.IssueDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IssueDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.IssueDate)
+                </div>
+
+
+                @Html.LabelFor(m => m.ExpiryDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ExpiryDate, new { @class = "form-control datepicker" })
+                    @*@Html.DropDownListFor(m => m.VID, new SelectList(Model.list, "VID", "VehicleName"), "--Select Company--", new { @class = "form-control Select2" })*@
+                    @Html.ValidationMessageFor(m => m.ExpiryDate)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Fees, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Fees, new { @class = "form-control" })
+                    @*@Html.DropDownListFor(m => m.VID, new SelectList(Model.list, "VID", "VehicleName"), "--Select Company--", new { @class = "form-control Select2" })*@
+                    @Html.ValidationMessageFor(m => m.Fees)
+
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Remarks)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("Documents", new { @class = "col-sm-2 control-label" })
+                <div class="col-xs-4">
+                    <input type="file" id="files" multiple="multiple" name="files" class="btn btn-info"/>
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+            </div>
+
+
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Comapny License Data <span class="label label-primary">@Model.LstTradeLicense.Count</span> <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Code</th>
+                            <th>Company</th>
+                            <th>Fees</th>
+                            <th>Issue Date</th>
+                            <th>Expiry Date</th>
+                            <th>Remarks</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.LstTradeLicense)
+                    {
+                        
+                            <tr>
+                                <td>@item.LicTypeDetails.Name</td>
+                                <td>@item.Code</td>
+                                <td>@item.CompnyDetails.CompName</td>
+                                <td>@item.Fees</td>
+                                @if(@item.IssueDate!=null)
+                                {
+                                <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>}
+                                else{<td></td>}
+                                @if(@item.ExpiryDate!=null)
+                                {
+                                <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>}
+                                else{<td></td>}
+                                <td>@item.Remarks</td>
+                                <td>@Html.ActionLink(" ", "Edit", new { id = @item.TID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })                                    
+                                    &nbsp;@Html.ActionLink(" ", "View", new {id = @item.TID, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye",@id="link"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new {  id = @item.TID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the trade license details of " + @item.CompnyDetails.CompName + "?')", @class = "fa fa-trash fa-lg" })
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = @item.TID, @menuid = Convert.ToInt32(Request.QueryString["menuid"])  })*@
+                                </td>
+                                <td></td>
+                            </tr>                        
+                    }
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        debugger;
+        $("#dvGrid").show();
+        $("#dvAdd").hide();
+        $("#btnAdd").click(function () {
+            debugger;
+            $("#dvGrid").hide();
+            $("#dvAdd").show(1000);
+
+        });
+        $("#btnBack").click(function () {
+            $("#dvGrid").show();
+            $("#dvAdd").hide(1000);
+        });
+    });
+</script>

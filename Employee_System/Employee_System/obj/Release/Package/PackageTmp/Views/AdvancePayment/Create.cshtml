@@ -1,0 +1,125 @@
+﻿@{ 
+   ViewBag.Title = "Advance Payment";
+}
+
+@using EMSDomain.ViewModel.Payroll
+
+@model AdvancePaymentItem
+
+
+@using (Html.BeginForm("Create", "AdvancePayment", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.Id)
+    <section class="content-header">
+        <h1>Advance Payment <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>  
+    
+    <div class="panel panel-info">
+        <div- class="panel-heading">Advance Payment Details</div->
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.CompId, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+
+                    @Html.DropDownListFor(m => m.CompId, new SelectList(Model.ListComp, "id", "CompName"), "--Select Company--", new { @class = "form-control Select2",@id="ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompId)
+
+                </div>
+
+                @Html.LabelFor(m => m.EmpId, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpId, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.EmpId)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.AdvAmount, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.AdvAmount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.AdvAmount)
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>   
+    
+    <div class="panel panel-info">
+        <div class="panel-heading">Travel Expense Data <span class="label label-primary">@Model.ListAdvPayment.Count</span></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Employee</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListAdvPayment)
+                        {
+                        
+                            <tr>
+                                <td>@item.CompName</td>
+                                <td>@item.EmpName</td>
+                                <td>@item.AdvAmount</td>
+                                <td>@Html.ActionLink(" ", "Edit", new { @Id = @item.Id,@menuId = Convert.ToInt32(Request.QueryString["menuid"]) } , new { @class = "fa fa-pencil-square fa-lg" })
+                            </tr>
+                        
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script lang="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $("#ddlComp").change(function () {
+
+
+                var CompIds = $('#ddlComp').val();
+                $.ajax(
+                {
+                    url: '@Url.Action("FillEmp", "AdvancePayment")',
+                    type: "GET",
+                    datatype: "JSON",
+                    data: { Compid: CompIds },
+                    success: function (Employee_master) {
+
+                        $("#EmpId").html("");  // clear before appending new list 
+                        $("#EmpId").append("<option value='0'>--Select Employee--</option>");
+                        $.each(Employee_master, function (i, EmpId) {
+
+                            $("#EmpId").append(
+                                $('<option></option>').val(EmpId.id).html(EmpId.Empname));
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#tbl').DataTable();
+        });
+    </script>
+}

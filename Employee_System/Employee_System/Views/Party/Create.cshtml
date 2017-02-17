@@ -1,0 +1,211 @@
+﻿@using EMSDomain.ViewModel
+@*@using EMSMethods
+@using EMSDomain.Model*@
+
+@using EMSDomain.ViewModel.Menu
+@using EMSMethods
+@using EMSDomain.Model
+
+
+@model PartyModel
+
+@{
+    ViewBag.Title = "Add Party";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#RejoinDate').datepicker();
+        });
+    </script>
+}
+@using (@Html.BeginForm("Create", "Party", FormMethod.Post, new { @id = "frmCreateParty", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    
+    @Html.AntiForgeryToken()          // this is for prevent CSRF attack
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.PID)    
+    
+    <script src="~/Content/bootstrap-colorpicker.min.js"></script>
+    <section class="content-header">
+        <h1>Party <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+@*<div class="container">*@
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">
+            Party Master Details
+            <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" />
+        </div>
+        
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.CompID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.CompanyList, "id", "CompName"), "--Select Company--", new { @class = "form-control", @id = "ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                </div>
+                @Html.Label("Parent Party", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.PPID, new SelectList(Model.ListPartyDrp, "PID", "PartyName"), "--Select Branch--", new { @class = "form-control", @id = "ddlBranch" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.PartyName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PartyName, new { @class = "form-control" })
+                     @Html.ValidationMessageFor(m => m.PartyName)
+                </div>
+                @Html.LabelFor(m => m.ContactPerson, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ContactPerson)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Mobile, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Phone, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @onkeypress = "OnlyNumeric(this);", @type = "number" })
+                    @Html.ValidationMessageFor(m => m.Phone)
+
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Email, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.TextBoxFor(m => m.EmployeeItem.JobTitle, new { @class = "form-control" })*@
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                @Html.LabelFor(m => m.Address, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(m => m.Address, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Address)
+
+                </div>
+                @Html.LabelFor(m => m.BillingAddress, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(m => m.BillingAddress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.BillingAddress)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.BillingName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.BillingName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.BillingName)
+                </div>
+                @Html.LabelFor(m => m.BillingPhone, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.BillingPhone, new { @class = "form-control", @onkeypress = "OnlyNumeric(this);", @type = "number" })
+                    @Html.ValidationMessageFor(m => m.BillingPhone)
+
+                </div>
+
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                <input type="Submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+       
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">
+            Party Data <span class="label label-primary">@Model.ListParty.Count</span>
+            <table style="display: inline;">
+                <tr>
+                    <td>
+                        <div class="col-sm-12">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" />
+        </div>
+        <div id="dvData" class="table-responsive">
+            <table class="table" id="tbl">
+                <thead>
+                    <tr>
+                        <th>Party Name</th>
+                        <th>Contact Person</th>
+                        <th>Mobile</th>
+                        <th>Billing Address</th>
+                        <th>Billing Name</th>
+                        <th>Billing Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @*Convert.ToInt32(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)*@
+
+                    @foreach (var item in Model.ListParty)
+                    {
+                            
+                        <tr>
+                            <td>@item.PartyName</td>
+                            <td>@item.ContactPerson</td>
+                            <td>@item.Mobile</td>
+                            <td>@item.BillingAddress</td>
+                            <td>@item.BillingName</td>
+                            <td>@item.BillingPhone</td>
+
+                            <td>
+                                @*   @{TenancyService objTen = new TenancyService();}*@
+                                @*<a id="link" data-toggle="modal" data-target="#myModal" class="link">Open</a>*@
+                                @Html.ActionLink(" ", "Edit", new { id = @item.PID, @menuId = 3 }, new { @class = "fa fa-pencil-square fa-lg" })
+                                &nbsp;@Html.ActionLink(" ", "View", new { @id = @item.PID, @menuId = 3 }, new { @class = "fa fa-eye" })
+                                @*@Html.ActionLink("Edit", "Edit", new { id = @item.VID,menuId= objTen.Encrypt(Convert.ToString(@ViewBag.MenuId)) })*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            debugger;
+            $("#dvGrid").show();
+            $("#dvAdd").hide();
+            $("#btnAdd").click(function () {
+                debugger;
+                $("#dvGrid").hide();
+                $("#dvAdd").show(1000);
+
+            });
+            $("#btnBack").click(function () {
+                $("#dvGrid").show();
+                $("#dvAdd").hide(1000);
+            });
+        });
+    </script>
+}

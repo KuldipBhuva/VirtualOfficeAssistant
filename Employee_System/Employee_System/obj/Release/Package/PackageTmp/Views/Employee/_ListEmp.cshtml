@@ -1,0 +1,102 @@
+﻿@using EMSDomain.ViewModel.Employee
+@model List<EmpAllItem>
+<!--For Tables Paging,Searching,Sorting-->
+<script src="~/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="~/assets/js/dataTables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" href="~/assets/js/dataTables/dataTables.bootstrap.css" />
+<!--end-->
+<script>
+    $(document).ready(function () {
+        var session = '@Request.RequestContext.HttpContext.Session["RoleID"]';
+        if (session != 1 && session != 111) {
+            var table = $('#dataTables-example').DataTable({
+                "columnDefs": [
+                    {
+                        "targets": [6],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    //{
+                    //    "targets": [3],
+                    //    "visible": false
+                    //}
+                    { 'bSortable': false, 'aTargets': [5] }
+                ]
+            });
+        }
+        else {
+            var table = $('#dataTables-example').DataTable({
+                "columnDefs": [
+                    {
+                        "targets": [5],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    //{
+                    //    "targets": [3],
+                    //    "visible": false
+                    //}
+                    { 'bSortable': false, 'aTargets': [6] }
+                ]
+            });
+        }
+    });
+</script>
+<div class="table-responsive" id="Grid">
+    <table class="table" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Employee No.</th>
+                <th>Employee Name
+                     <th>Company
+                </th>
+                </th>
+                <th>Branch
+                </th>
+                <th>Mobile
+                </th>
+               
+
+                <th>Action</th>
+                <th>Action</th>
+                @*  <td>Relative Name
+                </td>
+                <td>Passport No</td>
+                <td>Company Name</td>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.EmployeeItem.Empno</td>
+                    @*<td hidden="hidden"><a id="id" data-id="@item.EmployeeItem.id">@item.EmployeeItem.id</a></td>   *@
+                    <td>
+                        @*<a data-toggle="modal" id="link" class="link" data-target="#myModal" style="color:black;">@item.EmployeeItem.Empname</a>*@
+                        @*<a id="link" class="link" data-toggle="modal" data-empid="@item.EmployeeItem.id" data-target="#myModal" style="color:black;">@item.EmployeeItem.Empname</a>*@
+                        @item.EmployeeItem.Empname
+                    </td>
+                    <td>
+                        @item.CompanyItem.CompName
+                    </td>
+                    <td>
+                        @item.BranchItem.BranchName
+                    </td>
+                    <td>
+                        @item.EmployeeItem.Mobile
+                    </td>
+                    
+
+                    <td>@Html.ActionLink(" ", "View", new { @id = @item.EmployeeItem.id, @menuId = 1 }, new { @class = "fa fa-eye" })</td>
+                    <td>
+                        @*<a id="link" class="link" data-toggle="modal" data-empid="@item.EmployeeItem.id" data-target="#myModal">View</a>*@
+                        @Html.ActionLink(" ", "Edit", new { @id = @item.EmployeeItem.id, @menuId = 1 }, new { @class = "fa fa-pencil-square fa-lg" })
+                        @*@Html.ActionLink("View", "getData", new { @id = @item.EmployeeItem.id }, new { @id="click"})*@
+                        &nbsp;@Html.ActionLink(" ", "View", new { @id = @item.EmployeeItem.id, @menuId = 1 }, new { @class = "fa fa-eye" })
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

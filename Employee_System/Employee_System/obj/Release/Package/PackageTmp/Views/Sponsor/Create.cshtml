@@ -1,0 +1,152 @@
+﻿@using EMSDomain.ViewModel
+@{
+    ViewBag.Title = "Sponsor";
+}
+
+
+@model SponsorItem
+
+@using (@Html.BeginForm("Create", "Sponsor", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.SID)
+    <section class="content-header">
+        <h1>Sponsor <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Sponsor Details<input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.Label("Company ", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListCompany, "id", "CompName"), "--Select Company--", new { @class = "form-control select2", @id = "ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                </div>
+                @Html.LabelFor(m => m.Branch_ID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Branch_ID, new SelectList(Model.ListBranch, "id", "BranchName"), "--Select Branch--", new { @class = "form-control", @id = "Branch_ID" })
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Name, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+
+                @Html.LabelFor(m => m.Contact, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Contact, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Contact)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Email, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.PassportNo, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PassportNo, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmiratesIDNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmiratesIDNo, new { @class = "form-control" })
+                </div>
+
+                @*  @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 conrol-label" })
+                        <div class="col-sm-4">
+                            @Html.RadioButtonFor(m => m.Status, 1, new { @class = "flat-red" }) Active
+                                        @Html.RadioButtonFor(m => m.Status, 0, new { @class = "flat-red" }) In-Active
+                    
+                        </div>*@
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Sponsor List <span class="label label-primary">@Model.ListSponsor.Count</span>
+            <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Passport No.</th>
+                            <th>EmiratesID No.</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListSponsor)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Contact</td>
+                                <td>@item.Email</td>
+                                <td>@item.PassportNo</td>
+                                <td>@item.EmiratesIDNo</td>
+
+
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = @item.SID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new { @id = @item.SID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-eye" })
+                                    @*@Html.ActionLink("Edit", "Edit", new {@id = @item.id , @menuId = Convert.ToInt32(Request.QueryString["menuid"])})*@</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
+    
+    
+}
+
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+
+        $("#ddlComp").change(function () {
+
+            debugger;
+            var CompIds = $('#ddlComp').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillBranch", "VehicleMaster")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Branch_master) {
+
+                    $("#Branch_ID").html("");  // clear before appending new list 
+                    $("#Branch_ID").append("<option value='0'>--Select Branch--</option>");
+                    $.each(Branch_master, function (i, Branch_ID) {
+
+                        $("#Branch_ID").append(
+
+                            $('<option></option>').val(Branch_ID.id).html(Branch_ID.BranchName));
+
+                    });
+                }
+            });
+        });
+
+
+    });
+</script>

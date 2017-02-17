@@ -1,0 +1,93 @@
+﻿  @{ 
+   ViewBag.Title = "Master Data";
+}
+  
+@using EMSDomain.ViewModel
+
+@model clsMasterData
+
+@using (@Html.BeginForm("Create", "MasterData", FormMethod.Post, new { @id = "frmCreatedata", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Master Data
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+
+        </ol>
+
+    </section>
+    @Html.HiddenFor(m => m.Id)
+     
+    <input id="hdnMasterId" name="hdnMasterId" type="hidden" />
+    <div class="panel panel-info">
+        <div class="panel-heading">Master Data </div>
+ @*       <div>@Html.ActionLink("Search Option", "Index")</div>*@
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.MasterId, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.MasterId, new SelectList(Model.maserlist, "MId", "MasterType", Model.MasterId), "Select Masters", new { @class = "form-control" })
+                </div>
+                <br />
+                <br />
+                @Html.Label("Name :", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-2" style="width: 177px;"></div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>     
+    <div id="Grid">
+        @*@{Html.RenderPartial("_List", Model.MasterDataList);}*@
+        @{ int compId = Model.MasterId.Value; }
+        @{Html.RenderAction("FillGrid", "MasterData", new { @compId = compId });}
+    </div>
+    
+}
+
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        $("#MasterId").change(function () {
+            debugger;
+            var CompIds = $('#MasterId').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillGrid", "MasterData")',
+                type: "POST",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (data) {
+                    debugger;
+                    //$("#Grid tr").html("");  // clear before appending new list 
+                    // $("#Grid").append("<tr><td>Name</td><td>");
+                    $("#Grid").html(data);
+                    //$.each(data, function (Name) {
+                    //    if (data.d.length > 0) {
+                    //        for (var iCount = 0; iCount < data.d.length; iCount++) {
+                    //            debugger;
+                    //            $("#tableUPStatus").append("<tr><td>" + data.d[iCount].Name + "</td><td>");
+                    //        }
+                    //    }
+                    //    else {
+                    //        $("#tableUPStatus").append("<tr><td colspan='5'>No records found</td></tr>");
+                    //    }
+                    //});
+                }
+
+            });
+        });
+    });
+</script>
+
+

@@ -1,0 +1,58 @@
+﻿@using EMSDomain.ViewModel.Employee
+
+@model EmpContactItem
+
+@using (@Html.BeginForm("Index", "Contact", FormMethod.Post, new { @id = "FormContact" }))
+{
+    @Html.HiddenFor(m => m.Id)
+    <div class="table table-bordered table-hover">
+        <table border="1" class="table table-bordered table-striped">
+
+            <tr>
+                <td>Employee Name
+                </td>
+                <td>Country
+                </td>
+                <td>City
+                </td>
+                <td>State
+                </td>
+                <td>Area
+                </td>
+                <td>Pincode
+                </td>
+            </tr>
+            @foreach (var item in Model.ListContactdetails)
+            {
+                <tr>
+                    <td>
+                        @item.EmployeeDetails.Empname
+                    </td>
+                    <td>
+                        @item.Country
+                    </td>
+
+                    <td>
+                        @item.City
+                    </td>
+                    <td>
+                        @item.State
+                    </td>
+                    <td>
+                        @item.Area
+                    </td>
+
+                    <td>
+                        @item.Pincode
+                    </td>
+
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { @id = @item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    
+}

@@ -1,0 +1,126 @@
+﻿@{ 
+   ViewBag.Title = "Absconding";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model EmpAbscondingItem
+@{
+    int EmpId = ViewBag.EmpId;
+}
+
+@using (@Html.BeginForm("Create", "Absconding", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Absconding <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Absconding Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.AbscHistory, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(m => m.AbscHistory, new { @class = "form-control", @placeholder = "Absconding History" })
+                    @Html.ValidationMessageFor(m => m.AbscHistory)
+                </div>
+
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control", @placeholder = "Remarks" })
+
+                </div>
+                @*<div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")In-Active
+                    </div>*@
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    
+            <!-- Advanced Tables -->
+            <div class="panel panel-info" id="dvGrid">
+                <div class="panel-heading">
+                    Absconding Details List <span class="label label-primary">@Model.ListAbsconding.Count</span><input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" />
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table" id="tbl">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>History</th>
+                                    <th>Remarks</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tbody>
+                                    @foreach (var item in Model.ListAbsconding)
+                                    {
+                                        <tr class="odd gradeX">
+                                            <td>@item.EmpDetails.Empname</td>
+                                            <td>@item.AbscHistory</td>
+                                            <td>@item.Remarks</td>
+
+                                            <td>@Html.ActionLink(" ", "Edit", new { @id = EmpId, @Absid = @item.AbscId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                                &nbsp;@Html.ActionLink(" ", "View", new {@id = EmpId,@Absid = @item.AbscId, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye"})
+                                                &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.EmpId, @AId = @item.AbscId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the absconding details of " + @item.EmpDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Documents <span class="label label-primary">@Model.ListAbscondingDoc.Count</span>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>FileName</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListAbscondingDoc)
+                        {
+                            <tr>
+                                <td>
+                                    @{ string FileUrl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.DocDetails.FileUrl);
+                                    }
+                                    <a href="@Url.Content(@item.DocDetails.FileUrl)" target="_blank">@item.DocDetails.FileName</a>
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink(" ", "DeleteDoc", new { @id = @item.DocDetails.EmpId, @DID = @item.DocDetails.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the document " + @item.DocDetails.FileName + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,164 @@
+﻿  @{ 
+   ViewBag.Title = "Passport";
+}
+  
+@using EMSDomain.ViewModel.Employee
+
+@model EmpPassportItem
+
+@using (@Html.BeginForm("View", "Passport", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.PasId, new { @Value = @ViewBag.PId }) 
+    <section class="content-header">
+        <h1>Passport <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    
+    
+    <div class="panel panel-info"> 
+        <div class="panel-heading">Passport Details</div>
+        <div class="panel-body">
+            <div class="form-group" id="dvView">
+                @Html.LabelFor(m => m.PassportNo, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PassportNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PassportNo)
+                </div>
+
+
+                @Html.LabelFor(m => m.PlaceIssue, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PlaceIssue, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PlaceIssue)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.IssueCountry, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.IssueCountry, new SelectList(Model.ListCountry, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IssueCountry)
+
+                </div>
+
+
+                @Html.LabelFor(m => m.IssueDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IssueDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IssueDate)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.ExpiryDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ExpiryDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ExpiryDate)
+
+                </div>
+
+                @Html.LabelFor(m => m.RenewDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.RenewDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RenewDate)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Nationality, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Nationality, new SelectList(Model.ListNationality, "Id", "Name"), "--Select Nationality--", new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+
+                </div>
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active")Active
+                    @Html.RadioButtonFor(m => m.Status, "InActive")InActive
+
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Old Passport Details (If Any)</legend>
+                     @Html.Label("Passport No", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.OPassportNo, new { @class = "form-control",@placeholder="Old Passport No." })
+                    @Html.ValidationMessageFor(m => m.OPassportNo)
+
+                </div>
+
+
+                @Html.LabelFor(m => m.PlaceIssue, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.OPlaceIssue, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.OPlaceIssue)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.IssueCountry, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.OIssueCountry, new SelectList(Model.ListCountry, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.OIssueCountry)
+                </div>
+
+
+                @Html.LabelFor(m => m.IssueDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.OIssueDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.OIssueDate)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.ExpiryDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.OExpiryDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.OExpiryDate)
+                </div>
+
+                @Html.LabelFor(m => m.RenewDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ORenewDate, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Nationality, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.ONationality, new SelectList(Model.ListNationality, "Id", "Name"), "--Select Nationality--", new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ORemarks, new { @class = "form-control" })
+                </div>
+                     </fieldset>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    @Html.ActionLink(" Back", "Create", new {@id=Model.EmpId,@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

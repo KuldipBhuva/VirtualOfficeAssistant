@@ -1,0 +1,109 @@
+﻿
+.modalBackground
+{
+    background-color: Black;
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+}
+.modalPopup
+{
+    background-color: #FFFFFF;
+    min-width: 400px;
+    border: 3px solid #330849;
+}
+.modalPopup .header
+{
+    background-color: #EE4E1D;
+    height: 30px;
+    color: White;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+.modalPopup .body
+{
+    min-height: 200px;
+    
+    line-height: 30px;
+    text-align: center;
+    padding: 5px;
+    color: Black;
+}
+.modalPopup .footer
+{
+    padding: 3px;
+}
+.modalPopup .button
+{
+    color: White;
+    line-height: 23px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #9F9F9F;
+    border: 1px solid #5C5C5C;
+}
+.modalPopup td
+{
+    text-align: left;
+}
+.auto-style1
+{
+    width: 59px;
+}
+
+.mask
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    -opacity: .15;
+    filter: alpha(opacity=60);
+    -moz-opacity: .15;
+    z-index: 101;
+    display: none;
+}
+.web_dialog
+{
+    display: none;
+    position: fixed;
+    width: 800px;
+    height: 500px;
+    overflow: scroll;
+    top: 20%;
+    left: 30%;
+    margin-left: -190px;
+    margin-top: -100px;
+    background-color: #ffffff;
+    border: 2px solid #336699;
+    padding: 0px;
+    z-index: 102;
+    font-family: Verdana;
+    font-size: 10pt;
+    color: Black;
+}
+.web_dialog_title
+{
+    border-bottom: solid 2px #336699;
+    background-color: #336699;
+    padding: 4px;
+    color: White;
+    font-weight: bold;
+    text-align: left;
+}
+.web_dialog_title a
+{
+    color: black;
+    text-decoration: none;
+}
+.align_right
+{
+    text-align: right;
+}

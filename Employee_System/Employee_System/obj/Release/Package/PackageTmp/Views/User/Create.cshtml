@@ -1,0 +1,105 @@
+﻿@using EMSDomain.ViewModel
+
+@model LoginItem
+@{
+    ViewBag.Title = "User";
+}
+
+@using (@Html.BeginForm("Create", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>User <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>  
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">User Master Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.Label("Company", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListMasterTable, "Id", "Name"), "--Select--", new { @class = "form-control select2" })*@
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListCompany, "id", "CompName"), "--Select--", new { @class = "form-control Select2",@id="ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                </div>
+                
+                @Html.LabelFor(m => m.RoleID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.RoleID, new List<SelectListItem>
+                    {
+                        new SelectListItem{Text="--Select Role--",Value=""},
+                    new SelectListItem{Text="Admin",Value="1"},
+                    new SelectListItem{Text="Staff",Value="2"},
+                    }, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RoleID)
+                </div>
+                
+
+
+
+                
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.UserName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+                @Html.LabelFor(m => m.Password, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control" ,@type="password"})
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+                <div class="col-sm-12" style="height: 5px;">
+                </div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">User Master Data <span class="label label-primary">@Model.ListUser.Count</span> <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>UserName</th>                            
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                     <tbody>
+                    @foreach (var item in Model.ListUser)
+                    {
+                       
+                            <tr>                               
+                                @if(@item.RoleID==1)
+                                {
+                                <td>Admin</td>
+                                }
+                                else
+                                {
+                                <td>Staff</td>
+                                }
+                            <td>@item.UserName</td>
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = @item.UId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    @*@Html.ActionLink("Edit", "Edit", new { @id = @item.UId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) })*@
+                                </td>
+                            </tr>
+                        
+                    }
+                         </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+}
+

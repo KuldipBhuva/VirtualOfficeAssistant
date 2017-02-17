@@ -1,0 +1,92 @@
+﻿@{ 
+   ViewBag.Title = "Increment";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model  EmpIncrementItem
+@{
+    int Empid = ViewBag.Empid;
+}
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker({ dateFormat: "mm/dd/yy", changeYear: "true" }); //Initialise any date pickers
+    });
+</script>
+@using (@Html.BeginForm("Create", "Increment", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.AntiForgeryToken()          // this is for prevent CSRF attack
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.IncId)
+    <section class="content-header">
+        <h1>Increment <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Increment Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.IncAmount, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IncAmount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IncAmount)
+                </div>
+
+                @Html.LabelFor(m => m.IncDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IncDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.IncDate)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Increment Details List <span class="label label-primary">@Model.ListIncrement.Count</span><input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListIncrement)
+                        {
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.IncAmount</td>
+                                @if(@item.IncDate!=null)
+                                {
+                                <td>@item.IncDate.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = Empid, @IncId = @item.IncId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new {@id = Empid, @IncId = @item.IncId, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.EmpId, @IId = @item.IncId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the increment details of " + @item.EmpDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>                
+}

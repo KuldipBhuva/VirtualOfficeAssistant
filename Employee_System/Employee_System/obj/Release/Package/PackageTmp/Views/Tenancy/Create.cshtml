@@ -1,0 +1,424 @@
+﻿@using EMSDomain.ViewModel.Tenancy
+@using EMSMethods;
+@using System.Security.Cryptography;
+@using System.Text;
+@model TenancyItem
+@{
+    ViewBag.Title = "Tenancy";
+}
+
+
+@using (@Html.BeginForm("Create", "Tenancy", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    
+   @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    
+    <section class="content-header">
+        <h1>Tenancy <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Tenancy Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.Label("Company ", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.TnTypeCompId, new SelectList(Model.ListCompany, "id", "CompName"), "--Select Company--", new { @class = "form-control select2",@id="ddlComp" })
+                    @Html.ValidationMessageFor(m => m.TnTypeCompId)                    
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.TnNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.TnNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TnNo)
+
+                </div>
+
+                @Html.LabelFor(m => m.Subject, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Subject)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                @Html.LabelFor(m => m.TDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.TDate, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+
+                    @Html.ValidationMessageFor(m => m.TDate)
+
+                </div>
+
+                @Html.LabelFor(m => m.Period, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Period, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Period)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.LandLord, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.LandLord, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LandLord)
+                </div>
+
+
+                @Html.LabelFor(m => m.FromDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.FromDate)
+
+                </div>
+
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.TnTypeId, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                  @Html.DropDownListFor(m => m.TnTypeId, new SelectList(Model.ListTT, "id", "Name"), "--Select Type--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TnTypeId)
+                </div>
+
+
+                @Html.LabelFor(m => m.ToDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.ToDate)
+
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+              @*  <div id="dvcomplabel">
+                    @Html.LabelFor(m => m.TnTypeCompId, new { @class = "col-sm-2 control-label" })
+                </div>
+
+                <div class="col-sm-4" id="DivComp">
+                    @Html.DropDownListFor(m => m.TnTypeCompId, new SelectList(Model.ListCompany, "id", "CompName"), "--Select Company--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.TnTypeCompId)
+                </div>
+
+                <div id="dvEmpLabel">
+                    @Html.LabelFor(m => m.TnTypeEmpId, new { @class = "col-sm-2 control-label" })
+                </div>
+
+                <div id="DivEmp" class="col-sm-4">
+                    @Html.DropDownListFor(m => m.TnTypeEmpId, new SelectList(Model.ListEmployee, "id", "Empname"), "--Select Employee--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.TnTypeEmpId)
+                </div>
+
+
+                <div id="dvothers">
+                    @Html.LabelFor(m => m.Others, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Others, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Others)
+
+                    </div>
+                </div>*@
+
+                
+                @Html.LabelFor(m => m.Rent, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Rent, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Rent)
+
+                </div>
+
+
+                @Html.LabelFor(m => m.Terms, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                       @Html.DropDownListFor(m => m.Terms, new List<SelectListItem>() { new SelectListItem() { Text = "Monthly", Value = "Monthly" }, new SelectListItem() { Text = "Quarterly", Value = "Quarterly" }, new SelectListItem() { Text = "Half Yearly", Value = "Half Yearly" }, new SelectListItem() { Text = "Yearly", Value = "Yearly" } }, "--Select Term--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.Terms)
+                    @*@Html.TextBoxFor(m => m.Terms, new { @class = "form-control" })*@
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Address, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Phone, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+                @Html.Label("Documents", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    <input type="file" id="files" multiple="multiple" name="files" class="btn btn-info" />
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" id="btnSave" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Tenancy Details List <span class="label label-primary">@Model.ListTenancy.Count</span> <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Tenancy No</th>
+                            <th>Tenancy Type</th>
+                            <th>Company</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListTenancy)
+                        {
+                            string s = @item.TnID.ToString();
+                            TenancyService objTen = new TenancyService();
+                            //string encryptid = objTen.Encrypt(s);
+                            //string strmenu = objTen.Encrypt(Request.QueryString["menuid"]);
+                            
+                            <tr>
+                                <td>@item.TnNo</td>
+                                <td>@item.TTDetails.Name</td>
+                                <td>@item.compDetails.CompName</td>
+                                @if (@item.FromDate != null)
+                                {
+                                    <td>@item.FromDate.Value.ToString("dd/MM/yyyy")</td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                                @if (@item.ToDate != null)
+                                {
+                                    <td>@item.ToDate.Value.ToString("dd/MM/yyyy")</td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = @item.TnID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })                                    
+                                    &nbsp;@Html.ActionLink(" ", "View", new {id = @item.TnID, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye",@id="link"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new {  @id = @item.TnID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the tenancy details of " + @item.TnNo + "?')", @class = "fa fa-trash fa-lg" })
+                                    @*@Html.ActionLink("Edit", "Edit", new { @id = @item.TnID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) })*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+     
+}
+
+@*<script lang="ja" type="text/javascript">
+    $(document).ready(function () {
+
+        $('#TnType').change(function () {
+            debugger;
+            if ($('#TnType').Value = "Company") {
+                debugger;
+                $('#TnTypeId').visible = false;
+            }
+        });
+
+
+    });
+</script>*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+
+        //$("#FromDate,#ToDate,#TDate").removeAttr('data-val-date');
+
+
+        $("#dvEmpLabel").hide();
+        $("#DivEmp").hide();
+        $("#dvcomplabel").hide();
+        $("#DivComp").hide();
+        $("#TnTypeEmpId").prop('selectedIndex', 0);
+        $("#TnTypeCompId").prop('selectedIndex', 0);
+        $('#dvothers').hide();
+    });
+
+
+    $("input[name='TnType']").change(function () {
+        debugger;
+        var selectedRadio = $("input[name='TnType']:checked").val();
+        if (selectedRadio == 'Company') {
+            debugger;
+            $("#dvEmpLabel").hide();
+            $("#DivEmp").hide();
+            $("#dvcomplabel").show();
+            $("#DivComp").show();
+            $("#TnTypeEmpId").prop('selectedIndex', 0);
+            $('#dvothers').hide();
+            // $("#TnTypeId").hide();
+            //$("#TnTypeId").attr("disabled", "disabled");  // Disabled txt
+        }
+        if (selectedRadio == 'Employee') {
+            $("#dvEmpLabel").show();
+            $("#DivEmp").show();
+            $("#dvcomplabel").hide();
+            $("#DivComp").hide();
+            $("#TnTypeCompId").prop('selectedIndex', 0);
+            $('#dvothers').hide();
+        }
+        if (selectedRadio == 'Other') {
+            $('#dvothers').show();
+            $("#dvEmpLabel").hide();
+            $("#DivEmp").hide();
+            $("#dvcomplabel").hide();
+            $("#DivComp").hide();
+            $("#TnTypeEmpId").prop('selectedIndex', 0);
+            $("#TnTypeCompId").prop('selectedIndex', 0);
+
+        }
+
+
+        //else {
+        //    $("#TnTypeId").show();
+        //    $("#TnTypeId").removeAttr("disabled");
+        //}
+    });
+
+
+
+    $(document).ready(function () {
+
+        $('#btnSave').click(function () {
+            debugger;
+            var selectRadio = $("input[name='TnType']:checked").val();
+
+            if (selectRadio == "") {
+                alert('Please Select Tenancy Type');
+                $("input[name='TnType']").focus();
+                $("input[name='TnType']").css('border-color', 'red');
+                return false;
+            }
+            else {
+                if (selectRadio == "Company") {
+                    var drpComp = $('#TnTypeCompId').val();
+                    if (drpComp == "") {
+                        alert('Please Select Company');
+                        $('#TnTypeCompId').focus();
+                        $('#TnTypeCompId').css('border-color', 'red');
+                        return false;
+                    }
+                }
+                else if (selectRadio == "Employee") {
+                    var drpEmp = $('#TnTypeEmpId').val();
+                    if (drpEmp == "") {
+                        $('#TnTypeEmpId').focus();
+                        $('#TnTypeEmpId').css('border-color', 'red');
+                        alert('Please Select Employee ');
+                        return false;
+                    }
+                }
+                else if (selectRadio == "Other") {
+                    var Others = $('#Others').val();
+                    if (Others == "") {
+                        $('#Others').focus();
+                        $('#Others').css('border-color', 'red');
+                        alert('Please Enter Other Details');
+                        return false;
+                    }
+                }
+            }
+            return true;
+
+        });
+    });
+
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        debugger;
+        $("#dvGrid").show();
+        $("#dvAdd").hide();
+        $("#btnAdd").click(function () {
+            debugger;
+            $("#dvGrid").hide();
+            $("#dvAdd").show(1000);
+
+        });
+        $("#btnBack").click(function () {
+            $("#dvGrid").show();
+            $("#dvAdd").hide(1000);
+        });
+    });
+</script>
+
+@*<tr>
+                            <td>@item.TnNo</td>
+                            <td>@item.TnType</td>
+                         <td>@item.TnTypeId</td>
+
+
+                            <td>
+                                @if (item.TnType == "Company")
+                                {
+                                    int? id = item.TnTypeId;
+                                    TenancyService tn = new TenancyService();
+                                    var a = tn.GetTypeCompany(id);
+                                    foreach (var ab in a)
+                                    {
+                                        string s = @ab.compDetails.CompName;
+                                        @item.Status = s;
+                                    }
+
+                                }
+                                @if (item.TnType == "Employee")
+                                {
+                                    int? id = item.TnTypeId;
+                                    TenancyService tn = new TenancyService();
+                                    var a = tn.GetTypeEmpid(id);
+                                    foreach (var ab in a)
+                                    {
+                                        string s = @ab.Empdetails.Empname;
+                                        @item.Status = s;
+                                    }
+                                }
+
+                                @item.Status
+                            </td>
+                            <td>@item.FromDate.Value.ToString("dd/MM/yyyy")</td>
+                            <td>@item.ToDate.Value.ToString("dd/MM/yyyy")</td>
+                            
+                            <td>@Html.ActionLink("Edit", "Edit", new { @id = @item.TnID })</td>
+                        </tr>
+   
+   *@

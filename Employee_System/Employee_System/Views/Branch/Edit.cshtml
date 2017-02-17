@@ -1,0 +1,104 @@
+﻿@{ 
+    ViewBag.Title = "Branch";
+}
+
+@using EMSDomain.ViewModel.Branch
+
+@model BranchItem
+
+@using (@Html.BeginForm("Edit", "Branch", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.id)
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Branch <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>  
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Branch Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.CompID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListComp, "Id", "CompName"), "--Select Company--", new { @class = "form-control", @id = "ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                    @Html.HiddenFor(m => m.CompID)
+                </div>
+                @Html.LabelFor(m => m.BranchName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.BranchName, new { @class = "form-control", @placeholder = "Branch Name" })
+                    @Html.ValidationMessageFor(m => m.BranchName)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Phone, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @placeholder = "Phone" })
+                </div>
+
+
+
+                @Html.LabelFor(m => m.ContactPerson, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control", @placeholder = "Contact Person" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                @Html.LabelFor(m => m.Email, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                </div>
+
+
+
+                @Html.LabelFor(m => m.City, new { @class = "col-sm-2 control-label" })
+
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "City" })
+                    @Html.ValidationMessageFor(m => m.City)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.State, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.State, new { @class = "form-control", @placeholder = "State" })
+                    @Html.ValidationMessageFor(m => m.State)
+                </div>
+
+
+
+                @Html.LabelFor(m => m.Country, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Country, new SelectList(Model.ListCon, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Country)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.BranchAdd, new { @class = "col-sm-2 control-label" })
+
+
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(m => m.BranchAdd, new { @class = "form-control", @placeholder = "Branch Address" })
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>      
+}

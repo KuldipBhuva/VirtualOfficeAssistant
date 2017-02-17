@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6604310A-2631-4687-A70B-63CC4D899122}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EMSDomain</RootNamespace>
+    <AssemblyName>EMSDomain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\packages\DotNetZip.1.9.8\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Model\Advance_Payroll_Master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppointmentsMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Blood_Group_Master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Branch_master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Category_Master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChallanMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChallanTran.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChequeReturnMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Company_master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ConsignmentMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Country.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CredentialMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\document_category.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmpDrivingLicence.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeAbsconding.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeAllowance.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeContact.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeDeposite.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeDocument.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeExperience.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeHealthCard.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeIncrement.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeInsurance.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeLeave.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeOtherDetail.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeePassport.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeQualification.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeRelative.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeVisa.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\employee_document.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\employee_master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FormMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FormMenuTran.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetEmployeeData_Result.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetEmpPayment_Result.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetLedger_Result.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IssueDetail.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Item_Master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Login_Master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Masters_Tran.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MenuHeaderMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MenuTran.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelOffline.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOffline.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelOffline.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelOffline.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOffline.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Other_Expenses.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PartyMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PayrollMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PayrollReport_New_Result.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PayrollReport_Result.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PayrollReport_Testing_Result.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Petrol_Card.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Petrol_Expense.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Repayment_Master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ReturnDetail.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SponsorMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sp_Databind_Result.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_HealthcardExpirydateReports_Result.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Stock_Master.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TenancyDocument.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TenancyMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TradeDocument.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Trade_License.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TravelExpence.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserFormTran.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserModulesTran.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\VehicleDocument.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\VehicleMaster.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\VehicleRepairing.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Vehicle_History.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\WorkHistory.cs">
+      <DependentUpon>ModelOffline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AppointmentsItem.cs" />
+    <Compile Include="ViewModel\Assests\AssestsItem.cs" />
+    <Compile Include="ViewModel\Assests\IssueItem.cs" />
+    <Compile Include="ViewModel\Assests\ReturnItem.cs" />
+    <Compile Include="ViewModel\Assests\StockItem.cs" />
+    <Compile Include="ViewModel\BloodGroupItem.cs" />
+    <Compile Include="ViewModel\Branch\BranchItem.cs" />
+    <Compile Include="ViewModel\Category\CategoryItem.cs" />
+    <Compile Include="ViewModel\ChallanModel.cs" />
+    <Compile Include="ViewModel\ChallanTranModel.cs" />
+    <Compile Include="ViewModel\ChequeReturnModel.cs" />
+    <Compile Include="ViewModel\clsMasterData.cs" />
+    <Compile Include="ViewModel\ClsMasterItem.cs" />
+    <Compile Include="ViewModel\ClsMasterP.cs" />
+    <Compile Include="ViewModel\Company\CompanyItem.cs" />
+    <Compile Include="ViewModel\ConsignmentModel.cs" />
+    <Compile Include="ViewModel\CredentialItem.cs" />
+    <Compile Include="ViewModel\DocumentItem.cs" />
+    <Compile Include="ViewModel\Employee\CountryItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpAbscondingItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpAllItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpAllowncesItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpContactItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpDepositeItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpDesignationItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpDLicenceItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpExperienceItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpHealthItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpIncrementItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpLeaveItem.cs" />
+    <Compile Include="ViewModel\Employee\EmployeeItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpOtherItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpPassportItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpQualificationItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpRelativeItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpVisaItem.cs" />
+    <Compile Include="ViewModel\Employee\EmpWorkHistoryItem.cs" />
+    <Compile Include="ViewModel\Expenses\OtherExpItem.cs" />
+    <Compile Include="ViewModel\Expenses\TExpenseItem.cs" />
+    <Compile Include="ViewModel\Insurance\EmpInsuranceItem.cs" />
+    <Compile Include="ViewModel\MasterDataItem.cs" />
+    <Compile Include="ViewModel\MasterItem.cs" />
+    <Compile Include="ViewModel\Forms\FormItem.cs" />
+    <Compile Include="ViewModel\LoginItem.cs" />
+    <Compile Include="ViewModel\Menu\FormItem.cs" />
+    <Compile Include="ViewModel\Menu\MenuItem.cs" />
+    <Compile Include="ViewModel\Menu\MenuWiseFormItem.cs" />
+    <Compile Include="ViewModel\Menu\UserFormTranItem.cs" />
+    <Compile Include="ViewModel\Menu\UserModulesItem.cs" />
+    <Compile Include="ViewModel\Module\ModuleItem.cs" />
+    <Compile Include="ViewModel\PartyModel.cs" />
+    <Compile Include="ViewModel\Payroll\AdvancePaymentItem.cs" />
+    <Compile Include="ViewModel\Payroll\PayrollItem.cs" />
+    <Compile Include="ViewModel\Payroll\RePaymentItem.cs" />
+    <Compile Include="ViewModel\SponsorItem.cs" />
+    <Compile Include="ViewModel\Tenancy\TenancyDocumentItem.cs" />
+    <Compile Include="ViewModel\Tenancy\TenancyItem.cs" />
+    <Compile Include="ViewModel\TradeLicense\TradeDocumentItem.cs" />
+    <Compile Include="ViewModel\TradeLicense\TradeLicenseItem.cs" />
+    <Compile Include="ViewModel\Vehicle\PetrolCardItem.cs" />
+    <Compile Include="ViewModel\Vehicle\PetrolExpItem.cs" />
+    <Compile Include="ViewModel\Vehicle\VehicleDocumentItem.cs" />
+    <Compile Include="ViewModel\Vehicle\VehicleHistoryItem.cs" />
+    <Compile Include="ViewModel\Vehicle\VehicleItem.cs" />
+    <Compile Include="ViewModel\Vehicle\VehicleRepairingItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Model\ModelOffline.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelOffline.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="bin\Debug\EMSDomain.dll.config" />
+    <None Include="bin\Release\EMSDomain.dll.config" />
+    <None Include="Model\ModelOffline.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelOffline.edmx</DependentUpon>
+      <LastGenOutput>ModelOffline.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Model\ModelOffline.edmx.diagram">
+      <DependentUpon>ModelOffline.edmx</DependentUpon>
+    </None>
+    <None Include="Model\ModelOffline.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelOffline.edmx</DependentUpon>
+      <LastGenOutput>ModelOffline.cs</LastGenOutput>
+    </None>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model\Model1.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model\Model1.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model\Model1.ssdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model\ModelOffline.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model\ModelOffline.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model\ModelOffline.ssdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model\ModelOnline.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model\ModelOnline.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model\ModelOnline.ssdl" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\edmxResourcesToEmbed\Model\Model1.csdl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\Model\Model1.msl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\Model\Model1.ssdl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\Model\ModelOffline.csdl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\Model\ModelOffline.msl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\Model\ModelOffline.ssdl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\Model\ModelOnline.csdl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\Model\ModelOnline.msl" />
+    <None Include="obj\Release\edmxResourcesToEmbed\Model\ModelOnline.ssdl" />
+    <None Include="obj\Release\EMSDomain.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\EMSDomain.dll" />
+    <Content Include="bin\Debug\EMSDomain.dll.CodeAnalysisLog.xml" />
+    <Content Include="bin\Debug\EMSDomain.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="bin\Debug\Ionic.Zip.dll" />
+    <Content Include="bin\Release\EMSDomain.dll" />
+    <Content Include="bin\Release\EMSDomain.pdb" />
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.xml" />
+    <Content Include="bin\Release\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="bin\Release\Ionic.Zip.dll" />
+    <Content Include="bin\Release\Ionic.Zip.xml" />
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox_buttons.png" />
+    <Content Include="Content\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\jquery.fancybox-buttons.css" />
+    <Content Include="Content\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\jquery.fancybox.css" />
+    <Content Include="obj\Debug\EMSDomain.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\EMSDomain.dll" />
+    <Content Include="obj\Debug\EMSDomain.pdb" />
+    <Content Include="obj\Debug\TempPE\Model.EMS.Context.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Model.EMS.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Model.EMS.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Model.Model1.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Model.Model1.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Model.ModelOffline.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Model.ModelOffline.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Model.ModelOnline.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Model.ModelOnline.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Model.ModelOnline1.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Model.ModelOnline1.Designer.cs.dll" />
+    <Content Include="obj\Release\EMSDomain.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\EMSDomain.dll" />
+    <Content Include="obj\Release\EMSDomain.pdb" />
+    <Content Include="obj\Release\TempPE\Model.Model1.cs.dll" />
+    <Content Include="obj\Release\TempPE\Model.Model1.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\Model.ModelOffline.cs.dll" />
+    <Content Include="obj\Release\TempPE\Model.ModelOffline.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\Model.ModelOnline.cs.dll" />
+    <Content Include="obj\Release\TempPE\Model.ModelOnline.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\Model.ModelOnline1.cs.dll" />
+    <Content Include="obj\Release\TempPE\Model.ModelOnline1.Designer.cs.dll" />
+    <Content Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.fancybox-buttons.js" />
+    <Content Include="Scripts\jquery.fancybox-media.js" />
+    <Content Include="Scripts\jquery.fancybox-thumbs.js" />
+    <Content Include="Scripts\jquery.fancybox.js" />
+    <Content Include="Scripts\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\jquery.mousewheel-3.0.6.pack.js" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

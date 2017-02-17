@@ -1,0 +1,126 @@
+﻿  @{ 
+   ViewBag.Title = "Leave";
+}
+  
+@using EMSDomain.ViewModel.Employee
+
+@model  EmpLeaveItem
+@{
+    int Empid = ViewBag.Empid;
+}
+@using (@Html.BeginForm("Create", "Leave", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker({ changeYear: true, dateFormat: "mm/dd/yy" }); //Initialise any date pickers
+        });
+    </script>
+    <section class="content-header">
+        <h1>Leave
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Leave Master <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.LFrom, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.LFrom, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.LFrom)
+                </div>
+
+                @Html.LabelFor(m => m.LTo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.LTo, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.LTo)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.LTypeID, new { @class = "col-sm-2 conrol-label" })
+
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.LTypeID, new SelectList(Model.ListMasterTable, "Id", "Name"), "--Select--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.LTypeID)
+                    @*@Html.TextBoxFor(m => m.LTypeID, new { @class = "form-control" })*@
+                </div>
+
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 conrol-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+                @*<div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 conrol-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active", new { @class = "flat-red" }) Active
+                                        @Html.RadioButtonFor(m => m.Status, "InActive", new { @class = "flat-red" }) In-Active
+                    @Html.ValidationMessageFor(m => m.Status)
+                </div>*@
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 180px;"></div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Leave Details <span class="label label-primary">@Model.ListLeave.Count</span> <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Leave From</th>
+                            <th>Leave To</th>
+                            <th>Leave Type</th>
+                            <th>Remarks</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListLeave)
+                        {
+                       
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                @if (@item.LFrom != null)
+                                {
+                                    <td>@item.LFrom.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                @if (@item.LTo != null)
+                                {
+                                    <td>@item.LTo.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                <td>@item.MasterDetails.Name</td>
+                                <td>@item.Remarks</td>
+                                <td>@item.Status</td>
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = Empid, @LeaveId = @item.LID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new {@id = Empid, @LeaveId = @item.LID, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.EmpID, @LId = @item.LID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the leave details of " + @item.EmpDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                       
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+}
+<script>
+    $(document).ready(function () {
+        var table = $('#tbl').DataTable();
+    });
+</script>

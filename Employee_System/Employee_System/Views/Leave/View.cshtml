@@ -1,0 +1,68 @@
+﻿  @{ 
+   ViewBag.Title = "Leave";
+}
+  
+@using EMSDomain.ViewModel.Employee
+@model EmpLeaveItem
+
+@using (@Html.BeginForm("View", "Leave", FormMethod.Post, new { @id = "frmEditLeave" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+  
+    @Html.HiddenFor(m => m.LID)
+    @Html.HiddenFor(m => m.EmpID)
+    @Html.HiddenFor(m => m.LeaveId, new { @ViewBag.LId })
+    <section class="content-header">
+        <h1>Leave
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+
+    </section>
+    
+    <div class="panel panel-info">
+        <div class="panel-heading">Leave Master</div>
+        <div class="panel-body">
+            <div class="form-group" id="dvView">
+                @*@Html.Label("Name", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                     @Html.TextBoxFor(m => m.EmpDetails.Empname, new { @class = "form-control" })
+                </div>*@
+                @Html.HiddenFor(m => m.EmpID)
+                @Html.Label("LeaveFrom", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.LFrom,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                </div>
+                @Html.Label("LeaveTo", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.LTo,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("LeaveType", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.LTypeID, new SelectList(Model.ListMasterTable, "Id", "Name"), "--Select--", new { @class = "form-control select2" })
+                    @*@Html.TextBoxFor(m=>m.LTypeID, new { @class = "form-control" })*@
+                </div>
+                @Html.Label("Remarks", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("Status", new { @class = "col-sm-2 conrol-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active", new { @class = "flat-red" }) Active
+                                        @Html.RadioButtonFor(m => m.Status, "InActive", new { @class = "flat-red" }) In-Active
+                </div>
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 180px;"></div>
+                @Html.ActionLink(" Back", "Create", new {@id=Model.EmpID,@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+            </div>
+        </div>
+    </div>    
+}

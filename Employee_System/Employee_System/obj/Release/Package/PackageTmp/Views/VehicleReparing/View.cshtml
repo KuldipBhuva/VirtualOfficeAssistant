@@ -1,0 +1,110 @@
+﻿@using EMSDomain.ViewModel.Vehicle
+
+@model VehicleRepairingItem
+@{
+    ViewBag.Title = "Vehicle Expense";
+}
+
+@using (@Html.BeginForm("View", "VehicleReparing", FormMethod.Post))
+{
+     @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    
+    <section class="content-header">
+        <h1>Vehicle Repairing
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">Vehicle Repairing Master</div>
+        <div class="panel-body">
+            <div class="form-group"  id="dvView">
+                @Html.LabelFor(m => m.CompID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListComp, "id", "CompName"), "--Select Company--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CompID, "")
+                </div>
+                @Html.LabelFor(m => m.VID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.VID, new SelectList(Model.ListVehicle, "VID", "VehicleName"), "--Select Vehicle--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.VID, "")
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("Expense Type", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.ExpType, 1)Repairing
+                    @Html.RadioButtonFor(m => m.ExpType, 2)Fine
+                    @Html.RadioButtonFor(m => m.ExpType, 3)Salik Recharge
+                    
+                    <br />
+                    @Html.ValidationMessageFor(m => m.ExpType)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Repairing_TypeID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Repairing_TypeID, new SelectList(Model.ListMaster, "Id", "Name"), "--Select Repairing Type--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Repairing_TypeID, "")
+                </div>
+                @Html.Label("Expense/Recharge Date", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Rep_Date,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.Rep_Date)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Amount_Paid, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Amount_Paid, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Amount_Paid)
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })                    
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                 @Html.ActionLink(" Back", "Create", new {@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+            </div>
+        </div>
+    </div>
+}
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+
+        $("#CompID").change(function () {
+
+            debugger;
+            var CompIds = $('#CompID').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillVehicle", "VehicleReparing")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (VehicleMasters) {
+
+                    $("#VID").html("");  // clear before appending new list 
+                    $("#VID").append("<option value='0'>--Select Vehicle--</option>");
+                    $.each(VehicleMasters, function (i, VID) {
+
+                        $("#VID").append(
+
+                            $('<option></option>').val(VID.id).html(VID.VehicleName));
+
+                    });
+                }
+            });
+        });
+    });
+</script>

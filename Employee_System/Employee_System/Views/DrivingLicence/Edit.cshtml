@@ -1,0 +1,74 @@
+﻿@using EMSDomain.ViewModel.Employee
+
+@model EmpDLicenceItem
+
+
+@using (@Html.BeginForm("Edit", "DrivingLicence", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.DLId, new { @ViewBag.DLId })
+    <section class="content-header">
+        <h1>Driving Licence <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Driving Licence Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.LicenceNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.LicenceNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LicenceNo)
+                </div>
+
+                @Html.LabelFor(m => m.IssueDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IssueDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IssueDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.IssueCountry, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IssueCountry, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IssueCountry)
+                </div>
+
+                @Html.LabelFor(m => m.ExpiryDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ExpiryDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ExpiryDate)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.DRemarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.DRemarks, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.DStatus, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.DStatus, "Active")Active
+                        @Html.RadioButtonFor(m => m.DStatus, "InActive")In-Active                   
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        debugger;
+        $("#IssueDate,#ExpiryDate").datepicker({ dateFormat: "mm/dd/yy", changeYear: "true" });
+    });
+</script>

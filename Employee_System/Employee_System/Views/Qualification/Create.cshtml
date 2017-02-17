@@ -1,0 +1,191 @@
+﻿  @{ 
+   ViewBag.Title = "Qualifications";
+}
+  
+@using EMSDomain.ViewModel.Employee
+
+@model EmpQualificationItem
+@{
+    int Empid = ViewBag.Empid;    
+}
+
+@using (@Html.BeginForm("Create", "Qualification", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Qualification <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Qualification Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.SchoolName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.SchoolName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.SchoolName)
+
+                    @*        @Html.DropDownListFor(m => m.Country, new SelectList(Model.CountryList, "Id", "CountryName"), "--Select Country", new { @class = "form-control select2" })*@
+                </div>
+
+                @Html.LabelFor(m => m.Board, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Board, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Board)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.FromDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control datepicker", @id = "FromDate" })
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <p class="help-block"></p>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.FromDate)
+                </div>
+
+                @Html.LabelFor(m => m.ToDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control datepicker", @id = "ToDate" })
+                        @Html.ValidationMessageFor(m => m.ToDate)
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.CertType, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.CertType, new { @class = "form-control" })
+                </div>
+
+
+                @Html.LabelFor(m => m.CertTitle, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.CertTitle, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                @Html.LabelFor(m => m.Percentage, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Percentage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Percentage)
+                </div>
+                @Html.LabelFor(m => m.Grade, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Grade, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Grade)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.CertificateID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CertificateID, new SelectList(Model.ListMasterDetails, "Id", "Name"), "--Select--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.CertificateID)
+                </div>
+
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+@*</div>*@
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">
+            Qualification Details List <span class="label label-primary">@Model.ListQualification.Count</span><input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" />
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>School</th>
+                            <th>Percentage</th>
+                            <th>From-Date</th>
+                            <th>To-Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListQualification)
+                        {
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.SchoolName</td>
+                                <td>@item.Percentage</td>
+                                @if (@item.FromDate != null)
+                                {
+                                    <td>@item.FromDate.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                @if (@item.ToDate != null)
+                                {
+                                    <td>@item.ToDate.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = Empid, @VQId = @item.Qid, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new {@id = Empid,@VQId = @item.Qid, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = Empid, @QId = @item.Qid, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the qualification details of " + @item.EmpDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> 
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Documents <span class="label label-primary">@Model.ListQualificationDoc.Count</span>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>FileName</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListQualificationDoc)
+                        {
+                            <tr>
+                                <td>
+                                    @{ string FileUrl = HttpContext.Current.Request.MapPath("~/UploadedDocs" + @item.DocDetails.FileUrl);
+                                    }
+                                    <a href="@Url.Content(@item.DocDetails.FileUrl)" target="_blank">@item.DocDetails.FileName</a>
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink(" ", "DeleteDoc", new { @id = @item.DocDetails.EmpId, @DID = @item.DocDetails.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the document " + @item.DocDetails.FileName + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>   
+}

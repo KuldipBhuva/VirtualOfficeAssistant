@@ -1,0 +1,185 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model EmpContactItem
+@{
+    int Empid = ViewBag.EmpId;
+}
+@using (@Html.BeginForm("Create", "Contact", FormMethod.Post, new { @id = "formcontact" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Contact <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Contact Details
+            <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Country, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.TextBoxFor(m => m.Country, new { @class = "form-control" })*@
+
+                    @Html.DropDownListFor(m => m.Country, new SelectList(Model.ListMaster, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Country)
+                </div>
+
+                @Html.LabelFor(m => m.State, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.State)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.City, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.City)
+                </div>
+
+                @Html.LabelFor(m => m.Area, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Area, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Area)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Street, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Street, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Street)
+                </div>
+
+                @Html.LabelFor(m => m.Pincode, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Pincode, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Pincode)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Fax, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Fax, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.PoBox, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PoBox, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.Website, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Website, new { @class = "form-control" })
+
+                </div>
+                @* <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")In-Active                   
+                </div>*@
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    
+    @Html.HiddenFor(m => m.Id)
+
+@*<div class="row">
+        <div class="col-md-12">*@
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">
+            Contact Details List <span class="label label-primary">@Model.ListContactdetails.Count</span>
+            <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" />
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Employee Name
+                            </th>
+                            <th>Country
+                            </th>
+                            <th>City
+                            </th>
+                            <th>State
+                            </th>
+                            <th>Area
+                            </th>
+                            <th>Pincode
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListContactdetails)
+                        {
+                            <tr>
+                                <td>
+                                    @item.EmployeeDetails.Empname
+                                </td>
+                                <td>
+                                    @item.ConDetails.Name
+                                </td>
+
+                                <td>
+                                    @item.City
+                                </td>
+                                <td>
+                                    @item.State
+                                </td>
+                                <td>
+                                    @item.Area
+                                </td>
+
+                                <td>
+                                    @item.Pincode
+                                </td>
+
+
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", new { @id = Empid, @cid = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new { @id = Empid, @cid = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-eye" })
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.EmpId, @cid = @item.Id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the contact details of " + @item.EmployeeDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+@*  </div>
+    </div>*@
+    
+}

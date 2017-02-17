@@ -1,0 +1,54 @@
+﻿@using EMSDomain.ViewModel
+@model PartyModel
+
+
+<div class="col-sm-12" style="border: solid 1px; box-shadow: 1px 1px 10px 1px grey; margin-top:10px;margin-bottom:10px;padding-bottom:5px;">
+
+      <div class="col-sm-12" style="height: 5px;"></div>
+    @if(Model.BillingAddress!=null)
+    {
+    
+    <div class="control-label col-sm-4"><b>Billing Address : </b></div>
+    <div class="col-sm-8">@Model.BillingAddress</div>
+    }
+    else
+    {
+    <div class="col-sm-12" style="height: 5px;"></div>
+    <lable class="control-label col-sm-4"><b>Address : </b></lable>
+    <div class="col-sm-8">@Model.Address</div>    
+    }
+
+       <div class="col-sm-12" style="height: 5px;"></div>
+    @if (@Model.BillingName != null)
+    {
+        <lable class="col-sm-4 control-label"><b>Billing Person : </b></lable>
+    <div class="col-sm-8">@Model.BillingName</div>
+    }
+    else
+    {
+    <lable class="col-sm-4 control-label"><b>Contact Person : </b></lable>
+    <div class="col-sm-8">@Model.ContactPerson</div>
+    }
+
+    <div class="col-sm-12" style="height: 5px;"></div>
+    @if (@Model.BillingPhone != null)
+    {
+        <lable class="col-sm-4 control-label"><b>Billing Phone : </b></lable>
+    <div class="col-sm-8">@Model.BillingPhone</div>
+    }
+    else
+    {
+        <lable class="col-sm-4 control-label"><b>Phone : </b></lable>
+    <div class="col-sm-8">@Model.Phone</div>
+    }
+
+        <div class="col-sm-12" style="height: 5px;"></div>
+    <lable class="col-sm-4 control-label"><b>Mobile : </b></lable>
+    <div class="col-sm-8">@Model.Mobile</div>
+
+  
+
+    <div class="col-sm-12" style="height: 5px;"></div>
+    <lable class="col-sm-4 control-label"><b>Email : </b></lable>
+    <div class="col-sm-8">@Model.Email</div>
+</div>

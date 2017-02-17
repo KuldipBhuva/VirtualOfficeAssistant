@@ -1,0 +1,180 @@
+﻿  @{ 
+   ViewBag.Title = "Insurance";
+}
+  
+@using EMSDomain.ViewModel.Insurance
+@model EmpInsuranceItem
+
+@using (@Html.BeginForm("View", "Insurance", FormMethod.Post, new { @id = "frmEditInsurance" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+   
+    
+    @Html.HiddenFor(m => m.IID)
+    <section class="content-header">
+        <h1>Insurance
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">Insurance Master</div>
+        <div class="panel-body">
+            <div class="form-group" id="dvView">
+                @Html.HiddenFor(m => m.IID)
+                @Html.LabelFor(m => m.CompID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @if(@Model!=null)
+                    {
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListComp, "Id", "CompName"), "--Select Company--", new { @class = "form-control", @onchange = "FillCity()" })
+                    @Html.ValidationMessageFor(m => m.CompID, "", new { @class = "text-danger" })
+                    }
+                </div>
+                @Html.LabelFor(m => m.Branch, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Branch, new SelectList(Model.ListBranch, "id", "BranchName"), "--Select Branch--", new { @class = "form-control Select2" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Ptype, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Ptype, new SelectList(Model.ListPolicyType, "Id", "Name"), "--Select Policy Type--", new { @class = "form-control select2",@id="DDLPtype" })
+                    @*@Html.TextBoxFor(m => m.Ptype, new { @class = "form-control" })*@
+                </div>
+                @Html.LabelFor(m => m.Pname, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Pname, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m=>m.Pname, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Icomp, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.TextBoxFor(m => m.Icomp, new { @class = "form-control" })*@
+                    @Html.DropDownListFor(m => m.Icomp, new SelectList(Model.ListMasterTable, "Id", "Name"), "--Select Insurance Company--", new { @class = "form-control select2" })
+                </div>
+                @Html.LabelFor(m => m.Pno, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Pno, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Pamt, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Pamt, new { @class = "form-control",@type = "number"})
+                </div>
+                @Html.LabelFor(m => m.Pdate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Pdate,"{0:dd/MM/yyyy}", new { @class = "form-control"})
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.PExpDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PExpDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.PremiumDate, new {@class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PremiumDate,"{0:dd/MM/yyyy}", new { @class = "form-control" })                    
+                </div>
+                
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+                @*@Html.LabelFor(m => m.EmpId, new { @class = "col-sm-2 control-label",@id="lblEmp" })
+                <div class="col-sm-4" id="divEmp">
+                    @Html.DropDownListFor(m => m.EmpId, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control",@id="DDLEmp" })
+                </div>*@
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                @Html.ActionLink(" Back", "Create", new {@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+            </div>
+        </div>
+    </div>
+    
+}
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+
+        $("#CompID").change(function () {
+
+            debugger;
+            var CompIds = $('#CompID').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillBranch", "Insurance")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Branch_master) {
+
+                    $("#Branch").html("");  // clear before appending new list 
+                    $("#Branch").append("<option value='0'>--Select Branch--</option>");
+                    $.each(Branch_master, function (i, Branch) {
+
+                        $("#Branch").append(
+
+                            $('<option></option>').val(Branch.id).html(Branch.BranchName));
+
+                    });
+                }
+            });
+        });
+
+        $("#CompID").change(function () {
+
+            debugger;
+            var CompIds = $('#CompID').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillEmp", "Insurance")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Employee_master) {
+
+                    $("#EmpId").html("");  // clear before appending new list 
+                    $("#EmpId").append("<option value='0'>--Select Employee--</option>");
+                    $.each(Employee_master, function (i, EmpId) {
+
+                        $("#EmpId").append(
+
+                            $('<option></option>').val(EmpId.id).html(EmpId.Empname));
+
+                    });
+                }
+            });
+        });
+
+    });
+</script>
+<script>
+    $('#DDLPtype').change(function () {
+
+        var dropdownValue = $('#DDLPtype').val();
+        debugger;
+        if (dropdownValue == 40) {
+            $('#lblEmp').show();
+            $('#divEmp').show();
+            $('#DDLEmp').show();
+        }
+        else {
+            $('#DDLEmp').hide();
+            $('#lblEmp').hide();
+            $('#divEmp').hide();
+        }
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#DDLPtype').trigger("change");
+    });
+</Script>

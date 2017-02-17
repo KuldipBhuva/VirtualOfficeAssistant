@@ -1,0 +1,111 @@
+﻿  @{ 
+   ViewBag.Title = "Qualifications";
+}
+  
+@using EMSDomain.ViewModel.Employee
+
+@model EmpQualificationItem
+
+@using (@Html.BeginForm("View", "Qualification", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Empid)
+    @Html.HiddenFor(m => m.Qid, new { @Value = @ViewBag.VQid })
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Qualification <small>Details</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">Qualification Details</div>
+        <div class="panel-body">
+            <div class="form-group"  id="dvView">
+                @Html.LabelFor(m => m.SchoolName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.SchoolName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.SchoolName)
+
+                    @*        @Html.DropDownListFor(m => m.Country, new SelectList(Model.CountryList, "Id", "CountryName"), "--Select Country", new { @class = "form-control select2" })*@
+                </div>
+
+                @Html.LabelFor(m => m.Board, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Board, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Board)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.FromDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    <div class="input-group">
+                    @Html.TextBoxFor(m => m.FromDate,"{0:dd/MM/yyyy}", new { @class = "form-control", @id = "FromDate" })
+                      <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <p class="help-block"></p>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.FromDate)
+                </div>
+
+                @Html.LabelFor(m => m.ToDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.ToDate,"{0:dd/MM/yyyy}", new { @class = "form-control", @id = "ToDate" })
+                        
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <p class="help-block"></p>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.ToDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.CertType, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.CertType, new { @class = "form-control" })
+                </div>
+
+
+                @Html.LabelFor(m => m.CertTitle, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.CertTitle, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                @Html.LabelFor(m => m.Percentage, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Percentage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Percentage)
+                </div>
+                @Html.LabelFor(m => m.Grade, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Grade, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Grade)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.CertificateID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CertificateID, new SelectList(Model.ListMasterDetails, "Id", "Name"), "--Select--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.CertificateID)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    @Html.ActionLink(" Back", "Create", new {@id=Model.Empid,@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+                </div>
+            </div>
+        </div>
+    </div>
+@*</div>*@    
+}

@@ -1,0 +1,869 @@
+﻿@using EMSDomain.ViewModel.Menu
+@using EMSMethods
+@using EMSDomain.Model
+@using EMSDomain.ViewModel.Employee
+
+
+@*@{
+    if (ViewBag.Empid != null)
+    {
+        int Empid = @ViewBag.Empid;
+    }
+}*@
+
+
+
+
+@if (Session["UserId"] == null)
+{
+    Response.Redirect("~/Login/Index");
+}
+else
+{ 
+
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title-Virtual Office Assistants(@System.DateTime.Now)</title>
+        <link rel="shortcut icon" type="image/png" href="~/assets/img/favicon.png" />
+        <link rel="shortcut icon" type="image/png" href="~/assets/img/favicon.png" />
+        <link href="~/assets/css/animate.css" rel="stylesheet" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="~/assets/css/Loader.css" rel="stylesheet" />
+        <!--validation of required field -->
+        @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>*@
+        <script src="~/assets/js/jquery-1.10.2.js"></script>
+        @*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@
+        <script src="~/assets/js/bootstrap.min.js"></script>
+        @*<script src="//code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>*@
+
+
+
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        @*<script src="~/Scripts/jquery.validate.js"></script>*@
+
+        @*        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.date.js")"></script>*@
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <!--Date allow in Chrome-->
+        <script src="~/Scripts/jquery.validate.date.js"></script>
+        <!--End-->
+        <script type="text/javascript">
+            $(window).load(function () {
+                setTimeout(function () {
+                    $('#loading').fadeOut(400, "linear");
+                }, 300);
+            });
+        </script>
+        <!--Datepicker Calender-->
+        @*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">*@
+        <link href="~/assets/css/jquery-ui.css" rel="stylesheet" />
+        @*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js" type="text/javascript"></script>*@
+        <script src="~/assets/js/jquery-ui.js"></script>
+        @*<script src="~/Scripts/jquery.validate.js" type="text/javascript"></script>*@
+        <!--End-->
+
+        @*<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.val.js")"></script>*@
+        @*<script src="~/Scripts/jquery.validate.js"></script>*@
+        @*<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.val.date.js")"></script>*@
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        @*    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet" />*@
+        <!-- Ionicons -->
+        @*<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">*@
+        <link href="~/assets/css/ionicons.min.css" rel="stylesheet" />
+        <!-- Theme style -->
+        <link rel="stylesheet" href="~/dist/css/AdminLTE.min.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+        <link href="~/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+        <link href="~/plugins/iCheck/flat/blue.css" rel="stylesheet" />
+        <link href="~/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+        <link href="~/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+        <link href="~/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" />
+        <link href="~/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+
+        <link href="~/Content/MyCustom.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/select2.css" rel="stylesheet" />
+
+        <link href="~/Content/select2.min.css" rel="stylesheet" />
+
+        <link href="~/Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
+
+    </head>
+
+    <body class="hold-transition skin-blue sidebar-mini">
+        @*  <body class="skin-blue sidebar-mini wysihtml5-supported sidebar-collapse">*@
+
+        <div class="wrapper">
+            <div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001; opacity: .8; filter: alpha(opacity=70); display: none">
+                <p style="position: absolute; top: 30%; left: 45%; color: White;">
+                    <img src="/assets/img/ajax-loading.gif">
+                </p>
+                @*<p style="position: absolute; top: 30%; left: 45%; color: White;">Data is Loading, Please Wait...</p>*@
+            </div>
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="~/Dashboard/Index" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>V</b>O</span>
+                    <!-- logo for regular state and mobile devices -->
+
+                    <span class="logo-lg" style="font-size: medium;"><b>Virtual</b> Office Assistant</span>
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+
+                    <ul class="nav navbar-nav" style="padding-top: 9px;">
+
+                        <li>
+                            @using (@Html.BeginForm("Index", "Menu", FormMethod.Post))
+                            {
+                                MenuService objMenuService = new MenuService();
+                                MenuItem objitem = new MenuItem();
+                                List<UserModulesItem> objMenu = new List<UserModulesItem>();
+                                int UID = Convert.ToInt32(Session["UserId"].ToString());
+                                objMenu = objMenuService.GetModules(UID);
+                                var plist = objMenu;
+
+
+                                if (plist != null && plist.Count > 0)
+                                {
+                              
+                                <li>
+                                    @*<div style="padding-top:9px;width:150px;">*@
+                                    @foreach (var pitem in plist)
+                                    {     <li class="btn btn-info nav">&nbsp;
+                                    @*@Html.ActionLink(@pitem.MHName, "LeftMenu", "Menu", new { Mid = @pitem.MHId ,@style="Color:White;"})*@
+                                        <a id="aMenu" class="mainmenu" onclick="MenuClick('@pitem.MenuHeaderDetails.MHId')" style="color: black !important;" href="#">@pitem.MenuHeaderDetails.MHName</a>
+
+                                    </li>
+                                   
+                                    }
+
+                                    @*</div>*@
+                                </li>
+                                  
+                               
+                                }
+                                //string currentUrl = HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["menuId"];
+                                //string s = Request.QueryString["menuId"];
+                            }
+
+                        </li>
+
+                    </ul>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Messages: style can be found in dropdown.less-->
+                            @* <li class="dropdown messages-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-envelope-o"></i>
+                  <span class="label label-success">4</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">You have 4 messages</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                      <li><!-- start message -->
+                        <a href="#">
+                          <div class="pull-left">
+                            <img src="~/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                          </div>
+                          <h4>
+                            Support Team
+                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li><!-- end message -->
+                      <li>
+                        <a href="#">
+                          <div class="pull-left">
+                            <img src="~/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                          </div>
+                          <h4>
+                            AdminLTE Design Team
+                            <small><i class="fa fa-clock-o"></i> 2 hours</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <div class="pull-left">
+                            <img src="~/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                          </div>
+                          <h4>
+                            Developers
+                            <small><i class="fa fa-clock-o"></i> Today</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <div class="pull-left">
+                            <img src="~/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                          </div>
+                          <h4>
+                            Sales Department
+                            <small><i class="fa fa-clock-o"></i> Yesterday</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <div class="pull-left">
+                            <img src="~/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                          </div>
+                          <h4>
+                            Reviewers
+                            <small><i class="fa fa-clock-o"></i> 2 days</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">See All Messages</a></li>
+                </ul>
+              </li>*@
+                            <!-- Notifications: style can be found in dropdown.less -->
+                            @*<li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-bell-o"></i>
+                  <span class="label label-warning">10</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">You have 10 notifications</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-users text-red"></i> 5 new members joined
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-user text-red"></i> You changed your username
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">View all</a></li>
+                </ul>
+              </li>*@
+                            <!-- Tasks: style can be found in dropdown.less -->
+                            @*<li class="dropdown tasks-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-flag-o"></i>
+                  <span class="label label-danger">9</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">You have 9 tasks</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                      <li><!-- Task item -->
+                        <a href="#">
+                          <h3>
+                            Design some buttons
+                            <small class="pull-right">20%</small>
+                          </h3>
+                          <div class="progress xs">
+                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                              <span class="sr-only">20% Complete</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li><!-- end task item -->
+                      <li><!-- Task item -->
+                        <a href="#">
+                          <h3>
+                            Create a nice theme
+                            <small class="pull-right">40%</small>
+                          </h3>
+                          <div class="progress xs">
+                            <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                              <span class="sr-only">40% Complete</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li><!-- end task item -->
+                      <li><!-- Task item -->
+                        <a href="#">
+                          <h3>
+                            Some task I need to do
+                            <small class="pull-right">60%</small>
+                          </h3>
+                          <div class="progress xs">
+                            <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                              <span class="sr-only">60% Complete</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li><!-- end task item -->
+                      <li><!-- Task item -->
+                        <a href="#">
+                          <h3>
+                            Make beautiful transitions
+                            <small class="pull-right">80%</small>
+                          </h3>
+                          <div class="progress xs">
+                            <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                              <span class="sr-only">80% Complete</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li><!-- end task item -->
+                    </ul>
+                  </li>
+                  <li class="footer">
+                    <a href="#">View all tasks</a>
+                  </li>
+                </ul>
+              </li>*@
+
+                            <div class="btn-group" style="padding: 8px 19px;">
+
+                                <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i>@if (Session["UserName"].ToString() != null || Session["UserName"].ToString() != "")
+                                                                                                                {@Session["UserName"].ToString()}</a>
+                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-phone-square" aria-hidden="true"></i>Contacts</a></li>
+                                    <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>Settings</a></li>
+                                    @*<li><a href="#"><i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>Delete</a></li>
+                                <li><a href="#"><i class="fa fa-ban fa-fw" aria-hidden="true"></i>Ban</a></li>*@
+                                    <li class="divider"></li>
+                                    <li><a href="~/Login/Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                                </ul>
+
+                            </div>
+                            <!-- User Account: style can be found in dropdown.less -->
+                            @*<li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu">*@
+                            <!-- User image -->
+                            @*<li class="user-header">
+                    <img src="~/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <p>
+                      Alexander Pierce - Web Developer
+                      <small>Member since Nov. 2012</small>
+                    </p>
+                  </li>*@
+                            <!-- Menu Body -->
+                            @*<li class="user-body">
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Followers</a>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Sales</a>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Friends</a>
+                    </div>
+                  </li>*@
+                            <!-- Menu Footer-->
+                            @* <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="~/User/Create" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="~/Login/Index" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>*@
+                            <!-- Control Sidebar Toggle Button -->
+                            @*<li>
+                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+              </li>*@
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar" style="margin-top:25px;">
+                    <!-- Sidebar user panel -->
+                    @using (@Html.BeginForm("Edit", "Employee", FormMethod.Post))
+                    {
+                        EmployeeService item = new EmployeeService();
+                        if (Request.QueryString["menuid"] == "1")
+                        {
+                            if (Url.RequestContext.RouteData.Values.Count > 2)
+                            {
+
+                                if (Url.RequestContext.RouteData.Values["id"].ToString() != null)
+                                {
+
+                                    int qrystring = Convert.ToInt32(Url.RequestContext.RouteData.Values["id"].ToString());
+                                    var Name = item.getEMP(qrystring);
+                                    string s = Name;
+                                    if (s != null)
+                                    {
+                                        string[] NamePhotos = s.Split(',');
+
+                                        ViewBag.Name = NamePhotos[0];
+                                        ViewBag.photo = NamePhotos[1];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    @if (@ViewBag.photo != null && @ViewBag.photo != "")
+                    {
+                        <div class="user-panel" style="margin-top:-20px;margin-bottom:10px;">
+
+
+                            <div class="pull-left info">
+
+
+                                <p>@ViewBag.Name</p>
+                                @if (@ViewBag.photo != null && @ViewBag.photo != "")
+                                {
+                                    <a href="#"><i class="fa fa-circle text-success"></i>In Use</a>
+                                }
+                                else
+                                {
+                                    <a href="#"><i class="fa fa-circle text-danger"></i>Offline</a>    
+                                }
+                            </div>
+                            <div class="pull-left image">
+                                @if (@ViewBag.photo != null)
+                                {
+                                    <img src="~/PhotoUpload/@ViewBag.photo" class="img-circle" style="height:50px;" onError="this.onerror=null;this.src='/PhotoUpload/users.png';" alt="Emp Image">
+                                }
+                                else
+                                {
+                                    <img src="~/PhotoUpload/users.png" onerror="this.onerror=null;this.src='/PhotoUpload/users.png';" class="img-circle" alt="Emp Image">
+                                }
+                            </div>
+                        </div>
+                    }
+                    <!-- search form -->
+                 @*   <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>*@
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <div id="menuLeft">
+                        @*     @Html.Partial("_LeftMenu", "Menu")*@
+                        @*    @Html.Partial("_LeftMenu",null)*@
+
+                    </div>
+                    <ul class="sidebar-menu">
+                        @*<li class="header">MAIN NAVIGATION</li>*@
+                        @*<li class="active treeview">
+                        <ul class="treeview-menu">
+                            <li class="panel">*@
+                        <li style="height: auto; min-height: 472px;">
+                            @{Html.RenderAction("LeftMenu", "Menu");}
+                        </li>
+
+                        @*</li>
+                        </ul>
+                    </li>*@
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+            <div class="content-wrapper">
+                <div id="loading">
+                    <div class="spinner">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                </div>
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="col-xs-12 fadeInLeft animated">
+
+                            @RenderBody()
+                            @*@Scripts.Render("~/bundles/jquery")*@
+                            @RenderSection("scripts", required: false)
+                        </div>
+                    </div>
+                </section>
+            </div>
+            @*        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui");
+        @Scripts.Render("~/bundles/bootstrap")*@
+            @* @RenderSection("scripts", required: false)*@
+            @*<div style="padding:0px 10px 10px 600px;height:10px">Powered by kp</div> *@
+        </div>
+        @*Note:-   below 3 Link for date calender but only for online  and if online is not working then below them offline Script is working well  *@
+
+
+
+
+        @*  offline script for calender control *@
+        @*     <link href="~/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+    <script src="~/scripts/bootstrap-datepicker.js"></script>*@
+        <!--For Tables Paging,Searching,Sorting-->
+        <script src="~/assets/js/dataTables/jquery.dataTables.js"></script>
+        <script src="~/assets/js/dataTables/dataTables.bootstrap.js"></script>
+        <link rel="stylesheet" href="~/assets/js/dataTables/dataTables.bootstrap.css" />
+
+
+        <!--end-->
+        <script>
+            $(document).ready(function () {
+
+                var table = $('#tbl').DataTable();
+
+            });
+
+        </script>
+        <!-- Modal -->
+        @{
+                              EmployeeService objService = new EmployeeService();
+                              List<EmpAllItem> objList = new List<EmpAllItem>();
+                              int cid = 0;
+                              if (Session["CompID"] != null)
+                              {
+                                  cid = Convert.ToInt32(Session["CompID"].ToString());
+                              }
+                              objList = objService.getEmpContacts(cid);
+            
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Employee Contact Details</h4>
+                        </div>
+                        <div class="modal-body">
+                            <script>
+                                $(document).ready(function () {
+
+                                    var table = $('#ModalTbl').DataTable();
+
+                                });
+
+                            </script>
+                            <table id="ModalTbl" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Employee</th>
+                                        <th>Mobile</th>
+                                        <th>Designation</th>
+                                        <th>Company</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var i in objList)
+                                    {
+                                        <tr>
+                                            <td>@i.EmployeeItem.Empname</td>
+                                            <td>@i.EmployeeItem.Mobile</td>
+                                            <td>@i.desiDetails.Name</td>
+                                            <td>@i.CompanyItem.CompName</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </body>
+
+    </html>
+}
+<script type="text/javascript">
+    //$(function () {
+    //    $.ajax({
+    //        type: "POST",
+    //        url: '/Menu/LeftMenu',
+    //        data: { menuId: 1 },
+    //        success: function (data, textStatus, jqXHR) {
+    //            $("#liMenu").html(data);
+    //        }
+    //    });
+    //});
+    //$(document).ready(function(){
+    //    $(".mainmenu").on('click', function () {
+    //        debugger;
+    //        $.ajax({
+    //            type: "GET",
+    //            url: '/Menu/LeftMenu',
+    //            data: { menuId: 1 },
+    //            success: function (data, textStatus, jqXHR) {
+    //                $("#liMenu").html(data);
+    //            }
+    //        });
+    //    });
+    //});
+    function MenuClick(menuId) {
+        if (menuId == 1) {
+            window.location.href = "/Employee" + "?menuId=" + menuId;
+        }
+        else if (menuId == 2) {
+            window.location.href = "/TradeLicense/Create" + "?menuId=" + menuId;
+        }
+        else if (menuId == 3) {
+            window.location.href = "/vehicleMaster/create" + "?menuId=" + menuId;
+        }
+        else if (menuId == 4) {
+            window.location.href = "/PayrollEntry/Create" + "?menuId=" + menuId;
+        }
+        else if (menuId == 6) {
+            window.location.href = "/insurance/create" + "?menuId=" + menuId;
+        }
+        else if (menuId == 7) {
+            window.location.href = "/TravelExpense/create" + "?menuId=" + menuId;
+        }
+        else if (menuId == 9) {
+            window.location.href = "/MasterData/Create" + "?menuId=" + menuId;
+        }
+        else if (menuId == 10) {
+            window.location.href = "/appointment/create" + "?menuId=" + menuId;
+        }
+        else if (menuId == 11) {
+            window.location.href = "/Report/EmpReport" + "?menuId=" + menuId;
+        }
+        else {
+            window.location.href = "/Dashboard/Index" + "?menuId=" + menuId;
+        }
+        Viewbag.data = menuId;
+        //$.ajax({
+        //    type: "GET",
+        //    url: '/Menu/LeftMenu',
+        //    data: { menuId: menuId },
+        //    success: function (data, textStatus, jqXHR) {
+        //        $("#DvSubMenu").html(data);
+
+        //    }
+        //});
+    }
+</script>
+
+@*<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker({ dateFormat: "dd/mm/yy", changeYear: "true", yearRange: "1930:2050" }); //Initialise any date pickers
+    });
+
+</script>*@
+<script>
+    $(document).keyup(function (e) {
+
+        if (e.keyCode == 44) {
+            alert('Not Allowed!');
+            return false;
+        }
+        //         setInterval("window.clipboardData.setData('text','')",20);
+        //{ return false; }
+        //window.clipboardData.clearData();
+        //AccessClipboardData();            
+    });
+</script>
+<script>
+    function clearData() {
+        window.clipboardData.setData('text', '');
+    }
+</script>
+
+<link href="/Content/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="/Content/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.datetimepicker').datetimepicker({
+            format: "dd/mm/yyyy hh:ii",
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: "bottom-left",
+            startDate: "@System.DateTime.Now.ToString("dd/MM/yyyy hh:ii")"
+                });
+
+                $('.timepicker').datetimepicker({
+                    format: "hh:ii",
+                    autoclose: true,
+                    todayBtn: true,
+                    pickerPosition: "bottom-left"
+                });
+            });
+</script>
+
+@*<script>
+
+    /*function check(e)
+    {
+    alert(e.keyCode);
+    }*/
+    document.onkeydown = function (e) {
+        debugger;
+        //if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 117)) {//Alt+c, Alt+v will also be disabled sadly.
+        if (e.ctrlKey && (e.keyCode === 85)){
+            alert('Not Allowed');
+        }
+        return false;
+    };
+
+    </script>*@
+
+@*<script>
+    $(document).mousedown(function (e) {
+
+        if (e.button == 2) {
+            alert('Sorry, this functionality is disabled!');
+            return false;
+        } else {
+            return true;
+        }
+    });
+
+</script>*@
+<script>
+    $(document).ready(function () {
+        $('#dvView :input').attr('disabled', true);
+        //handleStatusChanged();
+        //Disable();
+
+    });
+
+    //function handleStatusChanged() {
+    //    $('#toggleElement').on('change', function () {
+    //        toggleStatus();
+    //    });
+    //}
+
+    function Disable() {
+        if ($('#toggleElement').is(':checked')) {
+            $('#elementsToOperateOn :input').attr('disabled', true);
+        } else {
+            $('#elementsToOperateOn :input').removeAttr('disabled');
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        debugger;
+        var session = '@Request.RequestContext.HttpContext.Session["RoleID"]';
+        var cid = '@Request.RequestContext.HttpContext.Session["CompID"]';
+        var edit = $(".fa-pencil-square");
+        var del = $(".fa-trash");
+        var btnAdd = $("#btnAdd");
+        if (cid == 0) {
+            $("#ddlComp").prop("disabled", false);
+        }
+        else {
+            $("#ddlComp").prop("disabled", true);
+            $("#ddlComp > [value=" + cid + "]").attr("selected", "true");
+
+            var CompIds = cid;
+            $.ajax(
+            {
+                url: '@Url.Action("FillBranch", "VehicleMaster")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Branch_master) {
+
+                    $("#Branch_ID").html("");  // clear before appending new list 
+                    $("#Branch_ID").append("<option value='0'>--Select Branch--</option>");
+                    $.each(Branch_master, function (i, Branch_ID) {
+
+                        $("#Branch_ID").append(
+
+                            $('<option></option>').val(Branch_ID.id).html(Branch_ID.BranchName));
+
+                    });
+                    var br = $("#hdnBr").val();
+                    if (br != "undefined") {
+                        $("#Branch_ID").val(br);
+                    }
+
+                }
+
+            });
+
+        }
+        if (session != 1 && session != 111) {
+            edit.hide();
+            del.hide();
+            btnAdd.hide();
+        }
+        else {
+            edit.show();
+            del.show();
+            btnAdd.show();
+        }
+        //$(this).parent().find(".fa-pencil-square").hide();
+        //$(".fa-pencil-square").click(function () {
+
+        //    return false;
+        //});
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+
+        $("#dvGrid").show();
+        $("#dvAdd").hide();
+        $("#btnAdd").click(function () {
+
+            $("#dvGrid").hide();
+            $("#dvAdd").show(1000);
+
+        });
+        $("#btnBack").click(function () {
+            $("#dvGrid").show();
+            $("#dvAdd").hide(1000);
+        });
+    });
+
+</script>

@@ -1,0 +1,132 @@
+﻿@{ 
+   ViewBag.Title = "Experience";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model  EmpExperienceItem
+
+@using (@Html.BeginForm("View", "Experience", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.ExpId)
+    @Html.HiddenFor(m => m.ExpId, new { @ViewBag.VExpId })
+    @Html.HiddenFor(m => m.modeEdit, new { @value = "Edit" })
+    @Html.HiddenFor(m => m.modeView, new { @value = "View" })
+    <section class="content-header">
+        <h1>Experience <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Experience Details</div>
+        <div class="panel-body">
+            <div class="form-group" id="dvView">
+                @Html.LabelFor(m => m.CompName, new { @class = "col-sm-2 control-label" })
+
+                @*  @Html.EditorFor(model => model.CompName, new { htmlAttributes = new { @class = "form-control" } })  *@
+
+                <div class="col-sm-4">
+                    
+                    @Html.TextBoxFor(m => m.CompName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CompName)
+
+                </div>
+
+                @Html.LabelFor(m => m.Designation, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Designation, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Designation)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Department, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Department, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Department)
+
+                </div>
+
+                @Html.LabelFor(m => m.ContactPerson, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ContactPerson)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Address, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                </div>
+
+
+                @Html.LabelFor(m => m.City, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                @Html.LabelFor(m => m.State, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.Country, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Country, new SelectList(Model.ListCountry, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Phone, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.Roles, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Roles, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Roles)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.FromDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.FromDate, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FromDate)
+
+                </div>
+
+                @Html.LabelFor(m => m.ToDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ToDate, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ToDate)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Salary, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Salary, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Salary)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                @Html.ActionLink(" Back", "Create", new { @id = Model.EmpId, @ExpId = Model.ExpId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })           
+                </div>    
+                
+            </div>
+        </div>
+    </div>
+
+    
+}
+

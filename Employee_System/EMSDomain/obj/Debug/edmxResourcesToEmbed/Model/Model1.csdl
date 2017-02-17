@@ -1,0 +1,1615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EmployeeEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="AppointmentsMasters" EntityType="EmployeeModel.AppointmentsMaster" />
+    <EntitySet Name="Blood_Group_Master" EntityType="EmployeeModel.Blood_Group_Master" />
+    <EntitySet Name="Branch_master" EntityType="EmployeeModel.Branch_master" />
+    <EntitySet Name="Company_master" EntityType="EmployeeModel.Company_master" />
+    <EntitySet Name="Countries" EntityType="EmployeeModel.Country" />
+    <EntitySet Name="document_category" EntityType="EmployeeModel.document_category" />
+    <EntitySet Name="EmpDrivingLicences" EntityType="EmployeeModel.EmpDrivingLicence" />
+    <EntitySet Name="employee_document" EntityType="EmployeeModel.employee_document" />
+    <EntitySet Name="employee_master" EntityType="EmployeeModel.employee_master" />
+    <EntitySet Name="EmployeeAbscondings" EntityType="EmployeeModel.EmployeeAbsconding" />
+    <EntitySet Name="EmployeeAllowances" EntityType="EmployeeModel.EmployeeAllowance" />
+    <EntitySet Name="EmployeeContacts" EntityType="EmployeeModel.EmployeeContact" />
+    <EntitySet Name="EmployeeDeposites" EntityType="EmployeeModel.EmployeeDeposite" />
+    <EntitySet Name="EmployeeDocuments" EntityType="EmployeeModel.EmployeeDocument" />
+    <EntitySet Name="EmployeeExperiences" EntityType="EmployeeModel.EmployeeExperience" />
+    <EntitySet Name="EmployeeHealthCards" EntityType="EmployeeModel.EmployeeHealthCard" />
+    <EntitySet Name="EmployeeIncrements" EntityType="EmployeeModel.EmployeeIncrement" />
+    <EntitySet Name="EmployeeInsurances" EntityType="EmployeeModel.EmployeeInsurance" />
+    <EntitySet Name="EmployeeLeaves" EntityType="EmployeeModel.EmployeeLeave" />
+    <EntitySet Name="EmployeeOtherDetails" EntityType="EmployeeModel.EmployeeOtherDetail" />
+    <EntitySet Name="EmployeePassports" EntityType="EmployeeModel.EmployeePassport" />
+    <EntitySet Name="EmployeeQualifications" EntityType="EmployeeModel.EmployeeQualification" />
+    <EntitySet Name="EmployeeRelatives" EntityType="EmployeeModel.EmployeeRelative" />
+    <EntitySet Name="EmployeeVisas" EntityType="EmployeeModel.EmployeeVisa" />
+    <EntitySet Name="FormMasters" EntityType="EmployeeModel.FormMaster" />
+    <EntitySet Name="FormMenuTrans" EntityType="EmployeeModel.FormMenuTran" />
+    <EntitySet Name="Login_Master" EntityType="EmployeeModel.Login_Master" />
+    <EntitySet Name="Masters" EntityType="EmployeeModel.Master" />
+    <EntitySet Name="Masters_Tran" EntityType="EmployeeModel.Masters_Tran" />
+    <EntitySet Name="MenuHeaderMasters" EntityType="EmployeeModel.MenuHeaderMaster" />
+    <EntitySet Name="MenuTrans" EntityType="EmployeeModel.MenuTran" />
+    <EntitySet Name="Other_Expenses" EntityType="EmployeeModel.Other_Expenses" />
+    <EntitySet Name="Petrol_Card" EntityType="EmployeeModel.Petrol_Card" />
+    <EntitySet Name="Petrol_Expense" EntityType="EmployeeModel.Petrol_Expense" />
+    <EntitySet Name="TenancyDocuments" EntityType="EmployeeModel.TenancyDocument" />
+    <EntitySet Name="TenancyMasters" EntityType="EmployeeModel.TenancyMaster" />
+    <EntitySet Name="Trade_License" EntityType="EmployeeModel.Trade_License" />
+    <EntitySet Name="TradeDocuments" EntityType="EmployeeModel.TradeDocument" />
+    <EntitySet Name="TravelExpences" EntityType="EmployeeModel.TravelExpence" />
+    <EntitySet Name="Vehicle_History" EntityType="EmployeeModel.Vehicle_History" />
+    <EntitySet Name="VehicleDocuments" EntityType="EmployeeModel.VehicleDocument" />
+    <EntitySet Name="VehicleMasters" EntityType="EmployeeModel.VehicleMaster" />
+    <EntitySet Name="VehicleRepairings" EntityType="EmployeeModel.VehicleRepairing" />
+    <EntitySet Name="WorkHistories" EntityType="EmployeeModel.WorkHistory" />
+    <AssociationSet Name="FK_employee_master_Branch_master" Association="EmployeeModel.FK_employee_master_Branch_master">
+      <End Role="Branch_master" EntitySet="Branch_master" />
+      <End Role="employee_master" EntitySet="employee_master" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Other_Expenses_Branch_master" Association="EmployeeModel.FK_Other_Expenses_Branch_master">
+      <End Role="Branch_master" EntitySet="Branch_master" />
+      <End Role="Other_Expenses" EntitySet="Other_Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleMaster_Branch_master" Association="EmployeeModel.FK_VehicleMaster_Branch_master">
+      <End Role="Branch_master" EntitySet="Branch_master" />
+      <End Role="VehicleMaster" EntitySet="VehicleMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employee_master_Company_master" Association="EmployeeModel.FK_employee_master_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="employee_master" EntitySet="employee_master" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInsurance_Company_master" Association="EmployeeModel.FK_EmployeeInsurance_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="EmployeeInsurance" EntitySet="EmployeeInsurances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Other_Expenses_Company_master" Association="EmployeeModel.FK_Other_Expenses_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="Other_Expenses" EntitySet="Other_Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TravelExpences_Company_master" Association="EmployeeModel.FK_TravelExpences_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="TravelExpences" EntitySet="TravelExpences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleMaster_Company_master" Association="EmployeeModel.FK_VehicleMaster_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="VehicleMaster" EntitySet="VehicleMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleRepairing_Company_master" Association="EmployeeModel.FK_VehicleRepairing_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="VehicleRepairing" EntitySet="VehicleRepairings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpDrivingLicence_employee_master" Association="EmployeeModel.FK_EmpDrivingLicence_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmpDrivingLicence" EntitySet="EmpDrivingLicences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employee_document_document_category" Association="EmployeeModel.FK_employee_document_document_category">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="employee_document" EntitySet="employee_document" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmployeeQ__Empid__2645B050" Association="EmployeeModel.FK__EmployeeQ__Empid__2645B050">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeQualification" EntitySet="EmployeeQualifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmployeeQ__Empid__489AC854" Association="EmployeeModel.FK__EmployeeQ__Empid__489AC854">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeQualification" EntitySet="EmployeeQualifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeAbsconding_employee_master" Association="EmployeeModel.FK_EmployeeAbsconding_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeAbsconding" EntitySet="EmployeeAbscondings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeAllowances_employee_master" Association="EmployeeModel.FK_EmployeeAllowances_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeAllowances" EntitySet="EmployeeAllowances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeContact_employee_master" Association="EmployeeModel.FK_EmployeeContact_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeContact" EntitySet="EmployeeContacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeDeposite_employee_master" Association="EmployeeModel.FK_EmployeeDeposite_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeDeposite" EntitySet="EmployeeDeposites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeExperience_employee_master" Association="EmployeeModel.FK_EmployeeExperience_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeExperience" EntitySet="EmployeeExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeHealthCard_employee_master" Association="EmployeeModel.FK_EmployeeHealthCard_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeHealthCard" EntitySet="EmployeeHealthCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeIncrement_employee_master" Association="EmployeeModel.FK_EmployeeIncrement_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeIncrement" EntitySet="EmployeeIncrements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeLeave_employee_master" Association="EmployeeModel.FK_EmployeeLeave_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeLeave" EntitySet="EmployeeLeaves" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeOtherDetails_employee_master" Association="EmployeeModel.FK_EmployeeOtherDetails_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeOtherDetails" EntitySet="EmployeeOtherDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeePassport_employee_master" Association="EmployeeModel.FK_EmployeePassport_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeePassport" EntitySet="EmployeePassports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeVisa_employee_master" Association="EmployeeModel.FK_EmployeeVisa_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeVisa" EntitySet="EmployeeVisas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_Master_employee_master" Association="EmployeeModel.FK_Login_Master_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="Login_Master" EntitySet="Login_Master" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Other_Expenses_employee_master" Association="EmployeeModel.FK_Other_Expenses_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="Other_Expenses" EntitySet="Other_Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Petrol_Expense_employee_master" Association="EmployeeModel.FK_Petrol_Expense_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="Petrol_Expense" EntitySet="Petrol_Expense" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TravelExpences_employee_master" Association="EmployeeModel.FK_TravelExpences_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="TravelExpences" EntitySet="TravelExpences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_History_employee_master" Association="EmployeeModel.FK_Vehicle_History_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="Vehicle_History" EntitySet="Vehicle_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleMaster_employee_master" Association="EmployeeModel.FK_VehicleMaster_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="VehicleMaster" EntitySet="VehicleMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInsurance_Masters_Tran" Association="EmployeeModel.FK_EmployeeInsurance_Masters_Tran">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="EmployeeInsurance" EntitySet="EmployeeInsurances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInsurance_Masters_Tran1" Association="EmployeeModel.FK_EmployeeInsurance_Masters_Tran1">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="EmployeeInsurance" EntitySet="EmployeeInsurances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormMenuTran_FormMaster" Association="EmployeeModel.FK_FormMenuTran_FormMaster">
+      <End Role="FormMaster" EntitySet="FormMasters" />
+      <End Role="FormMenuTran" EntitySet="FormMenuTrans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuTran_FormMaster" Association="EmployeeModel.FK_MenuTran_FormMaster">
+      <End Role="FormMaster" EntitySet="FormMasters" />
+      <End Role="MenuTran" EntitySet="MenuTrans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormMenuTran_MenuHeaderMaster" Association="EmployeeModel.FK_FormMenuTran_MenuHeaderMaster">
+      <End Role="MenuHeaderMaster" EntitySet="MenuHeaderMasters" />
+      <End Role="FormMenuTran" EntitySet="FormMenuTrans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Masters_Tran_Masters" Association="EmployeeModel.FK_Masters_Tran_Masters">
+      <End Role="Masters" EntitySet="Masters" />
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Other_Expenses_Masters_Tran" Association="EmployeeModel.FK_Other_Expenses_Masters_Tran">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="Other_Expenses" EntitySet="Other_Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Petrol_Card_Masters_Tran" Association="EmployeeModel.FK_Petrol_Card_Masters_Tran">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="Petrol_Card" EntitySet="Petrol_Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Petrol_Card_Masters_Tran1" Association="EmployeeModel.FK_Petrol_Card_Masters_Tran1">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="Petrol_Card" EntitySet="Petrol_Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleRepairing_Masters_Tran" Association="EmployeeModel.FK_VehicleRepairing_Masters_Tran">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="VehicleRepairing" EntitySet="VehicleRepairings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuTran_MenuHeaderMaster" Association="EmployeeModel.FK_MenuTran_MenuHeaderMaster">
+      <End Role="MenuHeaderMaster" EntitySet="MenuHeaderMasters" />
+      <End Role="MenuTran" EntitySet="MenuTrans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Petrol_Card_VehicleMaster" Association="EmployeeModel.FK_Petrol_Card_VehicleMaster">
+      <End Role="VehicleMaster" EntitySet="VehicleMasters" />
+      <End Role="Petrol_Card" EntitySet="Petrol_Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Petrol_Expense_VehicleMaster" Association="EmployeeModel.FK_Petrol_Expense_VehicleMaster">
+      <End Role="VehicleMaster" EntitySet="VehicleMasters" />
+      <End Role="Petrol_Expense" EntitySet="Petrol_Expense" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TenancyDocuments_TenancyMaster" Association="EmployeeModel.FK_TenancyDocuments_TenancyMaster">
+      <End Role="TenancyMaster" EntitySet="TenancyMasters" />
+      <End Role="TenancyDocuments" EntitySet="TenancyDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_History_VehicleMaster" Association="EmployeeModel.FK_Vehicle_History_VehicleMaster">
+      <End Role="VehicleMaster" EntitySet="VehicleMasters" />
+      <End Role="Vehicle_History" EntitySet="Vehicle_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleRepairing_VehicleMaster" Association="EmployeeModel.FK_VehicleRepairing_VehicleMaster">
+      <End Role="VehicleMaster" EntitySet="VehicleMasters" />
+      <End Role="VehicleRepairing" EntitySet="VehicleRepairings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmployeeIns__VID__36470DEF" Association="EmployeeModel.FK__EmployeeIns__VID__36470DEF">
+      <End Role="VehicleMaster" EntitySet="VehicleMasters" />
+      <End Role="EmployeeInsurance" EntitySet="EmployeeInsurances" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AppointmentsMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="StDt" Type="DateTime" Precision="3" />
+    <Property Name="StTime" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="EndDt" Type="DateTime" Precision="3" />
+    <Property Name="EndTime" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Priority" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Reminder" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ReDate" Type="DateTime" Precision="3" />
+    <Property Name="ReTime" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Blood_Group_Master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="BName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BDescription" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="BStatus" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Branch_master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Compcode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BranchCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BranchName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BranchAdd" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_employee_master_Branch_master" FromRole="Branch_master" ToRole="employee_master" />
+    <NavigationProperty Name="Other_Expenses" Relationship="EmployeeModel.FK_Other_Expenses_Branch_master" FromRole="Branch_master" ToRole="Other_Expenses" />
+    <NavigationProperty Name="VehicleMasters" Relationship="EmployeeModel.FK_VehicleMaster_Branch_master" FromRole="Branch_master" ToRole="VehicleMaster" />
+  </EntityType>
+  <EntityType Name="Company_master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Compcode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CompName" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="ContactPerson" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_employee_master_Company_master" FromRole="Company_master" ToRole="employee_master" />
+    <NavigationProperty Name="EmployeeInsurances" Relationship="EmployeeModel.FK_EmployeeInsurance_Company_master" FromRole="Company_master" ToRole="EmployeeInsurance" />
+    <NavigationProperty Name="Other_Expenses" Relationship="EmployeeModel.FK_Other_Expenses_Company_master" FromRole="Company_master" ToRole="Other_Expenses" />
+    <NavigationProperty Name="TravelExpences" Relationship="EmployeeModel.FK_TravelExpences_Company_master" FromRole="Company_master" ToRole="TravelExpences" />
+    <NavigationProperty Name="VehicleMasters" Relationship="EmployeeModel.FK_VehicleMaster_Company_master" FromRole="Company_master" ToRole="VehicleMaster" />
+    <NavigationProperty Name="VehicleRepairings" Relationship="EmployeeModel.FK_VehicleRepairing_Company_master" FromRole="Company_master" ToRole="VehicleRepairing" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="document_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="category" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmpDrivingLicence">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="LicenceNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IssueDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="IssueCountry" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DRemarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DStatus" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmpDrivingLicence_employee_master" FromRole="EmpDrivingLicence" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="employee_document">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="empid" Type="Int32" Nullable="false" />
+    <Property Name="categoryid" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="docu_copy" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_employee_document_document_category" FromRole="employee_document" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="employee_master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Empno" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Empname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Compid" Type="Int32" />
+    <Property Name="Branchid" Type="Int32" />
+    <Property Name="vcid" Type="Int32" />
+    <Property Name="vbid" Type="Int32" />
+    <Property Name="EmployeeType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="bloodid" Type="Int32" />
+    <Property Name="Photo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="alias" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FileNumber" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Category" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Mobile" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="HomeTel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="LocalTel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+    <Property Name="DOJ" Type="DateTime" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DOL" Type="DateTime" Precision="3" />
+    <Property Name="RejoinDate" Type="DateTime" Precision="3" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Profile" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Branch_master" Relationship="EmployeeModel.FK_employee_master_Branch_master" FromRole="employee_master" ToRole="Branch_master" />
+    <NavigationProperty Name="Company_master" Relationship="EmployeeModel.FK_employee_master_Company_master" FromRole="employee_master" ToRole="Company_master" />
+    <NavigationProperty Name="EmpDrivingLicences" Relationship="EmployeeModel.FK_EmpDrivingLicence_employee_master" FromRole="employee_master" ToRole="EmpDrivingLicence" />
+    <NavigationProperty Name="employee_document" Relationship="EmployeeModel.FK_employee_document_document_category" FromRole="employee_master" ToRole="employee_document" />
+    <NavigationProperty Name="EmployeeQualifications" Relationship="EmployeeModel.FK__EmployeeQ__Empid__2645B050" FromRole="employee_master" ToRole="EmployeeQualification" />
+    <NavigationProperty Name="EmployeeQualifications1" Relationship="EmployeeModel.FK__EmployeeQ__Empid__489AC854" FromRole="employee_master" ToRole="EmployeeQualification" />
+    <NavigationProperty Name="EmployeeAbscondings" Relationship="EmployeeModel.FK_EmployeeAbsconding_employee_master" FromRole="employee_master" ToRole="EmployeeAbsconding" />
+    <NavigationProperty Name="EmployeeAllowances" Relationship="EmployeeModel.FK_EmployeeAllowances_employee_master" FromRole="employee_master" ToRole="EmployeeAllowances" />
+    <NavigationProperty Name="EmployeeContacts" Relationship="EmployeeModel.FK_EmployeeContact_employee_master" FromRole="employee_master" ToRole="EmployeeContact" />
+    <NavigationProperty Name="EmployeeDeposites" Relationship="EmployeeModel.FK_EmployeeDeposite_employee_master" FromRole="employee_master" ToRole="EmployeeDeposite" />
+    <NavigationProperty Name="EmployeeExperiences" Relationship="EmployeeModel.FK_EmployeeExperience_employee_master" FromRole="employee_master" ToRole="EmployeeExperience" />
+    <NavigationProperty Name="EmployeeHealthCards" Relationship="EmployeeModel.FK_EmployeeHealthCard_employee_master" FromRole="employee_master" ToRole="EmployeeHealthCard" />
+    <NavigationProperty Name="EmployeeIncrements" Relationship="EmployeeModel.FK_EmployeeIncrement_employee_master" FromRole="employee_master" ToRole="EmployeeIncrement" />
+    <NavigationProperty Name="EmployeeLeaves" Relationship="EmployeeModel.FK_EmployeeLeave_employee_master" FromRole="employee_master" ToRole="EmployeeLeave" />
+    <NavigationProperty Name="EmployeeOtherDetails" Relationship="EmployeeModel.FK_EmployeeOtherDetails_employee_master" FromRole="employee_master" ToRole="EmployeeOtherDetails" />
+    <NavigationProperty Name="EmployeePassports" Relationship="EmployeeModel.FK_EmployeePassport_employee_master" FromRole="employee_master" ToRole="EmployeePassport" />
+    <NavigationProperty Name="EmployeeVisas" Relationship="EmployeeModel.FK_EmployeeVisa_employee_master" FromRole="employee_master" ToRole="EmployeeVisa" />
+    <NavigationProperty Name="Login_Master" Relationship="EmployeeModel.FK_Login_Master_employee_master" FromRole="employee_master" ToRole="Login_Master" />
+    <NavigationProperty Name="Other_Expenses" Relationship="EmployeeModel.FK_Other_Expenses_employee_master" FromRole="employee_master" ToRole="Other_Expenses" />
+    <NavigationProperty Name="Petrol_Expense" Relationship="EmployeeModel.FK_Petrol_Expense_employee_master" FromRole="employee_master" ToRole="Petrol_Expense" />
+    <NavigationProperty Name="TravelExpences" Relationship="EmployeeModel.FK_TravelExpences_employee_master" FromRole="employee_master" ToRole="TravelExpences" />
+    <NavigationProperty Name="Vehicle_History" Relationship="EmployeeModel.FK_Vehicle_History_employee_master" FromRole="employee_master" ToRole="Vehicle_History" />
+    <NavigationProperty Name="VehicleMasters" Relationship="EmployeeModel.FK_VehicleMaster_employee_master" FromRole="employee_master" ToRole="VehicleMaster" />
+  </EntityType>
+  <EntityType Name="EmployeeAbsconding">
+    <Key>
+      <PropertyRef Name="AbscId" />
+    </Key>
+    <Property Name="AbscId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="AbscHistory" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeeAbsconding_employee_master" FromRole="EmployeeAbsconding" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeeAllowance">
+    <Key>
+      <PropertyRef Name="AId" />
+    </Key>
+    <Property Name="AId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="AllownaceID" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeeAllowances_employee_master" FromRole="EmployeeAllowances" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeeContact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="Area" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Street" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PoBox" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Pincode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Fax" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Website" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeeContact_employee_master" FromRole="EmployeeContact" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeeDeposite">
+    <Key>
+      <PropertyRef Name="DepId" />
+    </Key>
+    <Property Name="DepId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="DepDescription" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="DepAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="InvestDate" Type="DateTime" Precision="3" />
+    <Property Name="MaturityDate" Type="DateTime" Precision="3" />
+    <Property Name="DepRemarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeeDeposite_employee_master" FromRole="EmployeeDeposite" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeeDocument">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="FilleName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="DocCategoryId" Type="Int32" />
+    <Property Name="FileUrl" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="EmployeeExperience">
+    <Key>
+      <PropertyRef Name="ExpId" />
+    </Key>
+    <Property Name="ExpId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="CompName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Roles" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FromDate" Type="DateTime" Precision="3" />
+    <Property Name="ToDate" Type="DateTime" Precision="3" />
+    <Property Name="Department" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Designation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Salary" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeeExperience_employee_master" FromRole="EmployeeExperience" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeeHealthCard">
+    <Key>
+      <PropertyRef Name="HId" />
+    </Key>
+    <Property Name="HId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="Type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CardNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IssueDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeeHealthCard_employee_master" FromRole="EmployeeHealthCard" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeeIncrement">
+    <Key>
+      <PropertyRef Name="IncId" />
+    </Key>
+    <Property Name="IncId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="IncAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IncDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeeIncrement_employee_master" FromRole="EmployeeIncrement" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeeInsurance">
+    <Key>
+      <PropertyRef Name="IID" />
+    </Key>
+    <Property Name="IID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CompID" Type="Int32" />
+    <Property Name="Branch" Type="Int32" />
+    <Property Name="Pname" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Icomp" Type="Int32" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="Ptype" Type="Int32" />
+    <Property Name="Pno" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Pamt" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Pdate" Type="DateTime" Precision="0" />
+    <Property Name="PExpDate" Type="DateTime" Precision="3" />
+    <Property Name="PremiumDate" Type="DateTime" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Company_master" Relationship="EmployeeModel.FK_EmployeeInsurance_Company_master" FromRole="EmployeeInsurance" ToRole="Company_master" />
+    <NavigationProperty Name="Masters_Tran" Relationship="EmployeeModel.FK_EmployeeInsurance_Masters_Tran" FromRole="EmployeeInsurance" ToRole="Masters_Tran" />
+    <NavigationProperty Name="Masters_Tran1" Relationship="EmployeeModel.FK_EmployeeInsurance_Masters_Tran1" FromRole="EmployeeInsurance" ToRole="Masters_Tran" />
+    <Property Type="Int32" Name="VID" />
+    <NavigationProperty Name="VehicleMaster" Relationship="EmployeeModel.FK__EmployeeIns__VID__36470DEF" FromRole="EmployeeInsurance" ToRole="VehicleMaster" />
+  </EntityType>
+  <EntityType Name="EmployeeLeave">
+    <Key>
+      <PropertyRef Name="LID" />
+    </Key>
+    <Property Name="LID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpID" Type="Int32" />
+    <Property Name="LFrom" Type="DateTime" Precision="3" />
+    <Property Name="LTo" Type="DateTime" Precision="3" />
+    <Property Name="LTypeID" Type="Int32" />
+    <Property Name="Remarks" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeeLeave_employee_master" FromRole="EmployeeLeave" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeeOtherDetail">
+    <Key>
+      <PropertyRef Name="OtherId" />
+    </Key>
+    <Property Name="OtherId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="AwardName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AwardDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeeOtherDetails_employee_master" FromRole="EmployeeOtherDetails" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeePassport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="MasterId" Type="Int32" />
+    <Property Name="PassportStatusId" Type="Int32" />
+    <Property Name="PassportID" Type="Int32" />
+    <Property Name="PassportNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PlaceIssue" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IssueCountry" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IssueDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="RenewDate" Type="DateTime" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeePassport_employee_master" FromRole="EmployeePassport" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeeQualification">
+    <Key>
+      <PropertyRef Name="Qid" />
+    </Key>
+    <Property Name="Qid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Empid" Type="Int32" />
+    <Property Name="SchoolName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Board" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FromDate" Type="DateTime" Precision="3" />
+    <Property Name="ToDate" Type="DateTime" Precision="3" />
+    <Property Name="CertType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CertTitle" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Grade" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CertificateID" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK__EmployeeQ__Empid__2645B050" FromRole="EmployeeQualification" ToRole="employee_master" />
+    <NavigationProperty Name="employee_master1" Relationship="EmployeeModel.FK__EmployeeQ__Empid__489AC854" FromRole="EmployeeQualification" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="EmployeeRelative">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="RName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="RAddress" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="RCity" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="RPhone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="REmail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Relation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="RMobile" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="EmployeeVisa">
+    <Key>
+      <PropertyRef Name="VId" />
+    </Key>
+    <Property Name="VId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="VisaNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="VisaStatusId" Type="Int32" />
+    <Property Name="VisaGroupId" Type="Int32" />
+    <Property Name="VisaTypeId" Type="Int32" />
+    <Property Name="PlaceOfIssue" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IssueCountry" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IssueDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="ReniewDate" Type="DateTime" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_EmployeeVisa_employee_master" FromRole="EmployeeVisa" ToRole="employee_master" />
+    <Property Type="Int32" Name="EmiratesId" />
+    <Property Type="DateTime" Name="EmiratesDate" Precision="3" />
+  </EntityType>
+  <EntityType Name="FormMaster">
+    <Key>
+      <PropertyRef Name="FormId" />
+    </Key>
+    <Property Name="FormId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FormTitle" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FormName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FormUrl" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="FormMenuTrans" Relationship="EmployeeModel.FK_FormMenuTran_FormMaster" FromRole="FormMaster" ToRole="FormMenuTran" />
+    <NavigationProperty Name="MenuTrans" Relationship="EmployeeModel.FK_MenuTran_FormMaster" FromRole="FormMaster" ToRole="MenuTran" />
+  </EntityType>
+  <EntityType Name="FormMenuTran">
+    <Key>
+      <PropertyRef Name="FMTID" />
+    </Key>
+    <Property Name="FMTID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FormId" Type="Int32" />
+    <Property Name="MHID" Type="Int32" />
+    <Property Name="Sequence" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="FormMaster" Relationship="EmployeeModel.FK_FormMenuTran_FormMaster" FromRole="FormMenuTran" ToRole="FormMaster" />
+    <NavigationProperty Name="MenuHeaderMaster" Relationship="EmployeeModel.FK_FormMenuTran_MenuHeaderMaster" FromRole="FormMenuTran" ToRole="MenuHeaderMaster" />
+  </EntityType>
+  <EntityType Name="Login_Master">
+    <Key>
+      <PropertyRef Name="UId" />
+    </Key>
+    <Property Name="UId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_Login_Master_employee_master" FromRole="Login_Master" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="Master">
+    <Key>
+      <PropertyRef Name="MId" />
+    </Key>
+    <Property Name="MId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterType" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="MasterDesc" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="MasterCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Masters_Tran" Relationship="EmployeeModel.FK_Masters_Tran_Masters" FromRole="Masters" ToRole="Masters_Tran" />
+  </EntityType>
+  <EntityType Name="Masters_Tran">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="MasterId" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EmployeeInsurances" Relationship="EmployeeModel.FK_EmployeeInsurance_Masters_Tran" FromRole="Masters_Tran" ToRole="EmployeeInsurance" />
+    <NavigationProperty Name="EmployeeInsurances1" Relationship="EmployeeModel.FK_EmployeeInsurance_Masters_Tran1" FromRole="Masters_Tran" ToRole="EmployeeInsurance" />
+    <NavigationProperty Name="Master" Relationship="EmployeeModel.FK_Masters_Tran_Masters" FromRole="Masters_Tran" ToRole="Masters" />
+    <NavigationProperty Name="Other_Expenses" Relationship="EmployeeModel.FK_Other_Expenses_Masters_Tran" FromRole="Masters_Tran" ToRole="Other_Expenses" />
+    <NavigationProperty Name="Petrol_Card" Relationship="EmployeeModel.FK_Petrol_Card_Masters_Tran" FromRole="Masters_Tran" ToRole="Petrol_Card" />
+    <NavigationProperty Name="Petrol_Card1" Relationship="EmployeeModel.FK_Petrol_Card_Masters_Tran1" FromRole="Masters_Tran" ToRole="Petrol_Card" />
+    <NavigationProperty Name="VehicleRepairings" Relationship="EmployeeModel.FK_VehicleRepairing_Masters_Tran" FromRole="Masters_Tran" ToRole="VehicleRepairing" />
+  </EntityType>
+  <EntityType Name="MenuHeaderMaster">
+    <Key>
+      <PropertyRef Name="MHId" />
+    </Key>
+    <Property Name="MHId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MHName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="MHDescription" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Icon" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="FormMenuTrans" Relationship="EmployeeModel.FK_FormMenuTran_MenuHeaderMaster" FromRole="MenuHeaderMaster" ToRole="FormMenuTran" />
+    <NavigationProperty Name="MenuTrans" Relationship="EmployeeModel.FK_MenuTran_MenuHeaderMaster" FromRole="MenuHeaderMaster" ToRole="MenuTran" />
+  </EntityType>
+  <EntityType Name="MenuTran">
+    <Key>
+      <PropertyRef Name="MSId" />
+    </Key>
+    <Property Name="MSId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FormId" Type="Int32" />
+    <Property Name="MHId" Type="Int32" />
+    <Property Name="Sequence" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="FormMaster" Relationship="EmployeeModel.FK_MenuTran_FormMaster" FromRole="MenuTran" ToRole="FormMaster" />
+    <NavigationProperty Name="MenuHeaderMaster" Relationship="EmployeeModel.FK_MenuTran_MenuHeaderMaster" FromRole="MenuTran" ToRole="MenuHeaderMaster" />
+  </EntityType>
+  <EntityType Name="Other_Expenses">
+    <Key>
+      <PropertyRef Name="OEID" />
+    </Key>
+    <Property Name="OEID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CompID" Type="Int32" />
+    <Property Name="BranchID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="EmpID" Type="Int32" />
+    <Property Name="ExpID" Type="Int32" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Branch_master" Relationship="EmployeeModel.FK_Other_Expenses_Branch_master" FromRole="Other_Expenses" ToRole="Branch_master" />
+    <NavigationProperty Name="Company_master" Relationship="EmployeeModel.FK_Other_Expenses_Company_master" FromRole="Other_Expenses" ToRole="Company_master" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_Other_Expenses_employee_master" FromRole="Other_Expenses" ToRole="employee_master" />
+    <NavigationProperty Name="Masters_Tran" Relationship="EmployeeModel.FK_Other_Expenses_Masters_Tran" FromRole="Other_Expenses" ToRole="Masters_Tran" />
+  </EntityType>
+  <EntityType Name="Petrol_Card">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="VID" Type="Int32" />
+    <Property Name="PetroCardNo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PetrolCardNameID" Type="Int32" />
+    <Property Name="PaymentModeID" Type="Int32" />
+    <Property Name="IssueDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpireDate" Type="DateTime" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Masters_Tran" Relationship="EmployeeModel.FK_Petrol_Card_Masters_Tran" FromRole="Petrol_Card" ToRole="Masters_Tran" />
+    <NavigationProperty Name="Masters_Tran1" Relationship="EmployeeModel.FK_Petrol_Card_Masters_Tran1" FromRole="Petrol_Card" ToRole="Masters_Tran" />
+    <NavigationProperty Name="VehicleMaster" Relationship="EmployeeModel.FK_Petrol_Card_VehicleMaster" FromRole="Petrol_Card" ToRole="VehicleMaster" />
+  </EntityType>
+  <EntityType Name="Petrol_Expense">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="VID" Type="Int32" />
+    <Property Name="Bill_Date" Type="DateTime" Precision="3" />
+    <Property Name="EmpID" Type="Int32" />
+    <Property Name="Qty" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Amount" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="KM_From" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="KM_To" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Remarks" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_Petrol_Expense_employee_master" FromRole="Petrol_Expense" ToRole="employee_master" />
+    <NavigationProperty Name="VehicleMaster" Relationship="EmployeeModel.FK_Petrol_Expense_VehicleMaster" FromRole="Petrol_Expense" ToRole="VehicleMaster" />
+  </EntityType>
+  <EntityType Name="TenancyDocument">
+    <Key>
+      <PropertyRef Name="TenDocId" />
+    </Key>
+    <Property Name="TenDocId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TenId" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="FileUrl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TenancyMaster" Relationship="EmployeeModel.FK_TenancyDocuments_TenancyMaster" FromRole="TenancyDocuments" ToRole="TenancyMaster" />
+  </EntityType>
+  <EntityType Name="TenancyMaster">
+    <Key>
+      <PropertyRef Name="TnID" />
+    </Key>
+    <Property Name="TnID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TnNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="TDate" Type="DateTime" Precision="3" />
+    <Property Name="LandLord" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Tn" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="TnType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="TnTypeCompId" Type="Int32" />
+    <Property Name="TnTypeEmpId" Type="Int32" />
+    <Property Name="TnTypeId" Type="Int32" />
+    <Property Name="Others" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="Subject" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Period" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FromDate" Type="DateTime" Precision="3" />
+    <Property Name="ToDate" Type="DateTime" Precision="3" />
+    <Property Name="Rent" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Terms" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TenancyDocuments" Relationship="EmployeeModel.FK_TenancyDocuments_TenancyMaster" FromRole="TenancyMaster" ToRole="TenancyDocuments" />
+  </EntityType>
+  <EntityType Name="Trade_License">
+    <Key>
+      <PropertyRef Name="TID" />
+    </Key>
+    <Property Name="TID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Lno" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CompID" Type="Int32" />
+    <Property Name="EmiratesID" Type="Int32" />
+    <Property Name="SponsorID" Type="Int32" />
+    <Property Name="PartnerID" Type="Int32" />
+    <Property Name="PartnerID2" Type="Int32" />
+    <Property Name="PartnerID3" Type="Int32" />
+    <Property Name="PartnerID4" Type="Int32" />
+    <Property Name="Fees" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IssueDate" Type="DateTime" Precision="0" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="TradeDocument">
+    <Key>
+      <PropertyRef Name="TradeDOcId" />
+    </Key>
+    <Property Name="TradeDOcId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TradeId" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="FileUrl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TravelExpence">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Companyid" Type="Int32" />
+    <Property Name="TDate" Type="DateTime" Precision="3" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="TFromDate" Type="DateTime" Precision="3" />
+    <Property Name="TToDate" Type="DateTime" Precision="3" />
+    <Property Name="Fare" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FromDate" Type="DateTime" Precision="3" />
+    <Property Name="ToDate" Type="DateTime" Precision="3" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AccomodationExp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FoodExp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Conv_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OtherExp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Company_master" Relationship="EmployeeModel.FK_TravelExpences_Company_master" FromRole="TravelExpences" ToRole="Company_master" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_TravelExpences_employee_master" FromRole="TravelExpences" ToRole="employee_master" />
+  </EntityType>
+  <EntityType Name="Vehicle_History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="VID" Type="Int32" />
+    <Property Name="From_Date" Type="DateTime" Precision="3" />
+    <Property Name="To_Date" Type="DateTime" Precision="3" />
+    <Property Name="EmpID" Type="Int32" />
+    <Property Name="Remarks" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_Vehicle_History_employee_master" FromRole="Vehicle_History" ToRole="employee_master" />
+    <NavigationProperty Name="VehicleMaster" Relationship="EmployeeModel.FK_Vehicle_History_VehicleMaster" FromRole="Vehicle_History" ToRole="VehicleMaster" />
+  </EntityType>
+  <EntityType Name="VehicleDocument">
+    <Key>
+      <PropertyRef Name="VDocId" />
+    </Key>
+    <Property Name="VDocId" Type="Int32" Nullable="false" />
+    <Property Name="VId" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="FileUrl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VehicleMaster">
+    <Key>
+      <PropertyRef Name="VID" />
+    </Key>
+    <Property Name="VID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CompID" Type="Int32" />
+    <Property Name="VehicleNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="VehicleName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ModelName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="EmpID" Type="Int32" />
+    <Property Name="Branch_ID" Type="Int32" />
+    <Property Name="Purchase_Value" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Depriciation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CurrentValue" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="Market_Value" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Purchased_Date" Type="DateTime" Precision="7" />
+    <Property Name="Reg_Date" Type="DateTime" Precision="3" />
+    <Property Name="Reg_Exp_Date" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Remarks" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Branch_master" Relationship="EmployeeModel.FK_VehicleMaster_Branch_master" FromRole="VehicleMaster" ToRole="Branch_master" />
+    <NavigationProperty Name="Company_master" Relationship="EmployeeModel.FK_VehicleMaster_Company_master" FromRole="VehicleMaster" ToRole="Company_master" />
+    <NavigationProperty Name="employee_master" Relationship="EmployeeModel.FK_VehicleMaster_employee_master" FromRole="VehicleMaster" ToRole="employee_master" />
+    <NavigationProperty Name="Petrol_Card" Relationship="EmployeeModel.FK_Petrol_Card_VehicleMaster" FromRole="VehicleMaster" ToRole="Petrol_Card" />
+    <NavigationProperty Name="Petrol_Expense" Relationship="EmployeeModel.FK_Petrol_Expense_VehicleMaster" FromRole="VehicleMaster" ToRole="Petrol_Expense" />
+    <NavigationProperty Name="Vehicle_History" Relationship="EmployeeModel.FK_Vehicle_History_VehicleMaster" FromRole="VehicleMaster" ToRole="Vehicle_History" />
+    <NavigationProperty Name="VehicleRepairings" Relationship="EmployeeModel.FK_VehicleRepairing_VehicleMaster" FromRole="VehicleMaster" ToRole="VehicleRepairing" />
+    <NavigationProperty Name="EmployeeInsurances" Relationship="EmployeeModel.FK__EmployeeIns__VID__36470DEF" FromRole="VehicleMaster" ToRole="EmployeeInsurance" />
+  </EntityType>
+  <EntityType Name="VehicleRepairing">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CompID" Type="Int32" />
+    <Property Name="VID" Type="Int32" />
+    <Property Name="Repairing_TypeID" Type="Int32" />
+    <Property Name="Rep_Date" Type="DateTime" Precision="3" />
+    <Property Name="Amount_Paid" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Remarks" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Company_master" Relationship="EmployeeModel.FK_VehicleRepairing_Company_master" FromRole="VehicleRepairing" ToRole="Company_master" />
+    <NavigationProperty Name="Masters_Tran" Relationship="EmployeeModel.FK_VehicleRepairing_Masters_Tran" FromRole="VehicleRepairing" ToRole="Masters_Tran" />
+    <NavigationProperty Name="VehicleMaster" Relationship="EmployeeModel.FK_VehicleRepairing_VehicleMaster" FromRole="VehicleRepairing" ToRole="VehicleMaster" />
+  </EntityType>
+  <EntityType Name="WorkHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="EmpId" Type="Int32" Nullable="false" />
+    <Property Name="CompId" Type="Int32" Nullable="false" />
+    <Property Name="BranchId" Type="Int32" Nullable="false" />
+    <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DesignationId" Type="Int32" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Perfomance" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_employee_master_Branch_master">
+    <End Role="Branch_master" Type="EmployeeModel.Branch_master" Multiplicity="0..1" />
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee_master">
+        <PropertyRef Name="Branchid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Other_Expenses_Branch_master">
+    <End Role="Branch_master" Type="EmployeeModel.Branch_master" Multiplicity="0..1" />
+    <End Role="Other_Expenses" Type="EmployeeModel.Other_Expenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Other_Expenses">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleMaster_Branch_master">
+    <End Role="Branch_master" Type="EmployeeModel.Branch_master" Multiplicity="0..1" />
+    <End Role="VehicleMaster" Type="EmployeeModel.VehicleMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="VehicleMaster">
+        <PropertyRef Name="Branch_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employee_master_Company_master">
+    <End Role="Company_master" Type="EmployeeModel.Company_master" Multiplicity="0..1" />
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee_master">
+        <PropertyRef Name="Compid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInsurance_Company_master">
+    <End Role="Company_master" Type="EmployeeModel.Company_master" Multiplicity="0..1" />
+    <End Role="EmployeeInsurance" Type="EmployeeModel.EmployeeInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeInsurance">
+        <PropertyRef Name="CompID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Other_Expenses_Company_master">
+    <End Role="Company_master" Type="EmployeeModel.Company_master" Multiplicity="0..1" />
+    <End Role="Other_Expenses" Type="EmployeeModel.Other_Expenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Other_Expenses">
+        <PropertyRef Name="CompID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TravelExpences_Company_master">
+    <End Role="Company_master" Type="EmployeeModel.Company_master" Multiplicity="0..1" />
+    <End Role="TravelExpences" Type="EmployeeModel.TravelExpence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TravelExpences">
+        <PropertyRef Name="Companyid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleMaster_Company_master">
+    <End Role="Company_master" Type="EmployeeModel.Company_master" Multiplicity="0..1" />
+    <End Role="VehicleMaster" Type="EmployeeModel.VehicleMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="VehicleMaster">
+        <PropertyRef Name="CompID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleRepairing_Company_master">
+    <End Role="Company_master" Type="EmployeeModel.Company_master" Multiplicity="0..1" />
+    <End Role="VehicleRepairing" Type="EmployeeModel.VehicleRepairing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="VehicleRepairing">
+        <PropertyRef Name="CompID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpDrivingLicence_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmpDrivingLicence" Type="EmployeeModel.EmpDrivingLicence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmpDrivingLicence">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employee_document_document_category">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="1" />
+    <End Role="employee_document" Type="EmployeeModel.employee_document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee_document">
+        <PropertyRef Name="empid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmployeeQ__Empid__2645B050">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeQualification" Type="EmployeeModel.EmployeeQualification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeQualification">
+        <PropertyRef Name="Empid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmployeeQ__Empid__489AC854">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeQualification" Type="EmployeeModel.EmployeeQualification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeQualification">
+        <PropertyRef Name="Empid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeAbsconding_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeAbsconding" Type="EmployeeModel.EmployeeAbsconding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeAbsconding">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeAllowances_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeAllowances" Type="EmployeeModel.EmployeeAllowance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeAllowances">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeContact_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeContact" Type="EmployeeModel.EmployeeContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeContact">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeDeposite_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeDeposite" Type="EmployeeModel.EmployeeDeposite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeDeposite">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeExperience_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeExperience" Type="EmployeeModel.EmployeeExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeExperience">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeHealthCard_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeHealthCard" Type="EmployeeModel.EmployeeHealthCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeHealthCard">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeIncrement_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeIncrement" Type="EmployeeModel.EmployeeIncrement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeIncrement">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeLeave_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeLeave" Type="EmployeeModel.EmployeeLeave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeLeave">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeOtherDetails_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeOtherDetails" Type="EmployeeModel.EmployeeOtherDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeOtherDetails">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeePassport_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeePassport" Type="EmployeeModel.EmployeePassport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeePassport">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeVisa_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeVisa" Type="EmployeeModel.EmployeeVisa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeVisa">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Login_Master_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="Login_Master" Type="EmployeeModel.Login_Master" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Login_Master">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Other_Expenses_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="Other_Expenses" Type="EmployeeModel.Other_Expenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Other_Expenses">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Petrol_Expense_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="Petrol_Expense" Type="EmployeeModel.Petrol_Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Petrol_Expense">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TravelExpences_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="TravelExpences" Type="EmployeeModel.TravelExpence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TravelExpences">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_History_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="Vehicle_History" Type="EmployeeModel.Vehicle_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vehicle_History">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleMaster_employee_master">
+    <End Role="employee_master" Type="EmployeeModel.employee_master" Multiplicity="0..1" />
+    <End Role="VehicleMaster" Type="EmployeeModel.VehicleMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="VehicleMaster">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInsurance_Masters_Tran">
+    <End Role="Masters_Tran" Type="EmployeeModel.Masters_Tran" Multiplicity="0..1" />
+    <End Role="EmployeeInsurance" Type="EmployeeModel.EmployeeInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeInsurance">
+        <PropertyRef Name="Icomp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInsurance_Masters_Tran1">
+    <End Role="Masters_Tran" Type="EmployeeModel.Masters_Tran" Multiplicity="0..1" />
+    <End Role="EmployeeInsurance" Type="EmployeeModel.EmployeeInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeInsurance">
+        <PropertyRef Name="Ptype" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormMenuTran_FormMaster">
+    <End Role="FormMaster" Type="EmployeeModel.FormMaster" Multiplicity="0..1" />
+    <End Role="FormMenuTran" Type="EmployeeModel.FormMenuTran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormMaster">
+        <PropertyRef Name="FormId" />
+      </Principal>
+      <Dependent Role="FormMenuTran">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuTran_FormMaster">
+    <End Role="FormMaster" Type="EmployeeModel.FormMaster" Multiplicity="0..1" />
+    <End Role="MenuTran" Type="EmployeeModel.MenuTran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormMaster">
+        <PropertyRef Name="FormId" />
+      </Principal>
+      <Dependent Role="MenuTran">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormMenuTran_MenuHeaderMaster">
+    <End Role="MenuHeaderMaster" Type="EmployeeModel.MenuHeaderMaster" Multiplicity="0..1" />
+    <End Role="FormMenuTran" Type="EmployeeModel.FormMenuTran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuHeaderMaster">
+        <PropertyRef Name="MHId" />
+      </Principal>
+      <Dependent Role="FormMenuTran">
+        <PropertyRef Name="MHID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Masters_Tran_Masters">
+    <End Role="Masters" Type="EmployeeModel.Master" Multiplicity="0..1" />
+    <End Role="Masters_Tran" Type="EmployeeModel.Masters_Tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters">
+        <PropertyRef Name="MId" />
+      </Principal>
+      <Dependent Role="Masters_Tran">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Other_Expenses_Masters_Tran">
+    <End Role="Masters_Tran" Type="EmployeeModel.Masters_Tran" Multiplicity="0..1" />
+    <End Role="Other_Expenses" Type="EmployeeModel.Other_Expenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Other_Expenses">
+        <PropertyRef Name="ExpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Petrol_Card_Masters_Tran">
+    <End Role="Masters_Tran" Type="EmployeeModel.Masters_Tran" Multiplicity="0..1" />
+    <End Role="Petrol_Card" Type="EmployeeModel.Petrol_Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Petrol_Card">
+        <PropertyRef Name="PetrolCardNameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Petrol_Card_Masters_Tran1">
+    <End Role="Masters_Tran" Type="EmployeeModel.Masters_Tran" Multiplicity="0..1" />
+    <End Role="Petrol_Card" Type="EmployeeModel.Petrol_Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Petrol_Card">
+        <PropertyRef Name="PaymentModeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleRepairing_Masters_Tran">
+    <End Role="Masters_Tran" Type="EmployeeModel.Masters_Tran" Multiplicity="0..1" />
+    <End Role="VehicleRepairing" Type="EmployeeModel.VehicleRepairing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VehicleRepairing">
+        <PropertyRef Name="Repairing_TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuTran_MenuHeaderMaster">
+    <End Role="MenuHeaderMaster" Type="EmployeeModel.MenuHeaderMaster" Multiplicity="0..1" />
+    <End Role="MenuTran" Type="EmployeeModel.MenuTran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuHeaderMaster">
+        <PropertyRef Name="MHId" />
+      </Principal>
+      <Dependent Role="MenuTran">
+        <PropertyRef Name="MHId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Petrol_Card_VehicleMaster">
+    <End Role="VehicleMaster" Type="EmployeeModel.VehicleMaster" Multiplicity="0..1" />
+    <End Role="Petrol_Card" Type="EmployeeModel.Petrol_Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="Petrol_Card">
+        <PropertyRef Name="VID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Petrol_Expense_VehicleMaster">
+    <End Role="VehicleMaster" Type="EmployeeModel.VehicleMaster" Multiplicity="0..1" />
+    <End Role="Petrol_Expense" Type="EmployeeModel.Petrol_Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="Petrol_Expense">
+        <PropertyRef Name="VID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TenancyDocuments_TenancyMaster">
+    <End Role="TenancyMaster" Type="EmployeeModel.TenancyMaster" Multiplicity="0..1" />
+    <End Role="TenancyDocuments" Type="EmployeeModel.TenancyDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TenancyMaster">
+        <PropertyRef Name="TnID" />
+      </Principal>
+      <Dependent Role="TenancyDocuments">
+        <PropertyRef Name="TenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_History_VehicleMaster">
+    <End Role="VehicleMaster" Type="EmployeeModel.VehicleMaster" Multiplicity="0..1" />
+    <End Role="Vehicle_History" Type="EmployeeModel.Vehicle_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="Vehicle_History">
+        <PropertyRef Name="VID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleRepairing_VehicleMaster">
+    <End Role="VehicleMaster" Type="EmployeeModel.VehicleMaster" Multiplicity="0..1" />
+    <End Role="VehicleRepairing" Type="EmployeeModel.VehicleRepairing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="VehicleRepairing">
+        <PropertyRef Name="VID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmployeeIns__VID__36470DEF">
+    <End Type="EmployeeModel.VehicleMaster" Role="VehicleMaster" Multiplicity="0..1" />
+    <End Type="EmployeeModel.EmployeeInsurance" Role="EmployeeInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="EmployeeInsurance">
+        <PropertyRef Name="VID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

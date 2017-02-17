@@ -1,0 +1,155 @@
+﻿@using EMSDomain.ViewModel.Employee
+
+@model EmpVisaItem
+@{
+    ViewBag.Title = "Visa";
+}
+
+@using (@Html.BeginForm("Edit", "Visa", FormMethod.Post, new { @id = "formVisa" }))
+{    @Html.HiddenFor(m => m.VId)
+    @Html.HiddenFor(m1 => m1.EmpId)
+    @Html.HiddenFor(m=>m.CreatedBy)
+    @Html.HiddenFor(m=>m.CreatedDate)
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+
+    <section class="content-header">
+        <h1>Visa
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+
+    </section>
+
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Visa Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+                         @Html.LabelFor(m => m.VisaTypeId, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.TextBoxFor(m => m.IssueCountry, new { @class = "form-control" })*@
+                    @Html.DropDownListFor(m => m.VisaTypeId, new SelectList(Model.ListVisaType, "Id", "Name"), "--Select Visa Type--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.VisaTypeId)
+                </div>
+                   @Html.LabelFor(m => m.ComID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.TextBoxFor(m => m.IssueCountry, new { @class = "form-control" })*@
+                    @Html.DropDownListFor(m => m.ComID, new SelectList(Model.ListComp, "id", "CompName"), "--Select Company--", new { @class = "form-control" ,@id="ddlComp"})
+                    @Html.ValidationMessageFor(m => m.ComID)
+                    @Html.HiddenFor(m=>m.ComID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+               @Html.LabelFor(m => m.VisaNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.VisaNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.VisaNo)
+                    @*        @Html.DropDownListFor(m => m.Country, new SelectList(Model.CountryList, "Id", "CountryName"), "--Select Country", new { @class = "form-control select2" })*@
+                </div>
+
+                @Html.LabelFor(m => m.PlaceOfIssue, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PlaceOfIssue, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PlaceOfIssue)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.IssueCountry, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.TextBoxFor(m => m.IssueCountry, new { @class = "form-control" })*@
+                    @Html.DropDownListFor(m => m.IssueCountry, new SelectList(Model.ListCountry, "Id", "Name"), "--Select Country--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IssueCountry)
+                </div>
+
+                @Html.LabelFor(m => m.IssueDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.IssueDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.IssueDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.ExpiryDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ExpiryDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.ExpiryDate)
+                </div>
+
+                @Html.LabelFor(m => m.ReniewDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ReniewDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.ReniewDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.UID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.UID, new { @class = "form-control" })
+                    
+                </div>
+                @Html.LabelFor(m => m.VisaStatusId, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.VisaStatusId, new SelectList(Model.MasterDetails, "Id", "Name"), "--Select--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.VisaStatusId)
+                </div>
+                 
+              
+              @*  <div class="col-sm-12" style="height: 5px;"></div>
+                
+                 @Html.LabelFor(m => m.EmiratesId, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    
+                    @Html.TextBoxFor(m => m.EmiratesId, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmiratesId)
+                </div>
+                @Html.LabelFor(m => m.EmiratesDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmiratesDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.EmiratesDate)
+                </div>*@
+                              
+                @* @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")In-Active                   
+                </div>*@
+                <div class="col-sm-12" style="height: 5px;"></div>
+                         @Html.LabelFor(m => m.Designation, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Designation, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div> 
+
+             
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                   @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")In-Active                   
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+

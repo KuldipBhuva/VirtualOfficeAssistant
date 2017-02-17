@@ -1,0 +1,63 @@
+﻿@using EMSDomain.ViewModel.Vehicle
+@using EMSDomain.ViewModel.Menu
+@using EMSMethods
+@using EMSDomain.Model
+
+@model  List<VehicleItem>
+<!--For Tables Paging,Searching,Sorting-->
+<script src="~/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="~/assets/js/dataTables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" href="~/assets/js/dataTables/dataTables.bootstrap.css" />
+<!--end-->
+<script>
+    $(document).ready(function () {
+        var table = $('#tbl').DataTable();
+    });
+</script>
+<div id="dvData" class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Vehicle</th>
+                            <th>Vehicle No</th>
+                            <th>Model Name</th>
+                            <th>Company</th>
+                            <th>Reg.Date</th>
+                            <th>Reg.Exp.Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @*Convert.ToInt32(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)*@
+
+                        @foreach (var item in Model)
+                        {
+                            
+                            <tr>
+                                <td>@item.VehicleName</td>
+                                <td>@item.VehicleNo</td>
+                                <td>@item.ModelName</td>
+                                <td>@item.CompDetails.CompName</td>
+                                @if (@item.Reg_Date != null)
+                                {
+                                    <td>@item.Reg_Date.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                @if (@item.Reg_Exp_Date != null)
+                                {<td>@item.Reg_Exp_Date.Value.ToString("dd/MM/yyyy")</td>}
+                                else
+                                {<td></td>}
+                                <td>
+                                    @{TenancyService objTen = new TenancyService();}
+                                    @*<a id="link" data-toggle="modal" data-target="#myModal" class="link">Open</a>*@
+                                    @Html.ActionLink(" ", "Edit", new { id = @item.VID, @menuId = 3 }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new { @id = @item.VID, @menuId = 3 }, new { @class = "fa fa-eye" })
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = @item.VID,menuId= objTen.Encrypt(Convert.ToString(@ViewBag.MenuId)) })*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>

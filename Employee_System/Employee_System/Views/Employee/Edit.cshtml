@@ -1,0 +1,386 @@
+﻿@{
+    ViewBag.Title = "Employee";
+    }
+
+@model EMSDomain.ViewModel.Employee.EmpAllItem
+<style type="text/css">
+    .thumb-image
+    {
+        float: left;
+        width: 100px;
+        height: 110px;
+        border: 1px solid #5bc0de;
+        position: relative;
+        padding: 5px;
+    }
+</style>
+@using (@Html.BeginForm("Edit", "Employee", FormMethod.Post, new { @id = "frmCreateEmployee", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.EmployeeItem.id)
+    @Html.HiddenFor(m=>m.EmployeeItem.CreatedBy)
+    @Html.HiddenFor(m=>m.EmployeeItem.CreatedDate)
+    @Html.AntiForgeryToken()          // this is for prevent CSRF attack
+    @Html.ValidationSummary(true)
+
+@*<script src="~/Content/bootstrap-colorpicker.min.js"></script>*@
+    
+  
+    
+    <section class="content-header">
+        <h1>Employee <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+@*<div class="container">*@
+    <div class="panel panel-info">
+        <div class="panel-heading">Employee Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.EmployeeItem.Photo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    <img id="img" src="@Url.Content("~/PhotoUpload/" + Model.EmployeeItem.Photo)" alt="preview" onError="this.onerror=null;this.src='/PhotoUpload/users.png';" class="img-rounded thumb-image" width="100" height="100" />
+                    <input type="file" name="file" id="file" value="@Model.EmployeeItem.Photo" class="form-control btn btn-info" />
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.Empname, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.Empname, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.Empname)
+                </div>
+                <div class="col-sm-6" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmployeeItem.alias, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.alias, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-6" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmployeeItem.Empno, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.Empno, new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(m => m.EmployeeItem.Empno)*@
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.EmployeeType, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.EmployeeItem.EmployeeType, "Supervisor", new { @class = "flat-red" }) Supervisor
+                                        @Html.RadioButtonFor(m => m.EmployeeItem.EmployeeType, "Employee", new { @class = "flat-red" }) Employee
+                        @Html.ValidationMessageFor(m => m.EmployeeItem.EmployeeType)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmployeeItem.Email, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.Email)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmployeeItem.FileNumber, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.FileNumber, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.EmployeeItem.JobTitle, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.TextBoxFor(m => m.EmployeeItem.JobTitle, new { @class = "form-control" })*@
+                    @Html.DropDownListFor(m => m.EmployeeItem.JobTitle, new SelectList(Model.EmployeeItem.listMaster, "Id", "Name"), "--Select Job Title--", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmployeeItem.Compid, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmployeeItem.Compid, new SelectList(Model.EmployeeItem.CompanyList, "id", "CompName"), "--Select Company--", new { @class = "form-control select2", @id = "ddlComp" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.Compid)
+                    @Html.HiddenFor(m=>m.EmployeeItem.Compid)
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.Branchid, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmployeeItem.Branchid, new SelectList(Model.EmployeeItem.BranchList, "id", "BranchName"), "--Select Branch--", new { @class = "form-control select2", @id = "Branch_ID" })
+                    @Html.HiddenFor(m => m.EmployeeItem.Branchid, new { @id="hdnBr"})
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmployeeItem.BasicSalary, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.BasicSalary, new { @class = "form-control", @type = "number" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.BasicSalary)
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.Mobile, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.Mobile, new { @class = "form-control", @onkeypress = "OnlyNumeric(this);", @type = "number" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.Mobile)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmployeeItem.HomeTel, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.HomeTel, new { @class = "form-control", @onkeypress = "OnlyNumeric(this);" })
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.LocalTel, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.LocalTel, new { @class = "form-control", @onkeypress = "OnlyNumeric(this);" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmployeeItem.DOJ, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*  @Html.TextBoxFor(m => m.DOJ,new { @class = "datepicker", @type="date" })*@
+                    @Html.TextBoxFor(m => m.EmployeeItem.DOJ, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.DOJ)
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.DOB, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.DOB, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmployeeItem.Graduity, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.Graduity, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmployeeItem.WorkingStatus, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @{ 
+    foreach (var ws in Model.EmployeeItem.listMasterWS)
+    {
+                    
+                        @Html.RadioButtonFor(m => m.EmployeeItem.WorkingStatus, ws.Id, new { @id = "rdb" })
+                        @Html.Label("Working Status" + ws.Id, ws.Name)
+                   
+    }
+                    }
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                <div id="dvLeave">
+                    @Html.LabelFor(m => m.EmployeeItem.DOL, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.EmployeeItem.DOL, "{0:dd/MM/yyyy}", new { @class = "form-control", @placeholder = "dd/mm/yyyy" })
+                    </div>
+                </div>
+
+                <div id="dvRejoin">
+                    @Html.LabelFor(m => m.EmployeeItem.RejoinDate, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+
+                        @Html.TextBoxFor(m => m.EmployeeItem.RejoinDate, "{0:dd/MM/yyyy}", new { @class = "form-control", @placeholder = "dd/mm/yyyy" })
+                        @Html.ValidationMessageFor(model => model.EmployeeItem.RejoinDate)
+                        @*  <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <p class="help-block"></p>*@
+
+                    </div>
+                </div>
+                <div id="dvDOD">
+                    @Html.LabelFor(m => m.EmployeeItem.DOD, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+
+                        @Html.TextBoxFor(m => m.EmployeeItem.DOD, "{0:dd/MM/yyyy}", new { @class = "form-control", @placeholder = "dd/mm/yyyy" })
+                        @*  <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <p class="help-block"></p>*@
+
+                    </div>
+                </div>
+
+
+
+                @* @Html.LabelFor(m => m.EmployeeItem.DueDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.DueDate, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+
+                </div>*@
+
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                <input type="Submit" value="Update" class="btn btn-primary" />
+                @Html.ActionLink("Generate ID Card", "IDCard", new { @id = Model.EmployeeItem.id }, new { @class = "btn btn-info", @target = "_blank" })
+            </div>
+        </div>
+    </div>
+                
+       
+}
+
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+        
+        debugger;
+        var CompIds = $('#ddlComp').val();
+
+        $.ajax(
+        {
+            
+            url: '@Url.Action("FillBranch", "VehicleMaster")',
+            type: "GET",
+            datatype: "JSON",
+            data: { Compid: CompIds },
+            success: function (Branch_master) {
+
+                $("#Branch_ID").html("");  // clear before appending new list 
+                $("#Branch_ID").append("<option value='0'>--Select Branch--</option>");
+
+                $.each(Branch_master, function (i, Branch_ID) {
+
+                    $("#Branch_ID").append(
+
+                        $('<option></option>').val(Branch_ID.id).html(Branch_ID.BranchName));
+
+                });
+                $("#divLoading").hide();
+            }
+        });
+
+    });
+
+
+
+    $("#ddlComp").change(function () {
+        $("#divLoading").show();
+        debugger;
+        var CompIds = $('#ddlComp').val();
+        $.ajax(
+        {
+            url: '@Url.Action("FillBranch", "VehicleMaster")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Branch_master) {
+
+                    $("#Branch_ID").html("");  // clear before appending new list 
+                    $("#Branch_ID").append("<option value='0'>--Select Branch--</option>");
+
+                    $.each(Branch_master, function (i, Branch_ID) {
+
+                        $("#Branch_ID").append(
+
+                            $('<option></option>').val(Branch_ID.id).html(Branch_ID.BranchName));
+
+                    });
+                    $("#divLoading").hide();
+                }
+            });
+
+        });
+        $("#divLoading").hide();
+       
+</script>
+
+<script>
+    $(document).ready(function () {
+        debugger;        
+        var val = ($('input[name="EmployeeItem.WorkingStatus"]:checked', '#frmCreateEmployee').val());                
+        //Probation
+        if (val == "33") {
+            $("#dvRejoin").hide();
+            $("#dvLeave").hide();
+            $("#dvDOD").hide();
+            //$('#dvRejoin').css('form-control datepicker', '');
+        }
+            //Discontinued
+        else if (val == "94") {
+            $("#dvRejoin").hide();
+            $("#dvLeave").hide();
+            $("#dvDOD").show();
+            //$('#dvRejoin').css('form-control datepicker', '');
+        }
+            //OnLeave
+        else if (val == "95") {
+            $("#dvRejoin").show();
+            $("#dvLeave").show();
+            $("#dvDOD").hide();
+            //$('#dvRejoin').css('form-control datepicker', '');
+        }
+            //OnService
+        else if (val == "96") {
+            $("#dvRejoin").hide();
+            $("#dvLeave").hide();
+            $("#dvDOD").hide();
+            
+        }
+        else {
+            $("#dvRejoin").hide();
+            $("#dvLeave").hide();
+            $("#dvDOD").hide();
+        }
+
+        $('#frmCreateEmployee input').on('change', function () {
+            debugger;
+            var val = ($('input[name="EmployeeItem.WorkingStatus"]:checked', '#frmCreateEmployee').val());
+            var $this = $(this);
+            //Probation
+            if ($this.val() == "33") {
+                $("#dvRejoin").hide();
+                $("#dvLeave").hide();
+                $("#dvDOD").hide();
+                $('#dvRejoin').css('form-control datepicker', '');
+            }
+                //Discontinued
+            else if ($this.val() == "94") {
+                $("#dvRejoin").hide();
+                $("#dvLeave").hide();
+                $("#dvDOD").show();
+                $('#dvRejoin').css('form-control datepicker', '');
+            }
+                //OnLeave
+            else if ($this.val() == "95") {
+                $("#dvRejoin").show();
+                $("#dvLeave").show();
+                $("#dvDOD").hide();
+                $('#dvRejoin').css('form-control datepicker', '');
+            }
+            else if ($this.val() == "96") {
+                $("#dvRejoin").hide();
+                $("#dvLeave").hide();
+                $("#dvDOD").hide();
+                $('#dvRejoin').css('form-control datepicker', '');
+            }
+            else {
+                $("#dvRejoin").hide();
+                $("#dvLeave").hide();
+                $("#dvDOD").hide();
+            }
+        });
+    });
+</script>
+@*<script>
+    $("#file").on('change', function () {
+        debugger;
+        //Get count of selected files
+        var countFiles = $(this)[0].files.length;
+
+        var imgPath = $(this)[0].value;
+        var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+        var image_holder = $("#img");
+        image_holder.empty();
+
+        if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+            if (typeof (FileReader) != "undefined") {
+
+                //loop for each file selected for uploaded.
+                for (var i = 0; i < countFiles; i++) {
+
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("<img />", {
+                            "src": e.target.result,
+                            "class": "img-rounded thumb-image"
+                        }).appendTo(image_holder);
+                    }
+
+                    image_holder.show();
+                    reader.readAsDataURL($(this)[0].files[i]);
+                }
+
+            } else {
+                alert("This browser does not support FileReader.");
+            }
+        } else {
+            alert("Pls select only images");
+        }
+    });
+        </script>*@

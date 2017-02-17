@@ -1,0 +1,103 @@
+﻿@{ 
+   ViewBag.Title = "Category";
+}
+
+@using EMSDomain.ViewModel.Category
+
+@model  CategoryItem
+@{
+    
+}
+@using (@Html.BeginForm("Create", "Category", FormMethod.Post))
+{
+  @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1> Category <small>master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    @Html.HiddenFor(m => m.Cat_id)
+      
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Category Details
+            <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" />
+
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                      @Html.Label("Company ", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListCompany, "id", "CompName"), "--Select Company--", new { @class = "form-control select2", @id = "ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                    @Html.HiddenFor(m=>m.CompID)
+                </div>
+                @*    @Html.LabelFor(m => m.Branch_ID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Branch_ID, new SelectList(Model.ListBranch, "id", "BranchName"), "--Select Branch--", new { @class = "form-control", @id = "Branch_ID" })
+
+                </div>*@
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.CatName, new { @class = "col-sm-2 control-label" })
+
+                @*  @Html.EditorFor(model => model.CompName, new { htmlAttributes = new { @class = "form-control" } })  *@
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.CatName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CatName)
+
+                </div>
+
+                @Html.LabelFor(m => m.CatDesc, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.CatDesc, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CatDesc)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Category List <span class="label label-primary">@Model.lstCateory.Count</span>
+             <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" />
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                           
+                            <th>Category Name</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.lstCateory)
+                        {
+                            <tr>
+                                <td>@item.CatName</td>
+                                <td>@item.CatDesc</td>
+                                <td>@Html.ActionLink(" ", "Edit", new {  @id = @item.Cat_id, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+}
+
+

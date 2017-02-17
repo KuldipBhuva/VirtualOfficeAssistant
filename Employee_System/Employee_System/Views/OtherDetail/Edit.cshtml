@@ -1,0 +1,52 @@
+﻿  @{ 
+   ViewBag.Title = "Other Details";
+}
+  
+@using EMSDomain.ViewModel.Employee
+
+@model EmpOtherItem
+
+
+@using (@Html.BeginForm("Edit", "OtherDetail", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.OtherId)
+    <div class="container">
+        <div class="panel panel-info">
+            <div class="panel-heading">Other Details</div>
+            <div class="panel-body">
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.AwardName, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.AwardName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.AwardName)
+                    </div>
+
+                    @Html.LabelFor(m => m.AwardDate, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.AwardDate, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.AwardDate)
+                    </div>
+
+                    @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                    </div>
+
+
+                    @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")In-Active
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+}

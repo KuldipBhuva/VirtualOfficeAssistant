@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD81F4E1-8928-4B81-899E-C065F07D683C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EMSMethods</RootNamespace>
+    <AssemblyName>EMSMethods</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\packages\DotNetZip.1.9.8\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdvancePaymentService.cs" />
+    <Compile Include="AmtToWords.cs" />
+    <Compile Include="AppointmentService.cs" />
+    <Compile Include="BranchService.cs" />
+    <Compile Include="CategoryService.cs" />
+    <Compile Include="ChallanService.cs" />
+    <Compile Include="clsBloodGroupMethod.cs" />
+    <Compile Include="clsLoginMethod.cs" />
+    <Compile Include="clsMasterDataMethod.cs" />
+    <Compile Include="clsMasterMethod.cs" />
+    <Compile Include="CompanyService.cs" />
+    <Compile Include="ConsignmentService.cs" />
+    <Compile Include="CredentialService.cs" />
+    <Compile Include="DashboardService.cs" />
+    <Compile Include="DocumentService.cs" />
+    <Compile Include="EmpAbscondingService.cs" />
+    <Compile Include="EmpAllowancesService.cs" />
+    <Compile Include="EmpContactService.cs" />
+    <Compile Include="EmpDepositeService.cs" />
+    <Compile Include="EmpDriveLicenseService.cs" />
+    <Compile Include="EmpExperienceService.cs" />
+    <Compile Include="EmpHealthService.cs" />
+    <Compile Include="EmpIncrementService.cs" />
+    <Compile Include="EmpInsuranceService.cs" />
+    <Compile Include="EmpLeaveService.cs" />
+    <Compile Include="EmployeeService.cs" />
+    <Compile Include="EmpOtherService.cs" />
+    <Compile Include="EmpPassportService.cs" />
+    <Compile Include="EmpQualificationService.cs" />
+    <Compile Include="EmpRelativeService.cs" />
+    <Compile Include="EmpVisaService.cs" />
+    <Compile Include="EncDec.cs" />
+    <Compile Include="IssueService.cs" />
+    <Compile Include="ItemService.cs" />
+    <Compile Include="MenuService.cs" />
+    <Compile Include="ModuleService.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="OtherExpService.cs" />
+    <Compile Include="PartyServices.cs" />
+    <Compile Include="PayrollService.cs" />
+    <Compile Include="PetrolCardService.cs" />
+    <Compile Include="PetrolExpService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RePaymentService.cs" />
+    <Compile Include="ReportService.cs" />
+    <Compile Include="ReturnChequeService.cs" />
+    <Compile Include="ReturnDetailsService.cs" />
+    <Compile Include="SponsorService.cs" />
+    <Compile Include="TenancyService.cs" />
+    <Compile Include="TExpenseService.cs" />
+    <Compile Include="TradeLicenseService.cs" />
+    <Compile Include="UserService.cs" />
+    <Compile Include="VehicleHistoryService.cs" />
+    <Compile Include="VehicleMasterService.cs" />
+    <Compile Include="VehicleRepairingService.cs" />
+    <Compile Include="WorkHistoryService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="bin\Release\EMSMethods.dll.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\EMSMethods.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\EMSMethods.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EMSDomain\EMSDomain.csproj">
+      <Project>{6604310a-2631-4687-a70b-63cc4d899122}</Project>
+      <Name>EMSDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Release\AutoMapper.dll" />
+    <Content Include="bin\Release\AutoMapper.xml" />
+    <Content Include="bin\Release\EMSDomain.dll" />
+    <Content Include="bin\Release\EMSDomain.pdb" />
+    <Content Include="bin\Release\EMSMethods.dll" />
+    <Content Include="bin\Release\EMSMethods.pdb" />
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.xml" />
+    <Content Include="bin\Release\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="bin\Release\Ionic.Zip.dll" />
+    <Content Include="bin\Release\Ionic.Zip.xml" />
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox_buttons.png" />
+    <Content Include="Content\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\jquery.fancybox-buttons.css" />
+    <Content Include="Content\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\jquery.fancybox.css" />
+    <Content Include="obj\Debug\EMSMethods.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\EMSMethods.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\EMSMethods.dll" />
+    <Content Include="obj\Release\EMSMethods.pdb" />
+    <Content Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.fancybox-buttons.js" />
+    <Content Include="Scripts\jquery.fancybox-media.js" />
+    <Content Include="Scripts\jquery.fancybox-thumbs.js" />
+    <Content Include="Scripts\jquery.fancybox.js" />
+    <Content Include="Scripts\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\jquery.mousewheel-3.0.6.pack.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\Release\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

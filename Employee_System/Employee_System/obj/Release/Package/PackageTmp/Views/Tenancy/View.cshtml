@@ -1,0 +1,351 @@
+﻿@using EMSDomain.ViewModel.Tenancy
+@using EMSMethods;
+
+@model TenancyItem
+@{
+    ViewBag.Title = "Tenancy";
+}
+
+@using (@Html.BeginForm("View", "Tenancy", FormMethod.Post, new { enctype="multipart/form-data"}))
+{
+     @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.TnID)
+    @Html.HiddenFor(m => m.TenDocId)
+    @Html.HiddenFor(m => m.Menuid, new { @Value = @ViewBag.menuid })
+    <section class="content-header">
+        <h1>Tenancy <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    
+    <div class="panel panel-info">
+        <div class="panel-heading">Tenancy Details</div>
+        <div class="panel-body">
+            <div class="form-group"  id="dvView">
+                    @Html.Label("Company ", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.TnTypeCompId, new SelectList(Model.ListCompany, "id", "CompName"), "--Select Company--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.TnTypeCompId)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+               @Html.LabelFor(m => m.TnNo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.TnNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TnNo)
+
+                </div>
+
+                @Html.LabelFor(m => m.Subject, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Subject)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                @Html.LabelFor(m => m.TDate, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.TDate, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(m => m.TDate)
+
+                </div>
+
+                @Html.LabelFor(m => m.Period, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Period, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Period)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.LandLord, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.LandLord, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LandLord)
+                </div>
+
+
+                @Html.LabelFor(m => m.FromDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.FromDate, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FromDate)
+
+                </div>
+
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                  @Html.LabelFor(m => m.TnTypeId, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                  @Html.DropDownListFor(m => m.TnTypeId, new SelectList(Model.ListTT, "id", "Name"), "--Select Type--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TnTypeId)
+                </div>
+
+
+                @Html.LabelFor(m => m.ToDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ToDate, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ToDate)
+
+                </div>
+
+
+              @*  <div class="col-sm-12" style="height: 5px;"></div>
+
+                <div id="dvcomplabel">
+                    @Html.LabelFor(m => m.TnTypeCompId, new { @class = "col-sm-2 control-label" })
+                </div>
+
+                <div class="col-sm-4" id="DivComp">
+                    @Html.DropDownListFor(m => m.TnTypeCompId, new SelectList(Model.ListCompany, "id", "CompName"), "--Select Company--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.TnTypeCompId)
+                </div>
+
+                <div id="dvEmpLabel">
+                    @Html.LabelFor(m => m.TnTypeEmpId, new { @class = "col-sm-2 control-label" })
+                </div>
+
+                <div id="DivEmp" class="col-sm-4">
+                    @Html.DropDownListFor(m => m.TnTypeEmpId, new SelectList(Model.ListEmployee, "id", "Empname"), "--Select Employee--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.TnTypeEmpId)
+                </div>
+
+
+                <div id="dvothers">
+                    @Html.LabelFor(m => m.Others, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Others, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Others)
+
+                    </div>
+                </div>*@
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Rent, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Rent, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Rent)
+
+                </div>
+
+
+                @Html.LabelFor(m => m.Terms, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Terms, new { @class = "form-control" })
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Address, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.Phone, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+               
+               <div class="col-sm-12" style="height: 5px;"></div>                
+
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    @Html.ActionLink(" Back", "Create", new { @id = Model.TenId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })           
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel panel-info">
+        <div class="panel-heading">Tenancy Details List <span class="label label-primary">@Model.ListTenancy.Count</span></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>File Name</th>
+               <th>Remove</th>
+
+                    </tr>
+
+                    @foreach (var item in Model.ListTenancy)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Content(@item.FileUrl)" target="_blank">@item.FileName</a>
+                            </td>
+                       <td>@Html.ActionLink(" ", "DeleteDoc", new { @id=@item.TenId,@DID=@item.TenDocId,@menuId = Convert.ToInt32(Request.QueryString["menuid"])},new {onclick = "return confirm('Do you really want to delete the document "+ @item.FileName +"?')",@class="fa fa-trash fa-lg"})</td>
+                            
+
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+   
+}
+
+<script lang="ja" type="text/javascript">
+    $(document).ready(function () {
+        
+
+
+
+
+        var selectedRadio = $("input[name='TnType']:checked").val();
+
+        if (selectedRadio == 'Company') {
+            debugger;
+            $("#dvEmpLabel").hide();
+            $("#DivEmp").hide();
+            $("#dvcomplabel").show();
+            $("#DivComp").show();
+            $("#TnTypeEmpId").prop('selectedIndex', 0);
+            $('#dvothers').hide();
+            // $("#TnTypeId").hide();
+            //$("#TnTypeId").attr("disabled", "disabled");  // Disabled txt
+        }
+        if (selectedRadio == 'Employee') {
+            $("#dvEmpLabel").show();
+            $("#DivEmp").show();
+            $("#dvcomplabel").hide();
+            $("#DivComp").hide();
+            $("#TnTypeCompId").prop('selectedIndex', 0);
+            $('#dvothers').hide();
+        }
+        if (selectedRadio == 'Other') {
+            $('#dvothers').show();
+            $("#dvEmpLabel").hide();
+            $("#DivEmp").hide();
+            $("#dvcomplabel").hide();
+            $("#DivComp").hide();
+            $("#TnTypeEmpId").prop('selectedIndex', 0);
+            $("#TnTypeCompId").prop('selectedIndex', 0);
+
+        }
+        //var a = $('#TnTypeEmpId').val();
+        //if (a == "") {
+        //    $("#dvEmpLabel").hide();
+        //    $("#DivEmp").hide();
+
+        //}
+        //var b = $("#TnTypeCompId").val();
+        //if (b == "") {
+        //    $("#dvcomplabel").hide();
+        //    $("#DivComp").hide();
+        //    $("#dvEmpLabel").show();
+        //    $("#DivEmp").show();
+        //}
+
+    });
+</script>
+
+<script type="text/javascript">
+    $("input[name='TnType']").change(function () {
+        debugger;
+        var selectedRadio = $("input[name='TnType']:checked").val();
+        if (selectedRadio == 'Company') {
+            debugger;
+            $("#dvEmpLabel").hide();
+            $("#DivEmp").hide();
+            $("#dvcomplabel").show();
+            $("#DivComp").show();
+            $("#TenTypeEmpID").prop('selectedIndex', 0);
+
+            // $("#TnTypeId").hide();
+            //$("#TnTypeId").attr("disabled", "disabled");
+        }
+        if (selectedRadio == 'Employee') {
+            $("#dvEmpLabel").show();
+            $("#DivEmp").show();
+            $("#dvcomplabel").hide();
+            $("#DivComp").hide();
+            $("#TnTypeId").prop('selectedIndex', 0);
+
+        }
+        if (selectedRadio == 'Other') {
+            $("#dvEmpLabel").hide();
+            $("#DivEmp").hide();
+            $("#dvcomplabel").hide();
+            $("#DivComp").hide();
+            $("#TenTypeEmpID").prop('selectedIndex', 0);
+            $("#TnTypeId").prop('selectedIndex', 0);
+
+        }
+
+
+        //else {
+        //    $("#TnTypeId").show();
+        //    $("#TnTypeId").removeAttr("disabled");
+        //}
+    });
+
+
+    $(document).ready(function () {
+
+        $('#btnSave').click(function () {
+
+            var selectRadio = $("input[name='TnType']:checked").val();
+
+            if (selectRadio == "") {
+                alert('Please Select Tenancy Type');
+                $("input[name='TnType']").focus();
+                $("input[name='TnType']").css('border-color', 'red');
+                return false;
+            }
+            else {
+                if (selectRadio == "Company") {
+                    var drpComp = $('#TnTypeCompId').val();
+                    if (drpComp == "") {
+                        alert('Please Select Company');
+                        $('#TnTypeCompId').focus();
+                        $('#TnTypeCompId').css('border-color', 'red');
+                        return false;
+                    }
+                }
+                else if (selectRadio == "Employee") {
+                    var drpEmp = $('#TnTypeEmpId').val();
+                    if (drpEmp == "") {
+                        $('#TnTypeEmpId').focus();
+                        $('#TnTypeEmpId').css('border-color', 'red');
+                        alert('Please Select Employee ');
+                        return false;
+                    }
+                }
+                else if (selectRadio == "Other") {
+                    var Others = $('#Others').val();
+                    if (Others == "") {
+                        $('#Others').focus();
+                        $('#Others').css('border-color', 'red');
+                        alert('Please Enter Other Details');
+                        return false;
+                    }
+                }
+            }
+            return true;
+
+        });
+    });
+</script>
+
+

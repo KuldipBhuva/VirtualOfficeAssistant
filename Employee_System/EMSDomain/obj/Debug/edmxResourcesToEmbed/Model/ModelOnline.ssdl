@@ -1,0 +1,1729 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dmssystemModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="dmssystemModelStoreContainer">
+    <EntitySet Name="Advance_Payroll_Master" EntityType="dmssystemModel.Store.Advance_Payroll_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AppointmentsMaster" EntityType="dmssystemModel.Store.AppointmentsMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Blood_Group_Master" EntityType="dmssystemModel.Store.Blood_Group_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Branch_master" EntityType="dmssystemModel.Store.Branch_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Category_Master" EntityType="dmssystemModel.Store.Category_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChallanMaster" EntityType="dmssystemModel.Store.ChallanMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChallanTran" EntityType="dmssystemModel.Store.ChallanTran" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Company_master" EntityType="dmssystemModel.Store.Company_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConsignmentMaster" EntityType="dmssystemModel.Store.ConsignmentMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Country" EntityType="dmssystemModel.Store.Country" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CredentialMaster" EntityType="dmssystemModel.Store.CredentialMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="document_category" EntityType="dmssystemModel.Store.document_category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmpDrivingLicence" EntityType="dmssystemModel.Store.EmpDrivingLicence" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="employee_document" EntityType="dmssystemModel.Store.employee_document" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="employee_master" EntityType="dmssystemModel.Store.employee_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeAbsconding" EntityType="dmssystemModel.Store.EmployeeAbsconding" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeAllowances" EntityType="dmssystemModel.Store.EmployeeAllowances" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeContact" EntityType="dmssystemModel.Store.EmployeeContact" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeDeposite" EntityType="dmssystemModel.Store.EmployeeDeposite" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeDocuments" EntityType="dmssystemModel.Store.EmployeeDocuments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeExperience" EntityType="dmssystemModel.Store.EmployeeExperience" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeHealthCard" EntityType="dmssystemModel.Store.EmployeeHealthCard" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeIncrement" EntityType="dmssystemModel.Store.EmployeeIncrement" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeInsurance" EntityType="dmssystemModel.Store.EmployeeInsurance" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeLeave" EntityType="dmssystemModel.Store.EmployeeLeave" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeOtherDetails" EntityType="dmssystemModel.Store.EmployeeOtherDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeePassport" EntityType="dmssystemModel.Store.EmployeePassport" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeQualification" EntityType="dmssystemModel.Store.EmployeeQualification" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeRelative" EntityType="dmssystemModel.Store.EmployeeRelative" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeVisa" EntityType="dmssystemModel.Store.EmployeeVisa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FormMaster" EntityType="dmssystemModel.Store.FormMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FormMenuTran" EntityType="dmssystemModel.Store.FormMenuTran" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IssueDetails" EntityType="dmssystemModel.Store.IssueDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Item_Master" EntityType="dmssystemModel.Store.Item_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Login_Master" EntityType="dmssystemModel.Store.Login_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Masters" EntityType="dmssystemModel.Store.Masters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Masters_Tran" EntityType="dmssystemModel.Store.Masters_Tran" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuHeaderMaster" EntityType="dmssystemModel.Store.MenuHeaderMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuTran" EntityType="dmssystemModel.Store.MenuTran" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Other_Expenses" EntityType="dmssystemModel.Store.Other_Expenses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartyMaster" EntityType="dmssystemModel.Store.PartyMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PayrollMaster" EntityType="dmssystemModel.Store.PayrollMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Petrol_Card" EntityType="dmssystemModel.Store.Petrol_Card" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Petrol_Expense" EntityType="dmssystemModel.Store.Petrol_Expense" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Repayment_Master" EntityType="dmssystemModel.Store.Repayment_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReturnDetails" EntityType="dmssystemModel.Store.ReturnDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SponsorMaster" EntityType="dmssystemModel.Store.SponsorMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stock_Master" EntityType="dmssystemModel.Store.Stock_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TenancyDocuments" EntityType="dmssystemModel.Store.TenancyDocuments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TenancyMaster" EntityType="dmssystemModel.Store.TenancyMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Trade_License" EntityType="dmssystemModel.Store.Trade_License" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TradeDocuments" EntityType="dmssystemModel.Store.TradeDocuments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TravelExpences" EntityType="dmssystemModel.Store.TravelExpences" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserFormTran" EntityType="dmssystemModel.Store.UserFormTran" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserModulesTran" EntityType="dmssystemModel.Store.UserModulesTran" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vehicle_History" EntityType="dmssystemModel.Store.Vehicle_History" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VehicleDocument" EntityType="dmssystemModel.Store.VehicleDocument" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VehicleMaster" EntityType="dmssystemModel.Store.VehicleMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VehicleRepairing" EntityType="dmssystemModel.Store.VehicleRepairing" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkHistory" EntityType="dmssystemModel.Store.WorkHistory" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__EmployeeIns__VID__59063A47" Association="dmssystemModel.Store.FK__EmployeeIns__VID__59063A47">
+      <End Role="VehicleMaster" EntitySet="VehicleMaster" />
+      <End Role="EmployeeInsurance" EntitySet="EmployeeInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmployeeQ__Empid__5FB337D6" Association="dmssystemModel.Store.FK__EmployeeQ__Empid__5FB337D6">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeQualification" EntitySet="EmployeeQualification" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmployeeQ__Empid__60A75C0F" Association="dmssystemModel.Store.FK__EmployeeQ__Empid__60A75C0F">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeQualification" EntitySet="EmployeeQualification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employee_document_document_category" Association="dmssystemModel.Store.FK_employee_document_document_category">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="employee_document" EntitySet="employee_document" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeExperience_employee_master" Association="dmssystemModel.Store.FK_EmployeeExperience_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeExperience" EntitySet="EmployeeExperience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeHealthCard_employee_master" Association="dmssystemModel.Store.FK_EmployeeHealthCard_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeHealthCard" EntitySet="EmployeeHealthCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeIncrement_employee_master" Association="dmssystemModel.Store.FK_EmployeeIncrement_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeIncrement" EntitySet="EmployeeIncrement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInsurance_Company_master" Association="dmssystemModel.Store.FK_EmployeeInsurance_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="EmployeeInsurance" EntitySet="EmployeeInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInsurance_Masters_Tran" Association="dmssystemModel.Store.FK_EmployeeInsurance_Masters_Tran">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="EmployeeInsurance" EntitySet="EmployeeInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInsurance_Masters_Tran1" Association="dmssystemModel.Store.FK_EmployeeInsurance_Masters_Tran1">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="EmployeeInsurance" EntitySet="EmployeeInsurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeLeave_employee_master" Association="dmssystemModel.Store.FK_EmployeeLeave_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeLeave" EntitySet="EmployeeLeave" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeOtherDetails_employee_master" Association="dmssystemModel.Store.FK_EmployeeOtherDetails_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeOtherDetails" EntitySet="EmployeeOtherDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeePassport_employee_master" Association="dmssystemModel.Store.FK_EmployeePassport_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeePassport" EntitySet="EmployeePassport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeVisa_employee_master" Association="dmssystemModel.Store.FK_EmployeeVisa_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="EmployeeVisa" EntitySet="EmployeeVisa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormMenuTran_FormMaster" Association="dmssystemModel.Store.FK_FormMenuTran_FormMaster">
+      <End Role="FormMaster" EntitySet="FormMaster" />
+      <End Role="FormMenuTran" EntitySet="FormMenuTran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormMenuTran_MenuHeaderMaster" Association="dmssystemModel.Store.FK_FormMenuTran_MenuHeaderMaster">
+      <End Role="MenuHeaderMaster" EntitySet="MenuHeaderMaster" />
+      <End Role="FormMenuTran" EntitySet="FormMenuTran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Masters_Tran_Masters" Association="dmssystemModel.Store.FK_Masters_Tran_Masters">
+      <End Role="Masters" EntitySet="Masters" />
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuTran_FormMaster" Association="dmssystemModel.Store.FK_MenuTran_FormMaster">
+      <End Role="FormMaster" EntitySet="FormMaster" />
+      <End Role="MenuTran" EntitySet="MenuTran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuTran_MenuHeaderMaster" Association="dmssystemModel.Store.FK_MenuTran_MenuHeaderMaster">
+      <End Role="MenuHeaderMaster" EntitySet="MenuHeaderMaster" />
+      <End Role="MenuTran" EntitySet="MenuTran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Other_Expenses_Branch_master" Association="dmssystemModel.Store.FK_Other_Expenses_Branch_master">
+      <End Role="Branch_master" EntitySet="Branch_master" />
+      <End Role="Other_Expenses" EntitySet="Other_Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Other_Expenses_Company_master" Association="dmssystemModel.Store.FK_Other_Expenses_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="Other_Expenses" EntitySet="Other_Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Other_Expenses_employee_master" Association="dmssystemModel.Store.FK_Other_Expenses_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="Other_Expenses" EntitySet="Other_Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Other_Expenses_Masters_Tran" Association="dmssystemModel.Store.FK_Other_Expenses_Masters_Tran">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="Other_Expenses" EntitySet="Other_Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Petrol_Card_Masters_Tran" Association="dmssystemModel.Store.FK_Petrol_Card_Masters_Tran">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="Petrol_Card" EntitySet="Petrol_Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Petrol_Card_Masters_Tran1" Association="dmssystemModel.Store.FK_Petrol_Card_Masters_Tran1">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="Petrol_Card" EntitySet="Petrol_Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Petrol_Card_VehicleMaster" Association="dmssystemModel.Store.FK_Petrol_Card_VehicleMaster">
+      <End Role="VehicleMaster" EntitySet="VehicleMaster" />
+      <End Role="Petrol_Card" EntitySet="Petrol_Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Petrol_Expense_employee_master" Association="dmssystemModel.Store.FK_Petrol_Expense_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="Petrol_Expense" EntitySet="Petrol_Expense" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Petrol_Expense_VehicleMaster" Association="dmssystemModel.Store.FK_Petrol_Expense_VehicleMaster">
+      <End Role="VehicleMaster" EntitySet="VehicleMaster" />
+      <End Role="Petrol_Expense" EntitySet="Petrol_Expense" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TenancyDocuments_TenancyMaster" Association="dmssystemModel.Store.FK_TenancyDocuments_TenancyMaster">
+      <End Role="TenancyMaster" EntitySet="TenancyMaster" />
+      <End Role="TenancyDocuments" EntitySet="TenancyDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TravelExpences_Company_master" Association="dmssystemModel.Store.FK_TravelExpences_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="TravelExpences" EntitySet="TravelExpences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TravelExpences_employee_master" Association="dmssystemModel.Store.FK_TravelExpences_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="TravelExpences" EntitySet="TravelExpences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_History_employee_master" Association="dmssystemModel.Store.FK_Vehicle_History_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="Vehicle_History" EntitySet="Vehicle_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_History_VehicleMaster" Association="dmssystemModel.Store.FK_Vehicle_History_VehicleMaster">
+      <End Role="VehicleMaster" EntitySet="VehicleMaster" />
+      <End Role="Vehicle_History" EntitySet="Vehicle_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleDocument_VehicleMaster" Association="dmssystemModel.Store.FK_VehicleDocument_VehicleMaster">
+      <End Role="VehicleMaster" EntitySet="VehicleMaster" />
+      <End Role="VehicleDocument" EntitySet="VehicleDocument" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleMaster_Company_master" Association="dmssystemModel.Store.FK_VehicleMaster_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="VehicleMaster" EntitySet="VehicleMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleMaster_employee_master" Association="dmssystemModel.Store.FK_VehicleMaster_employee_master">
+      <End Role="employee_master" EntitySet="employee_master" />
+      <End Role="VehicleMaster" EntitySet="VehicleMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleRepairing_Company_master" Association="dmssystemModel.Store.FK_VehicleRepairing_Company_master">
+      <End Role="Company_master" EntitySet="Company_master" />
+      <End Role="VehicleRepairing" EntitySet="VehicleRepairing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleRepairing_Masters_Tran" Association="dmssystemModel.Store.FK_VehicleRepairing_Masters_Tran">
+      <End Role="Masters_Tran" EntitySet="Masters_Tran" />
+      <End Role="VehicleRepairing" EntitySet="VehicleRepairing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleRepairing_VehicleMaster" Association="dmssystemModel.Store.FK_VehicleRepairing_VehicleMaster">
+      <End Role="VehicleMaster" EntitySet="VehicleMaster" />
+      <End Role="VehicleRepairing" EntitySet="VehicleRepairing" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Advance_Payroll_Master">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompId" Type="int" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="AdvAmount" Type="decimal" Scale="2" />
+    <Property Name="PaymentDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Month" Type="int" />
+    <Property Name="Year" Type="int" />
+  </EntityType>
+  <EntityType Name="AppointmentsMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="150" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="StDt" Type="datetime" />
+    <Property Name="StTime" Type="varchar" MaxLength="50" />
+    <Property Name="EndDt" Type="datetime" />
+    <Property Name="EndTime" Type="varchar" MaxLength="50" />
+    <Property Name="Priority" Type="varchar" MaxLength="50" />
+    <Property Name="Reminder" Type="varchar" MaxLength="50" />
+    <Property Name="ReDate" Type="datetime" />
+    <Property Name="ReTime" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompID" Type="int" />
+  </EntityType>
+  <EntityType Name="Blood_Group_Master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BName" Type="varchar" MaxLength="50" />
+    <Property Name="BDescription" Type="varchar" MaxLength="500" />
+    <Property Name="BStatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Branch_master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompID" Type="int" Nullable="false" />
+    <Property Name="BranchCode" Type="varchar" MaxLength="50" />
+    <Property Name="BranchName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="BranchAdd" Type="varchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Category_Master">
+    <Key>
+      <PropertyRef Name="Cat_id" />
+    </Key>
+    <Property Name="Cat_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CatName" Type="varchar" MaxLength="500" />
+    <Property Name="CatDesc" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="CompID" Type="int" />
+  </EntityType>
+  <EntityType Name="ChallanMaster">
+    <Key>
+      <PropertyRef Name="CID" />
+    </Key>
+    <Property Name="CID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ChallanNo" Type="varchar" MaxLength="150" />
+    <Property Name="CompID" Type="int" />
+    <Property Name="VID" Type="int" />
+    <Property Name="EmpID" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Source" Type="varchar" MaxLength="250" />
+    <Property Name="Destination" Type="varchar" MaxLength="250" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="ChallanTran">
+    <Key>
+      <PropertyRef Name="CTID" />
+    </Key>
+    <Property Name="CTID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CID" Type="int" />
+    <Property Name="GRID" Type="int" />
+  </EntityType>
+  <EntityType Name="Company_master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Compcode" Type="varchar" MaxLength="50" />
+    <Property Name="CompName" Type="varchar" MaxLength="250" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="150" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="250" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+    <Property Name="Logo" Type="varchar" MaxLength="250" />
+    <Property Name="Sign" Type="varchar" MaxLength="250" />
+    <Property Name="PCompId" Type="int" />
+  </EntityType>
+  <EntityType Name="ConsignmentMaster">
+    <Key>
+      <PropertyRef Name="GrNo" />
+    </Key>
+    <Property Name="GrNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompID" Type="int" />
+    <Property Name="LR" Type="varchar" MaxLength="250" />
+    <Property Name="TaxPaidBy" Type="int" />
+    <Property Name="DeliveryMode" Type="int" />
+    <Property Name="BillingName" Type="varchar" MaxLength="250" />
+    <Property Name="BillingAddress" Type="varchar(max)" />
+    <Property Name="ConsignorID" Type="int" />
+    <Property Name="ConsigneeID" Type="int" />
+    <Property Name="CompBrokerID" Type="int" />
+    <Property Name="ConsigneeInvoiceNo" Type="varchar" MaxLength="150" />
+    <Property Name="ConsigneeInvoiceValue" Type="decimal" Scale="2" />
+    <Property Name="Source" Type="varchar" MaxLength="250" />
+    <Property Name="Destination" Type="varchar" MaxLength="250" />
+    <Property Name="PickUp" Type="varchar" MaxLength="250" />
+    <Property Name="Packages" Type="decimal" Scale="2" />
+    <Property Name="PackingMethod" Type="varchar" MaxLength="250" />
+    <Property Name="ActualWeight" Type="decimal" Scale="2" />
+    <Property Name="ChargedWeight" Type="decimal" Scale="2" />
+    <Property Name="Rate" Type="decimal" Scale="2" />
+    <Property Name="FreightCharge" Type="decimal" Scale="2" />
+    <Property Name="LabourCharge" Type="decimal" Scale="2" />
+    <Property Name="OtherCharge" Type="decimal" Scale="2" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="50" />
+    <Property Name="InvoiceAmount" Type="decimal" Scale="2" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="Discount" Type="decimal" Scale="2" />
+    <Property Name="BookingDate" Type="date" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CredentialMaster">
+    <Key>
+      <PropertyRef Name="CrID" />
+    </Key>
+    <Property Name="CrID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="varchar" MaxLength="150" />
+    <Property Name="Password" Type="varchar" MaxLength="150" />
+    <Property Name="AssignTo" Type="varchar" MaxLength="250" />
+    <Property Name="Remarks" Type="varchar" MaxLength="350" />
+    <Property Name="URL" Type="varchar" MaxLength="150" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" />
+    <Property Name="CompID" Type="int" />
+  </EntityType>
+  <EntityType Name="document_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="category" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="description" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmpDrivingLicence">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="LicenceNo" Type="varchar" MaxLength="50" />
+    <Property Name="IssueDate" Type="datetime" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="IssueCountry" Type="varchar" MaxLength="50" />
+    <Property Name="DRemarks" Type="varchar" MaxLength="50" />
+    <Property Name="DStatus" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="employee_document">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="empid" Type="int" Nullable="false" />
+    <Property Name="categoryid" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="150" />
+    <Property Name="docu_copy" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="employee_master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Empno" Type="varchar" MaxLength="50" />
+    <Property Name="Empname" Type="varchar" MaxLength="50" />
+    <Property Name="Compid" Type="int" />
+    <Property Name="Branchid" Type="int" />
+    <Property Name="vcid" Type="int" />
+    <Property Name="vbid" Type="int" />
+    <Property Name="EmployeeType" Type="varchar" MaxLength="50" />
+    <Property Name="bloodid" Type="int" />
+    <Property Name="Photo" Type="varchar" MaxLength="50" />
+    <Property Name="alias" Type="varchar" MaxLength="50" />
+    <Property Name="FileNumber" Type="varchar(max)" />
+    <Property Name="BasicSalary" Type="decimal" />
+    <Property Name="Category" Type="varchar" MaxLength="500" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" />
+    <Property Name="HomeTel" Type="varchar" MaxLength="20" />
+    <Property Name="LocalTel" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="40" />
+    <Property Name="DOJ" Type="datetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="DOL" Type="datetime" />
+    <Property Name="RejoinDate" Type="datetime" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Profile" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="JobTitle" Type="int" />
+    <Property Name="DOD" Type="date" />
+    <Property Name="WorkingStatus" Type="int" />
+    <Property Name="Graduity" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="EmployeeAbsconding">
+    <Key>
+      <PropertyRef Name="AbscId" />
+    </Key>
+    <Property Name="AbscId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="AbscHistory" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeAllowances">
+    <Key>
+      <PropertyRef Name="AId" />
+    </Key>
+    <Property Name="AId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="AllownaceID" Type="int" />
+    <Property Name="Amount" Type="decimal" Scale="2" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeContact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="Area" Type="varchar" MaxLength="50" />
+    <Property Name="Street" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="PoBox" Type="varchar" MaxLength="50" />
+    <Property Name="Pincode" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="int" />
+    <Property Name="Fax" Type="varchar" MaxLength="50" />
+    <Property Name="Website" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeDeposite">
+    <Key>
+      <PropertyRef Name="DepId" />
+    </Key>
+    <Property Name="DepId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="DepDescription" Type="varchar" MaxLength="500" />
+    <Property Name="DepAmount" Type="decimal" Scale="2" />
+    <Property Name="InvestDate" Type="datetime" />
+    <Property Name="MaturityDate" Type="datetime" />
+    <Property Name="DepRemarks" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeDocuments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="FilleName" Type="varchar" MaxLength="255" />
+    <Property Name="DocCategoryId" Type="int" />
+    <Property Name="FileUrl" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="EmployeeExperience">
+    <Key>
+      <PropertyRef Name="ExpId" />
+    </Key>
+    <Property Name="ExpId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="CompName" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="20" />
+    <Property Name="Mail" Type="varchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="50" />
+    <Property Name="Roles" Type="varchar" MaxLength="50" />
+    <Property Name="FromDate" Type="datetime" />
+    <Property Name="ToDate" Type="datetime" />
+    <Property Name="Department" Type="varchar" MaxLength="50" />
+    <Property Name="Designation" Type="varchar" MaxLength="50" />
+    <Property Name="Salary" Type="decimal" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeHealthCard">
+    <Key>
+      <PropertyRef Name="HId" />
+    </Key>
+    <Property Name="HId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="CardNo" Type="varchar" MaxLength="50" />
+    <Property Name="IssueDate" Type="datetime" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="EmiratesID" Type="varchar" MaxLength="50" />
+    <Property Name="EmiratesExpDate" Type="date" />
+    <Property Name="PersonalNo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EmployeeIncrement">
+    <Key>
+      <PropertyRef Name="IncId" />
+    </Key>
+    <Property Name="IncId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="IncAmount" Type="decimal" />
+    <Property Name="IncDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeInsurance">
+    <Key>
+      <PropertyRef Name="IID" />
+    </Key>
+    <Property Name="IID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompID" Type="int" />
+    <Property Name="Branch" Type="int" />
+    <Property Name="Pname" Type="varchar" MaxLength="500" />
+    <Property Name="Icomp" Type="int" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="Ptype" Type="int" />
+    <Property Name="Pno" Type="varchar" MaxLength="50" />
+    <Property Name="Pamt" Type="varchar" MaxLength="50" />
+    <Property Name="Pdate" Type="date" />
+    <Property Name="PExpDate" Type="datetime" />
+    <Property Name="PremiumDate" Type="datetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="VID" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeLeave">
+    <Key>
+      <PropertyRef Name="LID" />
+    </Key>
+    <Property Name="LID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpID" Type="int" />
+    <Property Name="LFrom" Type="datetime" />
+    <Property Name="LTo" Type="datetime" />
+    <Property Name="LTypeID" Type="int" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EmployeeOtherDetails">
+    <Key>
+      <PropertyRef Name="OtherId" />
+    </Key>
+    <Property Name="OtherId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="AwardName" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="AwardDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeePassport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="MasterId" Type="int" />
+    <Property Name="PassportStatusId" Type="int" />
+    <Property Name="PassportID" Type="int" />
+    <Property Name="PassportNo" Type="varchar" MaxLength="50" />
+    <Property Name="PlaceIssue" Type="varchar" MaxLength="50" />
+    <Property Name="IssueCountry" Type="int" />
+    <Property Name="IssueDate" Type="datetime" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="RenewDate" Type="datetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Nationality" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EmployeeQualification">
+    <Key>
+      <PropertyRef Name="Qid" />
+    </Key>
+    <Property Name="Qid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Empid" Type="int" />
+    <Property Name="SchoolName" Type="varchar" MaxLength="50" />
+    <Property Name="Board" Type="varchar" MaxLength="50" />
+    <Property Name="FromDate" Type="datetime" />
+    <Property Name="ToDate" Type="datetime" />
+    <Property Name="CertType" Type="varchar" MaxLength="50" />
+    <Property Name="CertTitle" Type="varchar" MaxLength="50" />
+    <Property Name="Percentage" Type="decimal" Scale="2" />
+    <Property Name="Grade" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="CertificateID" Type="int" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeRelative">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="RName" Type="varchar" MaxLength="100" />
+    <Property Name="RAddress" Type="varchar(max)" />
+    <Property Name="RCity" Type="varchar" MaxLength="100" />
+    <Property Name="RPhone" Type="varchar" MaxLength="20" />
+    <Property Name="REmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Relation" Type="varchar" MaxLength="50" />
+    <Property Name="RMobile" Type="varchar" MaxLength="15" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="Status" Type="varchar" MaxLength="10" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeVisa">
+    <Key>
+      <PropertyRef Name="VId" />
+    </Key>
+    <Property Name="VId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="VisaNo" Type="varchar" MaxLength="50" />
+    <Property Name="VisaStatusId" Type="int" />
+    <Property Name="VisaGroupId" Type="int" />
+    <Property Name="VisaTypeId" Type="int" />
+    <Property Name="PlaceOfIssue" Type="varchar" MaxLength="50" />
+    <Property Name="IssueCountry" Type="int" />
+    <Property Name="IssueDate" Type="datetime" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="ReniewDate" Type="datetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="EmiratesId" Type="int" />
+    <Property Name="EmiratesDate" Type="datetime" />
+    <Property Name="UID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ComID" Type="int" />
+    <Property Name="Designation" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="FormMaster">
+    <Key>
+      <PropertyRef Name="FormId" />
+    </Key>
+    <Property Name="FormId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FormTitle" Type="varchar" MaxLength="50" />
+    <Property Name="FormName" Type="varchar" MaxLength="50" />
+    <Property Name="FormUrl" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FormMenuTran">
+    <Key>
+      <PropertyRef Name="FMTID" />
+    </Key>
+    <Property Name="FMTID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FormId" Type="int" />
+    <Property Name="MHID" Type="int" />
+    <Property Name="Sequence" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="IssueDetails">
+    <Key>
+      <PropertyRef Name="IssueId" />
+    </Key>
+    <Property Name="IssueId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Cat_id" Type="int" />
+    <Property Name="Item_id" Type="int" />
+    <Property Name="IssueQuantity" Type="numeric" />
+    <Property Name="IssueDate" Type="datetime" />
+    <Property Name="VendorName" Type="varchar" MaxLength="50" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="50" />
+    <Property Name="ChallanNo" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="CompID" Type="int" />
+  </EntityType>
+  <EntityType Name="Item_Master">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CatId" Type="int" />
+    <Property Name="ItemName" Type="varchar" MaxLength="500" />
+    <Property Name="ItemDesc" Type="varchar" MaxLength="500" />
+    <Property Name="OpStock" Type="decimal" Scale="2" />
+    <Property Name="InwardAmt" Type="decimal" Scale="2" />
+    <Property Name="OutwardAmt" Type="decimal" Scale="2" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="CompID" Type="int" />
+  </EntityType>
+  <EntityType Name="Login_Master">
+    <Key>
+      <PropertyRef Name="UId" />
+    </Key>
+    <Property Name="UId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="UserName" Type="varchar" MaxLength="500" />
+    <Property Name="Password" Type="varchar" MaxLength="500" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="CompCode" Type="varchar" MaxLength="50" />
+    <Property Name="CompId" Type="int" />
+  </EntityType>
+  <EntityType Name="Masters">
+    <Key>
+      <PropertyRef Name="MId" />
+    </Key>
+    <Property Name="MId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MasterType" Type="varchar(max)" />
+    <Property Name="MasterDesc" Type="nvarchar(max)" />
+    <Property Name="MasterCode" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Masters_Tran">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="MasterId" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MenuHeaderMaster">
+    <Key>
+      <PropertyRef Name="MHId" />
+    </Key>
+    <Property Name="MHId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MHName" Type="varchar" MaxLength="50" />
+    <Property Name="MHDescription" Type="varchar" MaxLength="50" />
+    <Property Name="Icon" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MenuTran">
+    <Key>
+      <PropertyRef Name="MSId" />
+    </Key>
+    <Property Name="MSId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FormId" Type="int" />
+    <Property Name="MHId" Type="int" />
+    <Property Name="Sequence" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Other_Expenses">
+    <Key>
+      <PropertyRef Name="OEID" />
+    </Key>
+    <Property Name="OEID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompID" Type="int" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="EmpID" Type="int" />
+    <Property Name="ExpID" Type="int" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+    <Property Name="Amount" Type="decimal" Scale="2" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="PartyMaster">
+    <Key>
+      <PropertyRef Name="PID" />
+    </Key>
+    <Property Name="PID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PPID" Type="int" />
+    <Property Name="CompID" Type="int" />
+    <Property Name="PartyName" Type="varchar" MaxLength="450" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="150" />
+    <Property Name="Mobile" Type="decimal" />
+    <Property Name="Phone" Type="decimal" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="BillingAddress" Type="varchar(max)" />
+    <Property Name="BillingName" Type="varchar" MaxLength="350" />
+    <Property Name="BillingPhone" Type="decimal" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="PayrollMaster">
+    <Key>
+      <PropertyRef Name="PId" />
+    </Key>
+    <Property Name="PId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="Days" Type="int" />
+    <Property Name="OT" Type="decimal" Scale="2" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="CompId" Type="int" />
+    <Property Name="Month" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="TotalDays" Type="int" />
+    <Property Name="DA" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="Petrol_Card">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="VID" Type="int" />
+    <Property Name="PetroCardNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PetrolCardNameID" Type="int" />
+    <Property Name="PaymentModeID" Type="int" />
+    <Property Name="IssueDate" Type="datetime" />
+    <Property Name="ExpireDate" Type="datetime" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Petrol_Expense">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="VID" Type="int" />
+    <Property Name="Bill_Date" Type="datetime" />
+    <Property Name="EmpID" Type="int" />
+    <Property Name="Qty" Type="nvarchar" MaxLength="50" />
+    <Property Name="Amount" Type="nvarchar" MaxLength="50" />
+    <Property Name="KM_From" Type="nvarchar" MaxLength="50" />
+    <Property Name="KM_To" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Repayment_Master">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="Payment" Type="decimal" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Month" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="CompId" Type="int" />
+  </EntityType>
+  <EntityType Name="ReturnDetails">
+    <Key>
+      <PropertyRef Name="ReId" />
+    </Key>
+    <Property Name="ReId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompId" Type="int" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="ItemId" Type="int" />
+    <Property Name="ReDate" Type="datetime" />
+    <Property Name="Qty" Type="numeric" />
+    <Property Name="ReturnableAmt" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SponsorMaster">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="SID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" MaxLength="150" />
+    <Property Name="Contact" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+    <Property Name="PassportNo" Type="varchar" MaxLength="50" />
+    <Property Name="EmiratesIDNo" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="int" />
+    <Property Name="CompID" Type="int" />
+    <Property Name="Branch_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Stock_Master">
+    <Key>
+      <PropertyRef Name="StockId" />
+    </Key>
+    <Property Name="StockId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ItemId" Type="int" />
+    <Property Name="IssueQty" Type="numeric" />
+    <Property Name="IssueDate" Type="datetime" />
+    <Property Name="ReturnQty" Type="numeric" />
+    <Property Name="ReturnDate" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TenancyDocuments">
+    <Key>
+      <PropertyRef Name="TenDocId" />
+    </Key>
+    <Property Name="TenDocId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TenId" Type="int" />
+    <Property Name="FileName" Type="nvarchar(max)" />
+    <Property Name="FileUrl" Type="nvarchar(max)" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TenancyMaster">
+    <Key>
+      <PropertyRef Name="TnID" />
+    </Key>
+    <Property Name="TnID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TnNo" Type="varchar" MaxLength="50" />
+    <Property Name="TDate" Type="datetime" />
+    <Property Name="LandLord" Type="varchar" MaxLength="50" />
+    <Property Name="Tn" Type="nchar" MaxLength="10" />
+    <Property Name="TnType" Type="varchar" MaxLength="50" />
+    <Property Name="TnTypeCompId" Type="int" />
+    <Property Name="TnTypeEmpId" Type="int" />
+    <Property Name="TnTypeId" Type="int" />
+    <Property Name="Others" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="Subject" Type="varchar" MaxLength="50" />
+    <Property Name="Period" Type="varchar" MaxLength="50" />
+    <Property Name="FromDate" Type="datetime" />
+    <Property Name="ToDate" Type="datetime" />
+    <Property Name="Rent" Type="decimal" />
+    <Property Name="Terms" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Trade_License">
+    <Key>
+      <PropertyRef Name="TID" />
+    </Key>
+    <Property Name="TID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Lno" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompID" Type="int" />
+    <Property Name="EmiratesID" Type="int" />
+    <Property Name="SponsorID" Type="int" />
+    <Property Name="PartnerID" Type="int" />
+    <Property Name="PartnerID2" Type="int" />
+    <Property Name="PartnerID3" Type="int" />
+    <Property Name="PartnerID4" Type="int" />
+    <Property Name="Fees" Type="decimal" />
+    <Property Name="IssueDate" Type="date" />
+    <Property Name="ExpiryDate" Type="date" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="LicenseTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="TradeDocuments">
+    <Key>
+      <PropertyRef Name="TradeDOcId" />
+    </Key>
+    <Property Name="TradeDOcId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TradeId" Type="int" />
+    <Property Name="FileName" Type="nvarchar(max)" />
+    <Property Name="FileUrl" Type="nvarchar(max)" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TravelExpences">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Companyid" Type="int" />
+    <Property Name="TDate" Type="datetime" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+    <Property Name="TFromDate" Type="datetime" />
+    <Property Name="TToDate" Type="datetime" />
+    <Property Name="Fare" Type="decimal" Scale="2" />
+    <Property Name="FromDate" Type="datetime" />
+    <Property Name="ToDate" Type="datetime" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="AccomodationExp" Type="decimal" Scale="2" />
+    <Property Name="FoodExp" Type="decimal" Scale="2" />
+    <Property Name="Conv_Exp" Type="decimal" Scale="2" />
+    <Property Name="OtherExp" Type="decimal" Scale="2" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserFormTran">
+    <Key>
+      <PropertyRef Name="UMTID" />
+    </Key>
+    <Property Name="UMTID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MID" Type="int" />
+    <Property Name="UID" Type="int" />
+    <Property Name="FormID" Type="int" />
+    <Property Name="IsChecked" Type="bit" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatetdDate" Type="date" />
+  </EntityType>
+  <EntityType Name="UserModulesTran">
+    <Key>
+      <PropertyRef Name="UHTID" />
+    </Key>
+    <Property Name="UHTID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UID" Type="int" />
+    <Property Name="MHID" Type="int" />
+    <Property Name="IsChecked" Type="bit" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CeatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Vehicle_History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="VID" Type="int" />
+    <Property Name="From_Date" Type="datetime" />
+    <Property Name="To_Date" Type="datetime" />
+    <Property Name="EmpID" Type="int" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+    <Property Name="UpdatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="VehicleDocument">
+    <Key>
+      <PropertyRef Name="VDocId" />
+    </Key>
+    <Property Name="VDocId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="VId" Type="int" />
+    <Property Name="FileName" Type="nvarchar(max)" />
+    <Property Name="FileUrl" Type="nvarchar(max)" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="VehicleMaster">
+    <Key>
+      <PropertyRef Name="VID" />
+    </Key>
+    <Property Name="VID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompID" Type="int" />
+    <Property Name="VehicleNo" Type="varchar" MaxLength="50" />
+    <Property Name="VehicleName" Type="varchar" MaxLength="50" />
+    <Property Name="ModelName" Type="varchar" MaxLength="50" />
+    <Property Name="EmpID" Type="int" />
+    <Property Name="Branch_ID" Type="int" />
+    <Property Name="Purchase_Value" Type="varchar" MaxLength="50" />
+    <Property Name="Depriciation" Type="varchar" MaxLength="50" />
+    <Property Name="CurrentValue" Type="nvarchar" MaxLength="500" />
+    <Property Name="Market_Value" Type="varchar" MaxLength="50" />
+    <Property Name="Purchased_Date" Type="datetime2" />
+    <Property Name="Reg_Date" Type="datetime" />
+    <Property Name="Reg_Exp_Date" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar" MaxLength="150" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="SalikNo" Type="varchar" MaxLength="50" />
+    <Property Name="UsedFor" Type="varchar" MaxLength="250" />
+    <Property Name="WeightBearCapacity" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="Length" Type="decimal" Scale="2" />
+    <Property Name="LengthToUse" Type="decimal" Scale="2" />
+    <Property Name="Width" Type="decimal" Scale="2" />
+    <Property Name="WidthToUse" Type="decimal" Scale="2" />
+    <Property Name="Height" Type="decimal" Scale="2" />
+    <Property Name="HeightToUse" Type="decimal" Scale="2" />
+    <Property Name="PermitType" Type="int" />
+    <Property Name="PermitNo" Type="varchar" MaxLength="50" />
+    <Property Name="PermitExpiryDate" Type="date" />
+    <Property Name="TVStatus" Type="int" />
+    <Property Name="VehicleOwnerName" Type="varchar" MaxLength="450" />
+    <Property Name="OwnerAddress" Type="varchar(max)" />
+    <Property Name="FromDate" Type="date" />
+    <Property Name="ToDate" Type="date" />
+  </EntityType>
+  <EntityType Name="VehicleRepairing">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompID" Type="int" />
+    <Property Name="VID" Type="int" />
+    <Property Name="Repairing_TypeID" Type="int" />
+    <Property Name="Rep_Date" Type="datetime" />
+    <Property Name="Amount_Paid" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="ExpType" Type="int" />
+  </EntityType>
+  <EntityType Name="WorkHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="EmpId" Type="int" Nullable="false" />
+    <Property Name="CompId" Type="int" Nullable="false" />
+    <Property Name="BranchId" Type="int" Nullable="false" />
+    <Property Name="FromDate" Type="date" Nullable="false" />
+    <Property Name="ToDate" Type="date" Nullable="false" />
+    <Property Name="DesignationId" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar(max)" />
+    <Property Name="Perfomance" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__EmployeeIns__VID__59063A47">
+    <End Role="VehicleMaster" Type="dmssystemModel.Store.VehicleMaster" Multiplicity="0..1" />
+    <End Role="EmployeeInsurance" Type="dmssystemModel.Store.EmployeeInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="EmployeeInsurance">
+        <PropertyRef Name="VID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmployeeQ__Empid__5FB337D6">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeQualification" Type="dmssystemModel.Store.EmployeeQualification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeQualification">
+        <PropertyRef Name="Empid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmployeeQ__Empid__60A75C0F">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeQualification" Type="dmssystemModel.Store.EmployeeQualification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeQualification">
+        <PropertyRef Name="Empid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employee_document_document_category">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="1" />
+    <End Role="employee_document" Type="dmssystemModel.Store.employee_document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee_document">
+        <PropertyRef Name="empid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeExperience_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeExperience" Type="dmssystemModel.Store.EmployeeExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeExperience">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeHealthCard_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeHealthCard" Type="dmssystemModel.Store.EmployeeHealthCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeHealthCard">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeIncrement_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeIncrement" Type="dmssystemModel.Store.EmployeeIncrement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeIncrement">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInsurance_Company_master">
+    <End Role="Company_master" Type="dmssystemModel.Store.Company_master" Multiplicity="0..1" />
+    <End Role="EmployeeInsurance" Type="dmssystemModel.Store.EmployeeInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeInsurance">
+        <PropertyRef Name="CompID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInsurance_Masters_Tran">
+    <End Role="Masters_Tran" Type="dmssystemModel.Store.Masters_Tran" Multiplicity="0..1" />
+    <End Role="EmployeeInsurance" Type="dmssystemModel.Store.EmployeeInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeInsurance">
+        <PropertyRef Name="Icomp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInsurance_Masters_Tran1">
+    <End Role="Masters_Tran" Type="dmssystemModel.Store.Masters_Tran" Multiplicity="0..1" />
+    <End Role="EmployeeInsurance" Type="dmssystemModel.Store.EmployeeInsurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeInsurance">
+        <PropertyRef Name="Ptype" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeLeave_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeLeave" Type="dmssystemModel.Store.EmployeeLeave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeLeave">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeOtherDetails_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeOtherDetails" Type="dmssystemModel.Store.EmployeeOtherDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeOtherDetails">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeePassport_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeePassport" Type="dmssystemModel.Store.EmployeePassport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeePassport">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeVisa_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="EmployeeVisa" Type="dmssystemModel.Store.EmployeeVisa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EmployeeVisa">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormMenuTran_FormMaster">
+    <End Role="FormMaster" Type="dmssystemModel.Store.FormMaster" Multiplicity="0..1" />
+    <End Role="FormMenuTran" Type="dmssystemModel.Store.FormMenuTran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormMaster">
+        <PropertyRef Name="FormId" />
+      </Principal>
+      <Dependent Role="FormMenuTran">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormMenuTran_MenuHeaderMaster">
+    <End Role="MenuHeaderMaster" Type="dmssystemModel.Store.MenuHeaderMaster" Multiplicity="0..1" />
+    <End Role="FormMenuTran" Type="dmssystemModel.Store.FormMenuTran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuHeaderMaster">
+        <PropertyRef Name="MHId" />
+      </Principal>
+      <Dependent Role="FormMenuTran">
+        <PropertyRef Name="MHID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Masters_Tran_Masters">
+    <End Role="Masters" Type="dmssystemModel.Store.Masters" Multiplicity="0..1" />
+    <End Role="Masters_Tran" Type="dmssystemModel.Store.Masters_Tran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters">
+        <PropertyRef Name="MId" />
+      </Principal>
+      <Dependent Role="Masters_Tran">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuTran_FormMaster">
+    <End Role="FormMaster" Type="dmssystemModel.Store.FormMaster" Multiplicity="0..1" />
+    <End Role="MenuTran" Type="dmssystemModel.Store.MenuTran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormMaster">
+        <PropertyRef Name="FormId" />
+      </Principal>
+      <Dependent Role="MenuTran">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuTran_MenuHeaderMaster">
+    <End Role="MenuHeaderMaster" Type="dmssystemModel.Store.MenuHeaderMaster" Multiplicity="0..1" />
+    <End Role="MenuTran" Type="dmssystemModel.Store.MenuTran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuHeaderMaster">
+        <PropertyRef Name="MHId" />
+      </Principal>
+      <Dependent Role="MenuTran">
+        <PropertyRef Name="MHId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Other_Expenses_Branch_master">
+    <End Role="Branch_master" Type="dmssystemModel.Store.Branch_master" Multiplicity="0..1" />
+    <End Role="Other_Expenses" Type="dmssystemModel.Store.Other_Expenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Other_Expenses">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Other_Expenses_Company_master">
+    <End Role="Company_master" Type="dmssystemModel.Store.Company_master" Multiplicity="0..1" />
+    <End Role="Other_Expenses" Type="dmssystemModel.Store.Other_Expenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Other_Expenses">
+        <PropertyRef Name="CompID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Other_Expenses_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="Other_Expenses" Type="dmssystemModel.Store.Other_Expenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Other_Expenses">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Other_Expenses_Masters_Tran">
+    <End Role="Masters_Tran" Type="dmssystemModel.Store.Masters_Tran" Multiplicity="0..1" />
+    <End Role="Other_Expenses" Type="dmssystemModel.Store.Other_Expenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Other_Expenses">
+        <PropertyRef Name="ExpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Petrol_Card_Masters_Tran">
+    <End Role="Masters_Tran" Type="dmssystemModel.Store.Masters_Tran" Multiplicity="0..1" />
+    <End Role="Petrol_Card" Type="dmssystemModel.Store.Petrol_Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Petrol_Card">
+        <PropertyRef Name="PetrolCardNameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Petrol_Card_Masters_Tran1">
+    <End Role="Masters_Tran" Type="dmssystemModel.Store.Masters_Tran" Multiplicity="0..1" />
+    <End Role="Petrol_Card" Type="dmssystemModel.Store.Petrol_Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Petrol_Card">
+        <PropertyRef Name="PaymentModeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Petrol_Card_VehicleMaster">
+    <End Role="VehicleMaster" Type="dmssystemModel.Store.VehicleMaster" Multiplicity="0..1" />
+    <End Role="Petrol_Card" Type="dmssystemModel.Store.Petrol_Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="Petrol_Card">
+        <PropertyRef Name="VID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Petrol_Expense_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="Petrol_Expense" Type="dmssystemModel.Store.Petrol_Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Petrol_Expense">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Petrol_Expense_VehicleMaster">
+    <End Role="VehicleMaster" Type="dmssystemModel.Store.VehicleMaster" Multiplicity="0..1" />
+    <End Role="Petrol_Expense" Type="dmssystemModel.Store.Petrol_Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="Petrol_Expense">
+        <PropertyRef Name="VID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TenancyDocuments_TenancyMaster">
+    <End Role="TenancyMaster" Type="dmssystemModel.Store.TenancyMaster" Multiplicity="0..1" />
+    <End Role="TenancyDocuments" Type="dmssystemModel.Store.TenancyDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TenancyMaster">
+        <PropertyRef Name="TnID" />
+      </Principal>
+      <Dependent Role="TenancyDocuments">
+        <PropertyRef Name="TenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TravelExpences_Company_master">
+    <End Role="Company_master" Type="dmssystemModel.Store.Company_master" Multiplicity="0..1" />
+    <End Role="TravelExpences" Type="dmssystemModel.Store.TravelExpences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TravelExpences">
+        <PropertyRef Name="Companyid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TravelExpences_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="TravelExpences" Type="dmssystemModel.Store.TravelExpences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TravelExpences">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_History_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="Vehicle_History" Type="dmssystemModel.Store.Vehicle_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vehicle_History">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_History_VehicleMaster">
+    <End Role="VehicleMaster" Type="dmssystemModel.Store.VehicleMaster" Multiplicity="0..1" />
+    <End Role="Vehicle_History" Type="dmssystemModel.Store.Vehicle_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="Vehicle_History">
+        <PropertyRef Name="VID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleDocument_VehicleMaster">
+    <End Role="VehicleMaster" Type="dmssystemModel.Store.VehicleMaster" Multiplicity="0..1" />
+    <End Role="VehicleDocument" Type="dmssystemModel.Store.VehicleDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="VehicleDocument">
+        <PropertyRef Name="VId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleMaster_Company_master">
+    <End Role="Company_master" Type="dmssystemModel.Store.Company_master" Multiplicity="0..1" />
+    <End Role="VehicleMaster" Type="dmssystemModel.Store.VehicleMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="VehicleMaster">
+        <PropertyRef Name="CompID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleMaster_employee_master">
+    <End Role="employee_master" Type="dmssystemModel.Store.employee_master" Multiplicity="0..1" />
+    <End Role="VehicleMaster" Type="dmssystemModel.Store.VehicleMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="VehicleMaster">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleRepairing_Company_master">
+    <End Role="Company_master" Type="dmssystemModel.Store.Company_master" Multiplicity="0..1" />
+    <End Role="VehicleRepairing" Type="dmssystemModel.Store.VehicleRepairing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_master">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="VehicleRepairing">
+        <PropertyRef Name="CompID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleRepairing_Masters_Tran">
+    <End Role="Masters_Tran" Type="dmssystemModel.Store.Masters_Tran" Multiplicity="0..1" />
+    <End Role="VehicleRepairing" Type="dmssystemModel.Store.VehicleRepairing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masters_Tran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VehicleRepairing">
+        <PropertyRef Name="Repairing_TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleRepairing_VehicleMaster">
+    <End Role="VehicleMaster" Type="dmssystemModel.Store.VehicleMaster" Multiplicity="0..1" />
+    <End Role="VehicleRepairing" Type="dmssystemModel.Store.VehicleRepairing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleMaster">
+        <PropertyRef Name="VID" />
+      </Principal>
+      <Dependent Role="VehicleRepairing">
+        <PropertyRef Name="VID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetEmployeeData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetEmpPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmpId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompId" Type="int" Mode="In" />
+    <Parameter Name="EmpId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PayrollReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Month" Type="int" Mode="In" />
+    <Parameter Name="CompId" Type="int" Mode="In" />
+    <Parameter Name="Year" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PayrollReport_Testing" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Month" Type="varchar(max)" Mode="In" />
+    <Parameter Name="CompId" Type="varchar(max)" Mode="In" />
+  </Function>
+</Schema>

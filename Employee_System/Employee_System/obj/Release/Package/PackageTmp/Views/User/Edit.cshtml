@@ -1,0 +1,226 @@
+﻿@using EMSDomain.ViewModel
+@{
+    ViewBag.Title = "User";
+}
+
+@model LoginItem
+<style>
+    fieldset.scheduler-border
+    {
+        border: 1px groove #ddd !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+    }
+
+    legend.scheduler-border
+    {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width: auto;
+        padding: 0 10px;
+        border-bottom: none;
+    }
+</style>
+
+<style type="text/css">
+    .checkbox
+    {
+        padding-left: 20px;
+    }
+
+        .checkbox label
+        {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            padding-left: 5px;
+        }
+
+    /*.checkbox label::before
+            {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                width: 17px;
+                height: 17px;
+                left: 0;
+                margin-left: -20px;
+                border: 1px solid #cccccc;
+                border-radius: 3px;
+                background-color: #fff;
+                -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+                -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+                transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            }*/
+
+    /*.checkbox label::after
+            {
+                display: inline-block;
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                left: 0;
+                top: 0;
+                margin-left: -20px;
+                padding-left: 3px;
+                padding-top: 1px;
+                font-size: 11px;
+                color: #555555;
+            }*/
+
+    /*.checkbox input[type="checkbox"]
+        {
+            opacity: 0;
+            z-index: 1;
+        }*/
+
+    /*.checkbox input[type="checkbox"]:checked + label::after
+            {
+                font-family: "FontAwesome";
+                content: "\f00c";
+            }
+
+    .checkbox-primary input[type="checkbox"]:checked + label::before
+    {
+        background-color: #337ab7;
+        border-color: #337ab7;
+    }
+
+    .checkbox-primary input[type="checkbox"]:checked + label::after
+    {
+        color: #fff;
+    }*/
+</style>
+@using (@Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.UId)
+    @Html.HiddenFor(m=>m.CreatedBy)
+    @Html.HiddenFor(m=>m.CreatedDate)
+    
+    <section class="content-header">
+        <h1>User <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>  
+    <div class="panel panel-info">
+        <div class="panel-heading">User Master Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+                 @Html.Label("Company", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListMasterTable, "Id", "Name"), "--Select--", new { @class = "form-control select2" })*@
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListCompany, "id", "CompName"), "--Select--", new { @class = "form-control Select2" ,@id="ddlComp"})
+                    @Html.ValidationMessageFor(m => m.CompID)
+                    @Html.HiddenFor(m=>m.CompID)
+                </div>
+                @Html.LabelFor(m => m.RoleID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.RoleID, new List<SelectListItem>
+                    {
+                        new SelectListItem{Text="--Select Role--",Value=""},
+                    new SelectListItem{Text="Admin",Value="1"},
+                    new SelectListItem{Text="Staff",Value="2"},
+                    }, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RoleID)
+                </div>
+
+            
+                <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+                @Html.LabelFor(m => m.Password, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+                <div class="col-sm-12" style="height: 5px;">
+                </div>
+
+                <fieldset class="scheduler-border">
+            <legend class="scheduler-border">Task Assignment</legend>
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <i class="fa fa-bars" aria-hidden="true"></i>&nbsp;<a data-toggle="collapse" href="#collapse3">Menu/Form Details</a>
+                        </h4>
+                    </div>
+                    <div id="collapse3" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;<a href="#" id="myLink">Tick/UnTick All</a></div>
+                            @for (var m = 0; m < Model.ListModules.Count(); m++)
+                            {
+                                var name = Model.ListModules[m];
+                                @Html.HiddenFor(model => model.ListModules[m].MHId)
+                                
+                                <div class="checkbox checkbox-primary">
+                                    @Html.CheckBoxFor(model => model.ListModules[m].IsChecked, new { @id = "chk" })
+                                    @Html.LabelFor(model => model.ListModules[m].MHName, name.MHName, new { @style="font-weight: bold;"})
+                                </div>
+                                var mid = Model.ListModules[m].MHId;
+                                
+                                <div style="padding-right: 30px;">
+                                    
+                                    @for (var f = 0; f < Model.ListForm.Count(); f++)
+                                    {
+                                        
+                                        var nm = Model.ListForm[f];
+                                        var menuid = Model.ListForm[f].MHId;
+                                        if (mid == menuid)
+                                        {
+                                            
+                                        @Html.HiddenFor(model => model.ListForm[f].FormId)
+                                        <div class="checkbox checkbox-primary">
+                                            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>@Html.CheckBoxFor(model => model.ListForm[f].IsChecked, new { @id = "chk" })
+                                            @Html.LabelFor(model => model.ListForm[f].FormName, nm.FormName)
+                                        </div>
+                                        }
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+
+
+                
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+}
+
+<script>
+
+    $('#myLink').on('click', function () {
+        var check = $('#chk').is(':checked') ? false : true;
+        $("INPUT[id^='chk']").prop('checked', check);
+    });
+
+</script>
+<script>
+
+    $('#myLink1').on('click', function () {
+        var check = $('#chk1').is(':checked') ? false : true;
+        $("INPUT[id^='chk1']").prop('checked', check);
+    });
+
+</script>

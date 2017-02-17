@@ -1,0 +1,61 @@
+﻿@using EMSDomain.ViewModel
+@using EMSMethods
+@using EMSDomain.Model
+
+@model  List<PartyModel>
+@{
+Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "This is my page title.";
+}
+
+<!--For Tables Paging,Searching,Sorting-->
+<script src="~/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="~/assets/js/dataTables/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" href="~/assets/js/dataTables/dataTables.bootstrap.css" />
+<!--end-->
+<script>
+    $(document).ready(function () {
+        var table = $('#tbl').DataTable();
+    });
+</script>
+<div id="dvData" class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Party Name</th>
+                            <th>Contact Person</th>
+                            <th>Mobile</th>
+                            <th>Billing Address</th>
+                            <th>Billing Name</th>
+                            <th>Billing Phone</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @*Convert.ToInt32(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)*@
+
+                        @foreach (var item in Model)
+                        {
+                            
+                            <tr>
+                                <td>@item.PartyName</td>
+                                <td>@item.ContactPerson</td>
+                                <td>@item.Mobile</td>
+                                <td>@item.BillingAddress</td>
+                                <td>@item.BillingName</td>
+                                <td>@item.BillingPhone</td>
+                              
+                                <td>
+                                    @{TenancyService objTen = new TenancyService();}
+                                    @*<a id="link" data-toggle="modal" data-target="#myModal" class="link">Open</a>*@
+                                    @Html.ActionLink(" ", "Edit", new { id = @item.PID, @menuId = 3 }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new { @id = @item.PID, @menuId = 3 }, new { @class = "fa fa-eye" })
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = @item.VID,menuId= objTen.Encrypt(Convert.ToString(@ViewBag.MenuId)) })*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>

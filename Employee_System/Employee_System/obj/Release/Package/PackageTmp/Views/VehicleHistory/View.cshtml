@@ -1,0 +1,60 @@
+﻿@using EMSDomain.ViewModel.Vehicle
+
+@model  VehicleHistoryItem
+@{
+    ViewBag.Title = "Vehicle History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (@Html.BeginForm("View", "VehicleHistory", FormMethod.Post, new { @id = "frmvehicle" }))
+{    
+     @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })  
+    
+    <section class="content-header">
+        <h1>Vehicle History <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+    <div class="panel panel-info">
+        <div class="panel-heading">Vehicle History Details</div>
+        <div class="panel-body">
+            <div class="form-group" id="dvView">
+                @Html.LabelFor(m => m.VID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">                    
+                    @Html.DropDownListFor(m => m.VID, new SelectList(Model.ListVehicle, "VID", "VehicleName"), "--Select Vehicle--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.VID)
+                </div>
+                @Html.LabelFor(m => m.EmpID, new { @class="col-sm-2 conntrol-label"})
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpID, new SelectList(Model.ListEmp, "id", "EmpName"), "--Select Employee--", new { @class="form-control"})
+                    @Html.ValidationMessageFor(m => m.EmpID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.From_Date, new { @class="col-sm-2 control-label"})
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.From_Date,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.From_Date)
+                </div>
+                @Html.LabelFor(m => m.To_Date, new { @class="col-sm-2 control-label"})
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.To_Date,"{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.To_Date)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Remarks, new { @class="col-sm-2 control-label"})
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })                    
+                </div>
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                @Html.ActionLink(" Back", "Create", new {@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+            </div>
+        </div>
+    </div>
+}

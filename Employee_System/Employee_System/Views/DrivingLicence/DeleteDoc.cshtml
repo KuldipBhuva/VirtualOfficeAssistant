@@ -1,0 +1,42 @@
+﻿@using EMSDomain.ViewModel
+
+@model DocumentItem
+
+
+@using (@Html.BeginForm("DeleteDoc", "DrivingLicence", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.Id, new { @ViewBag.DocId })
+    <section class="content-header">
+        <h1>Driving Licence <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Driving Licence Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.FileName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.FileName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FileName)
+                </div>
+
+               
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Delete" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+

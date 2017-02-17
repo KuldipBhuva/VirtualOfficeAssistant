@@ -1,0 +1,200 @@
+﻿  @{ 
+   ViewBag.Title = "Re-Payment";
+}
+  
+@using EMSDomain.ViewModel.Payroll
+
+@model RePaymentItem
+
+
+@using (Html.BeginForm("Create", "RePayment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+     @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Re-Payment <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>  
+    
+    <div class="panel panel-info">
+        <div class="panel-heading">Re-Payment Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Month, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Month, ViewBag.Months as List<SelectListItem>, new { @class = "form-control Select2" })
+                    @Html.HiddenFor(m => m.Month)
+                    @Html.ValidationMessageFor(m => m.Month)
+                </div>
+
+                @Html.LabelFor(m => m.Year, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Year, ViewBag.Year as List<SelectListItem>, new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.Year)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.CompId, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+
+                    @Html.DropDownListFor(m => m.CompId, new SelectList(Model.ListComp, "id", "CompName"), "--Select Company--", new { @class = "form-control Select2",@id="ddlComp" })
+                    
+
+                </div>
+
+                @Html.LabelFor(m => m.EmpId, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpId, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.EmpId)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Payment, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Payment, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Payment)
+
+                </div>
+                @Html.LabelFor(m => m.Rs, new { @class = "col-sm-2 control-label", @id = "Rs", style = "color:#ff0000" })
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Installment, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Installment, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Payment)
+                </div>
+
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" id="Save" name="Save" />
+                </div>
+
+            </div>
+        </div>
+    </div>   
+    
+    <div class="panel panel-info">
+        <div class="panel-heading">RePayment Data <span class="label label-primary">@Model.ListRePayment.Count</span></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Year</th>
+                            <th>Company</th>
+                            <th>Employee</th>
+                            <th>Amount</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListRePayment)
+                        {
+                        
+                            <tr>
+                                <td>@item.Month</td>
+                                <td>@item.Year</td>
+                                <td>@item.CompName</td>
+                                <td>@item.EmpName</td>
+                                <td>@item.Payment</td>
+                                <td>@Html.ActionLink(" ", "Edit", new { @Id = @item.Id ,@menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class = "fa fa-pencil-square fa-lg" })</td>
+
+                            </tr>
+                        
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script lang="javascript" type="text/javascript">
+        $(document).ready(function () {
+
+            $('#Save').click(function () {
+                debugger;
+                var CompIds = $('#CompId').val();
+                var EmpIds = $('#EmpId').val();
+                var Months = $('#Month').val();
+                var Year = $('#Year').val();
+
+                if (Months == 0) {
+                    alert('Please Select Month');
+                    return false;
+                }
+                else if (Year == 0) {
+                    alert('Please Select Year');
+                    return false;
+                }
+                else if (CompIds == 0) {
+                    alert('Please Select Company');
+                    return false;
+                }
+                if (CompIds != null && EmpIds == 0) {
+                    alert('Please Select Employee');
+                    return false;
+                }
+                return true;
+
+            });
+
+
+            $('#Rs').hide();
+            $("#ddlComp").change(function () {
+
+
+                var CompIds = $('#ddlComp').val();
+                $.ajax(
+                {
+                    url: '@Url.Action("FillEmp", "AdvancePayment")',
+                    type: "GET",
+                    datatype: "JSON",
+                    data: { Compid: CompIds },
+                    success: function (Employee_master) {
+
+                        $("#EmpId").html("");  // clear before appending new list 
+                        $("#EmpId").append("<option value='0'>--Select Employee--</option>");
+                        $.each(Employee_master, function (i, EmpId) {
+
+                            $("#EmpId").append(
+                                $('<option></option>').val(EmpId.id).html(EmpId.Empname));
+                        });
+                    }
+                });
+            });
+
+            $("#EmpId").change(function () {
+                var EmpIds = $('#EmpId').val();
+                debugger;
+                $.ajax(
+               {
+                   url: '@Url.Action("AdvanceAmount", "RePayment")',
+                   type: "GET",
+                   datatype: "JSON",
+                   data: { EmpId: EmpIds },
+                   success: function (data) {
+                       // alert(data);
+                       $('#Rs').show();
+                       $('#Rs').html("Advance Amt." + data);
+
+                   }
+               });
+            });
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#tbl').DataTable();
+        });
+    </script>
+}

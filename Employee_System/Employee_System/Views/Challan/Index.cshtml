@@ -1,0 +1,281 @@
+﻿@{ 
+    ViewBag.Title = "Challan";
+}
+
+@using EMSDomain.ViewModel
+@using EMSMethods
+@model ChallanModel
+
+@using (@Html.BeginForm("Index", "Challan", FormMethod.Post, new { @id = "frmCreateEmployee", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    
+    <section class="content-header">
+        <h1>Challan <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">
+            Challan Details
+            <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" />
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.Label("* Vehicle", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @*@Html.DropDownListFor(m => m.VID, new SelectList(Model.ListVehicle, "VID", "VehicleName"+'('+"VehicleNo"+')')), "--Select Vehicle--", new { @class = "form-control" })*@
+                    @Html.DropDownListFor(m => m.VID, new SelectList(Model.ListVehicle, "VID", "VehicleName"), "--Select Vehicle--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.VID)
+                </div>
+
+                @Html.Label("* Driver", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpID, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Driver--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmpID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("* Start", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.StartDate, new { @class = "form-control datetimepicker" })
+                    @Html.ValidationMessageFor(m => m.StartDate)
+                </div>
+
+                @Html.Label("* End", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EndDate, new { @class = "form-control datetimepicker" })
+                    @Html.ValidationMessageFor(m => m.EndDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("* Source", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Source, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Source)
+                </div>
+
+                @Html.Label("* Destination", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Destination, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Destination)
+                </div>
+                @*                <div class="col-sm-12" style="height: 5px;"></div>    
+                
+                    @Html.Label("* GR#", new { @class = "col-sm-2 control-label" })*@
+
+                @*                <div class="col-sm-4">
+                    <div class="input-group">
+                    @Html.DropDownListFor(m => m.GRID, new SelectList(Model.ListGrNo, "GrNo", "GrNo"), "--Select GR No--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.GRID)
+                          <span class="input-group-btn">
+                                <button class="btn btn-success" id="btnRefresh" type="button">Add</button>
+                                
+                            </span>
+                        </div>
+                </div>*@
+                @*   <div class="col-sm-4">
+                    
+                    @Html.DropDownListFor(m => m.GRID, new SelectList(Model.ListGrNo, "GrNo", "GrNo"), "--Select GR No--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.GRID)
+                          
+                </div>*@
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">
+            Challan List <span class="label label-primary">@Model.ListChallan.Count</span>
+            <input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" />
+        </div>
+
+        <div class="panel-body">
+            <div class="panel-group" id="accordion">
+                @foreach (var i in Model.ListChallan)
+                {
+                    int cid = @i.CID;
+                    var lst = Model.ListChallanTran.Where(m => m.CID == cid).ToList();
+                    <div class="panel panel-default">
+                        @{EncDec objEnDec = new EncDec();}
+                        <div class="panel-heading" style="position: relative;">
+                            @Html.ActionLink(" ", "AddGR", new { @id = @i.CID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-2x", @style = "position: absolute;right: 40px;top: 5px;" })
+                            @*@Html.ActionLink("Edit", "Edit", new { id = @item.VID,menuId= objTen.Encrypt(Convert.ToString(@ViewBag.MenuId)) })*@
+                            @Html.ActionLink(" ", "PrintChallan", new { @id = objEnDec.Encrypt(Convert.ToString(@i.CID)) }, new { @class = "fa fa-print fa-2x", @target = "_blank", @style = "position: absolute;right: 10px;top: 5px;" })
+
+                            <h4 class="panel-title">
+                                <span data-toggle="tooltip" data-placement="auto">
+
+                                    <a data-toggle="collapse" title="Start Date : @i.StartDate.Value.ToString("dd/MM/yyyy hh:mm tt") End Date : @i.EndDate.Value.ToString("dd/MM/yyyy hh:mm tt") @i.Source to @i.Destination" data-parent="#accordion" href="#@i.CID">
+                                        <table>
+                                            <tr>
+                                                @if (lst.Count > 0)
+                                                {
+                                                    <td><i class="fa fa-caret-down" aria-hidden="true"></i>&nbsp;<b>Challan No. : </b></td>
+                                                }
+                                                else
+                                                {
+                                                    <td>&nbsp;&nbsp;<b>Challan No. : </b></td>   
+                                                }
+                                                <td>@i.ChallanNo@i.CID</td>
+                                                <td>&nbsp;<b>Vehicle : </b></td>
+                                                <td>@i.VehicleDetails.VehicleName (@i.VehicleDetails.VehicleNo)</td>
+                                                <td>&nbsp;<b>Driver : </b></td>
+                                                <td>@i.EmpDetails.Empname</td>
+                                            </tr>
+                                        </table>
+
+                                    </a>
+                                </span>
+                            </h4>
+                        </div>
+
+                        @if (lst.Count > 0)
+                        {
+                            <div id="@i.CID" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>GR No.</th>
+                                                <th>LR/Gate Pass No.</th>
+                                                <th>Consigner</th>
+                                                <th>Consignee</th>
+                                                <th>Source</th>
+                                                <th>PickUP</th>
+                                                <th>Destination</th>
+                                                <th>Packages</th>
+                                                <th>InvoiceAmount</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var t in lst)
+                                            {
+                                                <tr>
+                                                    <td>@t.ConsignDetails.InvoiceNo@t.ConsignDetails.GrNo</td>
+                                                    <td>@t.ConsignDetails.LR</td>
+                                                    <td>@t.ConsignorDetails.PartyName</td>
+                                                    <td>@t.ConsigneeDetails.PartyName</td>
+                                                    <td>@t.ConsignDetails.Source</td>
+                                                    <td>@t.ConsignDetails.PickUp</td>
+                                                    <td>@t.ConsignDetails.Destination</td>
+                                                    <td>@t.ConsignDetails.Packages</td>
+                                                    <td><i class="fa fa-inr"></i>&nbsp;@t.ConsignDetails.InvoiceAmount</td>
+                                                    <td>@Html.ActionLink(" ", "Edit", "Consignment", new { @id = @t.ConsignDetails.GrNo, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                                    &nbsp;@Html.ActionLink(" ", "View", "Consignment", new { @id = @t.ConsignDetails.GrNo, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-eye fa-lg" })
+                                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @t.CTID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete GR No. " + @t.ConsignDetails.InvoiceNo + ' ' + @t.ConsignDetails.GrNo + "?')", @class = "fa fa-trash fa-lg" })
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div id="@i.CID" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <span>There is no any GR.</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+
+            @*<div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Challan No.</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListChallan)
+                        {
+                            <tr>
+                                <td>@item.ChallanNo@item.CID</td>
+                                @if (@item.StartDate != null)
+                                {
+                                    <td>@item.StartDate.Value.ToString("dd/MM/yyyy hh:mm")</td>
+                                }
+                                else
+                                {
+                                    <td></td>   
+                                }
+                                @if (@item.EndDate != null)
+                                {
+                                    <td>@item.EndDate.Value.ToString("dd/MM/yyyy hh:mm")</td>
+                                }
+                                else
+                                {
+                                    <td></td>   
+                                }
+                                <td>@item.Source</td>
+                                <td>@item.Destination</td>
+
+
+
+                                <td>@Html.ActionLink(" ", "AddGR", new { @id = @item.CID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                &nbsp;@Html.ActionLink(" ", "View", new { @id = @item.CID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-eye" })
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>*@
+        </div>
+
+    </div>         
+}
+
+
+<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+
+        $.ajax(
+        {
+            url: '@Url.Action("FillEmp", "Challan")',
+            type: "GET",
+            datatype: "JSON",
+            //data: { Compid: CompIds },
+            success: function (Branch_master) {
+                debugger;
+                $("#VID").html("");  // clear before appending new list 
+                $("#VID").append("<option value=''>--Select Vehicle--</option>");
+
+                $.each(Branch_master, function (i, vhcl) {
+
+                    $("#VID").append(
+
+                        $('<option></option>').val(vhcl.VID).html(vhcl.VehicleName + ' **(' + vhcl.VehicleNo + ')**'));
+
+                });
+
+            }
+        });
+
+    });
+
+
+</script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

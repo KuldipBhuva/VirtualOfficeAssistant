@@ -1,0 +1,70 @@
+﻿@model EmpWorkHistoryItem
+@using EMSDomain.ViewModel.Employee
+@{
+    ViewBag.Title = "Work History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (@Html.BeginForm("Create", "WorkHistory", FormMethod.Post))
+{
+    <div class="container">
+        <div class="panel panel-info">
+            <div class="panel-heading">Passport Details</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CompId, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.CompId, new SelectList(Model.CompanyList, "id", "CompName"), "--Select Company--", new { @class = "form-control select2" })
+                        @Html.ValidationMessageFor(m => m.CompId)
+                    </div>
+
+
+                    @Html.LabelFor(m => m.BranchId, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.BranchId, new SelectList(Model.BranchList, "id", "BranchName"), "--Select Branch--", new { @class = "form-control select2" })
+                        @Html.ValidationMessageFor(m => m.BranchId)
+
+                    </div>
+
+
+                    @Html.LabelFor(m => m.FromDate, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control" })
+                    </div>
+
+
+                    @Html.LabelFor(m => m.ToDate, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control" })
+                    </div>
+
+
+                    @Html.LabelFor(m => m.DesignationId, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.DesignationId, new SelectList(Model.DesignationList, "Id", "Name"), "--Select Designation--", new { @class = "form-control select2" })
+                        @Html.ValidationMessageFor(m => m.DesignationId)
+                    </div>
+
+                    @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+
+                    </div>
+                    @Html.LabelFor(m => m.Perfomance, new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Perfomance, new { @class = "form-control" })
+
+                    </div>
+                    <input type="submit" value="Submit" />
+                </div>
+            </div>
+        </div>
+    </div> 
+}

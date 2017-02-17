@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="98a3f871ea1f464f8484afafd624eb39" Name="Diagram1" ZoomLevel="70">
+        <EntityTypeShape EntityType="DMSModel.Advance_Payroll_Master" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.AppointmentsMaster" Width="1.5" PointX="4.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Blood_Group_Master" Width="1.5" PointX="7.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Branch_master" Width="1.5" PointX="3.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Category_Master" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Company_master" Width="1.5" PointX="6.75" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Country" Width="1.5" PointX="9.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.CredentialMaster" Width="1.5" PointX="6.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.document_category" Width="1.5" PointX="8.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmpDrivingLicence" Width="1.5" PointX="10.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.employee_document" Width="1.5" PointX="3" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.employee_master" Width="1.5" PointX="0.75" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeAbsconding" Width="1.5" PointX="10.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeAllowance" Width="1.5" PointX="11.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeContact" Width="1.5" PointX="2.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeDeposite" Width="1.5" PointX="12.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeDocument" Width="1.5" PointX="12.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeExperience" Width="1.5" PointX="3" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeHealthCard" Width="1.5" PointX="3" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeIncrement" Width="1.5" PointX="3" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeInsurance" Width="1.5" PointX="11.25" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeLeave" Width="1.5" PointX="3" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeOtherDetail" Width="1.5" PointX="3" PointY="45.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeQualification" Width="1.5" PointX="3" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeRelative" Width="1.5" PointX="12.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.EmployeeVisa" Width="1.5" PointX="3" PointY="59.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.FormMaster" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.FormMenuTran" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Item_Master" Width="1.5" PointX="4.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Master" Width="1.5" PointX="9.75" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Masters_Tran" Width="1.5" PointX="12" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.MenuHeaderMaster" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.MenuTran" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Other_Expenses" Width="1.5" PointX="6" PointY="42.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.PayrollMaster" Width="1.5" PointX="6.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Petrol_Card" Width="1.5" PointX="14.25" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Petrol_Expense" Width="1.5" PointX="6" PointY="38" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Repayment_Master" Width="1.5" PointX="8.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.SponsorMaster" Width="1.5" PointX="14.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.TenancyDocument" Width="1.5" PointX="8" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.TenancyMaster" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Trade_License" Width="1.5" PointX="14.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.TradeDocument" Width="1.5" PointX="15.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.TravelExpence" Width="1.5" PointX="9" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.UserFormTran" Width="1.5" PointX="14.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.UserModulesTran" Width="1.5" PointX="16.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.Vehicle_History" Width="1.5" PointX="6" PointY="48.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.VehicleDocument" Width="1.5" PointX="11.25" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.VehicleMaster" Width="1.5" PointX="9" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.VehicleRepairing" Width="1.5" PointX="14.25" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="DMSModel.WorkHistory" Width="1.5" PointX="16.75" PointY="10" IsExpanded="true" />
+        <AssociationConnector Association="DMSModel.FK_Other_Expenses_Branch_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_EmployeeInsurance_Company_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Other_Expenses_Company_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_TravelExpences_Company_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_VehicleMaster_Company_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_VehicleRepairing_Company_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_employee_document_document_category" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK__EmployeeQ__Empid__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK__EmployeeQ__Empid__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_EmployeeExperience_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_EmployeeHealthCard_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_EmployeeIncrement_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_EmployeeLeave_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_EmployeeOtherDetails_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_EmployeeVisa_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Other_Expenses_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Petrol_Expense_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_TravelExpences_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Vehicle_History_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_VehicleMaster_employee_master" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK__EmployeeIns__VID__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_EmployeeInsurance_Masters_Tran" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_EmployeeInsurance_Masters_Tran1" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_FormMenuTran_FormMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_MenuTran_FormMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_FormMenuTran_MenuHeaderMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Masters_Tran_Masters" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Other_Expenses_Masters_Tran" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Petrol_Card_Masters_Tran" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Petrol_Card_Masters_Tran1" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_VehicleRepairing_Masters_Tran" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_MenuTran_MenuHeaderMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Petrol_Card_VehicleMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Petrol_Expense_VehicleMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_TenancyDocuments_TenancyMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_Vehicle_History_VehicleMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_VehicleDocument_VehicleMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DMSModel.FK_VehicleRepairing_VehicleMaster" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DMSModel.IssueDetail" Width="1.5" PointX="7.2747196700771894" PointY="10.899026905605117" />
+        <EntityTypeShape EntityType="DMSModel.ReturnDetail" Width="1.5" PointX="4.1039232202358189" PointY="24.493164833864739" />
+        <EntityTypeShape EntityType="DMSModel.Stock_Master" Width="1.5" PointX="9.8243220326603957" PointY="27.2973403759754" />
+        <EntityTypeShape EntityType="DMSModel.ChallanMaster" Width="1.5" PointX="11.74731558735823" PointY="26.033918795191646" />
+        <EntityTypeShape EntityType="DMSModel.ChallanTran" Width="1.5" PointX="2.7827343935066531" PointY="9.4755840494649419" />
+        <EntityTypeShape EntityType="DMSModel.ConsignmentMaster" Width="1.5" PointX="6.0984139061059865" PointY="19.59197715837135" />
+        <EntityTypeShape EntityType="DMSModel.PartyMaster" Width="1.5" PointX="8.4291637262465251" PointY="18.859314405759477" />
+        <EntityTypeShape EntityType="DMSModel.ChequeReturnMaster" Width="1.5" PointX="10.533605708989132" PointY="6.1529421387952485" />
+        <EntityTypeShape EntityType="DMSModel.EmployeePassport" Width="1.5" PointX="0.042007628847848449" PointY="25.527688112821284" />
+        <AssociationConnector Association="DMSModel.FK_EmployeePassport_employee_master" />
+        <EntityTypeShape EntityType="DMSModel.Login_Master" Width="1.5" PointX="10.740335242236188" PointY="15.073120168909952" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

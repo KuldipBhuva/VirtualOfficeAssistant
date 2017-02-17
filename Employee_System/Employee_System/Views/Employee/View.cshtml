@@ -1,0 +1,287 @@
+﻿@{
+    ViewBag.Title = "Employee";
+}
+@model EMSDomain.ViewModel.Employee.EmpAllItem
+
+@using (@Html.BeginForm("View", "Employee", FormMethod.Post, new { @id = "frmCreateEmployee", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m => m.EmployeeItem.id)
+    @Html.AntiForgeryToken()          // this is for prevent CSRF attack
+    @Html.ValidationSummary(true)
+
+@*<script src="~/Content/bootstrap-colorpicker.min.js"></script>*@
+    
+
+    
+    <section class="content-header">
+        <h1>Employee <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>    
+@*<div class="container">*@
+    <div class="panel panel-info">
+        <div class="panel-heading">Employee Details</div>
+        <div class="panel-body">
+            <div class="form-group" id="dvView">
+                @Html.LabelFor(m => m.EmployeeItem.Photo, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    <img src="@Url.Content("../../PhotoUpload/" + Model.EmployeeItem.Photo)" class="img-rounded" onError="this.onerror=null;this.src='/PhotoUpload/users.png';" width="100" height="100" />
+
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.Empname, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.Empname, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.Empname)
+                </div>
+                <div class="col-sm-6" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmployeeItem.alias, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.alias, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-6" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmployeeItem.Empno, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.Empno, new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(m => m.EmployeeItem.Empno)*@
+                </div>
+
+
+                @Html.LabelFor(m => m.EmployeeItem.EmployeeType, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.EmployeeItem.EmployeeType, "Supervisor", new { @class = "flat-red" }) Supervisor
+                                        @Html.RadioButtonFor(m => m.EmployeeItem.EmployeeType, "Employee", new { @class = "flat-red" }) Employee
+                        @Html.ValidationMessageFor(m => m.EmployeeItem.EmployeeType)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmployeeItem.Email, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.Email)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmployeeItem.FileNumber, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.FileNumber, new { @class = "form-control" })
+                </div>
+
+                @Html.LabelFor(m => m.EmployeeItem.JobTitle, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.JobTitle, new { @class = "form-control" })
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmployeeItem.Compid, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmployeeItem.Compid, new SelectList(Model.EmployeeItem.CompanyList, "id", "CompName"), "--Select Company--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.Compid)
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.Branchid, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmployeeItem.Branchid, new SelectList(Model.EmployeeItem.BranchList, "id", "BranchName"), "--Select Branch--", new { @class = "form-control select2" })
+                    @Html.HiddenFor(m => m.EmployeeItem.Branchid, new { @id="hdnBr"})
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmployeeItem.BasicSalary, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.BasicSalary, new { @class = "form-control", @type = "number" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.BasicSalary)
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.Mobile, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.Mobile, new { @class = "form-control", @onkeypress = "OnlyNumeric(this);", @type = "number" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.Mobile)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmployeeItem.HomeTel, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.HomeTel, new { @class = "form-control", @onkeypress = "OnlyNumeric(this);" })
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.LocalTel, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.LocalTel, new { @class = "form-control", @onkeypress = "OnlyNumeric(this);" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.EmployeeItem.DOJ, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*  @Html.TextBoxFor(m => m.DOJ,new { @class = "datepicker", @type="date" })*@
+                    @Html.TextBoxFor(m => m.EmployeeItem.DOJ, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmployeeItem.DOJ)
+                </div>
+                @Html.LabelFor(m => m.EmployeeItem.DOB, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.DOB, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmployeeItem.Graduity, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.EmployeeItem.Graduity, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.EmployeeItem.WorkingStatus, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @{ 
+    foreach (var ws in Model.EmployeeItem.listMasterWS)
+    {
+                    
+                        @Html.RadioButtonFor(m => m.EmployeeItem.WorkingStatus, ws.Id, new { @id = "rdb" })
+                        @Html.Label("Working Status" + ws.Id, ws.Name)
+                   
+    }
+                    }
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                <div id="dvLeave">
+                    @Html.LabelFor(m => m.EmployeeItem.DOL, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.EmployeeItem.DOL, "{0:dd/MM/yyyy}", new { @class = "form-control", @placeholder = "dd/mm/yyyy" })
+                    </div>
+                </div>
+
+                <div id="dvRejoin">
+                    @Html.LabelFor(m => m.EmployeeItem.RejoinDate, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+
+                        @Html.TextBoxFor(m => m.EmployeeItem.RejoinDate, "{0:dd/MM/yyyy}", new { @class = "form-control", @placeholder = "dd/mm/yyyy" })
+                        @Html.ValidationMessageFor(model => model.EmployeeItem.RejoinDate)
+                        @*  <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <p class="help-block"></p>*@
+
+                    </div>
+                </div>
+                <div id="dvDOD">
+                    @Html.LabelFor(m => m.EmployeeItem.DOD, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+
+                        @Html.TextBoxFor(m => m.EmployeeItem.DOD, "{0:dd/MM/yyyy}", new { @class = "form-control", @placeholder = "dd/mm/yyyy" })
+                        @*  <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <p class="help-block"></p>*@
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                @Html.ActionLink(" Back", "Index", new { @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+            </div>
+        </div>
+    </div>
+                
+       
+}
+
+<script>
+    $(document).ready(function () {
+        debugger;
+        $("#dvRejoin").hide();
+        $("#dvLeave").hide();
+
+        $("#Status1").change(function () {
+            debugger;
+            var $this = $(this);
+            if ($this.val() == "OnLeave") {
+                $("#dvRejoin").show();
+                $("#dvLeave").hide();
+                $('#dvRejoin').css('form-control datepicker', '');
+            }
+        });
+
+
+        $("#Status2").change(function () {
+            debugger;
+            var $this = $(this);
+            if ($this.val() == "Discontinue") {
+                $("#dvLeave").show();
+                $("#dvRejoin").hide();
+                $('#dvLeave').css('form-control datepicker', '');
+            }
+        });
+
+
+        //$("#Status").change(function () {
+        //    debugger;
+        //    var $this = $(this);
+        //    if ($this.val() == "OnService") {
+        //        $("#dvRejoin").hide();
+        //        $("#dvLeave").hide();
+        //    }
+        //});
+
+    })
+
+
+</script>
+
+
+@*<script src="~/Scripts/jquery-1.9.1.min.js"></script>*@
+@*<script type="text/javascript">
+    $(function () {
+        debugger;
+        var empId = '@ViewBag.EmpId';
+        $.ajax({
+            
+            url: '/Menu/LeftMenu',
+            data: { empId: empId },
+            contentType: 'application/html',
+            type: 'GET',
+            dataType: 'html'
+        })
+        .success(function (result) {
+            alert(result);
+            $("#liMenu").html(result);
+        });
+    });
+</script>*@
+<script>
+    $(document).ready(function () {
+        debugger;
+        var val = ($('input[name="EmployeeItem.WorkingStatus"]:checked', '#frmCreateEmployee').val());
+        //Probation
+        if (val == "33") {
+            $("#dvRejoin").hide();
+            $("#dvLeave").hide();
+            $("#dvDOD").hide();
+            //$('#dvRejoin').css('form-control datepicker', '');
+        }
+            //Discontinued
+        else if (val == "94") {
+            $("#dvRejoin").hide();
+            $("#dvLeave").hide();
+            $("#dvDOD").show();
+            //$('#dvRejoin').css('form-control datepicker', '');
+        }
+            //OnLeave
+        else if (val == "95") {
+            $("#dvRejoin").show();
+            $("#dvLeave").show();
+            $("#dvDOD").hide();
+            //$('#dvRejoin').css('form-control datepicker', '');
+        }
+            //OnService
+        else if (val == "96") {
+            $("#dvRejoin").hide();
+            $("#dvLeave").hide();
+            $("#dvDOD").hide();
+
+        }
+        else {
+            $("#dvRejoin").hide();
+            $("#dvLeave").hide();
+            $("#dvDOD").hide();
+        }
+    });
+</script>

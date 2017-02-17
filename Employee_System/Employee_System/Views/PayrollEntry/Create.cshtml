@@ -1,0 +1,184 @@
+﻿  @{ 
+      ViewBag.Title = "Payroll";
+}
+  
+@using EMSDomain.ViewModel.Payroll
+
+@model PayrollItem
+
+
+
+@using (Html.BeginForm("Create", "PayrollEntry", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Payroll Entry
+           
+                    <small>Payroll</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+
+        </ol>
+
+    </section>
+    <input id="hdnMasterId" name="hdnMasterId" type="hidden" />
+    <div class="panel panel-info">
+        <div class="panel-heading">Payroll Entry </div>
+        @*
+        <div>@Html.ActionLink("Search Option", "Index")</div>*@
+        <div class="form-control Select2">
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Month, ViewBag.Months as List<SelectListItem>, new { @class = "form-control Select2" })
+                    @Html.HiddenFor(m => m.Month)
+                </div>
+
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Year, ViewBag.Year as List<SelectListItem>, new { @class = "form-control Select2" })
+                </div>
+
+                @*  @Html.LabelFor(m => m.CompId, new { @class = "col-sm-2 control-label" })*@
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompId, new SelectList(Model.lstCompany, "id", "CompName"), "--Select Company--", new { @class = "form-control Select2",@id="ddlComp" })
+                </div>
+
+                <br />
+            </div>
+            <div class="col-sm-12" style="height: 5px;"></div>
+            <div class="col-xs-10">
+                <div class="col-sm-2" style="width: 177px;"></div>
+                @*
+                <input type="submit" value="Go" class="btn btn-primary" />*@
+            </div>
+
+
+        </div>
+    </div>   
+    
+    
+    <div id="Grid">
+        @if (@ViewBag.ErrorMsg != null)
+        {
+    
+            <center><label>@ViewBag.ErrorMsg</label></center>
+   
+        }
+
+        
+        
+@*@{Html.RenderPartial("_List", Model.MasterDataList);}*@
+        @{ int compId = Model.CompId;
+           int Month = Model.Month;
+           int Year = Model.Year;
+        }
+        @{Html.RenderAction("BindEmp", "PayrollEntry", new { @compId = compId, @Month = Month, @Year = Year });}
+    </div>  
+    <div>
+        <input type="submit" value="Save" class="btn btn-primary" />
+
+    </div>
+    
+    
+    
+   
+    <div class="panel panel-info">
+
+        <div class="panel-heading">Payroll Entry Details </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Month</th>
+                            <th>Year</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.lstPayroll != null)
+                        {
+                            foreach (var item in Model.lstPayroll)
+                            {
+                            <tr>
+                                <td>@item.CompName</td>
+                                @* <td>@item.Month</td>*@
+                                <td>@item.MonthName</td>
+                                <td>@item.Year</td>
+                                <td>@Html.ActionLink(" ", "Edit", new { @CompId = @item.CompId, @month = @item.Month, @Year = @item.Year, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                </td>
+                            </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
+    
+    <script lang="javascript" type="text/javascript">
+
+
+
+        $(document).ready(function () {
+            debugger;
+
+            //   var Month = $("#Month").val();
+            var currentYear = (new Date).getFullYear();
+            // alert(currentYear);
+            var CurrentMonth = (new Date).getMonth() + 1;
+            var yr = (new Date).getFullYear();
+            $('#Month option:eq(' + CurrentMonth + ')').prop('selected', true);
+            
+            $('#Year option[value="' + yr + '"]').prop('selected', true);
+            var Year = $("#Year").val();
+            var Month = $("#Month").val();
+            var CompIds = '@Request.RequestContext.HttpContext.Session["CompID"]';
+            debugger;
+            $.ajax(
+            {
+                url: '@Url.Action("BindEmp", "PayrollEntry")',
+                    type: "GET",
+                    datatype: "JSON",
+                    data: { Compid: CompIds, Month: Month, Year: Year },
+                    success: function (data) {
+                        $("#Grid").html(data);
+                    }
+                });
+
+
+            $("#ddlComp").change(function () {
+                var Year = $("#Year").val();
+                var Month = $("#Month").val();
+                var CompIds = $('#ddlComp').val();
+                debugger;
+                $.ajax(
+                {
+                    url: '@Url.Action("BindEmp", "PayrollEntry")',
+                    type: "GET",
+                    datatype: "JSON",
+                    data: { Compid: CompIds, Month: Month, Year: Year },
+                    success: function (data) {
+                        $("#Grid").html(data);
+                    }
+                });
+            });
+
+            //var Empname1 = $("#Empname1").val();
+            //    alert(Empname1);
+
+
+        });
+
+
+    </script>
+
+}
+
+

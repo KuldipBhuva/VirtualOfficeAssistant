@@ -1,0 +1,269 @@
+﻿@{ 
+    ViewBag.Title = "Consignment";
+}
+
+@using EMSDomain.ViewModel
+
+@model ConsignmentModel
+
+@using (@Html.BeginForm("Edit", "Consignment", FormMethod.Post, new { @id = "frmCreateEmployee", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m=>m.CreatedBy)
+    @Html.HiddenFor(m=>m.CreatedDate)
+    @Html.HiddenFor(m=>m.CompID)
+    @Html.HiddenFor(m=>m.GrNo)
+    @Html.HiddenFor(m=>m.InvoiceNo)
+    <section class="content-header">
+        <h1>Consignment <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Consignment Details
+            @*<input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" />*@
+            <a id="btnBack" href="/Consignment/Index?menuid=3" class="btnAdd btn btn-primary">Back</a>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.Label("Company/Broker", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompBrokerID, new SelectList(Model.ListConsigner, "PID", "PartyName"), "--Select Comp/Broker--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CompBrokerID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("* Consigner", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.ConsignorID, new SelectList(Model.ListConsigner, "PID", "PartyName"), "--Select Consigner--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ConsignorID)
+                </div>
+
+                @Html.Label("* Consignee", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.ConsigneeID, new SelectList(Model.ListConsignee, "PID", "PartyName"), "--Select Consignee--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ConsigneeID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("* Source", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Source, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Source)
+                </div>
+
+                @Html.Label("* Destination", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Destination, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Destination)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("Pickup Point", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PickUp, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PickUp)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("* Consignee Invoice No", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ConsigneeInvoiceNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ConsigneeInvoiceNo)
+                </div>
+
+                @Html.Label("* Consignee Invoice Value", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ConsigneeInvoiceValue, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ConsigneeInvoiceValue)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("* LR", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.LR, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LR)
+                </div>
+
+                @Html.Label("* Tax Paid By", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.TaxPaidBy, 1, new { @class = "flat-red" }) Consigner
+                    @Html.RadioButtonFor(m => m.TaxPaidBy, 2, new { @class = "flat-red" }) Consignee
+                    @Html.RadioButtonFor(m => m.TaxPaidBy, 3, new { @class = "flat-red" })Transporter                    
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("* Packages", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Packages, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Packages)
+                </div>
+
+                @Html.Label("* Packing Method", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PackingMethod, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PackingMethod)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("* Booking Date", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.BookingDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.BookingDate)
+                </div>
+                @Html.Label("* Delivery Mode", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.DeliveryMode, 1, new { @class = "flat-red" }) Cash On Delivery
+                    @Html.RadioButtonFor(m => m.DeliveryMode, 2, new { @class = "flat-red" }) Delivery
+                    @Html.RadioButtonFor(m => m.DeliveryMode, 3, new { @class = "flat-red" })Cheque on Delivery    
+                    @Html.ValidationMessageFor(m => m.DeliveryMode)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Charges Calculation</legend>
+                    @Html.Label("* Actual Weight", new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ActualWeight, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ActualWeight)
+                    </div>
+
+                    @Html.Label("* Charged Weight", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ChargedWeight, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ChargedWeight)
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("Rate", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Rate, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor(m => m.Rate)*@
+                    </div>
+                    @Html.Label("Other Charge", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.OtherCharge, new { @class = "form-control" })
+
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("* Freight Charge", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.FreightCharge, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.FreightCharge)
+                    </div>
+                    @Html.Label("Labour Charge", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.LabourCharge, new { @class = "form-control" })
+
+                    </div>
+                    <div class="col-sm-12" style="height: 5px;"></div>
+                    @Html.Label("Discount", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Discount, new { @class = "form-control" })
+
+                    </div>
+                    @Html.Label("* Invoice Amount", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.InvoiceAmount, "{0:0.00}", new { @class = "form-control", @readonly = "readonly", @placeholder = "Do refresh to view invoice amount" })
+                            @Html.HiddenFor(m => m.InvoiceAmount, new { @id = "hdnInv" })
+                            @Html.ValidationMessageFor(m => m.InvoiceAmount)
+                            <span class="input-group-btn">
+                                @*<button class="btn btn-secondary" id="btnRefresh" type="button"><i class="fa fa-refresh"></i></button>*@
+                                <a class="btn btn-success" id="btnRefresh" title="Click To View Total Invoice Amount."><i class="fa fa-refresh"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+
+                @Html.Label("Remarks", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(m => m.Remarks, new { @class = "form-control" })
+
+                </div>
+                    @Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.Status, true)Active
+                        @Html.RadioButtonFor(m => m.Status, false)In-Active                   
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+             
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#ConsignorID").on('change', function () {
+            debugger;
+            $("#ConsigneeID").val("");
+            var sender = $("#ConsignorID").val();
+            $("#ConsigneeID option").attr("disabled", false);
+            $("#ConsigneeID").find('option[value=' + sender + ']').attr("disabled", true);
+        });
+
+
+
+        //$("#btnRefresh").on('onclick', function () {
+        $('#btnRefresh').click(function (e) {
+            debugger;
+
+            var cw = parseFloat($("#ChargedWeight").val());
+            var rate = parseFloat($("#Rate").val());
+            var oc = parseFloat($("#OtherCharge").val());
+            var fc = parseFloat($("#FreightCharge").val());
+            var lc = parseFloat($("#LabourCharge").val());
+            var dis = parseFloat($("#Discount").val());
+
+            if (isNaN(cw)) {
+                cw = 0;
+            }
+            if (isNaN(rate)) {
+                rate = 0;
+            }
+            if (isNaN(oc)) {
+                oc = 0;
+            }
+            if (isNaN(fc)) {
+                fc = 0;
+            }
+            if (isNaN(lc)) {
+                lc = 0;
+            }
+            if (isNaN(dis)) {
+                dis = 0;
+            }
+
+            var semi = (cw * rate);
+            var sum = oc + fc + lc;
+            var tot = semi + sum;
+            var amount = tot - dis;
+
+            $("#InvoiceAmount").val(amount.toFixed(2));
+            $("#hdnInv").val(amount.toFixed(2));
+        });
+    });
+
+</script>
+

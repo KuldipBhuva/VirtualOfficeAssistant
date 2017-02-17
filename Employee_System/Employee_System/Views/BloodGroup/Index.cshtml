@@ -1,0 +1,25 @@
+﻿@using EMSDomain.ViewModel
+
+@model List<clsBloodGroup>
+
+
+
+
+<table class="table table-responsive">
+
+    @foreach (var item in Model)
+    {
+       
+        <tr>
+            <td>
+                @item.bloodList
+            </td>
+            <td>
+                @item.BDescription
+            </td>
+        </tr>
+    }
+
+</table>
+
+

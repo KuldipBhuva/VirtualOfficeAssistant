@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VPD Consultants</title>
+
+    <script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+
+    <script src="../assets/js/bootstrap.js" type="text/javascript"></script>
+
+    <script src="../assets/js/jquery.metisMenu.js" type="text/javascript"></script>
+
+   @* <script src="../assets/js/custom.js" type="text/javascript"></script>*@
+    <link href="../assets/css/MyCSS.css" rel="stylesheet" />
+
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="../assets/css/basic.css" rel="stylesheet" />
+
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+
+    <script src="../assets/js/bootstrap.js" type="text/javascript"></script>
+
+    <script src="../assets/js/jquery.metisMenu.js" type="text/javascript"></script>
+
+    @*<script src="../assets/js/custom.js" type="text/javascript"></script>*@
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+
+            </div>
+
+            <div class="header-right">
+                <table>
+                    <tr>
+                        <td style="width: 850px" align="left">
+                          
+                        </td>
+                        <td align="right">
+                            <a href="Login/Client.aspx" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a></td>
+                    </tr>
+                </table>
+            </div>
+        </nav>
+
+        <div class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a href="#"><i class="fa fa-desktop "></i>Master<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a id="A1" href="ClientMst.aspx"><i class="fa fa-external-link-square"></i>Employer Master</a>
+                            </li>
+                            <li>
+                                <a id="A30" href="ClientUSerMaster.aspx"><i class="fa fa-external-link-square"></i>Employer User</a>
+                            </li>
+                            <li>
+                                <a id="A12" href="Client_Branches.aspx"><i class="fa fa-external-link-square"></i>Client Branches</a>
+                            </li>
+                            <li>
+                                <a id="ContMasterAnchor" href="Contractor_Master.aspx"><i class="fa fa-external-link-square"></i>Contractor Master</a>
+                            </li>
+                            <li>
+                                <a id="A32" href="Coordinator_Master.aspx"><i class="fa fa-external-link-square"></i>Co-ordinator Master</a>
+                            </li>
+                            <li>
+                                <a id="A9" href="Contractor_Branches.aspx"><i class="fa fa-external-link-square"></i>Contractor Branches</a>
+                            </li>
+                            <li>
+                                <a id="A3" href="Client_ContractorAssignment.aspx"><i class="fa fa-external-link-square"></i>Contractor to client Assignment</a>
+                            </li>
+                            <li>
+                                <a id="A16" href="NatureOfWork.aspx"><i class="fa fa-external-link-square"></i>Nature of Work</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Contact Manager</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

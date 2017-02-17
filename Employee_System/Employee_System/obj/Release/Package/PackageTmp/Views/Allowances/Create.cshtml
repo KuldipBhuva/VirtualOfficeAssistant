@@ -1,0 +1,104 @@
+﻿@{ 
+   ViewBag.Title = "Allowances";
+}
+
+@using EMSDomain.ViewModel.Employee
+
+@model EmpAllowncesItem
+
+@{
+    int Empid = ViewBag.Empid;
+}
+@using (@Html.BeginForm("Create", "Allowances", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Allowances <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+@*<div class="container">*@
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Allowances Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.AllownaceID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.AllownaceID, new SelectList(Model.ListMasterTable, "Id", "Name"), "--Select--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.AllownaceID)
+
+                </div>
+
+                @Html.LabelFor(m => m.Amount, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @placeholder = "Amount" })
+                    @Html.ValidationMessageFor(m => m.Amount)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control", @placeholder = "Remarks" })
+                </div>
+                @*@Html.LabelFor(m => m.Status, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.RadioButtonFor(m => m.Status, "Active")Active
+                        @Html.RadioButtonFor(m => m.Status, "InActive")InActive
+                    </div>*@
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+@*</div>*@
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Allowances Details List <span class="label label-primary">@Model.ListAllownces.Count</span><input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+
+                            <th>Allownace-Type</th>
+                            <th>Remarks</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListAllownces)
+                        {
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.Amount</td>
+
+                                <td>@item.MasterDetails.Name</td>
+                                <td>@item.Remarks</td>
+
+
+
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = Empid, @AlId = @item.AId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                    &nbsp;@Html.ActionLink(" ", "View", new {@id = Empid,@AlId = @item.AId, @menuId = Convert.ToInt32(Request.QueryString["menuid"])}, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new { @id = @item.EmpId, @AId = @item.AId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the allowances details of " + @item.EmpDetails.Empname + "?')", @class = "fa fa-trash fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>  
+}
+

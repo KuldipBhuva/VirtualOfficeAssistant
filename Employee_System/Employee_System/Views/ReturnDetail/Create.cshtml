@@ -1,0 +1,153 @@
+﻿@using EMSDomain.ViewModel.Assests
+
+@model  ReturnItem
+@{
+    ViewBag.Title = "Return";
+}
+
+@using (@Html.BeginForm("Create", "ReturnDetail", FormMethod.Post))
+{
+  
+    <section class="content-header">
+        <h1>Return Item Details
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    @Html.HiddenFor(m => m.ReId)
+      
+    <div class="panel panel-info">
+        <div class="panel-heading">Return Item Details</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.CompId, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+
+                    @Html.DropDownListFor(m => m.CompId, new SelectList(Model.ListComp, "id", "CompName"), "--Select Company--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.CompId)
+
+                </div>
+
+                @Html.LabelFor(m => m.EmpId, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpId, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control Select2" })
+                    @Html.ValidationMessageFor(m => m.EmpId)
+                </div>
+
+                @Html.LabelFor(m => m.ItemId, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.ItemId, new SelectList(Model.lstAllItem, "ItemId", "ItemName"), "--Select Items--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ItemId)
+                </div>
+
+                @Html.LabelFor(m => m.Qty, new { @class = "col-sm-2 control-label" })
+
+                @*  @Html.EditorFor(model => model.CompName, new { htmlAttributes = new { @class = "form-control" } })  *@
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Qty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Qty)
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.ReDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ReDate, new { @class = "form-control datepicker" })
+                </div>
+
+                @Html.LabelFor(m => m.ReturnableAmt, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.RadioButtonFor(m => m.ReturnableAmt, "Yes", new { @class = "flat-red" }) Active
+                    @Html.RadioButtonFor(m => m.ReturnableAmt, "No", new { @class = "flat-red" }) In-Active
+                        @Html.ValidationMessageFor(m => m.ReturnableAmt)
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">Return Item Details <span class="label label-primary">@Model.lstReturnItem.Count</span></div>
+        <div class="panel-body">
+            <div id="dvData" class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Company Name</th>
+                            <td>Employee Name</td>
+                            <th>Item Name</th>
+                            @*   <th>Amount</th>*@
+                            <th>Quantity</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @*Convert.ToInt32(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)*@
+
+                        @foreach (var item in Model.lstReturnItem)
+                        {
+                            <tr>
+                                <td>@item.CompName</td>
+                                <td>@item.EmpName</td>
+                                <td>@item.ItemName</td>
+                                @*  <td>@item.ReturnableAmt</td>*@
+                                <td>@item.Qty</td>
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", new { @Id = @item.ReId, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+  
+    <script lang="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $("#CompId").change(function () {
+
+
+                var CompIds = $('#CompId').val();
+                $.ajax(
+                {
+                    url: '@Url.Action("FillEmp", "ReturnDetail")',
+                    type: "GET",
+                    datatype: "JSON",
+                    data: { Compid: CompIds },
+                    success: function (Employee_master) {
+
+                        $("#EmpId").html("");  // clear before appending new list 
+                        $("#EmpId").append("<option value='0'>--Select Employee--</option>");
+                        $.each(Employee_master, function (i, EmpId) {
+
+                            $("#EmpId").append(
+                                $('<option></option>').val(EmpId.id).html(EmpId.Empname));
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#ReDate').datepicker();
+            var table = $('#tbl').DataTable();
+        });
+    </script>
+    
+}
+
+

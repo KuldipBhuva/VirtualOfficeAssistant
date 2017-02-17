@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+    
+}
+@using EMSDomain.ViewModel.Employee
+@model EmployeeItem
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ID Card of @Model.Empname (@Model.Empno)</title>
+    <link rel="shortcut icon" type="image/png" href="~/assets/img/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="~/assets/img/favicon.png" />
+
+    <link href="~/Content/print.css" rel="stylesheet" media="print"/>
+
+        <link rel="stylesheet" href="~/dist/css/AdminLTE.min.css" media="screen">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" media="screen"/>
+    <script>
+function myFunction() {
+    window.print();
+}
+</script>
+</head>
+<body>
+    @*<div class="col-sm-12" style="height: 200px;"></div>
+    <div class="col-sm-4"></div>*@
+
+    <div class="col-sm-4" id="dvMain" style="border: solid 1px; box-shadow: gray 0px 2px 16px 0px; height: 203px;padding-right:1px;padding-left:1px;font-family: monospace;">
+        <div class="col-sm-12" id="dvHead" style="background-color: skyblue;padding-right:1px;padding-left:1px;">
+            <div class="col-sm-6">
+                <h4><b>@Model.Empname</b></h4>
+                <b>@Model.DesignationDetails.Name</b>
+            </div>
+            <div class="col-sm-6" id="dvNo" style="padding-top:10px;"><h4><b>Emp.No. : </b>@Model.Empno</h4></div>
+        </div>
+        <div class="col-sm-12" style="height: 5px;"></div>
+        <div class="col-sm-8">
+        <table><tr><td><b>DOB : </b></td><td>@if(@Model.DOB!=null){@Model.DOB.Value.ToString("dd/MM/yyyy")}</td></tr>
+            <tr><td><b>Blood Group : </b></td><td> @Model.bloodid</td></tr>
+            @*<tr><td><b>Nationality : </b></td><td> @Model.NationDetails.Name</td></tr>*@
+            <tr><td><b>Expiry Date : </b></td><td> @if(Model.VisaDetails.ExpiryDate!=null){@Model.VisaDetails.ExpiryDate.Value.ToString("dd/MM/yyyy")}</td></tr>
+        </table>
+        </div>
+            
+        
+        <div class="col-sm-4">
+            <img class="img-rounded thumb-image" id="imgEmp" style="border: solid 1px;height:100px;width:100px;" src="@Url.Content("~/PhotoUpload/" + Model.Photo)" />
+        </div>
+        <div class="col-sm-12" id="dvSpace" style="height: 5px;"></div>
+        <div class="col-sm-12" id="dvFoot" style="background-color: skyblue;padding-right:1px;padding-left:1px;">           
+            <div class="col-sm-2"><img class="img-rounded thumb-image" id="imgLogo" style="border: solid 1px; height: 40px;width: 40px;" src="@Url.Content("~/PhotoUpload/Logo/" + Model.CompDetails.Logo)" /></div>
+             <div class="col-sm-6">
+                <h4><b>@Model.CompDetails.CompName</b></h4>
+                
+            </div>
+            <div class="col-sm-4"><h5><b>@Model.CompDetails.Phone</b></h5>
+                
+            </div>
+        </div>
+    </div>
+    @*<button onclick="myFunction()">Print</button>*@
+    @*<div class="col-sm-4"></div>*@
+</body>
+</html>

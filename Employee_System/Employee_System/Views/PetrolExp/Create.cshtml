@@ -1,0 +1,167 @@
+﻿  @{ 
+   ViewBag.Title = "Petrol Expenses";
+}
+  
+@using EMSDomain.ViewModel.Vehicle
+
+@model PetrolExpItem
+
+@using (@Html.BeginForm("Create", "PetrolExp", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker({ dateFormat: "mm/dd/yy", changeYear: "true" }); //Initialise any date pickers
+        });
+    </script> 
+    <section class="content-header">
+        <h1>Petrol Expense<small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    
+    <div class="panel panel-info" id="dvAdd">
+        <div class="panel-heading">Petrol Expense Details <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.VID, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.VID, new SelectList(Model.ListVehicle, "VID", "VehicleName"), "--Select Vehicle--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmpID)
+                </div>
+                @Html.LabelFor(m => m.EmpID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.EmpID, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmpID)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>                
+
+                @Html.LabelFor(m => m.KM_From, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.KM_From, new { @class = "form-control", @id = "from" })
+                    @Html.ValidationMessageFor(m => m.KM_From)
+                </div>
+                @Html.LabelFor(m => m.KM_To, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.KM_To, new { @class = "form-control",@id="to" })
+                    @Html.ValidationMessageFor(m => m.KM_To)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Qty, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Qty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Qty)
+                </div>
+                @Html.LabelFor(m => m.Amount, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Amount)
+                </div>
+                
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                @Html.LabelFor(m => m.Bill_Date, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Bill_Date,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.Bill_Date)                    
+                </div>
+                @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" id="dvGrid">
+        <div class="panel-heading">Petrol Expense Data <span class="label label-primary">@Model.ListPCard.Count</span><input type="button" id="btnAdd" value="Add New" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>Vehicle</th>
+                            <th>Bill Date</th>
+                            <th>Employee</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                            <th>KM From</th>
+                            <th>KM To</th>
+                            <th>Remarks</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListPCard)
+                        {
+                            <tr>
+                                <td>@item.VehicleDetails.VehicleName</td>
+                                @if(@item.Bill_Date!=null)
+                                {
+                                <td>@item.Bill_Date.Value.ToString("dd/MM/yyyy")</td>}
+                                else{<td></td>}
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.Qty</td>
+                                <td>@item.Amount</td>
+                                <td>@item.KM_From</td>
+                                <td>@item.KM_To</td>
+                                <td>@item.Remarks</td>
+                                <td>@Html.ActionLink(" ", "Edit", new { @id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-pencil-square fa-lg" })                                    
+                                    &nbsp;@Html.ActionLink(" ", "View", new { @id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class="fa fa-eye"})
+                                    &nbsp;@Html.ActionLink(" ", "Delete", new {  @id = @item.ID, @menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { onclick = "return confirm('Do you really want to delete the petrol expense details of " + @item.VehicleDetails.VehicleName + "?')", @class = "fa fa-trash fa-lg" })
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.ID , @menuId = Convert.ToInt32(Request.QueryString["menuid"])})*@</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    
+}
+<script>
+    jQuery("#to").blur(function () {
+        var txtfrom = $('#from').val();
+        var txtto = $('#to').val();
+        debugger;
+        if (txtfrom === "" || txtto === "") return false;
+
+        if (parseInt(txtfrom) >= parseInt(txtto)) {
+            alert("Enter KM To Greater Then From KM!!");
+            $('#to').focus();
+        }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var table = $('#tbl').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        debugger;
+        $("#dvGrid").show();
+        $("#dvAdd").hide();
+        $("#btnAdd").click(function () {
+            debugger;
+            $("#dvGrid").hide();
+            $("#dvAdd").show(1000);
+
+        });
+        $("#btnBack").click(function () {
+            $("#dvGrid").show();
+            $("#dvAdd").hide(1000);
+        });
+    });
+</script>

@@ -1,0 +1,103 @@
+﻿@model List<FormItem>
+@using EMSDomain.ViewModel.Menu
+@using EMSMethods
+@using EMSDomain.Model
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    @using (@Html.BeginForm("Index", "Menu", FormMethod.Post))
+    {
+        
+        
+        @*<div class="wrapper" id="DvSubMenu">*@
+            @*<aside class="main-sidebar">*@
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <ul class="sidebar-menu">
+                        <li class="active treeview">
+                            <ul class="treeview-menu">
+                                <li>
+                                    @if (Model.Count > 0)
+                                    {
+                                        <li>
+                                            @{
+                                        List<FormItem> lstFormItem = null;
+                                        MenuService objMenu = new MenuService();
+                                        int UID = Convert.ToInt32(Session["UserId"].ToString());
+                                        //lstFormItem = Model.ToList(); 
+                                        int mhid = ViewBag.MenuId;
+                                        lstFormItem = objMenu.getForms(UID,mhid);
+                                        if (@ViewBag.MenuId != null)
+                                        {
+                                            if (@ViewBag.MenuId == 1)
+                                            {
+                                                if (@ViewBag.EmpId != null)
+                                                {
+                                                    //lstFormItem = Model.ToList();
+                                                    lstFormItem = objMenu.getForms(UID, mhid); 
+                                                }
+                                                else
+                                                {
+                                                    lstFormItem = Model.Where(m => m.FormId == 1).ToList();
+                                                    //lstFormItem = objMenu.getForms(UID, mhid);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                //lstFormItem = Model.ToList();
+                                                lstFormItem = objMenu.getForms(UID, mhid); 
+                                            }
+                                        }
+                                            }
+                                            <li>
+                                                @foreach (var Formitem in lstFormItem)
+                                                {
+                                                    string[] formUrl = @Formitem.FormUrl.Split('/');
+                                                    //string currentUrl = Request.UrlReferrer.AbsoluteUri;
+                                                    <li class="btn-info panel-heading"><i class="fa fa-arrow-right">
+                                                        @Html.ActionLink(@Formitem.FormName, formUrl[1], formUrl[0], new { id = @ViewBag.EmpId, menuid = @ViewBag.MenuId }, null)</i>
+                                                    </li>
+                                                    
+                                                }
+                                            </li>
+                                        </li>
+                                    }
+
+                                </li>
+                            </ul>
+                        </li>
+                        @*<li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-files-o"></i>
+                                <span>Layout Options</span>
+                                <span class="label label-primary pull-right">4</span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>Top Navigation</a></li>
+                                <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>Boxed</a></li>
+                                <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i>Fixed</a></li>
+                                <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i>Collapsed Sidebar</a></li>
+                            </ul>
+                        </li>*@
+
+
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+           @* </aside>*@
+        @*</div>*@
+    }
+</body>
+
+</html>
+

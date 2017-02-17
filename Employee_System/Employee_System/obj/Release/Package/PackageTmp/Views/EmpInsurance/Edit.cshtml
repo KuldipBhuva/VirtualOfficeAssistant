@@ -1,0 +1,195 @@
+﻿@{ 
+   ViewBag.Title = "Employee Insurance";
+}
+
+@using EMSDomain.ViewModel.Insurance
+
+@model  EmpInsuranceItem
+
+
+
+@using (@Html.BeginForm("Edit", "EmpInsurance", FormMethod.Post))
+{
+    
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+     @Html.HiddenFor(m => m.IID)
+        @Html.HiddenFor(m=>m.CreatedBy)
+    @Html.HiddenFor(m=>m.CreatedDate)
+    @Html.HiddenFor(m => m.CompID)
+    
+    <script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker({changeYear: true,dateFormat:"mm/dd/yy" }); //Initialise any date pickers
+        });        
+    </script>
+    <section class="content-header">
+        <h1>Insurance
+           
+                    <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">Insurance Master</div>
+        <div class="panel-body">
+            <div class="form-group">
+               @* @Html.LabelFor(m => m.CompID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @if(@Model!=null)
+                    {
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListComp, "Id", "CompName"), "--Select Company--", new { @class = "form-control",@id="ddlComp" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                    }
+                </div>
+                @Html.LabelFor(m => m.Branch, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.Branch, new SelectList(Model.ListBranch, "id", "BranchName"), "--Select Branch--", new { @class = "form-control Select2" })
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>*@
+              @*@Html.LabelFor(m => m.Ptype, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">                                       
+                    @Html.DropDownListFor(m => m.Ptype, new SelectList(Model.ListPolicyType, "Id", "Name"), "--Select Policy Type--", new { @class = "form-control select2",@id="DDLPtype" })
+                    @Html.ValidationMessageFor(m=>m.Ptype)
+                </div>*@
+                @Html.LabelFor(m => m.Pname, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Pname, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m=>m.Pname)
+                </div>
+                 @Html.LabelFor(m => m.Icomp, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.TextBoxFor(m => m.Icomp, new { @class = "form-control" })*@
+                    @Html.DropDownListFor(m => m.Icomp, new SelectList(Model.ListMasterTable, "Id", "Name"), "--Select Insurance Company--", new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m=>m.Icomp)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+               
+                @Html.LabelFor(m => m.Pno, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Pno, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m=>m.Pno)
+                </div>
+                @Html.LabelFor(m => m.Pamt, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Pamt, new { @class = "form-control",@type = "number"})
+                    @Html.ValidationMessageFor(m=>m.Pamt)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                
+                @Html.LabelFor(m => m.Pdate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.TextBoxFor(m => m.Pdate, new { @class = "form-control datepicker",@Value = DateTime.Now.ToString("dd/MM/yyyy") })*@
+                    @Html.TextBoxFor(m => m.Pdate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker"})
+                    @Html.ValidationMessageFor(m=>m.Pdate)
+                </div>
+                @Html.LabelFor(m => m.PExpDate, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PExpDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m=>m.PExpDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+                
+                @Html.LabelFor(m => m.PremiumDate, new {@class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PremiumDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })                    
+                </div>
+                 @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>                       
+            </div>
+            <div class="col-sm-12" style="height: 5px;">
+                @*@Html.ValidationSummary(false, "Please correct the following errors before submitting the message")*@
+            </div>
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    
+}
+@*<script lang="javascript" type="text/javascript">
+    $(document).ready(function () {
+
+        $("#ddlComp").change(function () {
+
+            debugger;
+            $("#divLoading").show();
+            var CompIds = $('#ddlComp').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillBranch", "Insurance")',
+                type: "GET",
+                datatype: "JSON",
+                data: { Compid: CompIds },
+                success: function (Branch_master) {
+
+                    $("#Branch").html("");  // clear before appending new list 
+                    $("#Branch").append("<option value='0'>--Select Branch--</option>");
+                    $.each(Branch_master, function (i, Branch) {
+
+                        $("#Branch").append(
+
+                            $('<option></option>').val(Branch.id).html(Branch.BranchName));
+
+                    });
+                    $("#divLoading").hide();
+                }
+            });
+           $("#divLoading").hide();
+       });
+
+
+        $("#ddlComp").change(function () {
+
+            debugger;
+            $("#divLoading").show();
+            var CompIds = $('#ddlComp').val();
+            $.ajax(
+            {
+                url: '@Url.Action("FillEmp", "Insurance")',
+                    type: "GET",
+                    datatype: "JSON",
+                    data: { Compid: CompIds },
+                    success: function (Employee_master) {
+
+                        $("#DDLEmp").html("");  // clear before appending new list 
+                        $("#DDLEmp").append("<option value='0'>--Select Employee--</option>");
+                        $.each(Employee_master, function (i, DDLEmp) {
+
+                            $("#DDLEmp").append(
+
+                                $('<option></option>').val(DDLEmp.id).html(DDLEmp.Empname));
+
+                        });
+                        $("#divLoading").hide();
+                    }
+                });
+        });
+        $("#divLoading").hide();
+    });
+</script>*@
+<script>
+    $('#DDLPtype').change(function () {
+        
+        var dropdownValue = $('#DDLPtype').val();
+        debugger;
+        if (dropdownValue == 40) {
+            $('#lblEmp').show();
+            $('#divEmp').show();
+            $('#DDLEmp').show();
+        }
+        else {
+            $('#DDLEmp').hide();
+            $('#lblEmp').hide();
+            $('#divEmp').hide();
+        }
+    })
+</script>

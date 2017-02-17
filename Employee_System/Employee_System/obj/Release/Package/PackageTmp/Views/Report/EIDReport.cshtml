@@ -1,0 +1,332 @@
+﻿@using EMSMethods
+@using EMSDomain.Model
+@using EMSDomain.ViewModel.Employee
+
+@model EmpHealthItem
+  @{ 
+   ViewBag.Title = "Emirates ID Report";
+}
+  
+<style>
+    table
+    {
+        background: #f5f5f5;
+        border-collapse: separate;
+        box-shadow: inset 0 1px 0 #fff;
+        font-size: 12px;
+        line-height: 10px;
+        margin: 30px auto;
+        text-align: left;
+        width: 98%;
+    }
+
+    th
+    {
+        background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#3C8DBC, #3C8DBC);
+        border-left: 1px solid #555;
+        border-right: 1px solid #777;
+        border-top: 1px solid #555;
+        border-bottom: 1px solid #333;
+        box-shadow: inset 0 1px 0 #999;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 15px;
+        position: relative;
+        text-shadow: 0 1px 0 #000;
+    }
+
+        th:after
+        {
+            background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+            content: '';
+            display: block;
+            height: 25%;
+            left: 0;
+            margin: 1px 0 0 0;
+            position: absolute;
+            top: 25%;
+            width: 100%;
+        }
+
+        th:first-child
+        {
+            border-left: 1px solid #777;
+            box-shadow: inset 1px 1px 0 #999;
+        }
+
+        th:last-child
+        {
+            box-shadow: inset -1px 1px 0 #999;
+        }
+
+    td
+    {
+        border-right: 1px solid #fff;
+        border-left: 1px solid #e8e8e8;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #e8e8e8;
+        padding: 10px 15px;
+        position: relative;
+        transition: all 300ms;
+    }
+
+        td:first-child
+        {
+            box-shadow: inset 1px 0 0 #fff;
+        }
+
+        td:last-child
+        {
+            border-right: 1px solid #e8e8e8;
+            box-shadow: inset -1px 0 0 #fff;
+        }
+
+    tr
+    {
+        background: url(http://jackrugile.com/images/misc/noise-diagonal.png);
+    }
+
+        tr:nth-child(odd) td
+        {
+            background: #f1f1f1 url(http://jackrugile.com/images/misc/noise-diagonal.png);
+        }
+
+        tr:last-of-type td
+        {
+            box-shadow: inset 0 -1px 0 #fff;
+        }
+
+            tr:last-of-type td:first-child
+            {
+                box-shadow: inset 1px -1px 0 #fff;
+            }
+
+            tr:last-of-type td:last-child
+            {
+                box-shadow: inset -1px -1px 0 #fff;
+            }
+
+    /*tbody:hover td
+    {
+        color: transparent;
+        text-shadow: 0 0 3px #aaa;
+    }
+
+    tbody:hover tr:hover td
+    {
+        color: #444;
+        text-shadow: 0 1px 0 #fff;
+    }*/
+</style>
+
+@using (@Html.BeginForm("EIDReport", "Report", FormMethod.Post))
+{         
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    <section class="content-header">
+        <h1>Emirate ID <small>Report</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Emirates ID Report
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Filters, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-6">
+                    @Html.RadioButtonFor(m => m.Filters, "All")All
+                    @Html.RadioButtonFor(m => m.Filters, "Expired On")Expired On
+                    @*@Html.RadioButtonFor(m => m.Before, "Before")Before Date*@
+                    @Html.RadioButtonFor(m => m.Filters, "Within Days")Within Days 
+                                                        
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div id="dvExpOn">
+                    @Html.Label("Expired On", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+
+                        @Html.TextBoxFor(m => m.ExpiryDate, new { @class = "form-control datepicker", @id = "txtEDT" })
+                    </div>
+                </div>
+                <div id="dvWD">
+                    @Html.Label("Within Days", new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-4">
+
+                        @Html.TextBoxFor(m => m.withinDays, new { @class = "form-control", @id = "txtWD" })
+                    </div>
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+
+            </div>
+
+            <div class="col-xs-10">
+                <div class="col-sm-3" style="width: 179px;"></div>
+                <input type="submit" id="save" value="Go" class="btn btn-primary" />
+            </div>
+
+
+        </div>
+
+        <div id="dvData" class="table table-responsive">
+            
+
+            @if (Model != null)
+            {
+            <input type="button" id="btnExport" value=" Export To Excel" style="visibility: visible;" class="btn btn-primary" />    
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Emp. Name</th>
+                            <th>Company</th>
+                            <th>EID No</th>
+                            <th>Issue Date</th>
+                            <th>Expiry Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.ListEIDRpt)
+                        {
+                            <tr>
+                                <td>@item.EmpDetails.Empname</td>
+                                <td>@item.CompDetails.CompName</td>
+                                <td>@item.CardNo</td>
+                      @if(@item.IssueDate!=null)
+                                {
+                                <td>@item.IssueDate.Value.ToString("dd/MM/yyyy")</td>
+                                }
+                                else
+                                {<td></td>}
+                                @if(@item.ExpiryDate!=null)
+                                {
+                                <td>@item.ExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                                }else{<td></td>}
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            }
+            
+        </div>
+    </div>
+
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        var selectRadio = $("input[name='Filters']:checked").val();
+        if (selectRadio == "Expired On") {
+            $("#dvExpOn").show();
+            $("#dvWD").hide();
+            $("#txtWD").val('');
+            $('#txtWD').attr("value", "");
+        }
+
+        else if (selectRadio == "Within Days") {
+            $("#dvWD").show();
+            $("#dvExpOn").hide();
+            $("#txtEDT").val('');            
+            $('txtEDT').datepicker('setDate', null);
+        }
+        else {
+            $("#dvExpOn").hide();
+            $("#dvWD").hide();
+        }
+    });
+    $("input[name='Filters']").change(function () {
+        debugger;
+        var txt = document.getElementById("txtWD").value = '';
+        txt.value = "";
+        //$('#txtWD').val('');
+        $('#txtWD').attr("value", "");
+        //$('.datepicker').data('datepicker').setDate(null);       
+        $('txtEDT').datepicker('setDate', null);
+        var selectedRadio = $("input[name='Filters']:checked").val();
+        if (selectedRadio == 'Expired On') {
+            debugger;
+
+            $("#dvExpOn").show();
+            $("#dvWD").hide();
+
+        }
+        else if (selectedRadio == 'Within Days') {
+
+            $("#dvExpOn").hide();
+            $("#dvWD").show();
+        }
+        else if (selectedRadio == 'All') {
+            $("#dvExpOn").hide();
+            $("#dvWD").hide();
+        }
+        else {
+            $("#dvExpOn").hide();
+            $("#dvWD").hide();
+        }
+    });
+</script>
+<script>
+    $("#save").click(function (e) {
+        debugger;
+        var selectRadio = $("input[name='Filters']:checked").val();
+
+        if (typeof selectRadio == 'undefined') {
+            alert('Please Select Filter');
+            $("input[name='Filters']").focus();
+            $("input[name='Filters']").css('border-color', 'red');
+            return false;
+        }
+        else {
+            if (selectRadio == "Expired On") {
+                var txtEon = $('#txtEDT').val();
+                if (txtEon == "") {
+                    $('#txtWD').attr("value", "");
+                    alert('Please Select Date');
+                    $('#txtEDT').focus();
+                    $('#txtEDT').css('border-color', 'red');
+                    return false;
+                }
+            }
+            else {
+                if (selectRadio == "Within Days") {
+                    $('txtEDT').datepicker('setDate', null);
+                    var txtEon = $('#txtWD').val();
+                    if (txtEon == "") {
+                        alert('Please Enter Days');
+                        $('#txtWD').focus();
+                        $('#txtWD').css('border-color', 'red');
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+
+    });
+</script>
+<script>
+    $("#btnExport").click(function (e) {
+        debugger;
+        //$("dvData").empty();
+        //$("dvData").removeClass("table-responsive");
+        //$("tbl_wrapper").removeClass("dataTables_wrapper form-inline");
+        //$("tbl_length").removeClass("dataTables_length");
+        //$("div").remove();
+        $("t1").removeClass("table");
+        $("t1").remove();
+        $("t1").empty();
+        window.open('data:application/vnd.ms-excel,' + $('#dvData').html());
+        e.preventDefault();
+    });
+</script>
+
+

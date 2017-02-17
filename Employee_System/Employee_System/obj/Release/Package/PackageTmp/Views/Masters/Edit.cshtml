@@ -1,0 +1,63 @@
+﻿  @{ 
+   ViewBag.Title = "Masters";
+}
+  
+@using EMSDomain.ViewModel
+
+@model ClsMasterP
+
+@using (@Html.BeginForm("Edit", "Masters", FormMethod.Post, new { @id = "frmCreateMaster" }))
+{
+    @Html.HiddenFor(m => m.MId)
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+   <section class="content-header">
+        <h1>Master Details <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    @Html.HiddenFor(m => m.MId)
+    <div class="panel panel-info">
+        <div class="panel-heading">Master Details</div>
+        <div class="panel-body">
+
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.MasterType, new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.MasterType, new { @class = "form-control" })
+                </div>
+
+
+
+
+                <div class="col-sm-2 control-label">
+                    @Html.LabelFor(m => m.MasterDesc)
+                </div>
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.MasterDesc, new { @class = "form-control" })
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-sm-2 control-label">
+                    @Html.LabelFor(m => m.MasterCode)
+                </div>
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.MasterCode, new { @class = "form-control" })
+                </div>
+
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                    <input type="Submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
