@@ -103,3 +103,4 @@ D:\SVNNewtechProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomai
 D:\SVNNewtechProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\bin\Debug\EMSDomain.pdb
 D:\SVNNewtechProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.dll
 D:\SVNNewtechProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.pdb
+D:\SVNNewtechProjects\VirtualOfficeAssistant\Customized\Employee_System\EMSDomain\obj\Debug\EMSDomain.csprojResolveAssemblyReference.cache
