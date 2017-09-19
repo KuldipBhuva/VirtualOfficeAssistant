@@ -67,34 +67,6 @@
           <EntitySet Name="VehicleMaster" EntityType="DMSModel.Store.VehicleMaster" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="VehicleRepairing" EntityType="DMSModel.Store.VehicleRepairing" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WorkHistory" EntityType="DMSModel.Store.WorkHistory" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK__EmployeeIns__VID__59063A47" Association="DMSModel.Store.FK__EmployeeIns__VID__59063A47">
-            <End Role="VehicleMaster" EntitySet="VehicleMaster" />
-            <End Role="EmployeeInsurance" EntitySet="EmployeeInsurance" />
-          </AssociationSet>
-          <AssociationSet Name="FK__EmployeeQ__Empid__5FB337D6" Association="DMSModel.Store.FK__EmployeeQ__Empid__5FB337D6">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="EmployeeQualification" EntitySet="EmployeeQualification" />
-          </AssociationSet>
-          <AssociationSet Name="FK__EmployeeQ__Empid__60A75C0F" Association="DMSModel.Store.FK__EmployeeQ__Empid__60A75C0F">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="EmployeeQualification" EntitySet="EmployeeQualification" />
-          </AssociationSet>
-          <AssociationSet Name="FK_employee_document_document_category" Association="DMSModel.Store.FK_employee_document_document_category">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="employee_document" EntitySet="employee_document" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeExperience_employee_master" Association="DMSModel.Store.FK_EmployeeExperience_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="EmployeeExperience" EntitySet="EmployeeExperience" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeHealthCard_employee_master" Association="DMSModel.Store.FK_EmployeeHealthCard_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="EmployeeHealthCard" EntitySet="EmployeeHealthCard" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeIncrement_employee_master" Association="DMSModel.Store.FK_EmployeeIncrement_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="EmployeeIncrement" EntitySet="EmployeeIncrement" />
-          </AssociationSet>
           <AssociationSet Name="FK_EmployeeInsurance_Company_master" Association="DMSModel.Store.FK_EmployeeInsurance_Company_master">
             <End Role="Company_master" EntitySet="Company_master" />
             <End Role="EmployeeInsurance" EntitySet="EmployeeInsurance" />
@@ -106,22 +78,6 @@
           <AssociationSet Name="FK_EmployeeInsurance_Masters_Tran1" Association="DMSModel.Store.FK_EmployeeInsurance_Masters_Tran1">
             <End Role="Masters_Tran" EntitySet="Masters_Tran" />
             <End Role="EmployeeInsurance" EntitySet="EmployeeInsurance" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeLeave_employee_master" Association="DMSModel.Store.FK_EmployeeLeave_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="EmployeeLeave" EntitySet="EmployeeLeave" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeOtherDetails_employee_master" Association="DMSModel.Store.FK_EmployeeOtherDetails_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="EmployeeOtherDetails" EntitySet="EmployeeOtherDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeePassport_employee_master" Association="DMSModel.Store.FK_EmployeePassport_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="EmployeePassport" EntitySet="EmployeePassport" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeVisa_employee_master" Association="DMSModel.Store.FK_EmployeeVisa_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="EmployeeVisa" EntitySet="EmployeeVisa" />
           </AssociationSet>
           <AssociationSet Name="FK_FormMenuTran_FormMaster" Association="DMSModel.Store.FK_FormMenuTran_FormMaster">
             <End Role="FormMaster" EntitySet="FormMaster" />
@@ -151,10 +107,6 @@
             <End Role="Company_master" EntitySet="Company_master" />
             <End Role="Other_Expenses" EntitySet="Other_Expenses" />
           </AssociationSet>
-          <AssociationSet Name="FK_Other_Expenses_employee_master" Association="DMSModel.Store.FK_Other_Expenses_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="Other_Expenses" EntitySet="Other_Expenses" />
-          </AssociationSet>
           <AssociationSet Name="FK_Other_Expenses_Masters_Tran" Association="DMSModel.Store.FK_Other_Expenses_Masters_Tran">
             <End Role="Masters_Tran" EntitySet="Masters_Tran" />
             <End Role="Other_Expenses" EntitySet="Other_Expenses" />
@@ -167,49 +119,9 @@
             <End Role="Masters_Tran" EntitySet="Masters_Tran" />
             <End Role="Petrol_Card" EntitySet="Petrol_Card" />
           </AssociationSet>
-          <AssociationSet Name="FK_Petrol_Card_VehicleMaster" Association="DMSModel.Store.FK_Petrol_Card_VehicleMaster">
-            <End Role="VehicleMaster" EntitySet="VehicleMaster" />
-            <End Role="Petrol_Card" EntitySet="Petrol_Card" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Petrol_Expense_employee_master" Association="DMSModel.Store.FK_Petrol_Expense_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="Petrol_Expense" EntitySet="Petrol_Expense" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Petrol_Expense_VehicleMaster" Association="DMSModel.Store.FK_Petrol_Expense_VehicleMaster">
-            <End Role="VehicleMaster" EntitySet="VehicleMaster" />
-            <End Role="Petrol_Expense" EntitySet="Petrol_Expense" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TenancyDocuments_TenancyMaster" Association="DMSModel.Store.FK_TenancyDocuments_TenancyMaster">
-            <End Role="TenancyMaster" EntitySet="TenancyMaster" />
-            <End Role="TenancyDocuments" EntitySet="TenancyDocuments" />
-          </AssociationSet>
           <AssociationSet Name="FK_TravelExpences_Company_master" Association="DMSModel.Store.FK_TravelExpences_Company_master">
             <End Role="Company_master" EntitySet="Company_master" />
             <End Role="TravelExpences" EntitySet="TravelExpences" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TravelExpences_employee_master" Association="DMSModel.Store.FK_TravelExpences_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="TravelExpences" EntitySet="TravelExpences" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Vehicle_History_employee_master" Association="DMSModel.Store.FK_Vehicle_History_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="Vehicle_History" EntitySet="Vehicle_History" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Vehicle_History_VehicleMaster" Association="DMSModel.Store.FK_Vehicle_History_VehicleMaster">
-            <End Role="VehicleMaster" EntitySet="VehicleMaster" />
-            <End Role="Vehicle_History" EntitySet="Vehicle_History" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VehicleDocument_VehicleMaster" Association="DMSModel.Store.FK_VehicleDocument_VehicleMaster">
-            <End Role="VehicleMaster" EntitySet="VehicleMaster" />
-            <End Role="VehicleDocument" EntitySet="VehicleDocument" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VehicleMaster_Company_master" Association="DMSModel.Store.FK_VehicleMaster_Company_master">
-            <End Role="Company_master" EntitySet="Company_master" />
-            <End Role="VehicleMaster" EntitySet="VehicleMaster" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VehicleMaster_employee_master" Association="DMSModel.Store.FK_VehicleMaster_employee_master">
-            <End Role="employee_master" EntitySet="employee_master" />
-            <End Role="VehicleMaster" EntitySet="VehicleMaster" />
           </AssociationSet>
           <AssociationSet Name="FK_VehicleRepairing_Company_master" Association="DMSModel.Store.FK_VehicleRepairing_Company_master">
             <End Role="Company_master" EntitySet="Company_master" />
@@ -217,10 +129,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_VehicleRepairing_Masters_Tran" Association="DMSModel.Store.FK_VehicleRepairing_Masters_Tran">
             <End Role="Masters_Tran" EntitySet="Masters_Tran" />
-            <End Role="VehicleRepairing" EntitySet="VehicleRepairing" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VehicleRepairing_VehicleMaster" Association="DMSModel.Store.FK_VehicleRepairing_VehicleMaster">
-            <End Role="VehicleMaster" EntitySet="VehicleMaster" />
             <End Role="VehicleRepairing" EntitySet="VehicleRepairing" />
           </AssociationSet>
         </EntityContainer>
@@ -851,7 +759,7 @@
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="CompCode" Type="varchar" MaxLength="50" />
-          <Property Name="CompId" Type="int" />
+          <Property Name="CompID" Type="int" />
         </EntityType>
         <EntityType Name="Masters">
           <Key>
@@ -1214,17 +1122,17 @@
           <Property Name="Depriciation" Type="varchar" MaxLength="50" />
           <Property Name="CurrentValue" Type="nvarchar" MaxLength="500" />
           <Property Name="Market_Value" Type="varchar" MaxLength="50" />
-          <Property Name="Purchased_Date" Type="datetime2" />
-          <Property Name="Reg_Date" Type="datetime" />
-          <Property Name="Reg_Exp_Date" Type="datetime" />
+          <Property Name="Purchased_Date" Type="date" />
+          <Property Name="Reg_Date" Type="date" />
+          <Property Name="Reg_Exp_Date" Type="date" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
           <Property Name="Remarks" Type="varchar" MaxLength="150" />
-          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedOn" Type="date" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="date" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="SalikNo" Type="varchar" MaxLength="50" />
           <Property Name="UsedFor" Type="varchar" MaxLength="250" />
+          <Property Name="SalikNo" Type="varchar" MaxLength="150" />
           <Property Name="WeightBearCapacity" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Length" Type="decimal" Scale="2" />
           <Property Name="LengthToUse" Type="decimal" Scale="2" />
@@ -1273,90 +1181,6 @@
           <Property Name="ModifiedBy" Type="int" />
           <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
-        <Association Name="FK__EmployeeIns__VID__59063A47">
-          <End Role="VehicleMaster" Type="DMSModel.Store.VehicleMaster" Multiplicity="0..1" />
-          <End Role="EmployeeInsurance" Type="DMSModel.Store.EmployeeInsurance" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VehicleMaster">
-              <PropertyRef Name="VID" />
-            </Principal>
-            <Dependent Role="EmployeeInsurance">
-              <PropertyRef Name="VID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__EmployeeQ__Empid__5FB337D6">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="EmployeeQualification" Type="DMSModel.Store.EmployeeQualification" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="EmployeeQualification">
-              <PropertyRef Name="Empid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__EmployeeQ__Empid__60A75C0F">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="EmployeeQualification" Type="DMSModel.Store.EmployeeQualification" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="EmployeeQualification">
-              <PropertyRef Name="Empid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_employee_document_document_category">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="1" />
-          <End Role="employee_document" Type="DMSModel.Store.employee_document" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="employee_document">
-              <PropertyRef Name="empid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmployeeExperience_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="EmployeeExperience" Type="DMSModel.Store.EmployeeExperience" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="EmployeeExperience">
-              <PropertyRef Name="EmpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmployeeHealthCard_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="EmployeeHealthCard" Type="DMSModel.Store.EmployeeHealthCard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="EmployeeHealthCard">
-              <PropertyRef Name="EmpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmployeeIncrement_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="EmployeeIncrement" Type="DMSModel.Store.EmployeeIncrement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="EmployeeIncrement">
-              <PropertyRef Name="EmpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_EmployeeInsurance_Company_master">
           <End Role="Company_master" Type="DMSModel.Store.Company_master" Multiplicity="0..1" />
           <End Role="EmployeeInsurance" Type="DMSModel.Store.EmployeeInsurance" Multiplicity="*" />
@@ -1390,54 +1214,6 @@
             </Principal>
             <Dependent Role="EmployeeInsurance">
               <PropertyRef Name="Ptype" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmployeeLeave_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="EmployeeLeave" Type="DMSModel.Store.EmployeeLeave" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="EmployeeLeave">
-              <PropertyRef Name="EmpID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmployeeOtherDetails_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="EmployeeOtherDetails" Type="DMSModel.Store.EmployeeOtherDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="EmployeeOtherDetails">
-              <PropertyRef Name="EmpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmployeePassport_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="EmployeePassport" Type="DMSModel.Store.EmployeePassport" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="EmployeePassport">
-              <PropertyRef Name="EmpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmployeeVisa_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="EmployeeVisa" Type="DMSModel.Store.EmployeeVisa" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="EmployeeVisa">
-              <PropertyRef Name="EmpId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1525,18 +1301,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Other_Expenses_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="Other_Expenses" Type="DMSModel.Store.Other_Expenses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Other_Expenses">
-              <PropertyRef Name="EmpID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Other_Expenses_Masters_Tran">
           <End Role="Masters_Tran" Type="DMSModel.Store.Masters_Tran" Multiplicity="0..1" />
           <End Role="Other_Expenses" Type="DMSModel.Store.Other_Expenses" Multiplicity="*" />
@@ -1573,54 +1337,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Petrol_Card_VehicleMaster">
-          <End Role="VehicleMaster" Type="DMSModel.Store.VehicleMaster" Multiplicity="0..1" />
-          <End Role="Petrol_Card" Type="DMSModel.Store.Petrol_Card" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VehicleMaster">
-              <PropertyRef Name="VID" />
-            </Principal>
-            <Dependent Role="Petrol_Card">
-              <PropertyRef Name="VID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Petrol_Expense_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="Petrol_Expense" Type="DMSModel.Store.Petrol_Expense" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Petrol_Expense">
-              <PropertyRef Name="EmpID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Petrol_Expense_VehicleMaster">
-          <End Role="VehicleMaster" Type="DMSModel.Store.VehicleMaster" Multiplicity="0..1" />
-          <End Role="Petrol_Expense" Type="DMSModel.Store.Petrol_Expense" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VehicleMaster">
-              <PropertyRef Name="VID" />
-            </Principal>
-            <Dependent Role="Petrol_Expense">
-              <PropertyRef Name="VID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TenancyDocuments_TenancyMaster">
-          <End Role="TenancyMaster" Type="DMSModel.Store.TenancyMaster" Multiplicity="0..1" />
-          <End Role="TenancyDocuments" Type="DMSModel.Store.TenancyDocuments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TenancyMaster">
-              <PropertyRef Name="TnID" />
-            </Principal>
-            <Dependent Role="TenancyDocuments">
-              <PropertyRef Name="TenId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TravelExpences_Company_master">
           <End Role="Company_master" Type="DMSModel.Store.Company_master" Multiplicity="0..1" />
           <End Role="TravelExpences" Type="DMSModel.Store.TravelExpences" Multiplicity="*" />
@@ -1630,78 +1346,6 @@
             </Principal>
             <Dependent Role="TravelExpences">
               <PropertyRef Name="Companyid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TravelExpences_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="TravelExpences" Type="DMSModel.Store.TravelExpences" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TravelExpences">
-              <PropertyRef Name="EmpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Vehicle_History_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="Vehicle_History" Type="DMSModel.Store.Vehicle_History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Vehicle_History">
-              <PropertyRef Name="EmpID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Vehicle_History_VehicleMaster">
-          <End Role="VehicleMaster" Type="DMSModel.Store.VehicleMaster" Multiplicity="0..1" />
-          <End Role="Vehicle_History" Type="DMSModel.Store.Vehicle_History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VehicleMaster">
-              <PropertyRef Name="VID" />
-            </Principal>
-            <Dependent Role="Vehicle_History">
-              <PropertyRef Name="VID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VehicleDocument_VehicleMaster">
-          <End Role="VehicleMaster" Type="DMSModel.Store.VehicleMaster" Multiplicity="0..1" />
-          <End Role="VehicleDocument" Type="DMSModel.Store.VehicleDocument" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VehicleMaster">
-              <PropertyRef Name="VID" />
-            </Principal>
-            <Dependent Role="VehicleDocument">
-              <PropertyRef Name="VId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VehicleMaster_Company_master">
-          <End Role="Company_master" Type="DMSModel.Store.Company_master" Multiplicity="0..1" />
-          <End Role="VehicleMaster" Type="DMSModel.Store.VehicleMaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="VehicleMaster">
-              <PropertyRef Name="CompID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VehicleMaster_employee_master">
-          <End Role="employee_master" Type="DMSModel.Store.employee_master" Multiplicity="0..1" />
-          <End Role="VehicleMaster" Type="DMSModel.Store.VehicleMaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="VehicleMaster">
-              <PropertyRef Name="EmpID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1726,18 +1370,6 @@
             </Principal>
             <Dependent Role="VehicleRepairing">
               <PropertyRef Name="Repairing_TypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VehicleRepairing_VehicleMaster">
-          <End Role="VehicleMaster" Type="DMSModel.Store.VehicleMaster" Multiplicity="0..1" />
-          <End Role="VehicleRepairing" Type="DMSModel.Store.VehicleRepairing" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VehicleMaster">
-              <PropertyRef Name="VID" />
-            </Principal>
-            <Dependent Role="VehicleRepairing">
-              <PropertyRef Name="VID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2897,16 +2529,16 @@
           <Property Name="Depriciation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="CurrentValue" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="Market_Value" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="Purchased_Date" Type="DateTime" Precision="7" />
-          <Property Name="Reg_Date" Type="DateTime" Precision="3" />
-          <Property Name="Reg_Exp_Date" Type="DateTime" Precision="3" />
+          <Property Name="Purchased_Date" Type="DateTime" Precision="0" />
+          <Property Name="Reg_Date" Type="DateTime" Precision="0" />
+          <Property Name="Reg_Exp_Date" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Remarks" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="SalikNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SalikNo" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
           <Property Name="UsedFor" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Company_master" Relationship="DMSModel.FK_VehicleMaster_Company_master" FromRole="VehicleMaster" ToRole="Company_master" />
           <NavigationProperty Name="employee_master" Relationship="DMSModel.FK_VehicleMaster_employee_master" FromRole="VehicleMaster" ToRole="employee_master" />
@@ -3782,7 +3414,7 @@
           <Property Type="String" Name="UpdatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
           <Property Type="String" Name="CompCode" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="CompId" />
+          <Property Type="Int32" Name="CompID" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -5000,7 +4632,7 @@
           <EntitySetMapping Name="Login_Master">
             <EntityTypeMapping TypeName="DMSModel.Login_Master">
               <MappingFragment StoreEntitySet="Login_Master">
-                <ScalarProperty Name="CompId" ColumnName="CompId" />
+                <ScalarProperty Name="CompID" ColumnName="CompID" />
                 <ScalarProperty Name="CompCode" ColumnName="CompCode" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />

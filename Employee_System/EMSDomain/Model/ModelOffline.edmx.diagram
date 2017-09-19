@@ -104,7 +104,7 @@
         <EntityTypeShape EntityType="DMSModel.ChequeReturnMaster" Width="1.5" PointX="10.533605708989132" PointY="6.1529421387952485" />
         <EntityTypeShape EntityType="DMSModel.EmployeePassport" Width="1.5" PointX="0.042007628847848449" PointY="25.527688112821284" />
         <AssociationConnector Association="DMSModel.FK_EmployeePassport_employee_master" />
-        <EntityTypeShape EntityType="DMSModel.Login_Master" Width="1.5" PointX="10.740335242236188" PointY="15.073120168909952" />
+        <EntityTypeShape EntityType="DMSModel.Login_Master" Width="1.5" PointX="4.7421441714941261" PointY="7.50659391633542" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -24,6 +24,6 @@ namespace EMSDomain.Model
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string CompCode { get; set; }
-        public Nullable<int> CompId { get; set; }
+        public Nullable<int> CompID { get; set; }
     }
 }

@@ -1211,7 +1211,7 @@
     <EntitySetMapping Name="Login_Master">
       <EntityTypeMapping TypeName="DMSModel.Login_Master">
         <MappingFragment StoreEntitySet="Login_Master">
-          <ScalarProperty Name="CompId" ColumnName="CompId" />
+          <ScalarProperty Name="CompID" ColumnName="CompID" />
           <ScalarProperty Name="CompCode" ColumnName="CompCode" />
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />

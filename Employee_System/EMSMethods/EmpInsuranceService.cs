@@ -79,9 +79,15 @@ namespace EMSMethods
                           join masterType in DbContext.Masters_Tran on EmpInsurance.Ptype equals masterType.Id
                           join emp in DbContext.employee_master on EmpInsurance.EmpId equals emp.id into LJ
                           from subpet in LJ.DefaultIfEmpty()
-                          where (EmpInsurance.Ptype == 41 || EmpInsurance.Ptype == 43) && EmpInsurance.CompID == (cid == 0 ? EmpInsurance.CompID : cid)
+                          join cm in DbContext.Company_master on EmpInsurance.CompID equals cm.id into comp
+                          from c in comp.DefaultIfEmpty()
+                          where (EmpInsurance.Ptype == 41 || EmpInsurance.Ptype == 43 || EmpInsurance.Ptype == 617 || EmpInsurance.Ptype == 619 || EmpInsurance.Ptype == 620 || EmpInsurance.Ptype==629 || EmpInsurance.Ptype==630) && EmpInsurance.CompID == (cid == 0 ? EmpInsurance.CompID : cid)
                           select new EmpInsuranceItem
                           {
+                              CompDetails=new CompanyItem()
+                              {
+                                  CompName=(c==null?string.Empty:c.CompName)
+                              },
                               MasterDetails = new clsMasterData()
                               {
                                   Name = masterComp.Name

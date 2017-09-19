@@ -1120,16 +1120,16 @@
     <Property Name="Depriciation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="CurrentValue" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
     <Property Name="Market_Value" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="Purchased_Date" Type="DateTime" Precision="7" />
-    <Property Name="Reg_Date" Type="DateTime" Precision="3" />
-    <Property Name="Reg_Exp_Date" Type="DateTime" Precision="3" />
+    <Property Name="Purchased_Date" Type="DateTime" Precision="0" />
+    <Property Name="Reg_Date" Type="DateTime" Precision="0" />
+    <Property Name="Reg_Exp_Date" Type="DateTime" Precision="0" />
     <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="Remarks" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
     <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
     <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="SalikNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SalikNo" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
     <Property Name="UsedFor" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="Company_master" Relationship="DMSModel.FK_VehicleMaster_Company_master" FromRole="VehicleMaster" ToRole="Company_master" />
     <NavigationProperty Name="employee_master" Relationship="DMSModel.FK_VehicleMaster_employee_master" FromRole="VehicleMaster" ToRole="employee_master" />
@@ -2005,6 +2005,6 @@
     <Property Type="String" Name="UpdatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
     <Property Type="String" Name="CompCode" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="CompId" />
+    <Property Type="Int32" Name="CompID" />
   </EntityType>
 </Schema>

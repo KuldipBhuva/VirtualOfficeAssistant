@@ -149,7 +149,7 @@ namespace EMSMethods
         public List<LoginItem> getUser(int cid)
         {
             Mapper.CreateMap<Login_Master, LoginItem>();
-            List<Login_Master> tblMaster = DbContext.Login_Master.Where(m=>m.CompId==(cid==0?m.CompId:cid)).ToList();
+            List<Login_Master> tblMaster = DbContext.Login_Master.Where(m=>m.CompID==(cid==0?m.CompID:cid)).ToList();
             List<LoginItem> lstmasterdata = Mapper.Map<List<LoginItem>>(tblMaster);
             return lstmasterdata;
         }
