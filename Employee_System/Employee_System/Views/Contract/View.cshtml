@@ -1,0 +1,96 @@
+﻿@{ 
+    ViewBag.Title = "Contract";
+}
+
+@using EMSDomain.ViewModel
+
+@model ContractModel
+
+@using (@Html.BeginForm("Edit", "Contract", FormMethod.Post, new { @id = "frmContract", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
+    @Html.HiddenFor(m=>m.ContID)
+    @Html.HiddenFor(m=>m.CreatedDate)
+    @Html.HiddenFor(m=>m.CreatedBy)
+    @Html.HiddenFor(m=>m.FilePath)
+    @Html.HiddenFor(m=>m.FileName)
+    <section class="content-header">
+        <h1>Contract <small>Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/Dashboard/Index"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <div class="panel panel-info">
+        <div class="panel-heading">Contract Details
+            <input type="button" id="btnBack" value="Back" class="btnAdd btn btn-primary" /></div>
+        <div class="panel-body">
+            <div class="form-group" id="dvView">
+
+
+                @Html.Label("*Contract For", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ContarctFor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ContarctFor)
+                </div>
+
+                @Html.Label("Contarct With", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ContractWith, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ContractWith)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("*Company", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.CompID, new SelectList(Model.ListComp, "id", "CompName"), "--Select Company--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CompID)
+                </div>
+                @Html.Label("Amount", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("*From Date", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.FrmDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.FrmDate)
+                </div>
+
+                @Html.Label("*To Date", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.ToDate,"{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(m => m.ToDate)
+                </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                @Html.Label("Document", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @*<img src="#" id="imgThumbnail" alt="preview" class="img-rounded" width="100" height="100" />*@
+
+                    <input type="file" name="files" id="files" class="btn btn-info" />
+                </div>
+                @Html.Label("Uploaded Document", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    @if (Model.FilePath != null)
+                    {
+                        <a href="@Url.Content(@Model.FilePath)" target="_blank">@Model.FileName</a>
+                    }
+                    </div>
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-xs-10">
+                    <div class="col-sm-3" style="width: 179px;"></div>
+                     @Html.ActionLink(" Back", "Index", new {@menuId = Convert.ToInt32(Request.QueryString["menuid"]) }, new { @class = "fa fa-chevron-circle-left btn btn-info" })
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   
+    
+    
+}

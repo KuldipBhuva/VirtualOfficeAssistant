@@ -1,15 +1,17 @@
-﻿  @{ 
-   ViewBag.Title = "Insurance";
+﻿@{ 
+    ViewBag.Title = "Insurance";
 }
-  
+
 @using EMSDomain.ViewModel.Insurance
 @model EmpInsuranceItem
 
-@using (@Html.BeginForm("Edit", "Insurance", FormMethod.Post, new { @id = "frmEditInsurance" }))
+@using (@Html.BeginForm("Edit", "Insurance", FormMethod.Post, new { @id = "frmEditInsurance", enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
     @Html.HiddenFor(m => m.CreatedBy)
     @Html.HiddenFor(m => m.CreatedDate)
+    @Html.HiddenFor(m=>m.FilePath)
+    @Html.HiddenFor(m=>m.FileName)
     <script type="text/javascript">
         $(function () { // will trigger when the document is ready
             $('.datepicker').datepicker({ dateFormat: "mm/dd/yy", changeYear: true }); //Initialise any date pickers
@@ -45,7 +47,7 @@
                 @Html.LabelFor(m => m.Branch, new { @class = "col-sm-2 control-label" })
                 <div class="col-sm-4">
                     @Html.DropDownListFor(m => m.Branch, new SelectList(Model.ListBranch, "id", "BranchName"), "--Select Branch--", new { @class = "form-control Select2", @id = "Branch_ID" })
-                    @Html.HiddenFor(m => m.Branch, new { @id="hdnBr"})
+                    @Html.HiddenFor(m => m.Branch, new { @id = "hdnBr" })
                 </div>
                 <div class="col-sm-12" style="height: 5px;"></div>
                 @Html.LabelFor(m => m.Ptype, new { @class = "col-sm-2 control-label" })
@@ -95,6 +97,24 @@
                 <div class="col-sm-4">
                     @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
                 </div>
+                @Html.Label("Document", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-xs-4">
+                    <input type="file" id="files" name="files" class="btn btn-info" />
+                </div>
+
+                <div class="col-sm-12" style="height: 5px;"></div>
+                <div class="col-sm-6"></div>
+                @Html.Label("UploadedDoc", new { @class = "col-sm-2 control-label" })
+
+
+                <div class="col-xs-4">
+                    @if (Model.FilePath != null)
+                    {
+                        <a href="@Url.Content(@Model.FilePath)" target="_blank">@Model.FileName</a>
+                    }
+                </div>
+
                 @*@Html.LabelFor(m => m.EmpId, new { @class = "col-sm-2 control-label",@id="lblEmp" })
                 <div class="col-sm-4" id="divEmp">
                     @Html.DropDownListFor(m => m.EmpId, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control",@id="DDLEmp" })
@@ -108,10 +128,11 @@
         </div>
     </div>
     
+    
 }
 <script lang="javascript" type="text/javascript">
     $(document).ready(function () {
-     
+
         $("#ddlComp").change(function () {
 
             debugger;

@@ -215,7 +215,16 @@ namespace Employee_System.Controllers
 
             objEmp.ListTenancy30 = new List<TenancyItem>();
             objEmp.ListTenancy30.AddRange(lstTenancy30);
-
+            //ExpContract
+            List<ContractModel> lstContract = new List<ContractModel>();
+            lstContract=objService.getExpContract(cid);
+            objEmp.ListExpCont = new List<ContractModel>();
+            objEmp.ListExpCont.AddRange(lstContract);
+            //Contract30
+            List<ContractModel> lstContract30 = new List<ContractModel>();
+            lstContract30 = objService.get30Contract(cid);
+            objEmp.List30Cont = new List<ContractModel>();
+            objEmp.List30Cont.AddRange(lstContract30);
             //Missing Info
             //EmpDOB
             List<EmployeeItem> lstDOB = new List<EmployeeItem>();
@@ -270,6 +279,8 @@ namespace Employee_System.Controllers
 
             objEmp.ListEmpEID = new List<EmployeeItem>();
             objEmp.ListEmpEID.AddRange(lstEID);
+            
+
             return View(objEmp);
 
         }

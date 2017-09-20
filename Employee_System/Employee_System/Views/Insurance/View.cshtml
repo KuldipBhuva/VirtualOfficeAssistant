@@ -87,6 +87,17 @@
                 <div class="col-sm-4">
                     @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
                 </div>
+                   
+                
+                @Html.Label("UploadedDoc", new { @class = "col-sm-2 control-label" })
+
+
+                <div class="col-xs-4">
+                    @if (Model.FilePath != null)
+                    {
+                        <a href="@Url.Content(@Model.FilePath)" target="_blank">@Model.FileName</a>
+                    }
+                </div>
                 @*@Html.LabelFor(m => m.EmpId, new { @class = "col-sm-2 control-label",@id="lblEmp" })
                 <div class="col-sm-4" id="divEmp">
                     @Html.DropDownListFor(m => m.EmpId, new SelectList(Model.ListEmp, "id", "Empname"), "--Select Employee--", new { @class = "form-control",@id="DDLEmp" })

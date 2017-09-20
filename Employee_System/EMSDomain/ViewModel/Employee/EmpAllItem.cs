@@ -58,5 +58,7 @@ namespace EMSDomain.ViewModel.Employee
         public List<TradeLicenseItem> ListCompDoc { get; set; }
         public List<TenancyItem> ListTenancy30 { get; set; }
         public List<TenancyItem> ListTenancy { get; set; }
+        public List<ContractModel> ListExpCont { get; set; }
+        public List<ContractModel> List30Cont { get; set; }
     }
 }

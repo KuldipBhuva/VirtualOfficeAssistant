@@ -16,12 +16,12 @@ namespace EMSDomain.Model
     {
         public VehicleMaster()
         {
-            this.EmployeeInsurances = new HashSet<EmployeeInsurance>();
             this.Petrol_Card = new HashSet<Petrol_Card>();
             this.Petrol_Expense = new HashSet<Petrol_Expense>();
             this.Vehicle_History = new HashSet<Vehicle_History>();
             this.VehicleDocuments = new HashSet<VehicleDocument>();
             this.VehicleRepairings = new HashSet<VehicleRepairing>();
+            this.EmployeeInsurances = new HashSet<EmployeeInsurance>();
         }
     
         public int VID { get; set; }
@@ -64,11 +64,11 @@ namespace EMSDomain.Model
     
         public virtual Company_master Company_master { get; set; }
         public virtual employee_master employee_master { get; set; }
-        public virtual ICollection<EmployeeInsurance> EmployeeInsurances { get; set; }
         public virtual ICollection<Petrol_Card> Petrol_Card { get; set; }
         public virtual ICollection<Petrol_Expense> Petrol_Expense { get; set; }
         public virtual ICollection<Vehicle_History> Vehicle_History { get; set; }
         public virtual ICollection<VehicleDocument> VehicleDocuments { get; set; }
         public virtual ICollection<VehicleRepairing> VehicleRepairings { get; set; }
+        public virtual ICollection<EmployeeInsurance> EmployeeInsurances { get; set; }
     }
 }

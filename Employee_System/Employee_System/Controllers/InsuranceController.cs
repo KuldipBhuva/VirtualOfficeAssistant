@@ -10,6 +10,7 @@ using EMSDomain.ViewModel.Company;
 using EMSDomain.ViewModel.Employee;
 using EMSDomain.ViewModel.Insurance;
 using EMSMethods;
+using System.IO;
 
 namespace Employee_System.Controllers
 {
@@ -103,7 +104,7 @@ namespace Employee_System.Controllers
 
         }       
         [HttpPost]
-        public ActionResult Create(EmpInsuranceItem model)
+        public ActionResult Create(EmpInsuranceItem model, HttpPostedFileBase[] files)
         {
             //int Empid = Convert.ToInt32(Url.RequestContext.RouteData.Values["id"].ToString());
             //model.emp = Empid;
@@ -125,11 +126,53 @@ namespace Employee_System.Controllers
             {
                 model.CompID = cid;
             }
+            if (files != null)
+            {                
+                string strtext = "Insurance";
+                foreach (HttpPostedFileBase file in files)
+                {
+                    if (file != null)
+                    {
+                        string filename = System.IO.Path.GetFileName(file.FileName);
+                        string folderPath = Server.MapPath("~/UploadedDocs/") + strtext;
+                        //  obj.EmpId = Convert.ToInt32(Url.RequestContext.RouteData.Values["id"].ToString());
+                        string destinationPath = folderPath;
+                        string employeeFolderPath = destinationPath;
+                        // create folder if it is not exist
+                        if (!Directory.Exists(folderPath))
+                        {
+                            Directory.CreateDirectory(folderPath);
+                            if (!Directory.Exists(employeeFolderPath))
+                            {
+                                Directory.CreateDirectory(employeeFolderPath);
+                                // create emp id folder of not exist
+                            }
+                        }
+                        else
+                        {
+                            if (!Directory.Exists(employeeFolderPath))
+                            {
+                                Directory.CreateDirectory(employeeFolderPath);
+                                // create emp id folder of not exist
+                            }
+                        }
+                        destinationPath = employeeFolderPath;
+                        /*Saving the file in server folder*/
+                        //file.SaveAs(Server.MapPath("~/Images/" + filename));
+                        string fileNewName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+
+                        file.SaveAs(Path.Combine(destinationPath, fileNewName));
+
+                        model.FileName = filename;
+                        model.FilePath = Path.Combine("/UploadedDocs/" + strtext + "/", fileNewName);
+                    }
+                }
+            }
             objEmpInc.Insert(model);
             return RedirectToAction("Create", new { @menuId = model.Viewbagidformenu });
         }
         [HttpPost]
-        public ActionResult Edit(EmpInsuranceItem model)
+        public ActionResult Edit(EmpInsuranceItem model, HttpPostedFileBase[] files)
         {
                //int Empid = Convert.ToInt32(Url.RequestContext.RouteData.Values["id"].ToString());
             //    model.EmpID = Empid;
@@ -141,6 +184,49 @@ namespace Employee_System.Controllers
             }
             model.UpdatedBy = uid;
             model.UpdatedDate = System.DateTime.Now;
+            if (files != null)
+            {
+                string strtext = "Insurance";
+                foreach (HttpPostedFileBase file in files)
+                {
+                    if (file != null)
+                    {
+                        string filename = System.IO.Path.GetFileName(file.FileName);
+                        string folderPath = Server.MapPath("~/UploadedDocs/") + strtext;
+                        //  obj.EmpId = Convert.ToInt32(Url.RequestContext.RouteData.Values["id"].ToString());
+                        string destinationPath = folderPath;
+                        string employeeFolderPath = destinationPath;
+                        // create folder if it is not exist
+                        if (!Directory.Exists(folderPath))
+                        {
+                            Directory.CreateDirectory(folderPath);
+                            if (!Directory.Exists(employeeFolderPath))
+                            {
+                                Directory.CreateDirectory(employeeFolderPath);
+                                // create emp id folder of not exist
+                            }
+                        }
+                        else
+                        {
+                            if (!Directory.Exists(employeeFolderPath))
+                            {
+                                Directory.CreateDirectory(employeeFolderPath);
+                                // create emp id folder of not exist
+                            }
+                        }
+                        destinationPath = employeeFolderPath;
+                        /*Saving the file in server folder*/
+                        //file.SaveAs(Server.MapPath("~/Images/" + filename));
+                        string fileNewName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+
+                        file.SaveAs(Path.Combine(destinationPath, fileNewName));
+
+                        model.FileName = filename;
+                        model.FilePath = Path.Combine("/UploadedDocs/" + strtext + "/", fileNewName);
+                    }
+                }
+            }
+
             objPass.Update(model);
             return RedirectToAction("Create", new { @menuId = model.Viewbagidformenu });
         }

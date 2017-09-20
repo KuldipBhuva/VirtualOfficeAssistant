@@ -61,6 +61,8 @@ namespace EMSDomain.ViewModel.Insurance
         [Required(ErrorMessage = "Vehicle Required")]
         [Display(Name = "* Vehicle :")]
         public Nullable<int> VID { get; set; }
+        public string FileName { get; set; }
+        public string FilePath { get; set; }
 
         public List<EmpInsuranceItem> ListInsurance { get; set; }
         public List<clsMasterData> ListMasterTable { get; set; } // For DropDown Insurance Company 

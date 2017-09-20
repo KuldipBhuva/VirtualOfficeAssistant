@@ -817,6 +817,111 @@
             </div>
         </div>
     </div>
+
+
+
+        <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;Contracts Detail&nbsp;<a data-toggle="collapse" data-parent="#accordionComp" href="#collapseComp3" data-toggle="tooltip" data-placement="bottom" title="Expired Contracts!"><span class="label label-danger">@Model.ListExpCont.Count Expired</span></a>&nbsp;<a data-toggle="collapse" data-parent="#accordionComp" href="#collapseComp33" data-toggle="tooltip" data-placement="bottom" title="Expiring Contracts Within 30 Days!"><span class="label label-primary">@Model.List30Cont.Count Expiring Within 30 Days</span></a>
+               @*  <script>
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+                    });
+                </script>*@
+            </h4>
+        </div>
+        <div id="collapseComp3" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            
+                           <th>Contract For</th>
+                            <th>Date</th>
+                            <th>Contarct With</th>
+                            <th>Company</th>
+                            <th>Amount</th>
+                            <th>Document</th>
+                          
+                        </tr>
+
+                        @foreach (var item in Model.ListExpCont)
+                        {
+                            <tr>
+                                <td>@item.ContarctFor</td>
+                                @if (@item.FrmDate != null)
+                                {
+                                    <td>@item.FrmDate.Value.ToString("dd/MM/yyyy") - @item.ToDate.Value.ToString("dd/MM/yyyy")</td>
+                                }
+                                else
+                                {
+                                    <td>-</td>   
+                                }
+                                <td>@item.ContractWith</td>
+                                <td>@item.CompDetails.CompName</td>
+                                <td>@item.Amount</td>
+                                @if (@item.FilePath != null)
+                                {
+                                <td><a href="@Url.Content(@item.FilePath)" target="_blank">@item.FileName</a></td>
+                                }
+                                else
+                                {
+                                 <td>-</td>   
+                                }
+
+                                
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="collapseComp33" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                         <th>Contract For</th>
+                            <th>Date</th>
+                            <th>Contarct With</th>
+                            <th>Company</th>
+                            <th>Amount</th>
+                            <th>Document</th>
+                        </tr>
+
+                        @foreach (var item in Model.List30Cont)
+                        {
+                            <tr>
+                                <td>@item.ContarctFor</td>
+                                @if (@item.FrmDate != null)
+                                {
+                                    <td>@item.FrmDate.Value.ToString("dd/MM/yyyy") - @item.ToDate.Value.ToString("dd/MM/yyyy")</td>
+                                }
+                                else
+                                {
+                                    <td>-</td>   
+                                }
+                                <td>@item.ContractWith</td>
+                                <td>@item.CompDetails.CompName</td>
+                                <td>@item.Amount</td>
+                                @if (@item.FilePath != null)
+                                {
+                                <td><a href="@Url.Content(@item.FilePath)" target="_blank">@item.FileName</a></td>
+                                }
+                                else
+                                {
+                                 <td>-</td>   
+                                }
+
+                                
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
         </div>
     </fieldset>
 <div class="panel panel-info">

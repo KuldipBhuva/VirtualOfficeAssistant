@@ -8,7 +8,7 @@
 
 
 
-@using (@Html.BeginForm("Create", "Insurance", FormMethod.Post))
+@using (@Html.BeginForm("Create", "Insurance", FormMethod.Post, new { @id = "frmInsu", enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(m => m.Viewbagidformenu, new { @Value = @ViewBag.Menuid })
     <script type="text/javascript">
@@ -94,6 +94,11 @@
                  @Html.LabelFor(m => m.Remarks, new { @class = "col-sm-2 control-label" })
                 <div class="col-sm-4">
                     @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control" })
+                </div>
+                @Html.Label("Document", new { @class = "col-sm-2 control-label" })
+
+                <div class="col-xs-4">                    
+                    <input type="file" id="files" name="files" class="btn btn-info" />                    
                 </div>
                 @*@Html.LabelFor(m => m.EmpId, new { @class = "col-sm-2 control-label",@id="lblEmp" })
                 <div class="col-sm-4" id="divEmp">                    
@@ -258,7 +263,7 @@
 </script>*@
 <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.dataTables.min.css" rel="stylesheet" />
-<script src="//code.jquery.com/jquery-1.12.3.min.js"></script>
+
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
 <script src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js"></script>
@@ -269,14 +274,7 @@
 <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js"></script>
 <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
 
-@*<link href="http://www.cscc.edu/_resources/app-data/datatables/media/css/jquery.dataTables.css" rel="stylesheet"/>
-<script src="http://www.cscc.edu/_resources/app-data/datatables/media/js/jquery.js"></script>
-<script src="http://www.cscc.edu/_resources/app-data/datatables/media/js/jquery.dataTables.js"></script>*@
-<script src="https://datatables.net/release-datatables/extensions/ColVis/js/dataTables.colVis.js"></script>
-<link href="https://datatables.net/release-datatables/extensions/ColVis/css/dataTables.colVis.css" rel="stylesheet" />
-<script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.colVis.min.js"></script>
 
-<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
 <script>
     $(document).ready(function () {
         var table = $('#tbl').DataTable({

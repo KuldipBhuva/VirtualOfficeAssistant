@@ -71,7 +71,7 @@ namespace EMSMethods
             var objData = (from HC in DbContext.EmployeeHealthCards
                            join EM in DbContext.employee_master on HC.EmpId equals EM.id
                            join CM in DbContext.Company_master on EM.Compid equals CM.id
-                           where HC.ExpiryDate <= (System.DateTime.Now) && HC.Type == "Driving License" && EM.WorkingStatus!=94 && EM.Compid==(cid==0?EM.Compid:cid)
+                           where HC.ExpiryDate <= (System.DateTime.Now) && HC.Type == "Driving License" && EM.WorkingStatus != 94 && EM.Compid == (cid == 0 ? EM.Compid : cid)
                            select new EmpHealthItem()
                            {
                                EmpDetails = new EmployeeItem()
@@ -710,10 +710,10 @@ namespace EMSMethods
                                Lno = tlm.Lno,
                                IssueDate = tlm.IssueDate,
                                ExpiryDate = tlm.ExpiryDate,
-                               LicenseTypeID=tlm.LicenseTypeID,
+                               LicenseTypeID = tlm.LicenseTypeID,
                                LicTypeDetails = new clsMasterData()
                                {
-                                   Name=(m==null?string.Empty:m.Name)
+                                   Name = (m == null ? string.Empty : m.Name)
                                }
                            }
                   ).ToList();
@@ -728,16 +728,16 @@ namespace EMSMethods
                            where tm.ToDate <= (System.DateTime.Now) && tm.Status == "Active" && tm.TnTypeCompId == (cid == 0 ? tm.TnTypeCompId : cid)
                            select new TenancyItem()
                            {
-                               TnID=tm.TnID,
+                               TnID = tm.TnID,
                                TnNo = tm.TnNo,
-                               TDate=tm.TDate,
-                               LandLord=tm.LandLord,
-                               TnTypeId=tm.TnTypeId,
-                               Period=tm.Period,
-                               FromDate=tm.FromDate,
-                               ToDate=tm.ToDate,
-                               Rent=tm.Rent,
-                               Terms=tm.Terms,
+                               TDate = tm.TDate,
+                               LandLord = tm.LandLord,
+                               TnTypeId = tm.TnTypeId,
+                               Period = tm.Period,
+                               FromDate = tm.FromDate,
+                               ToDate = tm.ToDate,
+                               Rent = tm.Rent,
+                               Terms = tm.Terms,
 
                                TTDetails = new clsMasterData()
                                {
@@ -757,7 +757,7 @@ namespace EMSMethods
                            select new TenancyItem()
                            {
                                TnID = tm.TnID,
-                               TnNo=tm.TnNo,
+                               TnNo = tm.TnNo,
                                TDate = tm.TDate,
                                LandLord = tm.LandLord,
                                TnTypeId = tm.TnTypeId,
@@ -775,7 +775,56 @@ namespace EMSMethods
             return objData;
 
         }
+        public List<ContractModel> getExpContract(int cid)
+        {
+            var data = (from cm in DbContext.ContractMasters
+                        join comp in DbContext.Company_master on cm.CompID equals comp.id
+                        where cm.ToDate <= (System.DateTime.Now) && cm.CompID == (cid == 0 ? cm.CompID : cid)
+                        select new ContractModel()
+                        {
+                            ContID = cm.ContID,
+                            CompID = cm.CompID,
+                            ContractWith = cm.ContractWith,
+                            ContarctFor = cm.ContarctFor,
+                            FrmDate = cm.FrmDate,
+                            ToDate = cm.ToDate,
+                            Amount = cm.Amount,
+                            FileName = cm.FileName,
+                            FilePath = cm.FilePath,
+                            CompDetails = new CompanyItem()
+                            {
+                                CompName=comp.CompName
+                            }
+                        }).ToList();
+            return data;
 
+        }
+        public List<ContractModel> get30Contract(int cid)
+        {
+            DateTime today = DateTime.Today;
+            DateTime Next30 = today.AddDays(+30);
+            var data = (from cm in DbContext.ContractMasters
+                        join comp in DbContext.Company_master on cm.CompID equals comp.id
+                        where cm.ToDate <= Next30 && cm.ToDate > today && cm.CompID == (cid == 0 ? cm.CompID : cid)
+                        select new ContractModel()
+                        {
+                            ContID = cm.ContID,
+                            CompID = cm.CompID,
+                            ContractWith = cm.ContractWith,
+                            ContarctFor = cm.ContarctFor,
+                            FrmDate = cm.FrmDate,
+                            ToDate = cm.ToDate,
+                            Amount = cm.Amount,
+                            FileName = cm.FileName,
+                            FilePath = cm.FilePath,
+                            CompDetails = new CompanyItem()
+                            {
+                                CompName = comp.CompName
+                            }
+                        }).ToList();
+            return data;
+
+        }
         //Missing Info
         public List<EmployeeItem> getEmpDOB(int cid)
         {
@@ -890,5 +939,7 @@ namespace EMSMethods
                           ).ToList();
             return data;
         }
+
+
     }
 }
